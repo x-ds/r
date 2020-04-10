@@ -4,20 +4,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Introduction to data science | Data Science with R</title>
+<title>Installing R and RStudio | Data Science with R</title>
 <link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
 <link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <meta name="theme-color" content="#5670d4">
 <meta name="generator" content="Nikola (getnikola.com)">
-<link rel="canonical" href="https://www.datascience.eu.org/r/posts/Intro_to_DS/">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/install_r/">
 <link rel="icon" href="../../files/favicon.ico" sizes="16x16">
 <!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
-<link rel="next" href="../install_r/" title="Installing R and RStudio" type="text/html">
+<link rel="prev" href="../Intro_to_DS/" title="Introduction to data science" type="text/html">
 <meta property="og:site_name" content="Data Science with R">
-<meta property="og:title" content="Introduction to data science">
-<meta property="og:url" content="https://www.datascience.eu.org/r/posts/Intro_to_DS/">
-<meta property="og:description" content="My notes¶
+<meta property="og:title" content="Installing R and RStudio">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/install_r/">
+<meta property="og:description" content="Contents 
+
+Portable environment
+Installing R
+Installing RStudio
+Installing R in JupyterLabs
 
 
 
@@ -25,11 +30,13 @@
 
 
 
-Data science¶
-Data science involves statistics, computer science and mathematics.
-Machine learning and artificial intelligence are two of the most popular branches of data science the">
+
+Portable environment ¶This page will guide you on installing R and RStudio in a portable environment">
 <meta property="og:type" content="article">
-<meta property="article:published_time" content="2020-04-09T12:34:57+05:30">
+<meta property="article:published_time" content="2020-04-10T10:59:58+05:30">
+<meta property="article:tag" content="JupyterLab">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="RStudio">
 </head>
 <body>
 <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -82,7 +89,7 @@ navbar-dark bg-dark
         
         
         
-<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Introduction to data science</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Installing R and RStudio</a></h1>
 
         <div class="metadata">
             <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
@@ -90,15 +97,15 @@ navbar-dark bg-dark
             </span></p>
             <p class="dateline">
             <a href="." rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-09T12:34:57+05:30" itemprop="datePublished" title="2020-04-09 12:34">2020-04-09 12:34</time></a>
+            <time class="published dt-published" datetime="2020-04-10T10:59:58+05:30" itemprop="datePublished" title="2020-04-10 10:59">2020-04-10 10:59</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/Intro_to_DS/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/intro_ds.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/install_r/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/install_r.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/intro_ds.html";
-var idcomments_post_url = "/posts/Intro_to_DS/";
+var idcomments_post_id = "cache/posts/install_r.html";
+var idcomments_post_url = "/posts/install_r/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -115,9 +122,13 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="My-notes">My notes<a class="anchor-link" href="#My-notes">¶</a>
-</h4>
-<hr>
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="#portable">Portable environment</a></li>
+<li><a href="#r">Installing R</a></li>
+<li><a href="#rstudio">Installing RStudio</a></li>
+<li><a href="#rkernel">Installing R in JupyterLabs</a></li>
+</ol>
 </div>
 </div>
 </div>
@@ -126,25 +137,32 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Data-science">Data science<a class="anchor-link" href="#Data-science">¶</a>
-</h6>
+<h5 id="Portable-environment-">Portable environment <a name="portable"></a><a class="anchor-link" href="#Portable-environment-">¶</a>
+</h5>
+<p>This page will guide you on installing R and RStudio in a portable environment on a Windows system. Following are the reasons why I prefer a portable installation over a regular installation:</p>
 <ul>
-<li>Data science involves statistics, computer science and mathematics.</li>
-<li>
-<strong>Machine learning</strong> and <strong>artificial intelligence</strong> are two of the most popular branches of data science these days.</li>
-<li>Three key features of <strong>Big Data</strong><ul>
-<li>Volume - Deals with huge amounts of data.</li>
-<li>Velocity - Data is generated rapidly, also involves real time data.</li>
-<li>Variety - Deals with structured and unstructured data.</li>
+<li>I am not tied up to a particular computer. Installation and files reside in a portable drive (a pen-drive or a portable hard disk drive). I can use R on any Windows system wherever I go.</li>
+<li>If this system crashes, I don't lose my setup or files. </li>
+<li>I like experimenting.</li>
 </ul>
+<p>If you prefer a regular installation, visit <a href="https://rstudio.com/products/rstudio/download/">RStudio</a> and follow the steps.</p>
+<p><strong>Installing PortablaApps platform (optional)</strong>: Portable Apps platforms comes with it's own start menu launcher which is handly when you install multiple portable programs in future. Download and install PortableApps Platform from <a href="https://portableapps.com/download">https://portableapps.com/download</a>.</p>
+<p>Select "New Install"
+<img src="../../images/r0040.png" alt="New Install" title="New Install"></p>
+<p>Select</p>
+<ul>
+<li>Portable apps if you want to install it on your pen-drive or a portable hard disk drive</li>
+<li>Cloud, if you want to intall it in your Dropbox, Google Drive, PCloud, One Drive, etc</li>
+<li>Local - It will be installed in your local drive but only you can access the programs. Other Windows users on your system will not be able to access your portable applications. This is where I am installing.</li>
+<li>Local All Users - It will be installed in your local drive and all users on your computer can access them.
+<img src="../../images/r0050.png" alt="Installation options" title="Installation options">
 </li>
 </ul>
-<p><img src="../../images/r0010.png" alt="Three Vs of Big Data" title="Three Vs of Big Data"></p>
-<ul>
-<li>A <strong>data scientist</strong> is someone who applies data science tools to  data to answer questions.</li>
-<li>Data scientists usually have a combination of the following skills:</li>
-</ul>
-<p><img src="../../images/r0020.png" alt="Data scientist's skills" title="Data scientist's skills"></p>
+<p>Select your preferred directory and continue.
+<img src="../../images/r0060.png" alt="Select directory" title="Select directory"></p>
+<p>Once the installation is complete, open Portable Apps platform and if everthing went well, you'll see something like this.
+<img src="../../images/r0070.png" alt="PortableApps" title="PortableApps"></p>
+<p>[<a href="#contents">page contents</a>]</p>
 
 </div>
 </div>
@@ -154,72 +172,55 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Data">Data<a class="anchor-link" href="#Data">¶</a>
-</h6>
-<p>There are several definitions of data. The definition provided by Wikipedia is "A set of values of qualitative or quantitative variables".</p>
-<p><img src="../../images/r0030.png" alt="Definition of data" title="Definition of data"></p>
-<p>There are two kinds of data we usually come across:</p>
-<ul>
-<li>Structured data - Data that can be stored in tabular format (rows and columns) and each variable (or column) has a specific data type (numeric, text, category, etc)</li>
-<li>Unstructred data - Any data that is not structured is unstructed data. Some examples are twitter data, facebook comments, sequencing data (medical, genome data), medical records, languages, images, etc</li>
-</ul>
-<p>Variables</p>
-<ul>
-<li>Quantitative - measureable, numeric (integers or real numbers).<ul>
-<li>examples: age, distance, time, etc</li>
-</ul>
-</li>
-<li>Qualitative - non-measurable (example: categorical or user assigned)<ul>
-<li>examples: name, severity(High, Medium, Low), ranking, etc</li>
-</ul>
-</li>
-<li>Quantitative variables can be discrete or continuous*.</li>
-</ul>
+<h5 id="Installing-R-">Installing R <a name="r"></a><a class="anchor-link" href="#Installing-R-">¶</a>
+</h5>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h6 id="Data-science-project">Data science project<a class="anchor-link" href="#Data-science-project">¶</a>
-</h6>
-<p>Steps or life cycle of a data science project</p>
-<ul>
-<li>Business case (forming a question, scope analysis)</li>
-<li>Data collection (finding or generating data)</li>
-<li>Data pruning (data cleansing, data manipulation, data visualization)</li>
-<li>Data analysis (Exploratory and/or Inferential statistics)</li>
-<li>Data Modeling (Machine Learning, Artificial Intelligence)</li>
-<li>Closure (Conclusions, reporting, communication to stakeholders, future scope)</li>
-</ul>
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
 </div>
 </div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>* Johns Hopkins University course stated that "Quantitative variables are measured on ordered, continuous scales", which, in my opinion, is a vague statement. Quantitative variables are measured not only on continuous scales but also on discrete (non-continous) scales. Some examples of discrete quantitative variables are 'age in years', 'number of days since first medication', 'number of pencils in a box', etc</p>
 
 </div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
 </div>
+</div>
+
 </div>
 </div>
     </div>
-    <aside class="postpromonav"><nav><ul class="pager hidden-print">
-<li class="next">
-                <a href="../install_r/" rel="next" title="Installing R and RStudio">Next post</a>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/jupyterlab/" rel="tag">JupyterLab</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/rstudio/" rel="tag">RStudio</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../Intro_to_DS/" rel="prev" title="Introduction to data science">Previous post</a>
             </li>
         </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
         
         
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/intro_ds.html";
-var idcomments_post_url = "https://www.datascience.eu.org/r/posts/Intro_to_DS/";
+var idcomments_post_id = "cache/posts/install_r.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/install_r/";
 </script><span id="IDCommentsPostTitle" style="display:none"></span>
 <script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

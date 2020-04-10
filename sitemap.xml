@@ -7,7 +7,7 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://www.datascience.eu.org/r/</loc>
-  <lastmod>2020-04-09T15:34:00Z</lastmod>
+  <lastmod>2020-04-10T04:33:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/2020/</loc>
@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-09T09:52:00Z</lastmod>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
-  <lastmod>2020-04-08T14:33:00Z</lastmod>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/categories/cat_installation/</loc>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/galleries/</loc>
@@ -34,20 +38,32 @@
   <lastmod>2020-04-08T14:33:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.datascience.eu.org/r/notes/</loc>
-  <lastmod>2020-04-09T06:14:00Z</lastmod>
- </url>
- <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-09T07:21:00Z</lastmod>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/Intro_to_DS/</loc>
   <lastmod>2020-04-09T07:21:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/install_r/</loc>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-08T14:33:00Z</lastmod>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/jupyterlab/</loc>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/r/</loc>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/rstudio/</loc>
+  <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/toc/</loc>
