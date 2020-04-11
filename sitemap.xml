@@ -51,11 +51,15 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-10T05:50:00Z</lastmod>
+  <lastmod>2020-04-11T11:21:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/jupyterlab/</loc>
   <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/r-markdown/</loc>
+  <lastmod>2020-04-11T11:21:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/r/</loc>
