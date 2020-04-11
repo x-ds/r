@@ -22,6 +22,7 @@
 Portable environment
 Installing R
 Installing RStudio
+Installing R Markdown
 Installing R in JupyterLabs
 
 
@@ -31,7 +32,7 @@ Installing R in JupyterLabs
 
 
 
-Portable environment ¶This page will guide you on installing R and RStudio in a portable environment">
+Portable environment ¶This page will guide you on installing R and RStudio in ">
 <meta property="og:type" content="article">
 <meta property="article:published_time" content="2020-04-10T10:59:58+05:30">
 <meta property="article:tag" content="JupyterLab">
@@ -127,6 +128,7 @@ var idcomments_post_url = "/posts/install_r/";
 <li><a href="#portable">Portable environment</a></li>
 <li><a href="#r">Installing R</a></li>
 <li><a href="#rstudio">Installing RStudio</a></li>
+<li><a href="#rmarkdown">Installing R Markdown</a></li>
 <li><a href="#rkernel">Installing R in JupyterLabs</a></li>
 </ol>
 </div>
@@ -209,6 +211,35 @@ var idcomments_post_url = "/posts/install_r/";
 <p>7. Select 32-bit or 64-bit based on your Windows 10 version. If you are unsure, select 32-bit as it works on both.</p>
 <p>You are now ready to use R Studio.
 <img src="../../images/r020110.png" alt="RStudio" title="R Studio"></p>
+<p>8.\ Create R Project. Select File &gt; New Project. Select "New Directory".</p>
+<p><img src="../../images/r020190.png" alt="New Directory" title="New Directory"></p>
+<p>Select "New Project"</p>
+<p><img src="../../images/r020200.png" alt="New Project" title="New Project"></p>
+<p>Name your project (example: DataScienceWithR). Browse and select the directory where you want the project to reside. Click "Create Project".</p>
+<p><img src="../../images/r020210.png" alt="Project name and location" title="Project name and location"></p>
+<p>You should now see your project files including "DataScienceWithR.Rproj" file in the second quadrant of R Studio.</p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Installing-R-Markdown-">Installing R Markdown <a name="rmarkdown"></a><a class="anchor-link" href="#Installing-R-Markdown-">¶</a>
+</h4>
+<p>As a data scientist, it's important to not only write and run code but also explain data manipulation and inferences in words. Markdown allows us to document our work. R-Markdown integrates R code with Markdown to provide an integrated solution. JupyterLab (a successor of iPython) is another such tool, which we will come across soon.</p>
+<p>1.\ In R Studio, go to File &gt; New File &gt; R Markdown.</p>
+<p>2.\ If there are any missing packages, R Studio will ask you if you'd like to install them. Click 'OK' and wait for it to install.</p>
+<p><img src="../../images/r020150.png" alt="Installing R Markdown dependencies" title="Installing R Markdown dependencies"></p>
+<p>3.\ Give a name to the document (example: sample). Select 'HTML' or 'PDF' as your choice of output.</p>
+<p><img src="../../images/r020160.png" alt="R Markdown options" title="R Markdown options"></p>
+<p>4.\ This will create a sample markdown document with some examples in it. You may change the 'title' in the document to "Sample Markdown". Save the file.</p>
+<p><img src="../../images/r020170.png" alt="Sample Markdown" title="Sample Markdown"></p>
+<p>5. Press CTRL+SHIFT+K or click the "Knit" button in the fourth quadrant of R Studio or go to File &gt; Knit Document to generate an HTML or PDF output of the markdown file.</p>
+<p><img src="../../images/r020180.png" alt="HTML output" title="HTML output"></p>
 <p>[<a href="#contents">^top</a>]</p>
 
 </div>
@@ -225,9 +256,9 @@ var idcomments_post_url = "/posts/install_r/";
 <p>Follow the steps to install R in JupyterLab. If you already have JupyterLab installed, you can directly go to step x.</p>
 <p>1. <strong>Anaconda vs Miniconda</strong>: To use JupyterLab, you need to have Anaconda or Miniconda installed. Follow either 1a or 1b.</p>
 <p>1a. Anaconda comes bundled with Python and a lot of packages commonly used in data science. It also comes with a GUI called Navigator and it's own IDE called Spyder. If you are a beginner, install Anaconda from <a href="https://www.anaconda.com/distribution/">https://www.anaconda.com/distribution/</a>. Select Python 3+ version. Install will default settings.</p>
-<p>1b. Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages. I prefer Miniconda instead of Anaconda as I don't need Anaconda's GUI and IDE and I am more comfortable with using CLI(Command Line Interface) for installing and maintaining packages. Also, I don't need all the packages that come with Anaconda. I can install packages I want when I need them. Download Miniconda from <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>. You can install with default settings, or if you prefer a portable version of it, open command prompt in administrator mode and go to the directory where you downloaded Minoconda <em>exe</em> file and type the following</p>
+<p>1b. Miniconda is a small, bootstrap version of Anaconda that includes only conda, Python, the packages they depend on, and a small number of other useful packages. I prefer Miniconda instead of Anaconda as I don't need Anaconda's GUI and IDE and I am more comfortable with using CLI(Command Line Interface) for installing and maintaining packages. Also, I don't need all the packages that come with Anaconda. I can install the packages I want when I need them. Download Miniconda from <a href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a>. You can install with default settings, or if you prefer a portable version of it, open the command prompt in administrator mode and go to the directory where you downloaded Minoconda <em>exe</em> file and type the following</p>
 <p><code>Miniconda3-latest-Windows-x86_64.exe /InstallationType=JustMe /AddToPath=0 /RegisterPython=0 /NoRegistry=1</code></p>
-<p>2. <strong>Creating a virtual environment</strong>: In Anaconda(or Miniconda. In future, I am going to use the term Anaconda for both Anaconda and Miniconda because they both have the same core. Whatever works in one works in the other too.), we have an option to create virtual environments. Each environment can have packages and code specific to its project. This is useful because different projects require different packages and it's not advisable to install all packages at one place in the <strong>base</strong>(<em>base</em> is the default environment that comes with Anaconda). Also, if you don't want to mess up the base when you are experimenting. Always create a new environment, experiment and if something goes wrong then delete it and create a new one without having to reinstall Anaconda.</p>
+<p>2. <strong>Creating a virtual environment</strong>: In Anaconda(or Miniconda. In future, I am going to use the term Anaconda for both Anaconda and Miniconda because they both have the same core. Whatever works in one, works in the other too.), we have an option to create virtual environments. Each environment can have packages and code specific to its project. This is useful because different projects require different packages and it's not advisable to install all packages at one place in the <strong>base</strong>(<em>base</em> is the default environment that comes with Anaconda). Also, if you don't want to mess up the base when you are experimenting. Always create a new environment, experiment and if something goes wrong then delete it and create a new one without having to reinstall Anaconda.</p>
 <p>2a. Open 'Anaconda Prompt' from Windows Start Menu</p>
 <p>2b. Create a virtual environment. Enter the following in the command prompt.</p>
 <p><code>conda create --name jhu</code>.</p>
@@ -293,6 +324,16 @@ var idcomments_post_url = "/posts/install_r/";
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Works well!</p>
 <p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-11 16:47:25.910599 IST</p>
 
 </div>
 </div>
