@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GitHub and Git basics | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/0030/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../0020/" title="Installing R and RStudio" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="GitHub and Git basics">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/0030/">
+<meta property="og:description" content="Contents 
+
+GitHub/GitLab Account
+Creating a repository
+Installing Git
+Connecting R Studio to GitHub
+Git Bash
+
+
+
+
+
+
+
+
+GitHub/GitLab Account ¶GitHub is a service where you can host your projects online ">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-11T17:03:29+05:30">
+<meta property="article:tag" content="Git">
+<meta property="article:tag" content="Git Bash">
+<meta property="article:tag" content="GitHub">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">TOC</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">GitHub and Git basics</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-11T17:03:29+05:30" itemprop="datePublished" title="2020-04-11 17:03">2020-04-11 17:03</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/0030/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0030git_basics.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/0030git_basics.html";
+var idcomments_post_url = "/posts/0030/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="#github">GitHub/GitLab Account</a></li>
+<li><a href="#repo">Creating a repository</a></li>
+<li><a href="#git">Installing Git</a></li>
+<li><a href="#rstudiogithub">Connecting R Studio to GitHub</a></li>
+<li><a href="#gitbash">Git Bash</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="GitHub/GitLab-Account-">GitHub/GitLab Account <a name="github"></a><a class="anchor-link" href="#GitHub/GitLab-Account-">¶</a>
+</h3>
+<p><a href="https://www.github.com">GitHub</a> is a service where you can host your projects online with a lot of free features especially for version control. GitHub is also the most popular Git based online repository service followed by <a href="https://gitlab.com/users/sign_in#register-pane">GitLab</a>. Click on the hyperlinks to sign up for a free account.</p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-repository-">Creating a repository <a name="repo"></a><a class="anchor-link" href="#Creating-a-repository-">¶</a>
+</h3>
+<p>Login to GitHub and select "New Repository". Give a name to your repository(also called repo). Select option "Public" or "Private" depending on whether you want to share your repo with others or not.</p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Installing-Git-">Installing Git <a name="git"></a><a class="anchor-link" href="#Installing-Git-">¶</a>
+</h3>
+<p>Download and install Git for Windows from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. You can install the regular version or the portable version of from the links on the page. By now, you might have guesed that I have installed the portable version.</p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Connecting-R-Studio-to-GitHub-">Connecting R Studio to GitHub <a name="rstudiogithub"></a><a class="anchor-link" href="#Connecting-R-Studio-to-GitHub-">¶</a>
+</h3>
+<p>JHU's <em>Linking GitHub and RStudio</em> document shows in detail how to connect R Studio to your GitHub account, create projects in repositories, commit and push repos. Hence, I am not going to go through that here. Also, I am not a big fan of using R Studio to perform Git operations. I believe that one needs to work on CLIs (like Git Bash) to learn and understand how Git versioning works.</p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Git-Bash-">Git Bash <a name="gitbash"></a><a class="anchor-link" href="#Git-Bash-">¶</a>
+</h3>
+<p>Git Bash is a CLI(Command Line Interface) for Git operations for Git based online services like GitHub or GitLab. We have already installed Git earlier which contains an executable file called Git Bash. We will use Git Bash to connect to GitHub and perform Git operations.</p>
+<h4 id="1.-Git-Credential-Manager-for-Windows-(GCMW)">1. Git Credential Manager for Windows (GCMW)<a class="anchor-link" href="#1.-Git-Credential-Manager-for-Windows-(GCMW)">¶</a>
+</h4>
+<p>Git Bash can connect to Github via SSH or HTTPS. GitHub recommends HTTPS over SSH as the connections are much faster and easier to set up. To connect over HTTPS, we need to install <strong>Git Credential Manager for Windows (GCMW)</strong>. GCMW provides secure Git credential storage for Windows with Two-factor authentication for GitHub. Download and install the latest GCMW from <a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest</a></p>
+<h4 id="2.-Git-Bash-first-time-configuration">2. Git Bash first time configuration<a class="anchor-link" href="#2.-Git-Bash-first-time-configuration">¶</a>
+</h4>
+<p>Here are a few things that you need to do when you first install Git. Open Git Bash and you'll see a CLI that looks like this.</p>
+<p><img src="../../images/r0030010.png" alt="Git Bash" title="Git Bash"></p>
+<p>1. Type the following command in Git Bash and enter your GitHub username (the one created while setting up the GitHub account) in quotes.</p>
+<p><code>git config --global user.name "YourUserName"</code></p>
+<p>2. Enter your email address associated with your GitHub account.</p>
+<p><code>git config --global user.email abcdef@example.com</code></p>
+<p>3. Configure your favorite text editor for Git Bash. If you installed portable Notepad++ like me, you can configure it as your default Git Bash text editor by typing the following. Edit Notepad++ path accordingly.</p>
+<p><code>git config --global core.editor "'C:/Users/kk/PortableApps/Notepad++Portable/App/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></p>
+<p>You can also check your settings by entering the following. If something's wrong, use the above commands to change them.</p>
+<p><code>git config --list</code></p>
+<p><img src="../../images/r0030020.png" alt="Git config" title="Git config"></p>
+<h4 id="3.-Basic-Git-operations">3. Basic Git operations<a class="anchor-link" href="#3.-Basic-Git-operations">¶</a>
+</h4>
+<p>Let's create a repository called "testrepo" and perform some basic Git operations on it. Login to GitHub and create the repository called "testrepo".</p>
+<p><img src="../../images/r0030030.png" alt="Create repo" title="Create repo"></p>
+<p>Ensure that the connection is HTTPS. Click copy button to copy the repo link.</p>
+<p><img src="../../images/r0030040.png" alt="Copy repo link" title="Copy repo link"></p>
+<p>Go to Git Bash and create a directory where you plan to work on your projects. Let's call it "projects".</p>
+<p><code>mkdir projects</code></p>
+<p>Enter the following command to view all files and directories in the current location. One of them should read "projects"</p>
+<p>Change directory to "projects"</p>
+<p><code>cd projects</code></p>
+<h5 id="git-clone">git clone<a class="anchor-link" href="#git-clone">¶</a>
+</h5>
+<p>Clone your repo to your current working directory.</p>
+<p><code>git clone https://github.com/k-allika/testrepo.git</code></p>
+<h5 id="git-remote">git remote<a class="anchor-link" href="#git-remote">¶</a>
+</h5>
+<p>Check connection to your remote repo</p>
+<p><code>git remote -v</code></p>
+<h5 id=".gitignore">.gitignore<a class="anchor-link" href="#.gitignore">¶</a>
+</h5>
+<p><strong>.gitignore</strong> is an important file and should be created before the first <em>push</em>. .gitignore contains a list of files that git will ignore while performing git operations. For example, if I have some text files in my working directory that I do not want to push them to my GitHub repo, then I'll include <em>*.txt</em> in my .gitignore.</p>
+<h5 id="touch">touch<a class="anchor-link" href="#touch">¶</a>
+</h5>
+<p>Create an empty .gitignore file</p>
+<p><code>touch .gitignore</code></p>
+<h5 id="vi">vi<a class="anchor-link" href="#vi">¶</a>
+</h5>
+<p>Edit an existing file or create a new file and edit.</p>
+<p><code>vi .gitignore</code></p>
+<p>adding <em>*.txt</em> to ignore will tell Git to ignore all <em>txt</em> files and not to push them to remote repo.</p>
+<p>Basic vi commands:</p>
+<p><em>i</em> to start editing.</p>
+<p><em>Esc</em> to stop editing and come out of edit mode.</p>
+<p><em>:w</em> to save file.</p>
+<p><em>:q</em> to quit vi</p>
+<p>Let's create a "notes.txt" file to test .gitignore. Since we added <em>*.txt</em> to .gitignore, "notes.txt" would not be pushed to the repo.</p>
+<p><code>vi notes.txt</code></p>
+<p>Let's create another file called "README.md". Since this file does not match anything in .gitignore, it would be pushed to the repo.</p>
+<p><code>vi README.md</code></p>
+<h5 id="ls">ls<a class="anchor-link" href="#ls">¶</a>
+</h5>
+<p><em>ls</em> lists files and directories in the current directory. The arguments <em>-la</em> will show file attributes along with hidden files.</p>
+<p><code>ls -la</code></p>
+<h5 id="git-status">git status<a class="anchor-link" href="#git-status">¶</a>
+</h5>
+<p>View the status of your working directory compared to the remote repo at GitHub.</p>
+<p><code>git status</code></p>
+<p>As expected, you'll notice that only <em>.gitignore</em> and <em>README.md</em> files are mentioned in the status output. The <em>notes.txt</em> is ignore as it should.</p>
+<h5 id="git-push">git push<a class="anchor-link" href="#git-push">¶</a>
+</h5>
+<p><code>git push</code></p>
+<p>Push changes in your working directory to the remote repo.</p>
+<p><img src="../../images/r0030050.gif" alt="Git Bash Basics" title="Git Bash Basics"></p>
+<p>Check your repo at GitHub and you should see the changes there.</p>
+<p><img src="../../images/r0030060.png" alt="Remote repo" title="Remote repo"></p>
+<p>[<a href="#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/git/" rel="tag">Git</a></li>
+            <li><a class="tag p-category" href="../../tags/git-bash/" rel="tag">Git Bash</a></li>
+            <li><a class="tag p-category" href="../../tags/github/" rel="tag">GitHub</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../0020/" rel="prev" title="Installing R and RStudio">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/0030git_basics.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/0030/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

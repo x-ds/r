@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-10T05:50:00Z</lastmod>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
-  <lastmod>2020-04-10T05:50:00Z</lastmod>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/categories/cat_git/</loc>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/cat_installation/</loc>
@@ -39,19 +43,35 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-10T05:50:00Z</lastmod>
+  <lastmod>2020-04-12T03:31:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.datascience.eu.org/r/posts/Intro_to_DS/</loc>
-  <lastmod>2020-04-09T07:21:00Z</lastmod>
+  <loc>https://www.datascience.eu.org/r/posts/0010/</loc>
+  <lastmod>2020-04-12T03:31:00Z</lastmod>
  </url>
  <url>
-  <loc>https://www.datascience.eu.org/r/posts/install_r/</loc>
-  <lastmod>2020-04-10T05:50:00Z</lastmod>
+  <loc>https://www.datascience.eu.org/r/posts/0020/</loc>
+  <lastmod>2020-04-12T03:31:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/posts/0030/</loc>
+  <lastmod>2020-04-12T03:31:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-11T11:21:00Z</lastmod>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/git-bash/</loc>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/git/</loc>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/github/</loc>
+  <lastmod>2020-04-12T03:26:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/jupyterlab/</loc>

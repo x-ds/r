@@ -72,22 +72,22 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="install_r/" class="u-url">Installing R and RStudio</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0030/" class="u-url">GitHub and Git basics</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
             </span></p>
             <p class="dateline">
-            <a href="install_r/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-10T10:59:58+05:30" itemprop="datePublished" title="2020-04-10 10:59">2020-04-10 10:59</time></a>
+            <a href="0030/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-11T17:03:29+05:30" itemprop="datePublished" title="2020-04-11 17:03">2020-04-11 17:03</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/install_r/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/install_r.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/0030/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0030git_basics.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/install_r.html";
-var idcomments_post_url = "/posts/install_r/";
+var idcomments_post_id = "cache/posts/0030git_basics.html";
+var idcomments_post_url = "/posts/0030/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -102,11 +102,11 @@ var idcomments_post_url = "/posts/install_r/";
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Contents</strong> <a name="contents"></a></p>
 <ol>
-<li><a href="install_r/#portable">Portable environment</a></li>
-<li><a href="install_r/#r">Installing R</a></li>
-<li><a href="install_r/#rstudio">Installing RStudio</a></li>
-<li><a href="install_r/#rmarkdown">Installing R Markdown</a></li>
-<li><a href="install_r/#rkernel">Installing R in JupyterLabs</a></li>
+<li><a href="0030/#github">GitHub/GitLab Account</a></li>
+<li><a href="0030/#repo">Creating a repository</a></li>
+<li><a href="0030/#git">Installing Git</a></li>
+<li><a href="0030/#rstudiogithub">Connecting R Studio to GitHub</a></li>
+<li><a href="0030/#gitbash">Git Bash</a></li>
 </ol>
 </div>
 </div>
@@ -116,7 +116,185 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Portable-environment-">Portable environment <a name="portable"></a><a class="anchor-link" href="install_r/#Portable-environment-">¶</a>
+<h3 id="GitHub/GitLab-Account-">GitHub/GitLab Account <a name="github"></a><a class="anchor-link" href="0030/#GitHub/GitLab-Account-">¶</a>
+</h3>
+<p><a href="https://www.github.com">GitHub</a> is a service where you can host your projects online with a lot of free features especially for version control. GitHub is also the most popular Git based online repository service followed by <a href="https://gitlab.com/users/sign_in#register-pane">GitLab</a>. Click on the hyperlinks to sign up for a free account.</p>
+<p>[<a href="0030/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Creating-a-repository-">Creating a repository <a name="repo"></a><a class="anchor-link" href="0030/#Creating-a-repository-">¶</a>
+</h3>
+<p>Login to GitHub and select "New Repository". Give a name to your repository(also called repo). Select option "Public" or "Private" depending on whether you want to share your repo with others or not.</p>
+<p>[<a href="0030/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Installing-Git-">Installing Git <a name="git"></a><a class="anchor-link" href="0030/#Installing-Git-">¶</a>
+</h3>
+<p>Download and install Git for Windows from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. You can install the regular version or the portable version of from the links on the page. By now, you might have guesed that I have installed the portable version.</p>
+<p>[<a href="0030/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Connecting-R-Studio-to-GitHub-">Connecting R Studio to GitHub <a name="rstudiogithub"></a><a class="anchor-link" href="0030/#Connecting-R-Studio-to-GitHub-">¶</a>
+</h3>
+<p>JHU's <em>Linking GitHub and RStudio</em> document shows in detail how to connect R Studio to your GitHub account, create projects in repositories, commit and push repos. Hence, I am not going to go through that here. Also, I am not a big fan of using R Studio to perform Git operations. I believe that one needs to work on CLIs (like Git Bash) to learn and understand how Git versioning works.</p>
+<p>[<a href="0030/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Git-Bash-">Git Bash <a name="gitbash"></a><a class="anchor-link" href="0030/#Git-Bash-">¶</a>
+</h3>
+<p>Git Bash is a CLI(Command Line Interface) for Git operations for Git based online services like GitHub or GitLab. We have already installed Git earlier which contains an executable file called Git Bash. We will use Git Bash to connect to GitHub and perform Git operations.</p>
+<h4 id="1.-Git-Credential-Manager-for-Windows-(GCMW)">1. Git Credential Manager for Windows (GCMW)<a class="anchor-link" href="0030/#1.-Git-Credential-Manager-for-Windows-(GCMW)">¶</a>
+</h4>
+<p>Git Bash can connect to Github via SSH or HTTPS. GitHub recommends HTTPS over SSH as the connections are much faster and easier to set up. To connect over HTTPS, we need to install <strong>Git Credential Manager for Windows (GCMW)</strong>. GCMW provides secure Git credential storage for Windows with Two-factor authentication for GitHub. Download and install the latest GCMW from <a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest</a></p>
+<h4 id="2.-Git-Bash-first-time-configuration">2. Git Bash first time configuration<a class="anchor-link" href="0030/#2.-Git-Bash-first-time-configuration">¶</a>
+</h4>
+<p>Here are a few things that you need to do when you first install Git. Open Git Bash and you'll see a CLI that looks like this.</p>
+<p><img src="../images/r0030010.png" alt="Git Bash" title="Git Bash"></p>
+<p>1. Type the following command in Git Bash and enter your GitHub username (the one created while setting up the GitHub account) in quotes.</p>
+<p><code>git config --global user.name "YourUserName"</code></p>
+<p>2. Enter your email address associated with your GitHub account.</p>
+<p><code>git config --global user.email abcdef@example.com</code></p>
+<p>3. Configure your favorite text editor for Git Bash. If you installed portable Notepad++ like me, you can configure it as your default Git Bash text editor by typing the following. Edit Notepad++ path accordingly.</p>
+<p><code>git config --global core.editor "'C:/Users/kk/PortableApps/Notepad++Portable/App/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></p>
+<p>You can also check your settings by entering the following. If something's wrong, use the above commands to change them.</p>
+<p><code>git config --list</code></p>
+<p><img src="../images/r0030020.png" alt="Git config" title="Git config"></p>
+<h4 id="3.-Basic-Git-operations">3. Basic Git operations<a class="anchor-link" href="0030/#3.-Basic-Git-operations">¶</a>
+</h4>
+<p>Let's create a repository called "testrepo" and perform some basic Git operations on it. Login to GitHub and create the repository called "testrepo".</p>
+<p><img src="../images/r0030030.png" alt="Create repo" title="Create repo"></p>
+<p>Ensure that the connection is HTTPS. Click copy button to copy the repo link.</p>
+<p><img src="../images/r0030040.png" alt="Copy repo link" title="Copy repo link"></p>
+<p>Go to Git Bash and create a directory where you plan to work on your projects. Let's call it "projects".</p>
+<p><code>mkdir projects</code></p>
+<p>Enter the following command to view all files and directories in the current location. One of them should read "projects"</p>
+<p>Change directory to "projects"</p>
+<p><code>cd projects</code></p>
+<h5 id="git-clone">git clone<a class="anchor-link" href="0030/#git-clone">¶</a>
+</h5>
+<p>Clone your repo to your current working directory.</p>
+<p><code>git clone https://github.com/k-allika/testrepo.git</code></p>
+<h5 id="git-remote">git remote<a class="anchor-link" href="0030/#git-remote">¶</a>
+</h5>
+<p>Check connection to your remote repo</p>
+<p><code>git remote -v</code></p>
+<h5 id=".gitignore">.gitignore<a class="anchor-link" href="0030/#.gitignore">¶</a>
+</h5>
+<p><strong>.gitignore</strong> is an important file and should be created before the first <em>push</em>. .gitignore contains a list of files that git will ignore while performing git operations. For example, if I have some text files in my working directory that I do not want to push them to my GitHub repo, then I'll include <em>*.txt</em> in my .gitignore.</p>
+<h5 id="touch">touch<a class="anchor-link" href="0030/#touch">¶</a>
+</h5>
+<p>Create an empty .gitignore file</p>
+<p><code>touch .gitignore</code></p>
+<h5 id="vi">vi<a class="anchor-link" href="0030/#vi">¶</a>
+</h5>
+<p>Edit an existing file or create a new file and edit.</p>
+<p><code>vi .gitignore</code></p>
+<p>adding <em>*.txt</em> to ignore will tell Git to ignore all <em>txt</em> files and not to push them to remote repo.</p>
+<p>Basic vi commands:</p>
+<p><em>i</em> to start editing.</p>
+<p><em>Esc</em> to stop editing and come out of edit mode.</p>
+<p><em>:w</em> to save file.</p>
+<p><em>:q</em> to quit vi</p>
+<p>Let's create a "notes.txt" file to test .gitignore. Since we added <em>*.txt</em> to .gitignore, "notes.txt" would not be pushed to the repo.</p>
+<p><code>vi notes.txt</code></p>
+<p>Let's create another file called "README.md". Since this file does not match anything in .gitignore, it would be pushed to the repo.</p>
+<p><code>vi README.md</code></p>
+<h5 id="ls">ls<a class="anchor-link" href="0030/#ls">¶</a>
+</h5>
+<p><em>ls</em> lists files and directories in the current directory. The arguments <em>-la</em> will show file attributes along with hidden files.</p>
+<p><code>ls -la</code></p>
+<h5 id="git-status">git status<a class="anchor-link" href="0030/#git-status">¶</a>
+</h5>
+<p>View the status of your working directory compared to the remote repo at GitHub.</p>
+<p><code>git status</code></p>
+<p>As expected, you'll notice that only <em>.gitignore</em> and <em>README.md</em> files are mentioned in the status output. The <em>notes.txt</em> is ignore as it should.</p>
+<h5 id="git-push">git push<a class="anchor-link" href="0030/#git-push">¶</a>
+</h5>
+<p><code>git push</code></p>
+<p>Push changes in your working directory to the remote repo.</p>
+<p><img src="../images/r0030050.gif" alt="Git Bash Basics" title="Git Bash Basics"></p>
+<p>Check your repo at GitHub and you should see the changes there.</p>
+<p><img src="../images/r0030060.png" alt="Remote repo" title="Remote repo"></p>
+<p>[<a href="0030/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0020/" class="u-url">Installing R and RStudio</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="0020/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-10T10:59:58+05:30" itemprop="datePublished" title="2020-04-10 10:59">2020-04-10 10:59</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/0020/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0020install_r.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/0020install_r.html";
+var idcomments_post_url = "/posts/0020/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="0020/#portable">Portable environment</a></li>
+<li><a href="0020/#r">Installing R</a></li>
+<li><a href="0020/#rstudio">Installing RStudio</a></li>
+<li><a href="0020/#rmarkdown">Installing R Markdown</a></li>
+<li><a href="0020/#rkernel">Installing R in JupyterLabs</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Portable-environment-">Portable environment <a name="portable"></a><a class="anchor-link" href="0020/#Portable-environment-">¶</a>
 </h4>
 <p>This page will guide you on installing R and RStudio in a portable environment on a Windows 10 system. Following are the reasons why I prefer a portable installation over a regular installation:</p>
 <ul>
@@ -127,7 +305,7 @@ var idcomments_post_url = "/posts/install_r/";
 <p>If you prefer a regular installation, visit <a href="https://rstudio.com/products/rstudio/download/">RStudio</a> and follow the steps.</p>
 <p><strong>Installing PortablaApps platform (optional)</strong>: Portable Apps platforms comes with it's own start menu launcher which is handly when you install multiple portable programs in future. Download and install PortableApps Platform from <a href="https://portableapps.com/download">https://portableapps.com/download</a>.</p>
 <p>1. Select "New Install"
-<img src="../images/r020010.png" alt="New Install" title="New Install"></p>
+<img src="../images/r0020010.png" alt="New Install" title="New Install"></p>
 <p>2. Select</p>
 <ul>
 <li>Portable apps if you want to install it on your pen-drive or a portable hard disk drive</li>
@@ -135,12 +313,12 @@ var idcomments_post_url = "/posts/install_r/";
 <li>Local - It will be installed in your local drive but only you can access the programs. Other Windows users on your system will not be able to access your portable applications. This is where I am installing.</li>
 <li>Local All Users - It will be installed in your local drive and all users on your computer can access them.</li>
 </ul>
-<p><img src="../images/r020020.png" alt="Installation options" title="Installation options"></p>
+<p><img src="../images/r0020020.png" alt="Installation options" title="Installation options"></p>
 <p>3. Select your preferred directory and continue.
-<img src="../images/r020030.png" alt="Select directory" title="Select directory"></p>
+<img src="../images/r0020030.png" alt="Select directory" title="Select directory"></p>
 <p>Once the installation is complete, open Portable Apps platform and if everthing went well, you'll see something like this.
-<img src="../images/r020040.png" alt="PortableApps" title="PortableApps"></p>
-<p>[<a href="install_r/#contents">^top</a>]</p>
+<img src="../images/r0020040.png" alt="PortableApps" title="PortableApps"></p>
+<p>[<a href="0020/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -150,22 +328,22 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-">Installing R <a name="r"></a><a class="anchor-link" href="install_r/#Installing-R-">¶</a>
+<h4 id="Installing-R-">Installing R <a name="r"></a><a class="anchor-link" href="0020/#Installing-R-">¶</a>
 </h4>
 <p>1. Download R Portable <em>paf.exe</em> file from <a href="https://sourceforge.net/projects/rportable/">https://sourceforge.net/projects/rportable/</a>.</p>
 <p>2. Open PortableApps Menu and go to Apps &gt; Install a New App
-<img src="../images/r020050.png" alt="Install a New App" title="Install a New App"></p>
+<img src="../images/r0020050.png" alt="Install a New App" title="Install a New App"></p>
 <p>3. Select the R Portable <em>paf.exe</em> file you downloaded earlier and continue installation with default settings.</p>
 <p>4. Once installation is complete, you will be able to see <strong>R</strong> in your Portable Apps menu. Click on it and open R console.
-<img src="../images/r020060.png" alt="Open R" title="Open R"></p>
+<img src="../images/r0020060.png" alt="Open R" title="Open R"></p>
 <p>5. <strong>Updating R packages</strong>: In R Console menu, go to Packages &gt; Update Packages
-<img src="../images/r020070.png" alt="Update Packages" title="Update Packages"></p>
+<img src="../images/r0020070.png" alt="Update Packages" title="Update Packages"></p>
 <p>6. Select the CRAN mirror location nearest to you.
-<img src="../images/r020080.png" alt="CRAN mirror location" title="CRAN mirror location"></p>
+<img src="../images/r0020080.png" alt="CRAN mirror location" title="CRAN mirror location"></p>
 <p>7. If there are any packages that need to be updated, you'll see a small window with a list of apps selected. Click 'OK' and update them.</p>
 <p>8. Close R console. There is no need to save the workspace image.
-<img src="../images/r020090.png" alt="Close R console" title="Close R console"></p>
-<p>[<a href="install_r/#contents">^top</a>]</p>
+<img src="../images/r0020090.png" alt="Close R console" title="Close R console"></p>
+<p>[<a href="0020/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -175,7 +353,7 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-RStudio-">Installing RStudio <a name="rstudio"></a><a class="anchor-link" href="install_r/#Installing-RStudio-">¶</a>
+<h4 id="Installing-RStudio-">Installing RStudio <a name="rstudio"></a><a class="anchor-link" href="0020/#Installing-RStudio-">¶</a>
 </h4>
 <p>RStudio is provides the GUI(Graphics User Interface) and is also the commonly used IDE(Integrated Development Environment) for R.</p>
 <p>1. Go to <a href="https://sourceforge.net/projects/rportable/files/R-Studio/">https://sourceforge.net/projects/rportable/files/R-Studio/</a> and select the latest version of RStudio. Download the <em>paf.exe</em> file from the folder.</p>
@@ -183,19 +361,19 @@ var idcomments_post_url = "/posts/install_r/";
 <p>3. Select the RStudio Portable <em>paf.exe</em> file you downloaded earlier and continue installation with default settings.</p>
 <p>4. Once installation is complete, you will be able to see <strong>RStudioPortable</strong> in your Portable Apps menu. Click on it and open R Studio.</p>
 <p>5. The first time you open R Studio, it will ask you to chose the version of R you want to use. 
-<img src="../images/r020100.png" alt="select R version" title="select R version"></p>
+<img src="../images/r0020100.png" alt="select R version" title="select R version"></p>
 <p>6. Click "Browse" and point to the "bin" directory of portable R you installed earlier. The path looks similar to <em>C:\Users\YourUserName\PortableApps\R-Portable\App\R-Portable\bin</em>.</p>
 <p>7. Select 32-bit or 64-bit based on your Windows 10 version. If you are unsure, select 32-bit as it works on both.</p>
 <p>You are now ready to use R Studio.
-<img src="../images/r020110.png" alt="RStudio" title="R Studio"></p>
+<img src="../images/r0020110.png" alt="RStudio" title="R Studio"></p>
 <p>8.\ Create R Project. Select File &gt; New Project. Select "New Directory".</p>
-<p><img src="../images/r020190.png" alt="New Directory" title="New Directory"></p>
+<p><img src="../images/r0020190.png" alt="New Directory" title="New Directory"></p>
 <p>Select "New Project"</p>
-<p><img src="../images/r020200.png" alt="New Project" title="New Project"></p>
+<p><img src="../images/r0020200.png" alt="New Project" title="New Project"></p>
 <p>Name your project (example: DataScienceWithR). Browse and select the directory where you want the project to reside. Click "Create Project".</p>
-<p><img src="../images/r020210.png" alt="Project name and location" title="Project name and location"></p>
+<p><img src="../images/r0020210.png" alt="Project name and location" title="Project name and location"></p>
 <p>You should now see your project files including "DataScienceWithR.Rproj" file in the second quadrant of R Studio.</p>
-<p>[<a href="install_r/#contents">^top</a>]</p>
+<p>[<a href="0020/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -205,19 +383,19 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-Markdown-">Installing R Markdown <a name="rmarkdown"></a><a class="anchor-link" href="install_r/#Installing-R-Markdown-">¶</a>
+<h4 id="Installing-R-Markdown-">Installing R Markdown <a name="rmarkdown"></a><a class="anchor-link" href="0020/#Installing-R-Markdown-">¶</a>
 </h4>
 <p>As a data scientist, it's important to not only write and run code but also explain data manipulation and inferences in words. Markdown allows us to document our work. R-Markdown integrates R code with Markdown to provide an integrated solution. JupyterLab (a successor of iPython) is another such tool, which we will come across soon.</p>
 <p>1.\ In R Studio, go to File &gt; New File &gt; R Markdown.</p>
 <p>2.\ If there are any missing packages, R Studio will ask you if you'd like to install them. Click 'OK' and wait for it to install.</p>
-<p><img src="../images/r020150.png" alt="Installing R Markdown dependencies" title="Installing R Markdown dependencies"></p>
+<p><img src="../images/r0020150.png" alt="Installing R Markdown dependencies" title="Installing R Markdown dependencies"></p>
 <p>3.\ Give a name to the document (example: sample). Select 'HTML' or 'PDF' as your choice of output.</p>
-<p><img src="../images/r020160.png" alt="R Markdown options" title="R Markdown options"></p>
+<p><img src="../images/r0020160.png" alt="R Markdown options" title="R Markdown options"></p>
 <p>4.\ This will create a sample markdown document with some examples in it. You may change the 'title' in the document to "Sample Markdown". Save the file.</p>
-<p><img src="../images/r020170.png" alt="Sample Markdown" title="Sample Markdown"></p>
+<p><img src="../images/r0020170.png" alt="Sample Markdown" title="Sample Markdown"></p>
 <p>5. Press CTRL+SHIFT+K or click the "Knit" button in the fourth quadrant of R Studio or go to File &gt; Knit Document to generate an HTML or PDF output of the markdown file.</p>
-<p><img src="../images/r020180.png" alt="HTML output" title="HTML output"></p>
-<p>[<a href="install_r/#contents">^top</a>]</p>
+<p><img src="../images/r0020180.png" alt="HTML output" title="HTML output"></p>
+<p>[<a href="0020/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -227,7 +405,7 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-in-JupyterLab--(Optional)">Installing R in JupyterLab <a name="rkernel"></a> (Optional)<a class="anchor-link" href="install_r/#Installing-R-in-JupyterLab--(Optional)">¶</a>
+<h4 id="Installing-R-in-JupyterLab--(Optional)">Installing R in JupyterLab <a name="rkernel"></a> (Optional)<a class="anchor-link" href="0020/#Installing-R-in-JupyterLab--(Optional)">¶</a>
 </h4>
 <p>This step is completely optional and you can safely skip it. JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. It supports over 40 programming languages including R. I started using JupyterLab a short time ago while learning Python and am quite impressed by its features, interactivity, improvements and its community. This is my attempt to run R in JupyterLab environment.</p>
 <p>Follow the steps to install R in JupyterLab. If you already have JupyterLab installed, you can directly go to step x.</p>
@@ -240,11 +418,11 @@ var idcomments_post_url = "/posts/install_r/";
 <p>2b. Create a virtual environment. Enter the following in the command prompt.</p>
 <p><code>conda create --name jhu</code>.</p>
 <p>I created an environment called 'jhu'. The name is arbitrary. You can name it anything you want.</p>
-<p><img src="../images/r020120.png" alt="Create a virtual environment" title="Create a virtual environment"></p>
+<p><img src="../images/r0020120.png" alt="Create a virtual environment" title="Create a virtual environment"></p>
 <p>2c. Activate the virtual environment</p>
 <p><code>conda activate jhu</code></p>
 <p>Replace 'jhu' with your environment name. You should see the name of the environment in brackets on the left of the prompt.</p>
-<p><img src="../images/r020130.png" alt="Activate the virtual environment" title="Activate the virtual environment"></p>
+<p><img src="../images/r0020130.png" alt="Activate the virtual environment" title="Activate the virtual environment"></p>
 <p>3. <strong>Install JupyterLab</strong></p>
 <p><code>conda install -c conda-forge jupyterlab</code></p>
 <p>This will show a list of dependency packages to be installed. Press 'y' and continue.</p>
@@ -253,7 +431,7 @@ var idcomments_post_url = "/posts/install_r/";
 <p>This will install R along with essential packages to use R in JupyterLab. Now open JupyterLab by typing the following</p>
 <p><code>jupyter lab</code></p>
 <p>If everywthing went well, you should see JupyterLab launcher with R installed alongside Python.</p>
-<p><img src="../images/r020140.png" alt="R kernel in JupyterLab" title="R kernel in JupyterLab"></p>
+<p><img src="../images/r0020140.png" alt="R kernel in JupyterLab" title="R kernel in JupyterLab"></p>
 <p>Let's run a small piece of R code that I copied from <a href="https://docs.anaconda.com/anaconda/navigator/tutorials/r-lang/">here</a> and see if it works.</p>
 
 </div>
@@ -300,7 +478,7 @@ var idcomments_post_url = "/posts/install_r/";
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Works well!</p>
-<p>[<a href="install_r/#contents">^top</a>]</p>
+<p>[<a href="0020/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -317,22 +495,22 @@ var idcomments_post_url = "/posts/install_r/";
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="Intro_to_DS/" class="u-url">Introduction to data science</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0010/" class="u-url">Introduction to data science</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
             </span></p>
             <p class="dateline">
-            <a href="Intro_to_DS/" rel="bookmark">
+            <a href="0010/" rel="bookmark">
             <time class="published dt-published" datetime="2020-04-09T12:34:57+05:30" itemprop="datePublished" title="2020-04-09 12:34">2020-04-09 12:34</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/Intro_to_DS/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/intro_ds.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/0010/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0010intro_ds.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/intro_ds.html";
-var idcomments_post_url = "/posts/Intro_to_DS/";
+var idcomments_post_id = "cache/posts/0010intro_ds.html";
+var idcomments_post_url = "/posts/0010/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -345,7 +523,7 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="My-notes">My notes<a class="anchor-link" href="Intro_to_DS/#My-notes">¶</a>
+<h4 id="My-notes">My notes<a class="anchor-link" href="0010/#My-notes">¶</a>
 </h4>
 <hr>
 </div>
@@ -356,7 +534,7 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data-science">Data science<a class="anchor-link" href="Intro_to_DS/#Data-science">¶</a>
+<h4 id="Data-science">Data science<a class="anchor-link" href="0010/#Data-science">¶</a>
 </h4>
 <ul>
 <li>Data science involves statistics, computer science and mathematics.</li>
@@ -369,12 +547,12 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </ul>
 </li>
 </ul>
-<p><img src="../images/r010010.png" alt="Three Vs of Big Data" title="Three Vs of Big Data"></p>
+<p><img src="../images/r0010010.png" alt="Three Vs of Big Data" title="Three Vs of Big Data"></p>
 <ul>
 <li>A <strong>data scientist</strong> is someone who applies data science tools to  data to answer questions.</li>
 <li>Data scientists usually have a combination of the following skills:</li>
 </ul>
-<p><img src="../images/r010020.png" alt="Data scientist's skills" title="Data scientist's skills"></p>
+<p><img src="../images/r0010020.png" alt="Data scientist's skills" title="Data scientist's skills"></p>
 
 </div>
 </div>
@@ -384,10 +562,10 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data">Data<a class="anchor-link" href="Intro_to_DS/#Data">¶</a>
+<h4 id="Data">Data<a class="anchor-link" href="0010/#Data">¶</a>
 </h4>
 <p>There are several definitions of data. The definition provided by Wikipedia is "A set of values of qualitative or quantitative variables".</p>
-<p><img src="../images/r010030.png" alt="Definition of data" title="Definition of data"></p>
+<p><img src="../images/r0010030.png" alt="Definition of data" title="Definition of data"></p>
 <p>There are two kinds of data we usually come across:</p>
 <ul>
 <li>Structured data - Data that can be stored in tabular format (rows and columns) and each variable (or column) has a specific data type (numeric, text, category, etc)</li>
@@ -413,7 +591,7 @@ var idcomments_post_url = "/posts/Intro_to_DS/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data-science-project">Data science project<a class="anchor-link" href="Intro_to_DS/#Data-science-project">¶</a>
+<h4 id="Data-science-project">Data science project<a class="anchor-link" href="0010/#Data-science-project">¶</a>
 </h4>
 <p>Steps or life cycle of a data science project</p>
 <ul>
