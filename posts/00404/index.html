@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vectors | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/00404/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00403/" title="Sequences of Numbers" type="text/html">
+<link rel="next" href="../00405/" title="Missing Values" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Vectors">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/00404/">
+<meta property="og:description" content="swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you
+| did then. If you are new, call yourself something unique.
+What shall I call you? Krishnakanth Allika">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-13T23:31:09+05:30">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="swirl">
+<meta property="article:tag" content="vectors">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Vectors</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:31:09+05:30" itemprop="datePublished" title="2020-04-13 23:31">2020-04-13 23:31</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00404/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00404_Vectors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00404_Vectors.html";
+var idcomments_post_url = "/posts/00404/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 4</p>
+<p>|                                                                                |   0%</p>
+<p>| The simplest and most common data structure in R is the vector.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| Vectors come in two different flavors: atomic vectors and lists. An atomic vector<br>
+| contains exactly one data type, whereas a list may contain multiple data types. We'll<br>
+| explore atomic vectors further before we get to lists.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| In previous lessons, we dealt entirely with numeric vectors, which are one type of<br>
+| atomic vector. Other types of atomic vectors include logical, character, integer, and<br>
+| complex. In this lesson, we'll take a closer look at logical and character vectors.</p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| Logical vectors can contain the values TRUE, FALSE, and NA (for 'not available'). These<br>
+| values are generated as the result of logical 'conditions'. Let's experiment with some<br>
+| simple conditions.</p>
+<p>...</p>
+<p>|========                                                                        |  11%<br>
+| First, create a numeric vector num_vect that contains the values 0.5, 55, -10, and 6.</p>
+<blockquote>
+<p>num_vect&lt;-c(0.5, 55, -10, 6)</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|===========                                                                     |  13%<br>
+| Now, create a variable called tf that gets the result of num_vect &lt; 1, which is read as<br>
+| 'num_vect is less than 1'.</p>
+<blockquote>
+<p>tf&lt;-num_vect&lt;1</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=============                                                                   |  16%<br>
+| What do you think tf will look like?</p>
+<p>1: a vector of 4 logical values<br>
+2: a single logical value</p>
+<p>Selection: 1</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============                                                                 |  18%<br>
+| Print the contents of tf now.</p>
+<blockquote>
+<p>tf<br>
+[1]  TRUE FALSE  TRUE FALSE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=================                                                               |  21%<br>
+| The statement num_vect &lt; 1 is a condition and tf tells us whether each corresponding<br>
+| element of our numeric vector num_vect satisfies this condition.</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| The first element of num_vect is 0.5, which is less than 1 and therefore the statement<br>
+| 0.5 &lt; 1 is TRUE. The second element of num_vect is 55, which is greater than 1, so the<br>
+| statement 55 &lt; 1 is FALSE. The same logic applies for the third and fourth elements.</p>
+<p>...</p>
+<p>|=====================                                                           |  26%<br>
+| Let's try another. Type num_vect &gt;= 6 without assigning the result to a new variable.</p>
+<blockquote>
+<p>num_vect&gt;=6<br>
+[1] FALSE  TRUE FALSE  TRUE</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=======================                                                         |  29%<br>
+| This time, we are asking whether each individual element of num_vect is greater than OR<br>
+| equal to 6. Since only 55 and 6 are greater than or equal to 6, the second and fourth<br>
+| elements of the result are TRUE and the first and third elements are FALSE.</p>
+<p>...</p>
+<p>|=========================                                                       |  32%<br>
+| The <code>&lt;</code> and <code>&gt;=</code> symbols in these examples are called 'logical operators'. Other<br>
+| logical operators include <code>&gt;</code>, <code>&lt;=</code>, <code>==</code> for exact equality, and <code>!=</code> for inequality.</p>
+<p>...</p>
+<p>|===========================                                                     |  34%<br>
+| If we have two logical expressions, A and B, we can ask whether at least one is TRUE<br>
+| with A | B (logical 'or' a.k.a. 'union') or whether they are both TRUE with A &amp; B<br>
+| (logical 'and' a.k.a. 'intersection'). Lastly, !A is the negation of A and is TRUE when<br>
+| A is FALSE and vice versa.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| It's a good idea to spend some time playing around with various combinations of these<br>
+| logical operators until you get comfortable with their use. We'll do a few examples<br>
+| here to get you started.</p>
+<p>...</p>
+<p>|================================                                                |  39%<br>
+| Try your best to predict the result of each of the following statements. You can use<br>
+| pencil and paper to work them out if it's helpful. If you get stuck, just guess and<br>
+| you've got a 50% chance of getting the right answer!</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| (3 &gt; 5) &amp; (4 == 4)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| That's correct!</p>
+<p>|====================================                                            |  45%<br>
+| (TRUE == TRUE) | (TRUE == FALSE)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You are quite good my friend!</p>
+<p>|======================================                                          |  47%<br>
+| ((111 &gt;= 111) | !(TRUE)) &amp; ((4 + 1) == 5)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| Not exactly. Give it another go.</p>
+<p>| This is a tricky one. Remember that the <code>!</code> symbol negates whatever comes after it.<br>
+| There's also an 'order of operations' going on here. Conditions that are enclosed<br>
+| within parentheses should be evaluated first. Then, work your way outwards.</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You nailed it! Good job!</p>
+<p>|========================================                                        |  50%<br>
+| Don't worry if you found these to be tricky. They're supposed to be. Working with<br>
+| logical statements in R takes practice, but your efforts will be rewarded in future<br>
+| lessons (e.g. subsetting and control structures).</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| Character vectors are also very common in R. Double quotes are used to distinguish<br>
+| character objects, as in the following example.</p>
+<p>...</p>
+<p>|============================================                                    |  55%<br>
+| Create a character vector that contains the following words: "My", "name", "is".<br>
+| Remember to enclose each word in its own set of double quotes, so that R knows they are<br>
+| character strings. Store the vector in a variable called my_char.</p>
+<blockquote>
+<p>my_char&lt;-c( "My", "name", "is")</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==============================================                                  |  58%<br>
+| Print the contents of my_char to see what it looks like.</p>
+<blockquote>
+<p>my_char<br>
+[1] "My"   "name" "is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|================================================                                |  61%<br>
+| Right now, my_char is a character vector of length 3. Let's say we want to join the<br>
+| elements of my_char together into one continuous character string (i.e. a character<br>
+| vector of length 1). We can do this using the paste() function.</p>
+<p>...</p>
+<p>|===================================================                             |  63%<br>
+| Type paste(my_char, collapse = " ") now. Make sure there's a space between the double<br>
+| quotes in the <code>collapse</code> argument. You'll see why in a second.</p>
+<blockquote>
+<p>paste(my_char,collapse = " ")<br>
+[1] "My name is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================                           |  66%<br>
+| The <code>collapse</code> argument to the paste() function tells R that when we join together the<br>
+| elements of the my_char character vector, we'd like to separate them with single<br>
+| spaces.</p>
+<p>...</p>
+<p>|=======================================================                         |  68%<br>
+| It seems that we're missing something.... Ah, yes! Your name!</p>
+<p>...</p>
+<p>|=========================================================                       |  71%<br>
+| To add (or 'concatenate') your name to the end of my_char, use the c() function like<br>
+| this: c(my_char, "your_name_here"). Place your name in double quotes where I've put<br>
+| "your_name_here". Try it now, storing the result in a new variable called my_name.</p>
+<blockquote>
+<p>my_name&lt;-c(my_char,"Krishnakanth Allika")</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===========================================================                     |  74%<br>
+| Take a look at the contents of my_name.</p>
+<blockquote>
+<p>my_name<br>
+[1] "My"                  "name"                "is"<br>
+[4] "Krishnakanth Allika"</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================================================                   |  76%<br>
+| Now, use the paste() function once more to join the words in my_name together into a<br>
+| single character string. Don't forget to say collapse = " "!</p>
+<blockquote>
+<p>paste(my_name,collapse = " ")<br>
+[1] "My name is Krishnakanth Allika"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================================================                 |  79%<br>
+| In this example, we used the paste() function to collapse the elements of a single<br>
+| character vector. paste() can also be used to join the elements of multiple character<br>
+| vectors.</p>
+<p>...</p>
+<p>|=================================================================               |  82%<br>
+| In the simplest case, we can join two character vectors that are each of length 1 (i.e.<br>
+| join two words). Try paste("Hello", "world!", sep = " "), where the <code>sep</code> argument<br>
+| tells R that we want to separate the joined elements with a single space.</p>
+<blockquote>
+<p>paste("Hello","world!",sep=" ")<br>
+[1] "Hello world!"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================================================================             |  84%<br>
+| For a slightly more complicated example, we can join two vectors, each of length 3. Use<br>
+| paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This<br>
+| time, use sep = "" to leave no space between the joined elements.</p>
+<blockquote>
+<p>paste(1:3,c("X", "Y", "Z"),sep="")<br>
+[1] "1X" "2Y" "3Z"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================================           |  87%<br>
+| What do you think will happen if our vectors are of different length? (Hint: we talked<br>
+| about this in a previous lesson.)</p>
+<p>...</p>
+<p>|========================================================================        |  89%<br>
+| Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined<br>
+| variable in R containing a character vector of all 26 letters in the English alphabet.</p>
+<blockquote>
+<p>paste(LETTERS,1:4,sep="-")<br>
+ [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4" "M-1" "N-2"<br>
+[15] "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4" "Y-1" "Z-2"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================================================================      |  92%<br>
+| Since the character vector LETTERS is longer than the numeric vector 1:4, R simply<br>
+| recycles, or repeats, 1:4 until it matches the length of LETTERS.</p>
+<p>...</p>
+<p>|============================================================================    |  95%<br>
+| Also worth noting is that the numeric vector 1:4 gets 'coerced' into a character vector<br>
+| by the paste() function.</p>
+<p>...</p>
+<p>|==============================================================================  |  97%<br>
+| We'll discuss coercion in another lesson, but all it really means is that the numbers<br>
+| 1, 2, 3, and 4 in the output above are no longer numbers to R, but rather characters<br>
+| "1", "2", "3", and "4".</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:32:50.765370 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+            <li><a class="tag p-category" href="../../tags/vectors/" rel="tag">vectors</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00403/" rel="prev" title="Sequences of Numbers">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../00405/" rel="next" title="Missing Values">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00404_Vectors.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/00404/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

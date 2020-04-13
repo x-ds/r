@@ -72,22 +72,1478 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0030/" class="u-url">GitHub and Git basics</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00405/" class="u-url">Missing Values</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
             </span></p>
             <p class="dateline">
-            <a href="0030/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-11T17:03:29+05:30" itemprop="datePublished" title="2020-04-11 17:03">2020-04-11 17:03</time></a>
+            <a href="00405/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:33:38+05:30" itemprop="datePublished" title="2020-04-13 23:33">2020-04-13 23:33</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/0030/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0030git_basics.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/00405/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00405_Missing Values.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/0030git_basics.html";
-var idcomments_post_url = "/posts/0030/";
+var idcomments_post_id = "cache/posts/00405_Missing Values.html";
+var idcomments_post_url = "/posts/00405/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 5</p>
+<p>|                                                                                |   0%</p>
+<p>| Missing values play an important role in statistics and data analysis. Often, missing<br>
+| values must not be ignored, but rather they should be carefully studied to see if<br>
+| there's an underlying pattern or cause for their missingness.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| In R, NA is used to represent any value that is 'not available' or 'missing' (in the<br>
+| statistical sense). In this lesson, we'll explore missing values further.</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| Any operation involving NA generally yields NA as the result. To illustrate, let's<br>
+| create a vector c(44, NA, 5, NA) and assign it to a variable x.</p>
+<blockquote>
+<p>x&lt;-c(44, NA, 5, NA)</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|============                                                                    |  15%<br>
+| Now, let's multiply x by 3.</p>
+<blockquote>
+<p>x*3<br>
+[1] 132  NA  15  NA</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|================                                                                |  20%<br>
+| Notice that the elements of the resulting vector that correspond with the NA values in<br>
+| x are also NA.</p>
+<p>...</p>
+<p>|====================                                                            |  25%<br>
+| To make things a little more interesting, lets create a vector containing 1000 draws<br>
+| from a standard normal distribution with y &lt;- rnorm(1000).</p>
+<blockquote>
+<p>y&lt;-rnorm(1000)</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|========================                                                        |  30%<br>
+| Next, let's create a vector containing 1000 NAs with z &lt;- rep(NA, 1000).</p>
+<blockquote>
+<p>z&lt;-rep(NA,1000)</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================                                                    |  35%<br>
+| Finally, let's select 100 elements at random from these 2000 values (combining y and z)<br>
+| such that we don't know how many NAs we'll wind up with or what positions they'll<br>
+| occupy in our final vector -- my_data &lt;- sample(c(y, z), 100).</p>
+<blockquote>
+<p>my_data&lt;-sample(c(y,z),100)</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|================================                                                |  40%<br>
+| Let's first ask the question of where our NAs are located in our data. The is.na()<br>
+| function tells us whether each element of a vector is NA. Call is.na() on my_data and<br>
+| assign the result to my_na.</p>
+<blockquote>
+<p>my_na&lt;-is.na(my_data)</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|====================================                                            |  45%<br>
+| Now, print my_na to see what you came up with.</p>
+<blockquote>
+<p>my_na<br>
+  [1] FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE<br>
+ [15]  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE<br>
+ [29]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE<br>
+ [43] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE<br>
+ [57]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE<br>
+ [71]  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE<br>
+ [85] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE<br>
+ [99]  TRUE FALSE</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|========================================                                        |  50%<br>
+| Everywhere you see a TRUE, you know the corresponding element of my_data is NA.<br>
+| Likewise, everywhere you see a FALSE, you know the corresponding element of my_data is<br>
+| one of our random draws from the standard normal distribution.</p>
+<p>...</p>
+<p>|============================================                                    |  55%<br>
+| In our previous discussion of logical operators, we introduced the <code>==</code> operator as a<br>
+| method of testing for equality between two objects. So, you might think the expression<br>
+| my_data == NA yields the same results as is.na(). Give it a try.</p>
+<blockquote>
+<p>my_data==NA<br>
+  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [29] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [57] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [85] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|================================================                                |  60%<br>
+| The reason you got a vector of all NAs is that NA is not really a value, but just a<br>
+| placeholder for a quantity that is not available. Therefore the logical expression is<br>
+| incomplete and R has no choice but to return a vector of the same length as my_data<br>
+| that contains all NAs.</p>
+<p>...</p>
+<p>|====================================================                            |  65%<br>
+| Don't worry if that's a little confusing. The key takeaway is to be cautious when using<br>
+| logical expressions anytime NAs might creep in, since a single NA value can derail the<br>
+| entire thing.</p>
+<p>...</p>
+<p>|========================================================                        |  70%<br>
+| So, back to the task at hand. Now that we have a vector, my_na, that has a TRUE for<br>
+| every NA and FALSE for every numeric value, we can compute the total number of NAs in<br>
+| our data.</p>
+<p>...</p>
+<p>|============================================================                    |  75%<br>
+| The trick is to recognize that underneath the surface, R represents TRUE as the number<br>
+| 1 and FALSE as the number 0. Therefore, if we take the sum of a bunch of TRUEs and<br>
+| FALSEs, we get the total number of TRUEs.</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| Let's give that a try here. Call the sum() function on my_na to count the total number<br>
+| of TRUEs in my_na, and thus the total number of NAs in my_data. Don't assign the result<br>
+| to a new variable.</p>
+<blockquote>
+<p>sum(my_na)<br>
+[1] 43</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|====================================================================            |  85%<br>
+| Pretty cool, huh? Finally, let's take a look at the data to convince ourselves that<br>
+| everything 'adds up'. Print my_data to the console.</p>
+<blockquote>
+<p>my_data<br>
+  [1] -0.578578797           NA -0.112639140  0.836412196 -1.074043937           NA<br>
+  [7]           NA  1.303020726           NA  1.514220057 -1.533126560 -0.366673361<br>
+ [13]           NA -1.032058614           NA -1.631213149  0.379297612 -0.706613051<br>
+ [19]           NA -0.692352920           NA           NA  0.535394170 -1.872906664<br>
+ [25] -0.861449272 -1.321735747           NA -0.787816086           NA  0.801388943<br>
+ [31]           NA -1.487792282  0.470028145           NA           NA  1.187583726<br>
+ [37] -1.704604005           NA  0.596807280           NA           NA -1.493099149<br>
+ [43]  0.265671235           NA -0.985396879 -0.974373033           NA  1.377397659<br>
+ [49] -0.637308342 -1.450105656  0.192263390  0.776355028           NA           NA<br>
+ [55]           NA           NA           NA  1.567478781 -0.511602362  0.107048330<br>
+ [61]           NA           NA -0.408394399  0.592123817           NA  0.305403550<br>
+ [67]  3.201114883  0.806735141  0.698544788           NA           NA           NA<br>
+ [73] -2.671330480  0.123440813           NA           NA           NA -1.236370155<br>
+ [79]  0.936670598           NA           NA  1.519229128           NA -1.366810674<br>
+ [85]  0.211749069           NA  0.203741812  1.319234085           NA -0.432928319<br>
+ [91] -0.006566875           NA           NA  0.060568295  0.292428312           NA<br>
+ [97]           NA  0.717821949           NA  0.359249723</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|========================================================================        |  90%<br>
+| Now that we've got NAs down pat, let's look at a second type of missing value -- NaN,<br>
+| which stands for 'not a number'. To generate NaN, try dividing (using a forward slash)<br>
+| 0 by 0 now.</p>
+<blockquote>
+<p>0/0<br>
+[1] NaN</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|============================================================================    |  95%<br>
+| Let's do one more, just for fun. In R, Inf stands for infinity. What happens if you<br>
+| subtract Inf from Inf?</p>
+<blockquote>
+<p>Inf-Inf<br>
+[1] NaN</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:32:50.765370 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00404/" class="u-url">Vectors</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00404/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:31:09+05:30" itemprop="datePublished" title="2020-04-13 23:31">2020-04-13 23:31</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00404/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00404_Vectors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00404_Vectors.html";
+var idcomments_post_url = "/posts/00404/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 4</p>
+<p>|                                                                                |   0%</p>
+<p>| The simplest and most common data structure in R is the vector.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| Vectors come in two different flavors: atomic vectors and lists. An atomic vector<br>
+| contains exactly one data type, whereas a list may contain multiple data types. We'll<br>
+| explore atomic vectors further before we get to lists.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| In previous lessons, we dealt entirely with numeric vectors, which are one type of<br>
+| atomic vector. Other types of atomic vectors include logical, character, integer, and<br>
+| complex. In this lesson, we'll take a closer look at logical and character vectors.</p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| Logical vectors can contain the values TRUE, FALSE, and NA (for 'not available'). These<br>
+| values are generated as the result of logical 'conditions'. Let's experiment with some<br>
+| simple conditions.</p>
+<p>...</p>
+<p>|========                                                                        |  11%<br>
+| First, create a numeric vector num_vect that contains the values 0.5, 55, -10, and 6.</p>
+<blockquote>
+<p>num_vect&lt;-c(0.5, 55, -10, 6)</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|===========                                                                     |  13%<br>
+| Now, create a variable called tf that gets the result of num_vect &lt; 1, which is read as<br>
+| 'num_vect is less than 1'.</p>
+<blockquote>
+<p>tf&lt;-num_vect&lt;1</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=============                                                                   |  16%<br>
+| What do you think tf will look like?</p>
+<p>1: a vector of 4 logical values<br>
+2: a single logical value</p>
+<p>Selection: 1</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============                                                                 |  18%<br>
+| Print the contents of tf now.</p>
+<blockquote>
+<p>tf<br>
+[1]  TRUE FALSE  TRUE FALSE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=================                                                               |  21%<br>
+| The statement num_vect &lt; 1 is a condition and tf tells us whether each corresponding<br>
+| element of our numeric vector num_vect satisfies this condition.</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| The first element of num_vect is 0.5, which is less than 1 and therefore the statement<br>
+| 0.5 &lt; 1 is TRUE. The second element of num_vect is 55, which is greater than 1, so the<br>
+| statement 55 &lt; 1 is FALSE. The same logic applies for the third and fourth elements.</p>
+<p>...</p>
+<p>|=====================                                                           |  26%<br>
+| Let's try another. Type num_vect &gt;= 6 without assigning the result to a new variable.</p>
+<blockquote>
+<p>num_vect&gt;=6<br>
+[1] FALSE  TRUE FALSE  TRUE</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=======================                                                         |  29%<br>
+| This time, we are asking whether each individual element of num_vect is greater than OR<br>
+| equal to 6. Since only 55 and 6 are greater than or equal to 6, the second and fourth<br>
+| elements of the result are TRUE and the first and third elements are FALSE.</p>
+<p>...</p>
+<p>|=========================                                                       |  32%<br>
+| The <code>&lt;</code> and <code>&gt;=</code> symbols in these examples are called 'logical operators'. Other<br>
+| logical operators include <code>&gt;</code>, <code>&lt;=</code>, <code>==</code> for exact equality, and <code>!=</code> for inequality.</p>
+<p>...</p>
+<p>|===========================                                                     |  34%<br>
+| If we have two logical expressions, A and B, we can ask whether at least one is TRUE<br>
+| with A | B (logical 'or' a.k.a. 'union') or whether they are both TRUE with A &amp; B<br>
+| (logical 'and' a.k.a. 'intersection'). Lastly, !A is the negation of A and is TRUE when<br>
+| A is FALSE and vice versa.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| It's a good idea to spend some time playing around with various combinations of these<br>
+| logical operators until you get comfortable with their use. We'll do a few examples<br>
+| here to get you started.</p>
+<p>...</p>
+<p>|================================                                                |  39%<br>
+| Try your best to predict the result of each of the following statements. You can use<br>
+| pencil and paper to work them out if it's helpful. If you get stuck, just guess and<br>
+| you've got a 50% chance of getting the right answer!</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| (3 &gt; 5) &amp; (4 == 4)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| That's correct!</p>
+<p>|====================================                                            |  45%<br>
+| (TRUE == TRUE) | (TRUE == FALSE)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You are quite good my friend!</p>
+<p>|======================================                                          |  47%<br>
+| ((111 &gt;= 111) | !(TRUE)) &amp; ((4 + 1) == 5)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| Not exactly. Give it another go.</p>
+<p>| This is a tricky one. Remember that the <code>!</code> symbol negates whatever comes after it.<br>
+| There's also an 'order of operations' going on here. Conditions that are enclosed<br>
+| within parentheses should be evaluated first. Then, work your way outwards.</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You nailed it! Good job!</p>
+<p>|========================================                                        |  50%<br>
+| Don't worry if you found these to be tricky. They're supposed to be. Working with<br>
+| logical statements in R takes practice, but your efforts will be rewarded in future<br>
+| lessons (e.g. subsetting and control structures).</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| Character vectors are also very common in R. Double quotes are used to distinguish<br>
+| character objects, as in the following example.</p>
+<p>...</p>
+<p>|============================================                                    |  55%<br>
+| Create a character vector that contains the following words: "My", "name", "is".<br>
+| Remember to enclose each word in its own set of double quotes, so that R knows they are<br>
+| character strings. Store the vector in a variable called my_char.</p>
+<blockquote>
+<p>my_char&lt;-c( "My", "name", "is")</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==============================================                                  |  58%<br>
+| Print the contents of my_char to see what it looks like.</p>
+<blockquote>
+<p>my_char<br>
+[1] "My"   "name" "is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|================================================                                |  61%<br>
+| Right now, my_char is a character vector of length 3. Let's say we want to join the<br>
+| elements of my_char together into one continuous character string (i.e. a character<br>
+| vector of length 1). We can do this using the paste() function.</p>
+<p>...</p>
+<p>|===================================================                             |  63%<br>
+| Type paste(my_char, collapse = " ") now. Make sure there's a space between the double<br>
+| quotes in the <code>collapse</code> argument. You'll see why in a second.</p>
+<blockquote>
+<p>paste(my_char,collapse = " ")<br>
+[1] "My name is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================                           |  66%<br>
+| The <code>collapse</code> argument to the paste() function tells R that when we join together the<br>
+| elements of the my_char character vector, we'd like to separate them with single<br>
+| spaces.</p>
+<p>...</p>
+<p>|=======================================================                         |  68%<br>
+| It seems that we're missing something.... Ah, yes! Your name!</p>
+<p>...</p>
+<p>|=========================================================                       |  71%<br>
+| To add (or 'concatenate') your name to the end of my_char, use the c() function like<br>
+| this: c(my_char, "your_name_here"). Place your name in double quotes where I've put<br>
+| "your_name_here". Try it now, storing the result in a new variable called my_name.</p>
+<blockquote>
+<p>my_name&lt;-c(my_char,"Krishnakanth Allika")</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===========================================================                     |  74%<br>
+| Take a look at the contents of my_name.</p>
+<blockquote>
+<p>my_name<br>
+[1] "My"                  "name"                "is"<br>
+[4] "Krishnakanth Allika"</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================================================                   |  76%<br>
+| Now, use the paste() function once more to join the words in my_name together into a<br>
+| single character string. Don't forget to say collapse = " "!</p>
+<blockquote>
+<p>paste(my_name,collapse = " ")<br>
+[1] "My name is Krishnakanth Allika"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================================================                 |  79%<br>
+| In this example, we used the paste() function to collapse the elements of a single<br>
+| character vector. paste() can also be used to join the elements of multiple character<br>
+| vectors.</p>
+<p>...</p>
+<p>|=================================================================               |  82%<br>
+| In the simplest case, we can join two character vectors that are each of length 1 (i.e.<br>
+| join two words). Try paste("Hello", "world!", sep = " "), where the <code>sep</code> argument<br>
+| tells R that we want to separate the joined elements with a single space.</p>
+<blockquote>
+<p>paste("Hello","world!",sep=" ")<br>
+[1] "Hello world!"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================================================================             |  84%<br>
+| For a slightly more complicated example, we can join two vectors, each of length 3. Use<br>
+| paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This<br>
+| time, use sep = "" to leave no space between the joined elements.</p>
+<blockquote>
+<p>paste(1:3,c("X", "Y", "Z"),sep="")<br>
+[1] "1X" "2Y" "3Z"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================================           |  87%<br>
+| What do you think will happen if our vectors are of different length? (Hint: we talked<br>
+| about this in a previous lesson.)</p>
+<p>...</p>
+<p>|========================================================================        |  89%<br>
+| Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined<br>
+| variable in R containing a character vector of all 26 letters in the English alphabet.</p>
+<blockquote>
+<p>paste(LETTERS,1:4,sep="-")<br>
+ [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4" "M-1" "N-2"<br>
+[15] "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4" "Y-1" "Z-2"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================================================================      |  92%<br>
+| Since the character vector LETTERS is longer than the numeric vector 1:4, R simply<br>
+| recycles, or repeats, 1:4 until it matches the length of LETTERS.</p>
+<p>...</p>
+<p>|============================================================================    |  95%<br>
+| Also worth noting is that the numeric vector 1:4 gets 'coerced' into a character vector<br>
+| by the paste() function.</p>
+<p>...</p>
+<p>|==============================================================================  |  97%<br>
+| We'll discuss coercion in another lesson, but all it really means is that the numbers<br>
+| 1, 2, 3, and 4 in the output above are no longer numbers to R, but rather characters<br>
+| "1", "2", "3", and "4".</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:32:50.765370 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00403/" class="u-url">Sequences of Numbers</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00403/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:27:46+05:30" itemprop="datePublished" title="2020-04-13 23:27">2020-04-13 23:27</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00403/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00403_Sequences of Numbers.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00403_Sequences of Numbers.html";
+var idcomments_post_url = "/posts/00403/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 3</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, you'll learn how to create sequences of numbers in R.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| The simplest way to create a sequence of numbers in R is by using the <code>:</code> operator.<br>
+| Type 1:20 to see how it works.</p>
+<blockquote>
+<p>1:20<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|=======                                                                         |   9%<br>
+| That gave us every integer between (and including) 1 and 20. We could also use it to<br>
+| create a sequence of real numbers. For example, try pi:10.</p>
+<blockquote>
+<p>pi:10<br>
+[1] 3.141593 4.141593 5.141593 6.141593 7.141593 8.141593 9.141593</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|==========                                                                      |  13%<br>
+| The result is a vector of real numbers starting with pi (3.142...) and increasing in<br>
+| increments of 1. The upper limit of 10 is never reached, since the next number in our<br>
+| sequence would be greater than 10.</p>
+<p>...</p>
+<p>|==============                                                                  |  17%<br>
+| What happens if we do 15:1? Give it a try to find out.</p>
+<blockquote>
+<p>15:1<br>
+ [1] 15 14 13 12 11 10  9  8  7  6  5  4  3  2  1</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=================                                                               |  22%<br>
+| It counted backwards in increments of 1! It's unlikely we'd want this behavior, but<br>
+| nonetheless it's good to know how it could happen.</p>
+<p>...</p>
+<p>|=====================                                                           |  26%<br>
+| Remember that if you have questions about a particular R function, you can access its<br>
+| documentation with a question mark followed by the function name: ?function_name_here.<br>
+| However, in the case of an operator like the colon used above, you must enclose the<br>
+| symbol in backticks like this: ?<code>:</code>. (NOTE: The backtick (`) key is generally located<br>
+| in the top left corner of a keyboard, above the Tab key. If you don't have a backtick<br>
+| key, you can use regular quotes.)</p>
+<p>...</p>
+<p>|========================                                                        |  30%<br>
+| Pull up the documentation for <code>:</code> now.</p>
+<blockquote>
+<p>?<code>:</code></p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|============================                                                    |  35%<br>
+| Often, we'll desire more control over a sequence we're creating than what the <code>:</code><br>
+| operator gives us. The seq() function serves this purpose.</p>
+<p>...</p>
+<p>|===============================                                                 |  39%<br>
+| The most basic use of seq() does exactly the same thing as the <code>:</code> operator. Try seq(1,<br>
+| 20) to see this.</p>
+<blockquote>
+<p>seq(1,20)<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|===================================                                             |  43%<br>
+| This gives us the same output as 1:20. However, let's say that instead we want a vector<br>
+| of numbers ranging from 0 to 10, incremented by 0.5. seq(0, 10, by=0.5) does just that.<br>
+| Try it out.</p>
+<blockquote>
+<p>seq(0,10,by=0.5)<br>
+ [1]  0.0  0.5  1.0  1.5  2.0  2.5  3.0  3.5  4.0  4.5  5.0  5.5  6.0  6.5  7.0  7.5  8.0<br>
+[18]  8.5  9.0  9.5 10.0</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|======================================                                          |  48%<br>
+| Or maybe we don't care what the increment is and we just want a sequence of 30 numbers<br>
+| between 5 and 10. seq(5, 10, length=30) does the trick. Give it a shot now and store<br>
+| the result in a new variable called my_seq.</p>
+<blockquote>
+<p>seq(5,10,length=30)<br>
+ [1]  5.000000  5.172414  5.344828  5.517241  5.689655  5.862069  6.034483  6.206897<br>
+ [9]  6.379310  6.551724  6.724138  6.896552  7.068966  7.241379  7.413793  7.586207<br>
+[17]  7.758621  7.931034  8.103448  8.275862  8.448276  8.620690  8.793103  8.965517<br>
+[25]  9.137931  9.310345  9.482759  9.655172  9.827586 10.000000</p>
+</blockquote>
+<p>| You're close...I can feel it! Try it again. Or, type info() for more options.</p>
+<p>| You're using the same function here, but changing its arguments for different results.<br>
+| Be sure to store the result in a new variable called my_seq, like this: my_seq &lt;-<br>
+| seq(5, 10, length=30).</p>
+<blockquote>
+<p>my_seq&lt;-seq(5,10,length=30)</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|==========================================                                      |  52%<br>
+| To confirm that my_seq has length 30, we can use the length() function. Try it now.</p>
+<blockquote>
+<p>length(my_seq)<br>
+[1] 30</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|=============================================                                   |  57%<br>
+| Let's pretend we don't know the length of my_seq, but we want to generate a sequence of<br>
+| integers from 1 to N, where N represents the length of the my_seq vector. In other<br>
+| words, we want a new vector (1, 2, 3, ...) that is the same length as my_seq.</p>
+<p>...</p>
+<p>|=================================================                               |  61%<br>
+| There are several ways we could do this. One possibility is to combine the <code>:</code> operator<br>
+| and the length() function like this: 1:length(my_seq). Give that a try.</p>
+<blockquote>
+<p>1:length(my_seq)<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28<br>
+[29] 29 30</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|====================================================                            |  65%<br>
+| Another option is to use seq(along.with = my_seq). Give that a try.</p>
+<blockquote>
+<p>seq(along.with=my_seq)<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28<br>
+[29] 29 30</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|========================================================                        |  70%<br>
+| However, as is the case with many common tasks, R has a separate built-in function for<br>
+| this purpose called seq_along(). Type seq_along(my_seq) to see it in action.</p>
+<blockquote>
+<p>seq_along(my_seq)<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28<br>
+[29] 29 30</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|===========================================================                     |  74%<br>
+| There are often several approaches to solving the same problem, particularly in R.<br>
+| Simple approaches that involve less typing are generally best. It's also important for<br>
+| your code to be readable, so that you and others can figure out what's going on without<br>
+| too much hassle.</p>
+<p>...</p>
+<p>|===============================================================                 |  78%<br>
+| If R has a built-in function for a particular task, it's likely that function is highly<br>
+| optimized for that purpose and is your best option. As you become a more advanced R<br>
+| programmer, you'll design your own functions to perform tasks when there are no better<br>
+| options. We'll explore writing your own functions in future lessons.</p>
+<p>...</p>
+<p>|==================================================================              |  83%<br>
+| One more function related to creating sequences of numbers is rep(), which stands for<br>
+| 'replicate'. Let's look at a few uses.</p>
+<p>...</p>
+<p>|======================================================================          |  87%<br>
+| If we're interested in creating a vector that contains 40 zeros, we can use rep(0,<br>
+| times = 40). Try it out.</p>
+<blockquote>
+<p>rep(0,times=40)<br>
+ [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=========================================================================       |  91%<br>
+| If instead we want our vector to contain 10 repetitions of the vector (0, 1, 2), we can<br>
+| do rep(c(0, 1, 2), times = 10). Go ahead.</p>
+<blockquote>
+<p>rep(c(0,1,2),times=10)<br>
+ [1] 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2 0 1 2</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|=============================================================================   |  96%<br>
+| Finally, let's say that rather than repeating the vector (0, 1, 2) over and over again,<br>
+| we want our vector to contain 10 zeros, then 10 ones, then 10 twos. We can do this with<br>
+| the <code>each</code> argument. Try rep(c(0, 1, 2), each = 10).</p>
+<blockquote>
+<p>rep(c(0,1,2),each=10)<br>
+ [1] 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 2 2 2 2 2 2 2 2 2 2</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:30:13.980988 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00402/" class="u-url">Workspace and Files</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00402/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:23:13+05:30" itemprop="datePublished" title="2020-04-13 23:23">2020-04-13 23:23</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00402/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00402_Workspace and Files.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00402_Workspace and Files.html";
+var idcomments_post_url = "/posts/00402/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 2</p>
+<p>|                                                         |   0%</p>
+<p>| In this lesson, you'll learn how to examine your local workspace<br>
+| in R and begin to explore the relationship between your<br>
+| workspace and the file system of your machine.</p>
+<p>...</p>
+<p>|=                                                        |   3%<br>
+| Because different operating systems have different conventions<br>
+| with regards to things like file paths, the outputs of these<br>
+| commands may vary across machines.</p>
+<p>...</p>
+<p>|===                                                      |   5%<br>
+| However it's important to note that R provides a common API (a<br>
+| common set of commands) for interacting with files, that way<br>
+| your code will work across different kinds of computers.</p>
+<p>...</p>
+<p>|====                                                     |   8%<br>
+| Let's jump right in so you can get a feel for how these special<br>
+| functions work!</p>
+<p>...</p>
+<p>|======                                                   |  10%<br>
+| Determine which directory your R session is using as its current<br>
+| working directory using getwd().</p>
+<blockquote>
+<p>getwd()<br>
+[1] "C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR"</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|=======                                                  |  13%<br>
+| List all the objects in your local workspace using ls().</p>
+<blockquote>
+<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/swirl")</p>
+</blockquote>
+<p>| That's not the answer I was looking for, but try again. Or, type<br>
+| info() for more options.</p>
+<p>| Type ls() to view all the objects in your local workspace.</p>
+<blockquote>
+<p>getwd()<br>
+[1] "C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/swirl"</p>
+</blockquote>
+<p>| Nice try, but that's not exactly what I was hoping for. Try<br>
+| again. Or, type info() for more options.</p>
+<p>| Type ls() to view all the objects in your local workspace.</p>
+<blockquote>
+<p>ls()<br>
+[1] "my_div"  "my_sqrt" "x"       "y"       "z"</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=========                                                |  15%<br>
+| Some R commands are the same as their equivalents commands on<br>
+| Linux or on a Mac. Both Linux and Mac operating systems are<br>
+| based on an operating system called Unix. It's always a good<br>
+| idea to learn more about Unix!</p>
+<p>...</p>
+<p>|==========                                               |  18%<br>
+| Assign 9 to x using x &lt;- 9.</p>
+<blockquote>
+<p>x&lt;-9</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|============                                             |  21%<br>
+| Now take a look at objects that are in your workspace using<br>
+| ls().</p>
+<blockquote>
+<p>ls()<br>
+[1] "my_div"  "my_sqrt" "x"       "y"       "z"</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|=============                                            |  23%<br>
+| List all the files in your working directory using list.files()<br>
+| or dir().</p>
+<blockquote>
+<p>list.files()<br>
+character(0)</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===============                                          |  26%<br>
+| As we go through this lesson, you should be examining the help<br>
+| page for each new function. Check out the help page for<br>
+| list.files with the command ?list.files.</p>
+<blockquote>
+<p>?list.files</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|================                                         |  28%<br>
+| One of the most helpful parts of any R help file is the See Also<br>
+| section. Read that section for list.files. Some of these<br>
+| functions may be used in later portions of this lesson.</p>
+<p>...</p>
+<p>|==================                                       |  31%<br>
+| Using the args() function on a function name is also a handy way to see what arguments<br>
+| a function can take.</p>
+<p>...</p>
+<p>|===================                                      |  33%<br>
+| Use the args() function to determine the arguments to list.files().</p>
+<blockquote>
+<p>?args()<br>
+args(list.files)<br>
+function (path = ".", pattern = NULL, all.files = FALSE,<br>
+    full.names = FALSE, recursive = FALSE, ignore.case = FALSE,<br>
+    include.dirs = FALSE, no.. = FALSE)<br>
+NULL</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|====================                                     |  36%<br>
+| Assign the value of the current working directory to a variable called "old.dir".</p>
+<blockquote>
+<p>old.dir=getwd()</p>
+</blockquote>
+<p>| Not exactly. Give it another go. Or, type info() for more options.</p>
+<p>| Type old.dir &lt;- getwd() to assign the value of the current working directory to a<br>
+| variable called "old.dir".</p>
+<blockquote>
+<p>old.dir&lt;-getwd()</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|======================                                   |  38%<br>
+| We will use old.dir at the end of this lesson to move back to the place that we<br>
+| started. A lot of query functions like getwd() have the useful property that they<br>
+| return the answer to the question as a result of the function.</p>
+<p>...</p>
+<p>|=======================                                  |  41%<br>
+| Use dir.create() to create a directory in the current working directory called<br>
+| "testdir".</p>
+<blockquote>
+<p>?dir.create()<br>
+dir.create("testdir")</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|=========================                                |  44%<br>
+| We will do all our work in this new directory and then delete it after we are done.<br>
+| This is the R analog to "Take only pictures, leave only footprints."</p>
+<p>...</p>
+<p>|==========================                               |  46%<br>
+| Set your working directory to "testdir" with the setwd() command.</p>
+<blockquote>
+<p>setwd()&lt;-"testdir"<br>
+Error in setwd() &lt;- "testdir" : invalid (NULL) left side of assignment<br>
+setwd("testdir")</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|============================                             |  49%<br>
+| In general, you will want your working directory to be someplace sensible, perhaps<br>
+| created for the specific project that you are working on. In fact, organizing your work<br>
+| in R packages using RStudio is an excellent option. Check out RStudio at<br>
+| <a href="http://www.rstudio.com/">http://www.rstudio.com/</a></p>
+<p>...</p>
+<p>|=============================                            |  51%<br>
+| Create a file in your working directory called "mytest.R" using the file.create()<br>
+| function.</p>
+<blockquote>
+<p>?file.create()<br>
+file.create("mytest.R")<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|===============================                          |  54%<br>
+| This should be the only file in this newly created directory. Let's check this by<br>
+| listing all the files in the current directory.</p>
+<blockquote>
+<p>ls()<br>
+[1] "my_div"  "my_sqrt" "old.dir" "x"       "y"       "z"</p>
+</blockquote>
+<p>| That's not exactly what I'm looking for. Try again. Or, type info() for more options.</p>
+<p>| list.files() shows that the directory only contains mytest.R.</p>
+<blockquote>
+<p>dir()<br>
+[1] "mytest.R"</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|================================                         |  56%<br>
+| Check to see if "mytest.R" exists in the working directory using the file.exists()<br>
+| function.</p>
+<blockquote>
+<p>file.exists("mytest.R")<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|==================================                       |  59%<br>
+| These sorts of functions are excessive for interactive use. But, if you are running a<br>
+| program that loops through a series of files and does some processing on each one, you<br>
+| will want to check to see that each exists before you try to process it.</p>
+<p>...</p>
+<p>|===================================                      |  62%<br>
+| Access information about the file "mytest.R" by using file.info().</p>
+<blockquote>
+<p>file.info("mytest.R")<br>
+         size isdir mode               mtime               ctime               atime exe<br>
+mytest.R    0 FALSE  666 2020-04-13 20:41:47 2020-04-13 20:41:47 2020-04-13 20:41:47  no</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=====================================                    |  64%<br>
+| You can use the $ operator --- e.g., file.info("mytest.R")$mode --- to grab specific<br>
+| items.</p>
+<p>...</p>
+<p>|======================================                   |  67%<br>
+| Change the name of the file "mytest.R" to "mytest2.R" by using file.rename().</p>
+<blockquote>
+<p>?file.rename()<br>
+file.rename("mytest.R","mytest2.R")<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================                  |  69%<br>
+| Your operating system will provide simpler tools for these sorts of tasks, but having<br>
+| the ability to manipulate files programatically is useful. You might now try to delete<br>
+| mytest.R using file.remove('mytest.R'), but that won't work since mytest.R no longer<br>
+| exists. You have already renamed it.</p>
+<p>...</p>
+<p>|=========================================                |  72%<br>
+| Make a copy of "mytest2.R" called "mytest3.R" using file.copy().</p>
+<blockquote>
+<p>file.copy("mytest2.R","mytest3.R")<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==========================================               |  74%<br>
+| You now have two files in the current directory. That may not seem very interesting.<br>
+| But what if you were working with dozens, or millions, of individual files? In that<br>
+| case, being able to programatically act on many files would be absolutely necessary.<br>
+| Don't forget that you can, temporarily, leave the lesson by typing play() and then<br>
+| return by typing nxt().</p>
+<p>...</p>
+<p>|============================================             |  77%<br>
+| Provide the relative path to the file "mytest3.R" by using file.path().</p>
+<blockquote>
+<p>file.path("mytest3.R")<br>
+[1] "mytest3.R"</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|=============================================            |  79%<br>
+| You can use file.path to construct file and directory paths that are independent of the<br>
+| operating system your R code is running on. Pass 'folder1' and 'folder2' as arguments<br>
+| to file.path to make a platform-independent pathname.</p>
+<blockquote>
+<p>file.path('folder1','folder2')<br>
+[1] "folder1/folder2"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|===============================================          |  82%<br>
+| Take a look at the documentation for dir.create by entering ?dir.create . Notice the<br>
+| 'recursive' argument. In order to create nested directories, 'recursive' must be set to<br>
+| TRUE.</p>
+<blockquote>
+<p>?dir.create</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|================================================         |  85%<br>
+| Create a directory in the current working directory called "testdir2" and a<br>
+| subdirectory for it called "testdir3", all in one command by using dir.create() and<br>
+| file.path().</p>
+<blockquote>
+<p>dir.create(file.path("testdir2","testdir3"),recursive = TRUE)</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|==================================================       |  87%<br>
+| Go back to your original working directory using setwd(). (Recall that we created the<br>
+| variable old.dir with the full path for the orginal working directory at the start of<br>
+| these questions.)</p>
+<blockquote>
+<p>setwd(old.dir)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===================================================      |  90%<br>
+| It is often helpful to save the settings that you had before you began an analysis and<br>
+| then go back to them at the end. This trick is often used within functions; you save,<br>
+| say, the par() settings that you started with, mess around a bunch, and then set them<br>
+| back to the original values at the end. This isn't the same as what we have done here,<br>
+| but it seems similar enough to mention.</p>
+<p>...</p>
+<p>|=====================================================    |  92%<br>
+| After you finish this lesson delete the 'testdir' directory that you just left (and<br>
+| everything in it)</p>
+<p>...</p>
+<p>|======================================================   |  95%<br>
+| Take nothing but results. Leave nothing but assumptions. That sounds like 'Take nothing<br>
+| but pictures. Leave nothing but footprints.' But it makes no sense! Surely our readers<br>
+| can come up with a better motto . . .</p>
+<p>...</p>
+<p>|======================================================== |  97%<br>
+| In this lesson, you learned how to examine your R workspace and work with the file<br>
+| system of your machine from within R. Thanks for playing!</p>
+<p>...</p>
+<p>|=========================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You got it right!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:26:28.635424 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00401/" class="u-url">Basic Building Blocks</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00401/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T22:56:45+05:30" itemprop="datePublished" title="2020-04-13 22:56">2020-04-13 22:56</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00401/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00401_Basic Building Blocks.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00401_Basic Building Blocks.html";
+var idcomments_post_url = "/posts/00401/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 1</p>
+<p>| In its simplest form, R can be used as an interactive<br>
+| calculator. Type 5 + 7 and press Enter.</p>
+<blockquote>
+<p>5+7<br>
+[1] 12</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|====                                                     |   8%<br>
+| R simply prints the result of 12 by default. However, R is a<br>
+| programming language and often the reason we use a programming<br>
+| language as opposed to a calculator is to automate some process<br>
+| or avoid unnecessary repetition.</p>
+<p>...</p>
+<p>|======                                                   |  11%<br>
+| In this case, we may want to use our result from above in a<br>
+| second calculation. Instead of retyping 5 + 7 every time we need<br>
+| it, we can just create a new variable that stores the result.</p>
+<p>...</p>
+<p>|========                                                 |  13%<br>
+| The way you assign a value to a variable in R is by using the<br>
+| assignment operator, which is just a 'less than' symbol followed<br>
+| by a 'minus' sign. It looks like this: &lt;-</p>
+<p>...</p>
+<p>|=========                                                |  16%<br>
+| Think of the assignment operator as an arrow. You are assigning<br>
+| the value on the right side of the arrow to the variable name on<br>
+| the left side of the arrow.</p>
+<p>...</p>
+<p>|==========                                               |  18%<br>
+| To assign the result of 5 + 7 to a new variable called x, you<br>
+| type x &lt;- 5 + 7. This can be read as 'x gets 5 plus 7'. Give it<br>
+| a try now.</p>
+<blockquote>
+<p>x&lt;-5+7</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|============                                             |  21%<br>
+| You'll notice that R did not print the result of 12 this time.<br>
+| When you use the assignment operator, R assumes that you don't<br>
+| want to see the result immediately, but rather that you intend<br>
+| to use the result for something else later on.</p>
+<p>...</p>
+<p>|==============                                           |  24%<br>
+| To view the contents of the variable x, just type x and press<br>
+| Enter. Try it now.</p>
+<blockquote>
+<p>x<br>
+[1] 12</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===============                                          |  26%<br>
+| Now, store the result of x - 3 in a new variable called y.</p>
+<blockquote>
+<p>y&lt;-x-3</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|================                                         |  29%<br>
+| What is the value of y? Type y to find out.</p>
+<blockquote>
+<p>y<br>
+[1] 9</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|==================                                       |  32%<br>
+| Now, let's create a small collection of numbers called a vector.<br>
+| Any object that contains data is called a data structure and<br>
+| numeric vectors are the simplest type of data structure in R. In<br>
+| fact, even a single number is considered a vector of length one.</p>
+<p>...</p>
+<p>|===================                                      |  34%<br>
+| The easiest way to create a vector is with the c() function,<br>
+| which stands for 'concatenate' or 'combine'. To create a vector<br>
+| containing the numbers 1.1, 9, and 3.14, type c(1.1, 9, 3.14).<br>
+| Try it now and store the result in a variable called z.</p>
+<blockquote>
+<p>z&lt;-c(1.1,9,3.14)</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=====================                                    |  37%<br>
+| Anytime you have questions about a particular function, you can<br>
+| access R's built-in help files via the <code>?</code> command. For example,<br>
+| if you want more information on the c() function, type ?c<br>
+| without the parentheses that normally follow a function name.<br>
+| Give it a try.</p>
+<blockquote>
+<p>?c</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|======================                                   |  39%<br>
+| Type z to view its contents. Notice that there are no commas<br>
+| separating the values in the output.</p>
+<blockquote>
+<p>z<br>
+[1] 1.10 9.00 3.14</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|========================                                 |  42%<br>
+| You can combine vectors to make a new vector. Create a new<br>
+| vector that contains z, 555, then z again in that order. Don't<br>
+| assign this vector to a new variable, so that we can just see<br>
+| the result immediately.</p>
+<blockquote>
+<p>c(z,555,z)<br>
+[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|=========================                                |  45%<br>
+| Numeric vectors can be used in arithmetic expressions. Type the<br>
+| following to see what happens: z * 2 + 100.</p>
+<blockquote>
+<p>z*2+100<br>
+[1] 102.20 118.00 106.28</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===========================                              |  47%<br>
+| First, R multiplied each of the three elements in z by 2. Then<br>
+| it added 100 to each element to get the result you see above.</p>
+<p>...</p>
+<p>|============================                             |  50%<br>
+| Other common arithmetic operators are <code>+</code>, <code>-</code>, <code>/</code>, and <code>^</code><br>
+| (where x^2 means 'x squared'). To take the square root, use the<br>
+| sqrt() function and to take the absolute value, use the abs()<br>
+| function.</p>
+<p>...</p>
+<p>|==============================                           |  53%<br>
+| Take the square root of z - 1 and assign it to a new variable<br>
+| called my_sqrt.</p>
+<blockquote>
+<p>my_sqrt&lt;-sqrt(z-1)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===============================                          |  55%<br>
+| Before we view the contents of the my_sqrt variable, what do you<br>
+| think it contains?</p>
+<p>1: a single number (i.e a vector of length 1)<br>
+2: a vector of length 0 (i.e. an empty vector)<br>
+3: a vector of length 3</p>
+<p>Selection: 3</p>
+<p>| Excellent work!</p>
+<p>|=================================                        |  58%<br>
+| Print the contents of my_sqrt.</p>
+<blockquote>
+<p>my_sqrt<br>
+[1] 0.3162278 2.8284271 1.4628739</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==================================                       |  61%<br>
+| As you may have guessed, R first subtracted 1 from each element<br>
+| of z, then took the square root of each element. This leaves you<br>
+| with a vector of the same length as the original vector z.</p>
+<p>...</p>
+<p>|====================================                     |  63%<br>
+| Now, create a new variable called my_div that gets the value of<br>
+| z divided by my_sqrt.</p>
+<blockquote>
+<p>my_div&lt;-z/my_sqrt</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=====================================                    |  66%<br>
+| Which statement do you think is true?</p>
+<p>1: my_div is a single number (i.e a vector of length 1)<br>
+2: The first element of my_div is equal to the first element of z divided by the first element of my_sqrt, and so on...<br>
+3: my_div is undefined</p>
+<p>Selection: 2</p>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================                  |  68%<br>
+| Go ahead and print the contents of my_div.</p>
+<blockquote>
+<p>my_div<br>
+[1] 3.478505 3.181981 2.146460</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|========================================                 |  71%<br>
+| When given two vectors of the same length, R simply performs the<br>
+| specified arithmetic operation (<code>+</code>, <code>-</code>, <code>*</code>, etc.)<br>
+| element-by-element. If the vectors are of different lengths, R<br>
+| 'recycles' the shorter vector until it is the same length as the<br>
+| longer vector.</p>
+<p>...</p>
+<p>|==========================================               |  74%<br>
+| When we did z * 2 + 100 in our earlier example, z was a vector<br>
+| of length 3, but technically 2 and 100 are each vectors of<br>
+| length 1.</p>
+<p>...</p>
+<p>|===========================================              |  76%<br>
+| Behind the scenes, R is 'recycling' the 2 to make a vector of 2s<br>
+| and the 100 to make a vector of 100s. In other words, when you<br>
+| ask R to compute z <em> 2 + 100, what it really computes is this: z<br>
+| </em> c(2, 2, 2) + c(100, 100, 100).</p>
+<p>...</p>
+<p>|=============================================            |  79%<br>
+| To see another example of how this vector 'recycling' works, try<br>
+| adding c(1, 2, 3, 4) and c(0, 10). Don't worry about saving the<br>
+| result in a new variable.</p>
+<blockquote>
+<p>c(1,2,3,4)+c(0,10)<br>
+[1]  1 12  3 14</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|==============================================           |  82%<br>
+| If the length of the shorter vector does not divide evenly into<br>
+| the length of the longer vector, R will still apply the<br>
+| 'recycling' method, but will throw a warning to let you know<br>
+| something fishy might be going on.</p>
+<p>...</p>
+<p>|================================================         |  84%<br>
+| Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.</p>
+<blockquote>
+<p>c(1,2,3,4)+c(0,10,100)<br>
+[1]   1  12 103   4<br>
+Warning message:<br>
+In c(1, 2, 3, 4) + c(0, 10, 100) :<br>
+  longer object length is not a multiple of shorter object length</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|=================================================        |  87%<br>
+| Before concluding this lesson, I'd like to show you a couple of<br>
+| time-saving tricks.</p>
+<p>...</p>
+<p>|===================================================      |  89%<br>
+| Earlier in the lesson, you computed z * 2 + 100. Let's pretend<br>
+| that you made a mistake and that you meant to add 1000 instead<br>
+| of 100. You could either re-type the expression, or...</p>
+<p>...</p>
+<p>|====================================================     |  92%<br>
+| In many programming environments, the up arrow will cycle<br>
+| through previous commands. Try hitting the up arrow on your<br>
+| keyboard until you get to this command (z * 2 + 100), then<br>
+| change 100 to 1000 and hit Enter. If the up arrow doesn't work<br>
+| for you, just type the corrected command.</p>
+<blockquote>
+<p>z*2+1000<br>
+[1] 1002.20 1018.00 1006.28</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|======================================================   |  95%<br>
+| Finally, let's pretend you'd like to view the contents of a<br>
+| variable that you created earlier, but you can't seem to<br>
+| remember if you named it my_div or myDiv. You could try both and<br>
+| see what works, or...</p>
+<p>...</p>
+<p>|=======================================================  |  97%<br>
+| You can type the first two letters of the variable name, then<br>
+| hit the Tab key (possibly more than once). Most programming<br>
+| environments will provide a list of variables that you've<br>
+| created that begin with 'my'. This is called auto-completion and<br>
+| can be quite handy when you have many variables in your<br>
+| workspace. Give it a try. (If auto-completion doesn't work for<br>
+| you, just type my_div and press Enter.)</p>
+<blockquote>
+<p>my_div<br>
+[1] 3.478505 3.181981 2.146460</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=========================================================| 100%<br>
+| Would you like to receive credit for completing this course on<br>
+| Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 23:14:53.892452 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00400/" class="u-url">R programming with swirl</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00400/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T22:28:07+05:30" itemprop="datePublished" title="2020-04-13 22:28">2020-04-13 22:28</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00400/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00400_swirl.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00400_swirl.html";
+var idcomments_post_url = "/posts/00400/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -102,12 +1558,11 @@ var idcomments_post_url = "/posts/0030/";
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Contents</strong> <a name="contents"></a></p>
 <ol>
-<li><a href="0030/#github">GitHub/GitLab Account</a></li>
-<li><a href="0030/#repo">Creating a repository</a></li>
-<li><a href="0030/#git">Installing Git</a></li>
-<li><a href="0030/#rstudiogithub">Connecting R Studio to GitHub</a></li>
-<li><a href="0030/#gitbash">Git Bash</a></li>
+<li><a href="00400/#swirl">What is swirl</a></li>
+<li><a href="00400/#install">Installing swirl</a></li>
+<li><a href="00400/#course">Installing a course in swirl</a></li>
 </ol>
+<hr>
 </div>
 </div>
 </div>
@@ -116,10 +1571,111 @@ var idcomments_post_url = "/posts/0030/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="GitHub/GitLab-Account-">GitHub/GitLab Account <a name="github"></a><a class="anchor-link" href="0030/#GitHub/GitLab-Account-">¶</a>
+<h4 id="What-is-swirl-">What is swirl <a name="swirl"></a><a class="anchor-link" href="00400/#What-is-swirl-">¶</a>
+</h4>
+<p><em>swirl</em> is an R package that enables users to learn R programming interactively in R console.</p>
+<p>Website: <a href="https://swirlstats.com/">https://swirlstats.com/</a></p>
+<p>[<a href="00400/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Installing-swirl-">Installing swirl <a name="install"></a><a class="anchor-link" href="00400/#Installing-swirl-">¶</a>
+</h4>
+<p>R&gt;=3.1.0 is required to install swirl. R Studio is recommended.</p>
+<p>In R console, type</p>
+<p><code>install.packages("swirl")</code></p>
+<p>Check your installation:</p>
+<p><code>packageVersion("swirl")</code></p>
+<p><img src="../images/r0040010.gif" alt="Installing swirl" title="Installing swirl"></p>
+<p>[<a href="00400/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Installing-a-course-in-swirl-">Installing a course in swirl <a name="course"></a><a class="anchor-link" href="00400/#Installing-a-course-in-swirl-">¶</a>
+</h4>
+<p>Load swirl library.</p>
+<p><code>library(swirl)</code></p>
+<p>Install "<em>R Programming</em>" course.</p>
+<p><code>install_from_swirl("R Programming")</code></p>
+<p><img src="../images/r0040020.gif" alt="Installing course" title="Installing course"></p>
+<p>[<a href="00400/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 22:54:34.277580 IST</p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00300/" class="u-url">GitHub and Git basics</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00300/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-11T17:03:29+05:30" itemprop="datePublished" title="2020-04-11 17:03">2020-04-11 17:03</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00300/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00300git_basics.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00300git_basics.html";
+var idcomments_post_url = "/posts/00300/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="00300/#github">GitHub/GitLab Account</a></li>
+<li><a href="00300/#repo">Creating a repository</a></li>
+<li><a href="00300/#git">Installing Git</a></li>
+<li><a href="00300/#rstudiogithub">Connecting R Studio to GitHub</a></li>
+<li><a href="00300/#gitbash">Git Bash</a></li>
+</ol>
+<hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="GitHub/GitLab-Account-">GitHub/GitLab Account <a name="github"></a><a class="anchor-link" href="00300/#GitHub/GitLab-Account-">¶</a>
 </h3>
 <p><a href="https://www.github.com">GitHub</a> is a service where you can host your projects online with a lot of free features especially for version control. GitHub is also the most popular Git based online repository service followed by <a href="https://gitlab.com/users/sign_in#register-pane">GitLab</a>. Click on the hyperlinks to sign up for a free account.</p>
-<p>[<a href="0030/#contents">^top</a>]</p>
+<p>[<a href="00300/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -129,10 +1685,10 @@ var idcomments_post_url = "/posts/0030/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Creating-a-repository-">Creating a repository <a name="repo"></a><a class="anchor-link" href="0030/#Creating-a-repository-">¶</a>
+<h3 id="Creating-a-repository-">Creating a repository <a name="repo"></a><a class="anchor-link" href="00300/#Creating-a-repository-">¶</a>
 </h3>
 <p>Login to GitHub and select "New Repository". Give a name to your repository(also called repo). Select option "Public" or "Private" depending on whether you want to share your repo with others or not.</p>
-<p>[<a href="0030/#contents">^top</a>]</p>
+<p>[<a href="00300/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -142,10 +1698,10 @@ var idcomments_post_url = "/posts/0030/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Installing-Git-">Installing Git <a name="git"></a><a class="anchor-link" href="0030/#Installing-Git-">¶</a>
+<h3 id="Installing-Git-">Installing Git <a name="git"></a><a class="anchor-link" href="00300/#Installing-Git-">¶</a>
 </h3>
 <p>Download and install Git for Windows from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. You can install the regular version or the portable version of from the links on the page. By now, you might have guesed that I have installed the portable version.</p>
-<p>[<a href="0030/#contents">^top</a>]</p>
+<p>[<a href="00300/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -155,10 +1711,10 @@ var idcomments_post_url = "/posts/0030/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-R-Studio-to-GitHub-">Connecting R Studio to GitHub <a name="rstudiogithub"></a><a class="anchor-link" href="0030/#Connecting-R-Studio-to-GitHub-">¶</a>
+<h3 id="Connecting-R-Studio-to-GitHub-">Connecting R Studio to GitHub <a name="rstudiogithub"></a><a class="anchor-link" href="00300/#Connecting-R-Studio-to-GitHub-">¶</a>
 </h3>
 <p>JHU's <em>Linking GitHub and RStudio</em> document shows in detail how to connect R Studio to your GitHub account, create projects in repositories, commit and push repos. Hence, I am not going to go through that here. Also, I am not a big fan of using R Studio to perform Git operations. I believe that one needs to work on CLIs (like Git Bash) to learn and understand how Git versioning works.</p>
-<p>[<a href="0030/#contents">^top</a>]</p>
+<p>[<a href="00300/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -168,13 +1724,13 @@ var idcomments_post_url = "/posts/0030/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Git-Bash-">Git Bash <a name="gitbash"></a><a class="anchor-link" href="0030/#Git-Bash-">¶</a>
+<h3 id="Git-Bash-">Git Bash <a name="gitbash"></a><a class="anchor-link" href="00300/#Git-Bash-">¶</a>
 </h3>
 <p>Git Bash is a CLI(Command Line Interface) for Git operations for Git based online services like GitHub or GitLab. We have already installed Git earlier which contains an executable file called Git Bash. We will use Git Bash to connect to GitHub and perform Git operations.</p>
-<h4 id="1.-Git-Credential-Manager-for-Windows-(GCMW)">1. Git Credential Manager for Windows (GCMW)<a class="anchor-link" href="0030/#1.-Git-Credential-Manager-for-Windows-(GCMW)">¶</a>
+<h4 id="1.-Git-Credential-Manager-for-Windows-(GCMW)">1. Git Credential Manager for Windows (GCMW)<a class="anchor-link" href="00300/#1.-Git-Credential-Manager-for-Windows-(GCMW)">¶</a>
 </h4>
 <p>Git Bash can connect to Github via SSH or HTTPS. GitHub recommends HTTPS over SSH as the connections are much faster and easier to set up. To connect over HTTPS, we need to install <strong>Git Credential Manager for Windows (GCMW)</strong>. GCMW provides secure Git credential storage for Windows with Two-factor authentication for GitHub. Download and install the latest GCMW from <a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest</a></p>
-<h4 id="2.-Git-Bash-first-time-configuration">2. Git Bash first time configuration<a class="anchor-link" href="0030/#2.-Git-Bash-first-time-configuration">¶</a>
+<h4 id="2.-Git-Bash-first-time-configuration">2. Git Bash first time configuration<a class="anchor-link" href="00300/#2.-Git-Bash-first-time-configuration">¶</a>
 </h4>
 <p>Here are a few things that you need to do when you first install Git. Open Git Bash and you'll see a CLI that looks like this.</p>
 <p><img src="../images/r0030010.png" alt="Git Bash" title="Git Bash"></p>
@@ -187,7 +1743,7 @@ var idcomments_post_url = "/posts/0030/";
 <p>You can also check your settings by entering the following. If something's wrong, use the above commands to change them.</p>
 <p><code>git config --list</code></p>
 <p><img src="../images/r0030020.png" alt="Git config" title="Git config"></p>
-<h4 id="3.-Basic-Git-operations">3. Basic Git operations<a class="anchor-link" href="0030/#3.-Basic-Git-operations">¶</a>
+<h4 id="3.-Basic-Git-operations">3. Basic Git operations<a class="anchor-link" href="00300/#3.-Basic-Git-operations">¶</a>
 </h4>
 <p>Let's create a repository called "testrepo" and perform some basic Git operations on it. Login to GitHub and create the repository called "testrepo".</p>
 <p><img src="../images/r0030030.png" alt="Create repo" title="Create repo"></p>
@@ -198,22 +1754,22 @@ var idcomments_post_url = "/posts/0030/";
 <p>Enter the following command to view all files and directories in the current location. One of them should read "projects"</p>
 <p>Change directory to "projects"</p>
 <p><code>cd projects</code></p>
-<h5 id="git-clone">git clone<a class="anchor-link" href="0030/#git-clone">¶</a>
+<h5 id="git-clone">git clone<a class="anchor-link" href="00300/#git-clone">¶</a>
 </h5>
 <p>Clone your repo to your current working directory.</p>
 <p><code>git clone https://github.com/k-allika/testrepo.git</code></p>
-<h5 id="git-remote">git remote<a class="anchor-link" href="0030/#git-remote">¶</a>
+<h5 id="git-remote">git remote<a class="anchor-link" href="00300/#git-remote">¶</a>
 </h5>
 <p>Check connection to your remote repo</p>
 <p><code>git remote -v</code></p>
-<h5 id=".gitignore">.gitignore<a class="anchor-link" href="0030/#.gitignore">¶</a>
+<h5 id=".gitignore">.gitignore<a class="anchor-link" href="00300/#.gitignore">¶</a>
 </h5>
 <p><strong>.gitignore</strong> is an important file and should be created before the first <em>push</em>. .gitignore contains a list of files that git will ignore while performing git operations. For example, if I have some text files in my working directory that I do not want to push them to my GitHub repo, then I'll include <em>*.txt</em> in my .gitignore.</p>
-<h5 id="touch">touch<a class="anchor-link" href="0030/#touch">¶</a>
+<h5 id="touch">touch<a class="anchor-link" href="00300/#touch">¶</a>
 </h5>
 <p>Create an empty .gitignore file</p>
 <p><code>touch .gitignore</code></p>
-<h5 id="vi">vi<a class="anchor-link" href="0030/#vi">¶</a>
+<h5 id="vi">vi<a class="anchor-link" href="00300/#vi">¶</a>
 </h5>
 <p>Edit an existing file or create a new file and edit.</p>
 <p><code>vi .gitignore</code></p>
@@ -227,45 +1783,55 @@ var idcomments_post_url = "/posts/0030/";
 <p><code>vi notes.txt</code></p>
 <p>Let's create another file called "README.md". Since this file does not match anything in .gitignore, it would be pushed to the repo.</p>
 <p><code>vi README.md</code></p>
-<h5 id="ls">ls<a class="anchor-link" href="0030/#ls">¶</a>
+<h5 id="ls">ls<a class="anchor-link" href="00300/#ls">¶</a>
 </h5>
 <p><em>ls</em> lists files and directories in the current directory. The arguments <em>-la</em> will show file attributes along with hidden files.</p>
 <p><code>ls -la</code></p>
-<h5 id="git-status">git status<a class="anchor-link" href="0030/#git-status">¶</a>
+<h5 id="git-status">git status<a class="anchor-link" href="00300/#git-status">¶</a>
 </h5>
 <p>View the status of your working directory compared to the remote repo at GitHub.</p>
 <p><code>git status</code></p>
 <p>As expected, you'll notice that only <em>.gitignore</em> and <em>README.md</em> files are mentioned in the status output. The <em>notes.txt</em> is ignore as it should.</p>
-<h5 id="git-push">git push<a class="anchor-link" href="0030/#git-push">¶</a>
+<h5 id="git-push">git push<a class="anchor-link" href="00300/#git-push">¶</a>
 </h5>
 <p><code>git push</code></p>
 <p>Push changes in your working directory to the remote repo.</p>
 <p><img src="../images/r0030050.gif" alt="Git Bash Basics" title="Git Bash Basics"></p>
 <p>Check your repo at GitHub and you should see the changes there.</p>
 <p><img src="../images/r0030060.png" alt="Remote repo" title="Remote repo"></p>
-<p>[<a href="0030/#contents">^top</a>]</p>
+<p>[<a href="00300/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 22:32:36.916238 IST</p>
 
 </div>
 </div>
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0020/" class="u-url">Installing R and RStudio</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00200/" class="u-url">Installing R and RStudio</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
             </span></p>
             <p class="dateline">
-            <a href="0020/" rel="bookmark">
+            <a href="00200/" rel="bookmark">
             <time class="published dt-published" datetime="2020-04-10T10:59:58+05:30" itemprop="datePublished" title="2020-04-10 10:59">2020-04-10 10:59</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/0020/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0020install_r.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/00200/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00200install_r.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/0020install_r.html";
-var idcomments_post_url = "/posts/0020/";
+var idcomments_post_id = "cache/posts/00200install_r.html";
+var idcomments_post_url = "/posts/00200/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -280,11 +1846,11 @@ var idcomments_post_url = "/posts/0020/";
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Contents</strong> <a name="contents"></a></p>
 <ol>
-<li><a href="0020/#portable">Portable environment</a></li>
-<li><a href="0020/#r">Installing R</a></li>
-<li><a href="0020/#rstudio">Installing RStudio</a></li>
-<li><a href="0020/#rmarkdown">Installing R Markdown</a></li>
-<li><a href="0020/#rkernel">Installing R in JupyterLabs</a></li>
+<li><a href="00200/#portable">Portable environment</a></li>
+<li><a href="00200/#r">Installing R</a></li>
+<li><a href="00200/#rstudio">Installing RStudio</a></li>
+<li><a href="00200/#rmarkdown">Installing R Markdown</a></li>
+<li><a href="00200/#rkernel">Installing R in JupyterLabs</a></li>
 </ol>
 </div>
 </div>
@@ -294,7 +1860,7 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Portable-environment-">Portable environment <a name="portable"></a><a class="anchor-link" href="0020/#Portable-environment-">¶</a>
+<h4 id="Portable-environment-">Portable environment <a name="portable"></a><a class="anchor-link" href="00200/#Portable-environment-">¶</a>
 </h4>
 <p>This page will guide you on installing R and RStudio in a portable environment on a Windows 10 system. Following are the reasons why I prefer a portable installation over a regular installation:</p>
 <ul>
@@ -318,7 +1884,7 @@ var idcomments_post_url = "/posts/0020/";
 <img src="../images/r0020030.png" alt="Select directory" title="Select directory"></p>
 <p>Once the installation is complete, open Portable Apps platform and if everthing went well, you'll see something like this.
 <img src="../images/r0020040.png" alt="PortableApps" title="PortableApps"></p>
-<p>[<a href="0020/#contents">^top</a>]</p>
+<p>[<a href="00200/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -328,7 +1894,7 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-">Installing R <a name="r"></a><a class="anchor-link" href="0020/#Installing-R-">¶</a>
+<h4 id="Installing-R-">Installing R <a name="r"></a><a class="anchor-link" href="00200/#Installing-R-">¶</a>
 </h4>
 <p>1. Download R Portable <em>paf.exe</em> file from <a href="https://sourceforge.net/projects/rportable/">https://sourceforge.net/projects/rportable/</a>.</p>
 <p>2. Open PortableApps Menu and go to Apps &gt; Install a New App
@@ -343,7 +1909,7 @@ var idcomments_post_url = "/posts/0020/";
 <p>7. If there are any packages that need to be updated, you'll see a small window with a list of apps selected. Click 'OK' and update them.</p>
 <p>8. Close R console. There is no need to save the workspace image.
 <img src="../images/r0020090.png" alt="Close R console" title="Close R console"></p>
-<p>[<a href="0020/#contents">^top</a>]</p>
+<p>[<a href="00200/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -353,7 +1919,7 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-RStudio-">Installing RStudio <a name="rstudio"></a><a class="anchor-link" href="0020/#Installing-RStudio-">¶</a>
+<h4 id="Installing-RStudio-">Installing RStudio <a name="rstudio"></a><a class="anchor-link" href="00200/#Installing-RStudio-">¶</a>
 </h4>
 <p>RStudio is provides the GUI(Graphics User Interface) and is also the commonly used IDE(Integrated Development Environment) for R.</p>
 <p>1. Go to <a href="https://sourceforge.net/projects/rportable/files/R-Studio/">https://sourceforge.net/projects/rportable/files/R-Studio/</a> and select the latest version of RStudio. Download the <em>paf.exe</em> file from the folder.</p>
@@ -373,7 +1939,7 @@ var idcomments_post_url = "/posts/0020/";
 <p>Name your project (example: DataScienceWithR). Browse and select the directory where you want the project to reside. Click "Create Project".</p>
 <p><img src="../images/r0020210.png" alt="Project name and location" title="Project name and location"></p>
 <p>You should now see your project files including "DataScienceWithR.Rproj" file in the second quadrant of R Studio.</p>
-<p>[<a href="0020/#contents">^top</a>]</p>
+<p>[<a href="00200/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -383,7 +1949,7 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-Markdown-">Installing R Markdown <a name="rmarkdown"></a><a class="anchor-link" href="0020/#Installing-R-Markdown-">¶</a>
+<h4 id="Installing-R-Markdown-">Installing R Markdown <a name="rmarkdown"></a><a class="anchor-link" href="00200/#Installing-R-Markdown-">¶</a>
 </h4>
 <p>As a data scientist, it's important to not only write and run code but also explain data manipulation and inferences in words. Markdown allows us to document our work. R-Markdown integrates R code with Markdown to provide an integrated solution. JupyterLab (a successor of iPython) is another such tool, which we will come across soon.</p>
 <p>1.\ In R Studio, go to File &gt; New File &gt; R Markdown.</p>
@@ -395,7 +1961,7 @@ var idcomments_post_url = "/posts/0020/";
 <p><img src="../images/r0020170.png" alt="Sample Markdown" title="Sample Markdown"></p>
 <p>5. Press CTRL+SHIFT+K or click the "Knit" button in the fourth quadrant of R Studio or go to File &gt; Knit Document to generate an HTML or PDF output of the markdown file.</p>
 <p><img src="../images/r0020180.png" alt="HTML output" title="HTML output"></p>
-<p>[<a href="0020/#contents">^top</a>]</p>
+<p>[<a href="00200/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -405,7 +1971,7 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-R-in-JupyterLab--(Optional)">Installing R in JupyterLab <a name="rkernel"></a> (Optional)<a class="anchor-link" href="0020/#Installing-R-in-JupyterLab--(Optional)">¶</a>
+<h4 id="Installing-R-in-JupyterLab--(Optional)">Installing R in JupyterLab <a name="rkernel"></a> (Optional)<a class="anchor-link" href="00200/#Installing-R-in-JupyterLab--(Optional)">¶</a>
 </h4>
 <p>This step is completely optional and you can safely skip it. JupyterLab is a web-based interactive development environment for Jupyter notebooks, code, and data. It supports over 40 programming languages including R. I started using JupyterLab a short time ago while learning Python and am quite impressed by its features, interactivity, improvements and its community. This is my attempt to run R in JupyterLab environment.</p>
 <p>Follow the steps to install R in JupyterLab. If you already have JupyterLab installed, you can directly go to step x.</p>
@@ -478,7 +2044,7 @@ var idcomments_post_url = "/posts/0020/";
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Works well!</p>
-<p>[<a href="0020/#contents">^top</a>]</p>
+<p>[<a href="00200/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -495,22 +2061,22 @@ var idcomments_post_url = "/posts/0020/";
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="0010/" class="u-url">Introduction to data science</a></h1>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00100/" class="u-url">Introduction to data science</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
             </span></p>
             <p class="dateline">
-            <a href="0010/" rel="bookmark">
+            <a href="00100/" rel="bookmark">
             <time class="published dt-published" datetime="2020-04-09T12:34:57+05:30" itemprop="datePublished" title="2020-04-09 12:34">2020-04-09 12:34</time></a>
             </p>
                 <p class="commentline">
         
-<a href="%7Blink%7D" onclick="this.href='/posts/0010/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/0010intro_ds.html</span>
+<a href="%7Blink%7D" onclick="this.href='/posts/00100/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00100intro_ds.html</span>
 <script>
 var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/0010intro_ds.html";
-var idcomments_post_url = "/posts/0010/";
+var idcomments_post_id = "cache/posts/00100intro_ds.html";
+var idcomments_post_url = "/posts/00100/";
 </script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
 
 
@@ -523,8 +2089,12 @@ var idcomments_post_url = "/posts/0010/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="My-notes">My notes<a class="anchor-link" href="0010/#My-notes">¶</a>
-</h4>
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="00100/#ds">Data science</a></li>
+<li><a href="00100/#d">Data</a></li>
+<li><a href="00100/#dsp">Data science project</a></li>
+</ol>
 <hr>
 </div>
 </div>
@@ -534,7 +2104,7 @@ var idcomments_post_url = "/posts/0010/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data-science">Data science<a class="anchor-link" href="0010/#Data-science">¶</a>
+<h4 id="Data-science-">Data science <a name="ds"></a><a class="anchor-link" href="00100/#Data-science-">¶</a>
 </h4>
 <ul>
 <li>Data science involves statistics, computer science and mathematics.</li>
@@ -553,6 +2123,7 @@ var idcomments_post_url = "/posts/0010/";
 <li>Data scientists usually have a combination of the following skills:</li>
 </ul>
 <p><img src="../images/r0010020.png" alt="Data scientist's skills" title="Data scientist's skills"></p>
+<p>[<a href="00100/#contents">^top</a>]</p>
 
 </div>
 </div>
@@ -562,7 +2133,7 @@ var idcomments_post_url = "/posts/0010/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data">Data<a class="anchor-link" href="0010/#Data">¶</a>
+<h4 id="Data-">Data <a name="d"></a><a class="anchor-link" href="00100/#Data-">¶</a>
 </h4>
 <p>There are several definitions of data. The definition provided by Wikipedia is "A set of values of qualitative or quantitative variables".</p>
 <p><img src="../images/r0010030.png" alt="Definition of data" title="Definition of data"></p>
@@ -583,6 +2154,8 @@ var idcomments_post_url = "/posts/0010/";
 </li>
 <li>Quantitative variables can be discrete or continuous*.</li>
 </ul>
+<p>[<a href="00100/#contents">^top</a>]</p>
+
 </div>
 </div>
 </div>
@@ -591,7 +2164,7 @@ var idcomments_post_url = "/posts/0010/";
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Data-science-project">Data science project<a class="anchor-link" href="0010/#Data-science-project">¶</a>
+<h4 id="Data-science-project-">Data science project <a name="dsp"></a><a class="anchor-link" href="00100/#Data-science-project-">¶</a>
 </h4>
 <p>Steps or life cycle of a data science project</p>
 <ul>
@@ -602,6 +2175,8 @@ var idcomments_post_url = "/posts/0010/";
 <li>Data Modeling (Machine Learning, Artificial Intelligence)</li>
 <li>Closure (Conclusions, reporting, communication to stakeholders, future scope)</li>
 </ul>
+<p>[<a href="00100/#contents">^top</a>]</p>
+
 </div>
 </div>
 </div>
@@ -611,6 +2186,16 @@ var idcomments_post_url = "/posts/0010/";
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>* Johns Hopkins University course stated that "Quantitative variables are measured on ordered, continuous scales", which, in my opinion, is a vague statement. Quantitative variables are measured not only on continuous scales but also on discrete (non-continous) scales. Some examples of discrete quantitative variables are 'age in years', 'number of days since first medication', 'number of pencils in a box', etc</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Last updated 2020-04-13 22:35:12.176242 IST</p>
 
 </div>
 </div>
