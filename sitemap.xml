@@ -19,11 +19,15 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-14T04:49:00Z</lastmod>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
-  <lastmod>2020-04-13T17:47:00Z</lastmod>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/categories/cat_data-slicing/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/cat_git/</loc>
@@ -47,7 +51,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-14T04:49:00Z</lastmod>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/00100/</loc>
@@ -94,12 +98,16 @@
   <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/00501/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/posts/index-1.html</loc>
-  <lastmod>2020-04-14T04:49:00Z</lastmod>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-14T04:49:00Z</lastmod>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/attributes/</loc>
@@ -108,6 +116,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/colnames/</loc>
   <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/data-sclicing/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/dataframe/</loc>
@@ -162,6 +174,10 @@
   <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/missing-data/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/missing-values/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
@@ -210,8 +226,16 @@
   <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/subsetting/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/swirl/</loc>
   <lastmod>2020-04-13T17:47:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/unzip/</loc>
+  <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/vectors/</loc>
