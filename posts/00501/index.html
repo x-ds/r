@@ -552,7 +552,7 @@ TRUE
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>_df<em>data1</em> has 153 rows and 6 columns.<br>
+<p>_df_data1_ has 153 rows and 6 columns.<br>
 Let's write the same in the data science langauge:<br>
 The dataframe contains 153 records of 6 variables/features.</p>
 
@@ -1656,7 +1656,7 @@ Data last updated: 2020-04-14</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Pruning dataframe by stripping away unrequired variables:<br>
-We only need Country, cases, deaths, month population.</p>
+We only need Country, cases, deaths, population.</p>
 
 </div>
 </div>
@@ -1666,7 +1666,7 @@ We only need Country, cases, deaths, month population.</p>
 <div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">df_EU</span><span class="o">&lt;-</span><span class="n">df_EU</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">"countriesAndTerritories"</span><span class="p">,</span><span class="s">"cases"</span><span class="p">,</span><span class="s">"deaths"</span><span class="p">,</span><span class="s">"month"</span><span class="p">,</span><span class="s">"popData2018"</span><span class="p">)]</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">df_EU</span><span class="o">&lt;-</span><span class="n">df_EU</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">"countriesAndTerritories"</span><span class="p">,</span><span class="s">"cases"</span><span class="p">,</span><span class="s">"deaths"</span><span class="p">,</span><span class="s">"popData2018"</span><span class="p">)]</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">df_EU</span><span class="p">,</span><span class="n">n</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 
