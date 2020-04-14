@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-13T18:06:00Z</lastmod>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
@@ -47,7 +47,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-13T18:06:00Z</lastmod>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/00100/</loc>
@@ -86,8 +86,36 @@
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/00406/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/posts/00407/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/posts/index-1.html</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-13T18:06:00Z</lastmod>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/attributes/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/colnames/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/dataframe/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/dim/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/dircreate/</loc>
@@ -128,6 +156,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/listfiles/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/matrix/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/missing-values/</loc>
@@ -172,6 +204,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/setwd/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/subset/</loc>
+  <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/swirl/</loc>
