@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-14T18:27:00Z</lastmod>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
@@ -51,7 +51,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-14T18:27:00Z</lastmod>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/00100/</loc>
@@ -98,16 +98,32 @@
   <lastmod>2020-04-14T04:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/00408/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/posts/00409/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/index-1.html</loc>
-  <lastmod>2020-04-14T18:27:00Z</lastmod>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-14T18:27:00Z</lastmod>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/all/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/any/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/attributes/</loc>
@@ -142,6 +158,10 @@
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/functions/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/getwd/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
@@ -168,6 +188,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/listfiles/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/logic/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/matrix/</loc>
@@ -240,6 +264,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/vectors/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/which/</loc>
+  <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/toc/</loc>

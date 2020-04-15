@@ -80,7 +80,7 @@ navbar-dark bg-dark
             </span></p>
             <p class="dateline">
             <a href="00501/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-14T22:48:07+05:30" itemprop="datePublished" title="2020-04-14 22:48">2020-04-14 22:48</time></a>
+            <time class="published dt-published" datetime="2020-04-15T12:45:20+05:30" itemprop="datePublished" title="2020-04-15 12:45">2020-04-15 12:45</time></a>
             </p>
                 <p class="commentline">
         
@@ -1842,6 +1842,1141 @@ We only need Country, cases, deaths, population.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-15 11:52:46.054857 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00409/" class="u-url">Functions</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00409/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:37:15+05:30" itemprop="datePublished" title="2020-04-15 12:37">2020-04-15 12:37</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00409/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00409_Functions.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00409_Functions.html";
+var idcomments_post_url = "/posts/00409/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 9</p>
+<p>|                                                                                |   0%</p>
+<p>| Functions are one of the fundamental building blocks of the R language. They are small<br>
+| pieces of reusable code that can be treated like any other R object.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| If you've worked through any other part of this course, you've probably used some<br>
+| functions already. Functions are usually characterized by the name of the function<br>
+| followed by parentheses.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Let's try using a few basic functions just for fun. The Sys.Date() function returns a<br>
+| string representing today's date. Type Sys.Date() below and see what happens.</p>
+<blockquote>
+<p>Sys.Date()<br>
+[1] "2020-04-15"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=====                                                                           |   6%<br>
+| Most functions in R return a value. Functions like Sys.Date() return a value based on<br>
+| your computer's environment, while other functions manipulate input data in order to<br>
+| compute a return value.</p>
+<p>...</p>
+<p>|=======                                                                         |   8%<br>
+| The mean() function takes a vector of numbers as input, and returns the average of all<br>
+| of the numbers in the input vector. Inputs to functions are often called arguments.<br>
+| Providing arguments to a function is also sometimes called passing arguments to that<br>
+| function. Arguments you want to pass to a function go inside the function's<br>
+| parentheses. Try passing the argument c(2, 4, 5) to the mean() function.</p>
+<blockquote>
+<p>mean(c(2,4,5))<br>
+[1] 3.666667</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|========                                                                        |  10%<br>
+| Functions usually take arguments which are variables that the function operates on. For<br>
+| example, the mean() function takes a vector as an argument, like in the case of<br>
+| mean(c(2,6,8)). The mean() function then adds up all of the numbers in the vector and<br>
+| divides that sum by the length of the vector.</p>
+<p>...</p>
+<p>|==========                                                                      |  12%<br>
+| In the following question you will be asked to modify a script that will appear as soon<br>
+| as you move on from this question. When you have finished modifying the script, save<br>
+| your changes to the script and type submit() and the script will be evaluated. There<br>
+| will be some comments in the script that opens up, so be sure to read them!</p>
+<p>...</p>
+<p>|===========                                                                     |  14%<br>
+| The last R expression to be evaluated in a function will become the return value of<br>
+| that function. We want this function to take one argument, x, and return x without<br>
+| modifying it. Delete the pound sign so that x is returned without any modification.<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# You're about to write your first function! Just like you would assign a value 
+# to a variable with the assignment operator, you assign functions in the following
+# way:
+#
+# function_name &lt;- function(arg1, arg2){
+#   # Manipulate arguments in some way
+#   # Return a value
+# }
+#
+# The "variable name" you assign will become the name of your function. arg1 and
+# arg2 represent the arguments of your function. You can manipulate the arguments
+# you specify within the function. After sourcing the function, you can use the 
+# function by typing:
+# 
+# function_name(value1, value2)
+#
+# Below we will create a function called boring_function. This function takes
+# the argument `x` as input, and returns the value of x without modifying it.
+# Delete the pound sign in front of the x to make the function work! Be sure to 
+# save this script and type submit() in the console after you make your changes.
+
+boring_function &lt;- function(x) {
+  x
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You got it right!</p>
+<p>|=============                                                                   |  16%<br>
+| Now that you've created your first function let's test it! Type: boring_function('My<br>
+| first function!'). If your function works, it should just return the string: 'My first<br>
+| function!'</p>
+<blockquote>
+<p>boring_function('My first function!')<br>
+[1] "My first function!"</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|===============                                                                 |  18%<br>
+| Congratulations on writing your first function. By writing functions, you can gain<br>
+| serious insight into how R works. As John Chambers, the creator of R once said:<br>
+|<br>
+| To understand computations in R, two slogans are helpful: 1. Everything that exists is<br>
+| an object. 2. Everything that happens is a function call.</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| If you want to see the source code for any function, just type the function name<br>
+| without any arguments or parentheses. Let's try this out with the function you just<br>
+| created. Type: boring_function to view its source code.</p>
+<blockquote>
+<p>boring_function<br>
+function(x) {<br>
+  x<br>
+}</p>
+<p>&lt;bytecode: 0x00000000190a1b98&gt;</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==================                                                              |  22%<br>
+| Time to make a more useful function! We're going to replicate the functionality of the<br>
+| mean() function by creating a function called: my_mean(). Remember that to calculate<br>
+| the average of all of the numbers in a vector you find the sum of all the numbers in<br>
+| the vector, and then divide that sum by the number of numbers in the vector.</p>
+<p>...</p>
+<p>|====================                                                            |  24%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# You're free to implement the function my_mean however you want, as long as it
+# returns the average of all of the numbers in `my_vector`.
+#
+# Hint #1: sum() returns the sum of a vector.
+#   Ex: sum(c(1, 2, 3)) evaluates to 6
+#
+# Hint #2: length() returns the size of a vector.
+#   Ex: length(c(1, 2, 3)) evaluates to 3
+#
+# Hint #3: The mean of all the numbers in a vector is equal to the sum of all of
+#          the numbers in the vector divided by the size of the vector.
+#
+# Note for those of you feeling super clever: Please do not use the mean()
+# function while writing this function. We're trying to teach you something 
+# here!
+#
+# Be sure to save this script and type submit() in the console after you make 
+# your changes.
+
+my_mean &lt;- function(my_vector) {
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  sum(my_vector)/length(my_vector)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You got it right!</p>
+<p>|=====================                                                           |  27%<br>
+| Now test out your my_mean() function by finding the mean of the vector c(4, 5, 10).</p>
+<blockquote>
+<p>my_mean(c(4,5,10))<br>
+[1] 6.333333</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=======================                                                         |  29%<br>
+| Next, let's try writing a function with default arguments. You can set default values<br>
+| for a function's arguments, and this can be useful if you think someone who uses your<br>
+| function will set a certain argument to the same value most of the time.</p>
+<p>...</p>
+<p>|========================                                                        |  31%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# Let me show you an example of a function I'm going to make up called
+# increment(). Most of the time I want to use this function to increase the
+# value of a number by one. This function will take two arguments: "number" and
+# "by" where "number" is the digit I want to increment and "by" is the amount I
+# want to increment "number" by. I've written the function below. 
+#
+# increment &lt;- function(number, by = 1){
+#     number + by
+# }
+#
+# If you take a look in between the parentheses you can see that I've set
+# "by" equal to 1. This means that the "by" argument will have the default
+# value of 1.
+#
+# I can now use the increment function without providing a value for "by": 
+# increment(5) will evaluate to 6. 
+#
+# However if I want to provide a value for the "by" argument I still can! The
+# expression: increment(5, 2) will evaluate to 7. 
+# 
+# You're going to write a function called "remainder." remainder() will take
+# two arguments: "num" and "divisor" where "num" is divided by "divisor" and
+# the remainder is returned. Imagine that you usually want to know the remainder
+# when you divide by 2, so set the default value of "divisor" to 2. Please be
+# sure that "num" is the first argument and "divisor" is the second argument.
+#
+# Hint #1: You can use the modulus operator %% to find the remainder.
+#   Ex: 7 %% 4 evaluates to 3. 
+#
+# Remember to set appropriate default values! Be sure to save this 
+# script and type submit() in the console after you write the function.
+
+remainder &lt;- function(num, divisor=2) {
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  num%%divisor
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==========================                                                      |  33%<br>
+| Let's do some testing of the remainder function. Run remainder(5) and see what happens.</p>
+<blockquote>
+<p>remainder(5)<br>
+[1] 1</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|============================                                                    |  35%<br>
+| Let's take a moment to examine what just happened. You provided one argument to the<br>
+| function, and R matched that argument to 'num' since 'num' is the first argument. The<br>
+| default value for 'divisor' is 2, so the function used the default value you provided.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| Now let's test the remainder function by providing two arguments. Type: remainder(11,<br>
+| 5) and let's see what happens.</p>
+<blockquote>
+<p>remainder(11,5)<br>
+[1] 1</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================                                                 |  39%<br>
+| Once again, the arguments have been matched appropriately.</p>
+<p>...</p>
+<p>|=================================                                               |  41%<br>
+| You can also explicitly specify arguments in a function. When you explicitly designate<br>
+| argument values by name, the ordering of the arguments becomes unimportant. You can try<br>
+| this out by typing: remainder(divisor = 11, num = 5).</p>
+<blockquote>
+<p>remainder(divisor = 11, num = 5)<br>
+[1] 5</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==================================                                              |  43%<br>
+| As you can see, there is a significant difference between remainder(11, 5) and<br>
+| remainder(divisor = 11, num = 5)!</p>
+<p>...</p>
+<p>|====================================                                            |  45%<br>
+| R can also partially match arguments. Try typing remainder(4, div = 2) to see this<br>
+| feature in action.</p>
+<blockquote>
+<p>remainder(4, div = 2)<br>
+[1] 0</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|======================================                                          |  47%<br>
+| A word of warning: in general you want to make your code as easy to understand as<br>
+| possible. Switching around the orders of arguments by specifying their names or only<br>
+| using partial argument names can be confusing, so use these features with caution!</p>
+<p>...</p>
+<p>|=======================================                                         |  49%<br>
+| With all of this talk about arguments, you may be wondering if there is a way you can<br>
+| see a function's arguments (besides looking at the documentation). Thankfully, you can<br>
+| use the args() function! Type: args(remainder) to examine the arguments for the<br>
+| remainder function.</p>
+<blockquote>
+<p>args(remainder)<br>
+function (num, divisor = 2)<br>
+NULL</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|=========================================                                       |  51%<br>
+| You may not realize it but I just tricked you into doing something pretty interesting!<br>
+| args() is a function, remainder() is a function, yet remainder was an argument for<br>
+| args(). Yes it's true: you can pass functions as arguments! This is a very powerful<br>
+| concept. Let's write a script to see how it works.</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# You can pass functions as arguments to other functions just like you can pass
+# data to functions. Let's say you define the following functions:
+#
+# add_two_numbers &lt;- function(num1, num2){
+#    num1 + num2
+# }
+#
+# multiply_two_numbers &lt;- function(num1, num2){
+#   num1 * num2
+# }
+#
+# some_function &lt;- function(func){
+#    func(2, 4)
+# }
+#
+# As you can see we use the argument name "func" like a function inside of 
+# "some_function()." By passing functions as arguments 
+# some_function(add_two_numbers) will evaluate to 6, while
+# some_function(multiply_two_numbers) will evaluate to 8.
+# 
+# Finish the function definition below so that if a function is passed into the
+# "func" argument and some data (like a vector) is passed into the dat argument
+# the evaluate() function will return the result of dat being passed as an
+# argument to func.
+#
+# Hints: This exercise is a little tricky so I'll provide a few example of how
+# evaluate() should act:
+#    1. evaluate(sum, c(2, 4, 6)) should evaluate to 12
+#    2. evaluate(median, c(7, 40, 9)) should evaluate to 9
+#    3. evaluate(floor, 11.1) should evaluate to 11
+
+evaluate &lt;- function(func, dat){
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  func(dat)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You are really on a roll!</p>
+<p>|============================================                                    |  55%<br>
+| Let's take your new evaluate() function for a spin! Use evaluate to find the standard<br>
+| deviation of the vector c(1.4, 3.6, 7.9, 8.8).</p>
+<blockquote>
+<p>evaluate(sd,c(1.4, 3.6, 7.9, 8.8))<br>
+[1] 3.514138</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|==============================================                                  |  57%<br>
+| The idea of passing functions as arguments to other functions is an important and<br>
+| fundamental concept in programming.</p>
+<p>...</p>
+<p>|===============================================                                 |  59%<br>
+| You may be surprised to learn that you can pass a function as an argument without first<br>
+| defining the passed function. Functions that are not named are appropriately known as<br>
+| anonymous functions.</p>
+<p>...</p>
+<p>|=================================================                               |  61%<br>
+| Let's use the evaluate function to explore how anonymous functions work. For the first<br>
+| argument of the evaluate function we're going to write a tiny function that fits on one<br>
+| line. In the second argument we'll pass some data to the tiny anonymous function in the<br>
+| first argument.</p>
+<p>...</p>
+<p>|===================================================                             |  63%<br>
+| Type the following command and then we'll discuss how it works:<br>
+| evaluate(function(x){x+1}, 6)</p>
+<blockquote>
+<p>evaluate(function(x){x+1}, 6)<br>
+[1] 7</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|====================================================                            |  65%<br>
+| The first argument is a tiny anonymous function that takes one argument <code>x</code> and returns<br>
+| <code>x+1</code>. We passed the number 6 into this function so the entire expression evaluates to<br>
+| 7.</p>
+<p>...</p>
+<p>|======================================================                          |  67%<br>
+| Try using evaluate() along with an anonymous function to return the first element of<br>
+| the vector c(8, 4, 0). Your anonymous function should only take one argument which<br>
+| should be a variable <code>x</code>.</p>
+<blockquote>
+<p>evaluate(function(x){x[1]},c(8, 4, 0))<br>
+[1] 8</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|========================================================                        |  69%<br>
+| Now try using evaluate() along with an anonymous function to return the last element of<br>
+| the vector c(8, 4, 0). Your anonymous function should only take one argument which<br>
+| should be a variable <code>x</code>.</p>
+<blockquote>
+<p>evaluate(function(x){tail(x,n=1)},c(8, 4, 0))<br>
+[1] 0</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=========================================================                       |  71%<br>
+| For the rest of the course we're going to use the paste() function frequently. Type<br>
+| ?paste so we can take a look at the documentation for the paste function.</p>
+<blockquote>
+<p>?paste</p>
+</blockquote>
+<p><img src="../images/r0040030.png" alt="paste()" title="paste()"></p>
+<p>| Nice work!</p>
+<p>|===========================================================                     |  73%<br>
+| As you can see the first argument of paste() is <code>...</code> which is referred to as an<br>
+| ellipsis or simply dot-dot-dot. The ellipsis allows an indefinite number of arguments<br>
+| to be passed into a function. In the case of paste() any number of strings can be<br>
+| passed as arguments and paste() will return all of the strings combined into one<br>
+| string.</p>
+<p>...</p>
+<p>|============================================================                    |  76%<br>
+| Just to see how paste() works, type paste("Programming", "is", "fun!")</p>
+<blockquote>
+<p>paste("Programming", "is", "fun!")<br>
+[1] "Programming is fun!"</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==============================================================                  |  78%<br>
+| Time to write our own modified version of paste().</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# The ellipses can be used to pass on arguments to other functions that are
+# used within the function you're writing. Usually a function that has the
+# ellipses as an argument has the ellipses as the last argument. The usage of
+# such a function would look like:
+#
+# ellipses_func(arg1, arg2 = TRUE, ...)
+#
+# In the above example arg1 has no default value, so a value must be provided
+# for arg1. arg2 has a default value, and other arguments can come after arg2
+# depending on how they're defined in the ellipses_func() documentation.
+# Interestingly the usage for the paste function is as follows:
+#
+# paste (..., sep = " ", collapse = NULL)
+#
+# Notice that the ellipses is the first argument, and all other arguments after
+# the ellipses have default values. This is a strict rule in R programming: all
+# arguments after an ellipses must have default values. Take a look at the
+# simon_says function below:
+#
+# simon_says &lt;- function(...){
+#   paste("Simon says:", ...)
+# }
+#
+# The simon_says function works just like the paste function, except the
+# begining of every string is prepended by the string "Simon says:"
+#
+# Telegrams used to be peppered with the words START and STOP in order to
+# demarcate the beginning and end of sentences. Write a function below called 
+# telegram that formats sentences for telegrams.
+# For example the expression `telegram("Good", "morning")` should evaluate to:
+# "START Good morning STOP"
+
+telegram &lt;- function(...){
+  paste("START",...,"STOP")
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| All that hard work is paying off!</p>
+<p>|=================================================================               |  82%<br>
+| Now let's test out your telegram function. Use your new telegram function passing in<br>
+| whatever arguments you wish!</p>
+<blockquote>
+<p>telegram("Happy","birthday")<br>
+[1] "START Happy birthday STOP"</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===================================================================             |  84%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>(r)
+# Let's explore how to "unpack" arguments from an ellipses when you use the
+# ellipses as an argument in a function. Below I have an example function that
+# is supposed to add two explicitly named arguments called alpha and beta.
+# 
+# add_alpha_and_beta &lt;- function(...){
+#   # First we must capture the ellipsis inside of a list
+#   # and then assign the list to a variable. Let's name this
+#   # variable `args`.
+#
+#   args &lt;- list(...)
+#
+#   # We're now going to assume that there are two named arguments within args
+#   # with the names `alpha` and `beta.` We can extract named arguments from
+#   # the args list by using the name of the argument and double brackets. The
+#   # `args` variable is just a regular list after all!
+#   
+#   alpha &lt;- args[["alpha"]]
+#   beta  &lt;- args[["beta"]]
+#
+#   # Then we return the sum of alpha and beta.
+#
+#   alpha + beta 
+# }
+#
+# Have you ever played Mad Libs before? The function below will construct a
+# sentence from parts of speech that you provide as arguments. We'll write most
+# of the function, but you'll need to unpack the appropriate arguments from the
+# ellipses.
+
+mad_libs &lt;- function(...){
+  # Do your argument unpacking here!
+  args&lt;-list(...)
+  place&lt;-args[["place"]]
+  adjective&lt;-args[["adjective"]]
+  noun&lt;-args[["noun"]]
+  # Don't modify any code below this comment.
+  # Notice the variables you'll need to create in order for the code below to
+  # be functional!
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You are amazing!</p>
+<p>|=====================================================================           |  86%<br>
+| Time to use your mad_libs function. Make sure to name the place, adjective, and noun<br>
+| arguments in order for your function to work.</p>
+<blockquote>
+<p>mad_libs(place="India",adjective="many",noun="'Get back to your classrooms and learn something' billboard")<br>
+[1] "News from India today where many students took to the streets in protest of the new 'Get back to your classrooms and learn something' billboard being installed on campus."</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|======================================================================          |  88%<br>
+| We're coming to the end of this lesson, but there's still one more idea you should be<br>
+| made aware of.</p>
+<p>...</p>
+<p>|========================================================================        |  90%<br>
+| You're familiar with adding, subtracting, multiplying, and dividing numbers in R. To do<br>
+| this you use the +, -, *, and / symbols. These symbols are called binary operators<br>
+| because they take two inputs, an input from the left and an input from the right.</p>
+<p>...</p>
+<p>|=========================================================================       |  92%<br>
+| In R you can define your own binary operators. In the next script I'll show you how.</p>
+<p>...</p>
+<p>|===========================================================================     |  94%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code>{r}
+# The syntax for creating new binary operators in R is unlike anything else in
+# R, but it allows you to define a new syntax for your function. I would only
+# recommend making your own binary operator if you plan on using it often!
+#
+# User-defined binary operators have the following syntax:
+#      %[whatever]% 
+# where [whatever] represents any valid variable name.
+# 
+# Let's say I wanted to define a binary operator that multiplied two numbers and
+# then added one to the product. An implementation of that operator is below:
+#
+# "%mult_add_one%" &lt;- function(left, right){ # Notice the quotation marks!
+#   left * right + 1
+# }
+#
+# I could then use this binary operator like `4 %mult_add_one% 5` which would
+# evaluate to 21.
+#
+# Write your own binary operator below from absolute scratch! Your binary
+# operator must be called %p% so that the expression:
+#
+#       "Good" %p% "job!"
+#
+# will evaluate to: "Good job!"
+
+"%p%" &lt;- function(x,y){ # Remember to add arguments!
+  paste(x,y)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| Excellent job!</p>
+<p>|=============================================================================   |  96%<br>
+| You made your own binary operator! Let's test it out. Paste together the strings: 'I',<br>
+| 'love', 'R!' using your new binary operator.</p>
+<blockquote>
+<p>"I" %p% "love" %p% "R!"<br>
+[1] "I love R!"</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|==============================================================================  |  98%<br>
+| We've come to the end of our lesson! Go out there and write some great functions!</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "%p%"             "boring_function" "evaluate"        "mad_libs"<br>
+[5] "my_mean"         "remainder"       "telegram"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-15 14:22:50.484757 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00408/" class="u-url">Logic</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00408/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:36:09+05:30" itemprop="datePublished" title="2020-04-15 12:36">2020-04-15 12:36</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00408/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00408_Logic.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00408_Logic.html";
+var idcomments_post_url = "/posts/00408/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 3.6.3 (2020-02-29) -- "Holding the Windsock"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>library("swirl")</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 8</p>
+<p>|                                                                                |   0%</p>
+<p>| This lesson is meant to be a short introduction to logical operations in R.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| There are two logical values in R, also called boolean values. They are TRUE and FALSE.<br>
+| In R you can construct logical expressions which will evaluate to either TRUE or FALSE.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Many of the questions in this lesson will involve evaluating logical expressions. It<br>
+| may be useful to open up a second R terminal where you can experiment with some of<br>
+| these expressions.</p>
+<p>...</p>
+<p>|=====                                                                           |   6%<br>
+| Creating logical expressions requires logical operators. You're probably familiar with<br>
+| arithmetic operators like <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. The first logical operator we are<br>
+| going to discuss is the equality operator, represented by two equals signs <code>==</code>. Use<br>
+| the equality operator below to find out if TRUE is equal to TRUE.</p>
+<blockquote>
+<p>TRUE==TRUE<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|======                                                                          |   8%<br>
+| Just like arithmetic, logical expressions can be grouped by parenthesis so that the<br>
+| entire expression (TRUE == TRUE) == TRUE evaluates to TRUE.</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| To test out this property, try evaluating (FALSE == TRUE) == FALSE .</p>
+<blockquote>
+<p>(FALSE==TRUE)==TRUE<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Not quite right, but keep trying. Or, type info() for more options.</p>
+<p>| Try typing: (FALSE == TRUE) == FALSE</p>
+<blockquote>
+<p>(FALSE==TRUE)==FALSE<br>
+[1] TRUE</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=========                                                                       |  12%<br>
+| The equality operator can also be used to compare numbers. Use <code>==</code> to see if 6 is<br>
+| equal to 7.</p>
+<blockquote>
+<p>6==7<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===========                                                                     |  13%<br>
+| The previous expression evaluates to FALSE because 6 is less than 7. Thankfully, there<br>
+| are inequality operators that allow us to test if a value is less than or greater than<br>
+| another value.</p>
+<p>...</p>
+<p>|============                                                                    |  15%<br>
+| The less than operator <code>&lt;</code> tests whether the number on the left side of the operator<br>
+| (called the left operand) is less than the number on the right side of the operator<br>
+| (called the right operand). Write an expression to test whether 6 is less than 7.</p>
+<blockquote>
+<p>6&lt;7<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|==============                                                                  |  17%<br>
+| There is also a less-than-or-equal-to operator <code>&lt;=</code> which tests whether the left<br>
+| operand is less than or equal to the right operand. Write an expression to test whether<br>
+| 10 is less than or equal to 10.</p>
+<blockquote>
+<p>10&lt;=10<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============                                                                 |  19%<br>
+| Keep in mind that there are the corresponding greater than <code>&gt;</code> and<br>
+| greater-than-or-equal-to <code>&gt;=</code> operators.</p>
+<p>...</p>
+<p>|=================                                                               |  21%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: 7 == 7<br>
+2: 0 &gt; -36<br>
+3: 6 &lt; 8<br>
+4: 9 &gt;= 10</p>
+<p>Selection: 4</p>
+<p>| That's correct!</p>
+<p>|==================                                                              |  23%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: -6 &gt; -7<br>
+2: 7 == 9<br>
+3: 9 &gt;= 10<br>
+4: 57 &lt; 8</p>
+<p>Selection: 1</p>
+<p>| That's correct!</p>
+<p>|====================                                                            |  25%<br>
+| The next operator we will discuss is the 'not equals' operator represented by <code>!=</code>. Not<br>
+| equals tests whether two values are unequal, so TRUE != FALSE evaluates to TRUE. Like<br>
+| the equality operator, <code>!=</code> can also be used with numbers. Try writing an expression to<br>
+| see if 5 is not equal to 7.</p>
+<blockquote>
+<p>5!=7<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|======================                                                          |  27%<br>
+| In order to negate boolean expressions you can use the NOT operator. An exclamation<br>
+| point <code>!</code> will cause !TRUE (say: not true) to evaluate to FALSE and !FALSE (say: not<br>
+| false) to evaluate to TRUE. Try using the NOT operator and the equals operator to find<br>
+| the opposite of whether 5 is equal to 7.</p>
+<blockquote>
+<p>!(5==7)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=======================                                                         |  29%<br>
+| Let's take a moment to review. The equals operator <code>==</code> tests whether two boolean<br>
+| values or numbers are equal, the not equals operator <code>!=</code> tests whether two boolean<br>
+| values or numbers are unequal, and the NOT operator <code>!</code> negates logical expressions so<br>
+| that TRUE expressions become FALSE and FALSE expressions become TRUE.</p>
+<p>...</p>
+<p>|=========================                                                       |  31%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: !(0 &gt;= -1)<br>
+2: !FALSE<br>
+3: 9 &lt; 10<br>
+4: 7 != 8</p>
+<p>Selection: 1</p>
+<p>| That's a job well done!</p>
+<p>|==========================                                                      |  33%<br>
+| What do you think the following expression will evaluate to?: (TRUE != FALSE) == !(6 ==<br>
+| 7)</p>
+<p>1: %&gt;%<br>
+2: FALSE<br>
+3: Can there be objective truth when programming?<br>
+4: TRUE</p>
+<p>Selection: 4</p>
+<p>| You are amazing!</p>
+<p>|============================                                                    |  35%<br>
+| At some point you may need to examine relationships between multiple logical<br>
+| expressions. This is where the AND operator and the OR operator come in.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| Let's look at how the AND operator works. There are two AND operators in R, <code>&amp;</code> and<br>
+| <code>&amp;&amp;</code>. Both operators work similarly, if the right and left operands of AND are both<br>
+| TRUE the entire expression is TRUE, otherwise it is FALSE. For example, TRUE &amp; TRUE<br>
+| evaluates to TRUE. Try typing FALSE &amp; FALSE to how it is evaluated.</p>
+<blockquote>
+<p>FALSE&amp;FALSE<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================                                                 |  38%<br>
+| You can use the <code>&amp;</code> operator to evaluate AND across a vector. The <code>&amp;&amp;</code> version of AND<br>
+| only evaluates the first member of a vector. Let's test both for practice. Type the<br>
+| expression TRUE &amp; c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE&amp;c(TRUE,FALSE,FALSE)<br>
+[1]  TRUE FALSE FALSE</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|================================                                                |  40%<br>
+| What happens in this case is that the left operand <code>TRUE</code> is recycled across every<br>
+| element in the vector of the right operand. This is the equivalent statement as c(TRUE,<br>
+| TRUE, TRUE) &amp; c(TRUE, FALSE, FALSE).</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| Now we'll type the same expression except we'll use the <code>&amp;&amp;</code> operator. Type the<br>
+| expression TRUE &amp;&amp; c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE&amp;&amp;c(TRUE,FALSE,FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|===================================                                             |  44%<br>
+| In this case, the left operand is only evaluated with the first member of the right<br>
+| operand (the vector). The rest of the elements in the vector aren't evaluated at all in<br>
+| this expression.</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| The OR operator follows a similar set of rules. The <code>|</code> version of OR evaluates OR<br>
+| across an entire vector, while the <code>||</code> version of OR only evaluates the first member<br>
+| of a vector.</p>
+<p>...</p>
+<p>|======================================                                          |  48%<br>
+| An expression using the OR operator will evaluate to TRUE if the left operand or the<br>
+| right operand is TRUE. If both are TRUE, the expression will evaluate to TRUE, however<br>
+| if neither are TRUE, then the expression will be FALSE.</p>
+<p>...</p>
+<p>|========================================                                        |  50%<br>
+| Let's test out the vectorized version of the OR operator. Type the expression TRUE |<br>
+| c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE|c(TRUE, FALSE, FALSE)<br>
+[1] TRUE TRUE TRUE</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==========================================                                      |  52%<br>
+| Now let's try out the non-vectorized version of the OR operator. Type the expression<br>
+| TRUE || c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE||c(TRUE, FALSE, FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|===========================================                                     |  54%<br>
+| Logical operators can be chained together just like arithmetic operators. The<br>
+| expressions: <code>6 != 10 &amp;&amp; FALSE &amp;&amp; 1 &gt;= 2</code> or <code>TRUE || 5 &lt; 9.3 || FALSE</code> are perfectly<br>
+| normal to see.</p>
+<p>...</p>
+<p>|=============================================                                   |  56%<br>
+| As you may recall, arithmetic has an order of operations and so do logical expressions.<br>
+| All AND operators are evaluated before OR operators. Let's look at an example of an<br>
+| ambiguous case. Type: 5 &gt; 8 || 6 != 8 &amp;&amp; 4 &gt; 3.9</p>
+<blockquote>
+<p>5 &gt; 8 || 6 != 8 &amp;&amp; 4 &gt; 3.9<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==============================================                                  |  58%<br>
+| Let's walk through the order of operations in the above case. First the left and right<br>
+| operands of the AND operator are evaluated. 6 is not equal 8, 4 is greater than 3.9,<br>
+| therefore both operands are TRUE so the resulting expression <code>TRUE &amp;&amp; TRUE</code> evaluates<br>
+| to TRUE. Then the left operand of the OR operator is evaluated: 5 is not greater than 8<br>
+| so the entire expression is reduced to FALSE || TRUE. Since the right operand of this<br>
+| expression is TRUE the entire expression evaluates to TRUE.</p>
+<p>...</p>
+<p>|================================================                                |  60%<br>
+| Which one of the following expressions evaluates to TRUE?</p>
+<p>1: TRUE &amp;&amp; FALSE || 9 &gt;= 4 &amp;&amp; 3 &lt; 6<br>
+2: FALSE || TRUE &amp;&amp; FALSE<br>
+3: 99.99 &gt; 100 || 45 &lt; 7.3 || 4 != 4.0<br>
+4: TRUE &amp;&amp; 62 &lt; 62 &amp;&amp; 44 &gt;= 44</p>
+<p>Selection: 1</p>
+<p>| Excellent work!</p>
+<p>|=================================================                               |  62%<br>
+| Which one of the following expressions evaluates to FALSE?</p>
+<p>1: FALSE &amp;&amp; 6 &gt;= 6 || 7 &gt;= 8 || 50 &lt;= 49.5<br>
+2: FALSE || TRUE &amp;&amp; 6 != 4 || 9 &gt; 4<br>
+3: 6 &gt;= -9 &amp;&amp; !(6 &gt; 7) &amp;&amp; !(!TRUE)<br>
+4: !(8 &gt; 4) ||  5 == 5.0 &amp;&amp; 7.8 &gt;= 7.79</p>
+<p>Selection: 1</p>
+<p>| You got it!</p>
+<p>|===================================================                             |  63%<br>
+| Now that you're familiar with R's logical operators you can take advantage of a few<br>
+| functions that R provides for dealing with logical expressions.</p>
+<p>...</p>
+<p>|====================================================                            |  65%<br>
+| The function isTRUE() takes one argument. If that argument evaluates to TRUE, the<br>
+| function will return TRUE. Otherwise, the function will return FALSE. Try using this<br>
+| function by typing: isTRUE(6 &gt; 4)</p>
+<blockquote>
+<p>isTRUE(6&gt;4)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|======================================================                          |  67%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: isTRUE(NA)<br>
+2: isTRUE(!TRUE)<br>
+3: !isTRUE(4 &lt; 3)<br>
+4: isTRUE(3)<br>
+5: !isTRUE(8 != 5)</p>
+<p>Selection: 5</p>
+<p>| You're close...I can feel it! Try it again.</p>
+<p>| isTRUE() will only return TRUE if the statement passed to it as an argument is TRUE.</p>
+<p>1: isTRUE(NA)<br>
+2: !isTRUE(4 &lt; 3)<br>
+3: isTRUE(3)<br>
+4: !isTRUE(8 != 5)<br>
+5: isTRUE(!TRUE)</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|=======================================================                         |  69%<br>
+| The function identical() will return TRUE if the two R objects passed to it as<br>
+| arguments are identical. Try out the identical() function by typing: identical('twins',<br>
+| 'twins')</p>
+<blockquote>
+<p>identical('twins','twins')<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=========================================================                       |  71%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: identical(5 &gt; 4, 3 &lt; 3.1)<br>
+2: !identical(7, 7)<br>
+3: identical(4, 3.1)<br>
+4: identical('hello', 'Hello')</p>
+<p>Selection: 1</p>
+<p>| You are amazing!</p>
+<p>|==========================================================                      |  73%<br>
+| You should also be aware of the xor() function, which takes two arguments. The xor()<br>
+| function stands for exclusive OR. If one argument evaluates to TRUE and one argument<br>
+| evaluates to FALSE, then this function will return TRUE, otherwise it will return<br>
+| FALSE. Try out the xor() function by typing: xor(5 == 6, !FALSE)</p>
+<blockquote>
+<p>xor(5 == 6, !FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|============================================================                    |  75%<br>
+| 5 == 6 evaluates to FALSE, !FALSE evaluates to TRUE, so xor(FALSE, TRUE) evaluates to<br>
+| TRUE. On the other hand if the first argument was changed to 5 == 5 and the second<br>
+| argument was unchanged then both arguments would have been TRUE, so xor(TRUE, TRUE)<br>
+| would have evaluated to FALSE.</p>
+<p>...</p>
+<p>|==============================================================                  |  77%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: xor(!!TRUE, !!FALSE)<br>
+2: xor(4 &gt;= 9, 8 != 8.0)<br>
+3: xor(identical(xor, 'xor'), 7 == 7.0)<br>
+4: xor(!isTRUE(TRUE), 6 &gt; -1)</p>
+<p>Selection: 8!=8.0<br>
+Enter an item from the menu, or 0 to exit<br>
+Selection: 2</p>
+<p>| That's the answer I was looking for.</p>
+<p>|===============================================================                 |  79%<br>
+| For the next few questions, we're going to need to create a vector of integers called<br>
+| ints. Create this vector by typing: ints &lt;- sample(10)</p>
+<blockquote>
+<p>ints&lt;-sample(10)</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|=================================================================               |  81%<br>
+| Now simply display the contents of ints.</p>
+<blockquote>
+<p>ints<br>
+ [1]  7  1  3  4  8  2 10  6  9  5</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==================================================================              |  83%<br>
+| The vector <code>ints</code> is a random sampling of integers from 1 to 10 without replacement.<br>
+| Let's say we wanted to ask some logical questions about contents of ints. If we type<br>
+| ints &gt; 5, we will get a logical vector corresponding to whether each element of ints is<br>
+| greater than 5. Try typing: ints &gt; 5</p>
+<blockquote>
+<p>ints&gt;5<br>
+ [1]  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|====================================================================            |  85%<br>
+| We can use the resulting logical vector to ask other questions about ints. The which()<br>
+| function takes a logical vector as an argument and returns the indices of the vector<br>
+| that are TRUE. For example which(c(TRUE, FALSE, TRUE)) would return the vector c(1, 3).</p>
+<p>...</p>
+<p>|=====================================================================           |  87%<br>
+| Use the which() function to find the indices of ints that are greater than 7.</p>
+<blockquote>
+<p>which(int&gt;7)<br>
+Error in which(int &gt; 7) : object 'int' not found<br>
+which(ints&gt;7)<br>
+[1] 5 7 9</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=======================================================================         |  88%<br>
+| Which of the following commands would produce the indices of the elements in ints that<br>
+| are less than or equal to 2?</p>
+<p>1: ints &lt; 2<br>
+2: ints &lt;= 2<br>
+3: which(ints &lt;= 2)<br>
+4: which(ints &lt; 2)</p>
+<p>Selection: 3</p>
+<p>| All that practice is paying off!</p>
+<p>|========================================================================        |  90%<br>
+| Like the which() function, the functions any() and all() take logical vectors as their<br>
+| argument. The any() function will return TRUE if one or more of the elements in the<br>
+| logical vector is TRUE. The all() function will return TRUE if every element in the<br>
+| logical vector is TRUE.</p>
+<p>...</p>
+<p>|==========================================================================      |  92%<br>
+| Use the any() function to see if any of the elements of ints are less than zero.</p>
+<blockquote>
+<p>any(ints&lt;0)<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===========================================================================     |  94%<br>
+| Use the all() function to see if all of the elements of ints are greater than zero.</p>
+<blockquote>
+<p>all(ints&gt;0)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=============================================================================   |  96%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: any(ints == 2.5)<br>
+2: all(c(TRUE, FALSE, TRUE))<br>
+3: all(ints == 10)<br>
+4: any(ints == 10)</p>
+<p>Selection: 4</p>
+<p>| Keep up the great work!</p>
+<p>|==============================================================================  |  98%<br>
+| That's all for this introduction to logic in R. If you really want to see what you can<br>
+| do with logic, check out the control flow lesson!</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's a job well done!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "ints"<br>
+rm(list=ls())  
+</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-15 14:05:54.787418 IST</em></p>
 
 </div>
 </div>
@@ -4028,295 +5163,6 @@ Grade submission succeeded!</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-13 23:14:53.892452 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00400/" class="u-url">R programming with swirl</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00400/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-13T22:28:07+05:30" itemprop="datePublished" title="2020-04-13 22:28">2020-04-13 22:28</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00400/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00400_swirl.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00400_swirl.html";
-var idcomments_post_url = "/posts/00400/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Contents</strong> <a name="contents"></a></p>
-<ol>
-<li><a href="00400/#swirl">What is swirl</a></li>
-<li><a href="00400/#install">Installing swirl</a></li>
-<li><a href="00400/#course">Installing a course in swirl</a></li>
-</ol>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="What-is-swirl-">What is swirl <a name="swirl"></a><a class="anchor-link" href="00400/#What-is-swirl-">¶</a>
-</h4>
-<p><em>swirl</em> is an R package that enables users to learn R programming interactively in R console.</p>
-<p>Website: <a href="https://swirlstats.com/">https://swirlstats.com/</a></p>
-<p>[<a href="00400/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-swirl-">Installing swirl <a name="install"></a><a class="anchor-link" href="00400/#Installing-swirl-">¶</a>
-</h4>
-<p>R&gt;=3.1.0 is required to install swirl. R Studio is recommended.</p>
-<p>In R console, type</p>
-<p><code>install.packages("swirl")</code></p>
-<p>Check your installation:</p>
-<p><code>packageVersion("swirl")</code></p>
-<p><img src="../images/r0040010.gif" alt="Installing swirl" title="Installing swirl"></p>
-<p>[<a href="00400/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h4 id="Installing-a-course-in-swirl-">Installing a course in swirl <a name="course"></a><a class="anchor-link" href="00400/#Installing-a-course-in-swirl-">¶</a>
-</h4>
-<p>Load swirl library.</p>
-<p><code>library(swirl)</code></p>
-<p>Install "<em>R Programming</em>" course.</p>
-<p><code>install_from_swirl("R Programming")</code></p>
-<p>Here is a list of all swirl courses <a href="http://swirlstats.com/scn/title.html">http://swirlstats.com/scn/title.html</a></p>
-<p><img src="../images/r0040020.gif" alt="Installing course" title="Installing course"></p>
-<p>[<a href="00400/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-14 09:34:33.536108 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00300/" class="u-url">GitHub and Git basics</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00300/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-11T17:03:29+05:30" itemprop="datePublished" title="2020-04-11 17:03">2020-04-11 17:03</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00300/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00300git_basics.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00300git_basics.html";
-var idcomments_post_url = "/posts/00300/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Contents</strong> <a name="contents"></a></p>
-<ol>
-<li><a href="00300/#github">GitHub/GitLab Account</a></li>
-<li><a href="00300/#repo">Creating a repository</a></li>
-<li><a href="00300/#git">Installing Git</a></li>
-<li><a href="00300/#rstudiogithub">Connecting R Studio to GitHub</a></li>
-<li><a href="00300/#gitbash">Git Bash</a></li>
-</ol>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="GitHub/GitLab-Account-">GitHub/GitLab Account <a name="github"></a><a class="anchor-link" href="00300/#GitHub/GitLab-Account-">¶</a>
-</h3>
-<p><a href="https://www.github.com">GitHub</a> is a service where you can host your projects online with a lot of free features especially for version control. GitHub is also the most popular Git based online repository service followed by <a href="https://gitlab.com/users/sign_in#register-pane">GitLab</a>. Click on the hyperlinks to sign up for a free account.</p>
-<p>[<a href="00300/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Creating-a-repository-">Creating a repository <a name="repo"></a><a class="anchor-link" href="00300/#Creating-a-repository-">¶</a>
-</h3>
-<p>Login to GitHub and select "New Repository". Give a name to your repository(also called repo). Select option "Public" or "Private" depending on whether you want to share your repo with others or not.</p>
-<p>[<a href="00300/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Installing-Git-">Installing Git <a name="git"></a><a class="anchor-link" href="00300/#Installing-Git-">¶</a>
-</h3>
-<p>Download and install Git for Windows from <a href="https://git-scm.com/download/win">https://git-scm.com/download/win</a>. You can install the regular version or the portable version of from the links on the page. By now, you might have guesed that I have installed the portable version.</p>
-<p>[<a href="00300/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Connecting-R-Studio-to-GitHub-">Connecting R Studio to GitHub <a name="rstudiogithub"></a><a class="anchor-link" href="00300/#Connecting-R-Studio-to-GitHub-">¶</a>
-</h3>
-<p>JHU's <em>Linking GitHub and RStudio</em> document shows in detail how to connect R Studio to your GitHub account, create projects in repositories, commit and push repos. Hence, I am not going to go through that here. Also, I am not a big fan of using R Studio to perform Git operations. I believe that one needs to work on CLIs (like Git Bash) to learn and understand how Git versioning works.</p>
-<p>[<a href="00300/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Git-Bash-">Git Bash <a name="gitbash"></a><a class="anchor-link" href="00300/#Git-Bash-">¶</a>
-</h3>
-<p>Git Bash is a CLI(Command Line Interface) for Git operations for Git based online services like GitHub or GitLab. We have already installed Git earlier which contains an executable file called Git Bash. We will use Git Bash to connect to GitHub and perform Git operations.</p>
-<h4 id="1.-Git-Credential-Manager-for-Windows-(GCMW)">1. Git Credential Manager for Windows (GCMW)<a class="anchor-link" href="00300/#1.-Git-Credential-Manager-for-Windows-(GCMW)">¶</a>
-</h4>
-<p>Git Bash can connect to Github via SSH or HTTPS. GitHub recommends HTTPS over SSH as the connections are much faster and easier to set up. To connect over HTTPS, we need to install <strong>Git Credential Manager for Windows (GCMW)</strong>. GCMW provides secure Git credential storage for Windows with Two-factor authentication for GitHub. Download and install the latest GCMW from <a href="https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest">https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/latest</a></p>
-<h4 id="2.-Git-Bash-first-time-configuration">2. Git Bash first time configuration<a class="anchor-link" href="00300/#2.-Git-Bash-first-time-configuration">¶</a>
-</h4>
-<p>Here are a few things that you need to do when you first install Git. Open Git Bash and you'll see a CLI that looks like this.</p>
-<p><img src="../images/r0030010.png" alt="Git Bash" title="Git Bash"></p>
-<p>1. Type the following command in Git Bash and enter your GitHub username (the one created while setting up the GitHub account) in quotes.</p>
-<p><code>git config --global user.name "YourUserName"</code></p>
-<p>2. Enter your email address associated with your GitHub account.</p>
-<p><code>git config --global user.email abcdef@example.com</code></p>
-<p>3. Configure your favorite text editor for Git Bash. If you installed portable Notepad++ like me, you can configure it as your default Git Bash text editor by typing the following. Edit Notepad++ path accordingly.</p>
-<p><code>git config --global core.editor "'C:/Users/kk/PortableApps/Notepad++Portable/App/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"</code></p>
-<p>You can also check your settings by entering the following. If something's wrong, use the above commands to change them.</p>
-<p><code>git config --list</code></p>
-<p><img src="../images/r0030020.png" alt="Git config" title="Git config"></p>
-<h4 id="3.-Basic-Git-operations">3. Basic Git operations<a class="anchor-link" href="00300/#3.-Basic-Git-operations">¶</a>
-</h4>
-<p>Let's create a repository called "testrepo" and perform some basic Git operations on it. Login to GitHub and create the repository called "testrepo".</p>
-<p><img src="../images/r0030030.png" alt="Create repo" title="Create repo"></p>
-<p>Ensure that the connection is HTTPS. Click copy button to copy the repo link.</p>
-<p><img src="../images/r0030040.png" alt="Copy repo link" title="Copy repo link"></p>
-<p>Go to Git Bash and create a directory where you plan to work on your projects. Let's call it "projects".</p>
-<p><code>mkdir projects</code></p>
-<p>Enter the following command to view all files and directories in the current location. One of them should read "projects"</p>
-<p>Change directory to "projects"</p>
-<p><code>cd projects</code></p>
-<h5 id="git-clone">git clone<a class="anchor-link" href="00300/#git-clone">¶</a>
-</h5>
-<p>Clone your repo to your current working directory.</p>
-<p><code>git clone https://github.com/k-allika/testrepo.git</code></p>
-<h5 id="git-remote">git remote<a class="anchor-link" href="00300/#git-remote">¶</a>
-</h5>
-<p>Check connection to your remote repo</p>
-<p><code>git remote -v</code></p>
-<h5 id=".gitignore">.gitignore<a class="anchor-link" href="00300/#.gitignore">¶</a>
-</h5>
-<p><strong>.gitignore</strong> is an important file and should be created before the first <em>push</em>. .gitignore contains a list of files that git will ignore while performing git operations. For example, if I have some text files in my working directory that I do not want to push them to my GitHub repo, then I'll include <em>*.txt</em> in my .gitignore.</p>
-<h5 id="touch">touch<a class="anchor-link" href="00300/#touch">¶</a>
-</h5>
-<p>Create an empty .gitignore file</p>
-<p><code>touch .gitignore</code></p>
-<h5 id="vi">vi<a class="anchor-link" href="00300/#vi">¶</a>
-</h5>
-<p>Edit an existing file or create a new file and edit.</p>
-<p><code>vi .gitignore</code></p>
-<p>adding <em>*.txt</em> to ignore will tell Git to ignore all <em>txt</em> files and not to push them to remote repo.</p>
-<p>Basic vi commands:</p>
-<p><em>i</em> to start editing.</p>
-<p><em>Esc</em> to stop editing and come out of edit mode.</p>
-<p><em>:w</em> to save file.</p>
-<p><em>:q</em> to quit vi</p>
-<p>Let's create a "notes.txt" file to test .gitignore. Since we added <em>*.txt</em> to .gitignore, "notes.txt" would not be pushed to the repo.</p>
-<p><code>vi notes.txt</code></p>
-<p>Let's create another file called "README.md". Since this file does not match anything in .gitignore, it would be pushed to the repo.</p>
-<p><code>vi README.md</code></p>
-<h5 id="ls">ls<a class="anchor-link" href="00300/#ls">¶</a>
-</h5>
-<p><em>ls</em> lists files and directories in the current directory. The arguments <em>-la</em> will show file attributes along with hidden files.</p>
-<p><code>ls -la</code></p>
-<h5 id="git-status">git status<a class="anchor-link" href="00300/#git-status">¶</a>
-</h5>
-<p>View the status of your working directory compared to the remote repo at GitHub.</p>
-<p><code>git status</code></p>
-<p>As expected, you'll notice that only <em>.gitignore</em> and <em>README.md</em> files are mentioned in the status output. The <em>notes.txt</em> is ignore as it should.</p>
-<h5 id="git-push">git push<a class="anchor-link" href="00300/#git-push">¶</a>
-</h5>
-<p><code>git push</code></p>
-<p>Push changes in your working directory to the remote repo.</p>
-<p><img src="../images/r0030050.gif" alt="Git Bash Basics" title="Git Bash Basics"></p>
-<p>Check your repo at GitHub and you should see the changes there.</p>
-<p><img src="../images/r0030060.png" alt="Remote repo" title="Remote repo"></p>
-<p>[<a href="00300/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-13 22:32:36.916238 IST</em></p>
 
 </div>
 </div>
