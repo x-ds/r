@@ -773,7 +773,7 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>If the variables of a dataframe are named, then we can use their names to achieve the same result as above by doing the following.</p>
+<p>If the variables of a dataframe are named, then we can also use their names the folloing way to achieve the same result as above.</p>
 
 </div>
 </div>
@@ -816,7 +816,7 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>How did this work? When we call a variable of a dataframe, it becomes a vector. Here _df<em>data$Ozone</em> is an integer vector. We viewed the 29th element of the vector.</p>
+<p>How did this work? When we call a variable of a dataframe, it becomes a vector. Here <em>df</em>_<em>data$Ozone</em> is an integer vector. We viewed the 29th element of the vector.</p>
 
 </div>
 </div>
@@ -858,7 +858,8 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Missing values: <em>is.na()</em> provides a logical vector of missing values - TRUE if NA and FALSE if not NA. In R, TRUE = 1 and FALSE = 0. A <em>sum</em> output the sum of all TRUE values (or missing values).</p>
+<p>Missing values: <em>is.na()</em> provides a logical vector of missing values - TRUE if NA and FALSE if not NA. In R, TRUE = 1 and FALSE = 0. A <em>sum</em> function will output the sum of all TRUE values (or missing values).</p>
+<p><strong>Number of missing values in variable Solar.R:</strong></p>
 
 </div>
 </div>
@@ -896,6 +897,16 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Mean of the variable Solar.R excluding missing values:</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [23]:</div>
@@ -928,6 +939,16 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Mean of Solar.R where Ozone levels are lower than 25 and Temp is below 88:</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -962,6 +983,16 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Average Ozone level in the month of May:</strong></p>
+
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In [27]:</div>
@@ -994,6 +1025,16 @@ The dataframe contains 153 records of 6 variables or features.</p>
 </div>
 </div>
 
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Maximum Solar Radiation in June:</strong></p>
+
+</div>
+</div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
@@ -1800,7 +1841,7 @@ We only need Country, cases, deaths, population.</p>
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-15 01:28:12.744421 IST</em></p>
+<p><em>Last updated 2020-04-15 11:52:46.054857 IST</em></p>
 
 </div>
 </div>
