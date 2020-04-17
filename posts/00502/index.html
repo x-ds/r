@@ -161,13 +161,13 @@ nitrate: the level of nitrate PM in the air on that date (measured in micrograms
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [4]:</div>
+<div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Create an empty file in memory</span>
 <span class="n">file</span><span class="o">&lt;-</span><span class="nf">tempfile</span><span class="p">()</span>
 <span class="c1"># Download the zip file to this empty file</span>
-<span class="nf">download.file</span><span class="p">(</span><span class="s">"http://link.datascience.eu.org/p004d1"</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
+<span class="nf">download.file</span><span class="p">(</span><span class="s">"http://link.datascience.eu.org/p004d1"</span><span class="p">,</span><span class="n">file</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">"wb"</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -177,11 +177,11 @@ nitrate: the level of nitrate PM in the air on that date (measured in micrograms
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [6]:</div>
+<div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Check data file format</span>
-<span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="nf">head</span><span class="p">(</span><span class="nf">unzip</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
 </pre></div>
 
     </div>
@@ -197,12 +197,49 @@ nitrate: the level of nitrate PM in the air on that date (measured in micrograms
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_text output_error">
-<pre>
-Error in unz(file, list = TRUE): unused argument (list = TRUE)
-Traceback:
-</pre>
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Name</th>
+<th scope="col">Length</th>
+<th scope="col">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>data/              </td>
+<td>    0              </td>
+<td>2012-09-22 00:27:00</td>
+</tr>
+<tr>
+<td>data/001.csv       </td>
+<td>31271              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/002.csv       </td>
+<td>81435              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/003.csv       </td>
+<td>47185              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/004.csv       </td>
+<td>78887              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/005.csv       </td>
+<td>63204              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+</tbody>
+</table>
 </div>
+
 </div>
 
 </div>
@@ -229,9 +266,9 @@ Traceback:
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">pollutantmean</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">pollutant</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
-    <span class="c1"># Initialize an empty vector.</span>
-    <span class="n">pollutant_vector</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">()</span>
+<div class=" highlight hl-r"><pre><span></span><span class="n">PollutantStats</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">directory</span><span class="p">,</span><span class="n">pollutant</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
+    <span class="c1"># Initialize empty vector.</span>
+    <span class="n">stats</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="m">0</span><span class="p">)</span>
     <span class="c1"># Loop through each file number.</span>
     <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
         <span class="c1"># We need to have the file path in "specdata/001.csv" format to use read.csv() function.</span>
