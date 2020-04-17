@@ -73,7 +73,335 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00400/" class="u-url">R programming with swirl</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00401/" class="u-url">Basic Building Blocks</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00401/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T22:56:45+05:30" itemprop="datePublished" title="2020-04-13 22:56">2020-04-13 22:56</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00401/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00401_Basic Building Blocks.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00401_Basic Building Blocks.html";
+var idcomments_post_url = "/posts/00401/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 1</p>
+<p>| In its simplest form, R can be used as an interactive<br>
+| calculator. Type 5 + 7 and press Enter.</p>
+<blockquote>
+<p>5+7<br>
+[1] 12</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|====                                                     |   8%<br>
+| R simply prints the result of 12 by default. However, R is a<br>
+| programming language and often the reason we use a programming<br>
+| language as opposed to a calculator is to automate some process<br>
+| or avoid unnecessary repetition.</p>
+<p>...</p>
+<p>|======                                                   |  11%<br>
+| In this case, we may want to use our result from above in a<br>
+| second calculation. Instead of retyping 5 + 7 every time we need<br>
+| it, we can just create a new variable that stores the result.</p>
+<p>...</p>
+<p>|========                                                 |  13%<br>
+| The way you assign a value to a variable in R is by using the<br>
+| assignment operator, which is just a 'less than' symbol followed<br>
+| by a 'minus' sign. It looks like this: &lt;-</p>
+<p>...</p>
+<p>|=========                                                |  16%<br>
+| Think of the assignment operator as an arrow. You are assigning<br>
+| the value on the right side of the arrow to the variable name on<br>
+| the left side of the arrow.</p>
+<p>...</p>
+<p>|==========                                               |  18%<br>
+| To assign the result of 5 + 7 to a new variable called x, you<br>
+| type x &lt;- 5 + 7. This can be read as 'x gets 5 plus 7'. Give it<br>
+| a try now.</p>
+<blockquote>
+<p>x&lt;-5+7</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|============                                             |  21%<br>
+| You'll notice that R did not print the result of 12 this time.<br>
+| When you use the assignment operator, R assumes that you don't<br>
+| want to see the result immediately, but rather that you intend<br>
+| to use the result for something else later on.</p>
+<p>...</p>
+<p>|==============                                           |  24%<br>
+| To view the contents of the variable x, just type x and press<br>
+| Enter. Try it now.</p>
+<blockquote>
+<p>x<br>
+[1] 12</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===============                                          |  26%<br>
+| Now, store the result of x - 3 in a new variable called y.</p>
+<blockquote>
+<p>y&lt;-x-3</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|================                                         |  29%<br>
+| What is the value of y? Type y to find out.</p>
+<blockquote>
+<p>y<br>
+[1] 9</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|==================                                       |  32%<br>
+| Now, let's create a small collection of numbers called a vector.<br>
+| Any object that contains data is called a data structure and<br>
+| numeric vectors are the simplest type of data structure in R. In<br>
+| fact, even a single number is considered a vector of length one.</p>
+<p>...</p>
+<p>|===================                                      |  34%<br>
+| The easiest way to create a vector is with the c() function,<br>
+| which stands for 'concatenate' or 'combine'. To create a vector<br>
+| containing the numbers 1.1, 9, and 3.14, type c(1.1, 9, 3.14).<br>
+| Try it now and store the result in a variable called z.</p>
+<blockquote>
+<p>z&lt;-c(1.1,9,3.14)</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=====================                                    |  37%<br>
+| Anytime you have questions about a particular function, you can<br>
+| access R's built-in help files via the <code>?</code> command. For example,<br>
+| if you want more information on the c() function, type ?c<br>
+| without the parentheses that normally follow a function name.<br>
+| Give it a try.</p>
+<blockquote>
+<p>?c</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|======================                                   |  39%<br>
+| Type z to view its contents. Notice that there are no commas<br>
+| separating the values in the output.</p>
+<blockquote>
+<p>z<br>
+[1] 1.10 9.00 3.14</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|========================                                 |  42%<br>
+| You can combine vectors to make a new vector. Create a new<br>
+| vector that contains z, 555, then z again in that order. Don't<br>
+| assign this vector to a new variable, so that we can just see<br>
+| the result immediately.</p>
+<blockquote>
+<p>c(z,555,z)<br>
+[1]   1.10   9.00   3.14 555.00   1.10   9.00   3.14</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|=========================                                |  45%<br>
+| Numeric vectors can be used in arithmetic expressions. Type the<br>
+| following to see what happens: z * 2 + 100.</p>
+<blockquote>
+<p>z*2+100<br>
+[1] 102.20 118.00 106.28</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===========================                              |  47%<br>
+| First, R multiplied each of the three elements in z by 2. Then<br>
+| it added 100 to each element to get the result you see above.</p>
+<p>...</p>
+<p>|============================                             |  50%<br>
+| Other common arithmetic operators are <code>+</code>, <code>-</code>, <code>/</code>, and <code>^</code><br>
+| (where x^2 means 'x squared'). To take the square root, use the<br>
+| sqrt() function and to take the absolute value, use the abs()<br>
+| function.</p>
+<p>...</p>
+<p>|==============================                           |  53%<br>
+| Take the square root of z - 1 and assign it to a new variable<br>
+| called my_sqrt.</p>
+<blockquote>
+<p>my_sqrt&lt;-sqrt(z-1)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===============================                          |  55%<br>
+| Before we view the contents of the my_sqrt variable, what do you<br>
+| think it contains?</p>
+<p>1: a single number (i.e a vector of length 1)<br>
+2: a vector of length 0 (i.e. an empty vector)<br>
+3: a vector of length 3</p>
+<p>Selection: 3</p>
+<p>| Excellent work!</p>
+<p>|=================================                        |  58%<br>
+| Print the contents of my_sqrt.</p>
+<blockquote>
+<p>my_sqrt<br>
+[1] 0.3162278 2.8284271 1.4628739</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==================================                       |  61%<br>
+| As you may have guessed, R first subtracted 1 from each element<br>
+| of z, then took the square root of each element. This leaves you<br>
+| with a vector of the same length as the original vector z.</p>
+<p>...</p>
+<p>|====================================                     |  63%<br>
+| Now, create a new variable called my_div that gets the value of<br>
+| z divided by my_sqrt.</p>
+<blockquote>
+<p>my_div&lt;-z/my_sqrt</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=====================================                    |  66%<br>
+| Which statement do you think is true?</p>
+<p>1: my_div is a single number (i.e a vector of length 1)<br>
+2: The first element of my_div is equal to the first element of z divided by the first element of my_sqrt, and so on...<br>
+3: my_div is undefined</p>
+<p>Selection: 2</p>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================                  |  68%<br>
+| Go ahead and print the contents of my_div.</p>
+<blockquote>
+<p>my_div<br>
+[1] 3.478505 3.181981 2.146460</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|========================================                 |  71%<br>
+| When given two vectors of the same length, R simply performs the<br>
+| specified arithmetic operation (<code>+</code>, <code>-</code>, <code>*</code>, etc.)<br>
+| element-by-element. If the vectors are of different lengths, R<br>
+| 'recycles' the shorter vector until it is the same length as the<br>
+| longer vector.</p>
+<p>...</p>
+<p>|==========================================               |  74%<br>
+| When we did z * 2 + 100 in our earlier example, z was a vector<br>
+| of length 3, but technically 2 and 100 are each vectors of<br>
+| length 1.</p>
+<p>...</p>
+<p>|===========================================              |  76%<br>
+| Behind the scenes, R is 'recycling' the 2 to make a vector of 2s<br>
+| and the 100 to make a vector of 100s. In other words, when you<br>
+| ask R to compute z <em> 2 + 100, what it really computes is this: z<br>
+| </em> c(2, 2, 2) + c(100, 100, 100).</p>
+<p>...</p>
+<p>|=============================================            |  79%<br>
+| To see another example of how this vector 'recycling' works, try<br>
+| adding c(1, 2, 3, 4) and c(0, 10). Don't worry about saving the<br>
+| result in a new variable.</p>
+<blockquote>
+<p>c(1,2,3,4)+c(0,10)<br>
+[1]  1 12  3 14</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|==============================================           |  82%<br>
+| If the length of the shorter vector does not divide evenly into<br>
+| the length of the longer vector, R will still apply the<br>
+| 'recycling' method, but will throw a warning to let you know<br>
+| something fishy might be going on.</p>
+<p>...</p>
+<p>|================================================         |  84%<br>
+| Try c(1, 2, 3, 4) + c(0, 10, 100) for an example.</p>
+<blockquote>
+<p>c(1,2,3,4)+c(0,10,100)<br>
+[1]   1  12 103   4<br>
+Warning message:<br>
+In c(1, 2, 3, 4) + c(0, 10, 100) :<br>
+  longer object length is not a multiple of shorter object length</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|=================================================        |  87%<br>
+| Before concluding this lesson, I'd like to show you a couple of<br>
+| time-saving tricks.</p>
+<p>...</p>
+<p>|===================================================      |  89%<br>
+| Earlier in the lesson, you computed z * 2 + 100. Let's pretend<br>
+| that you made a mistake and that you meant to add 1000 instead<br>
+| of 100. You could either re-type the expression, or...</p>
+<p>...</p>
+<p>|====================================================     |  92%<br>
+| In many programming environments, the up arrow will cycle<br>
+| through previous commands. Try hitting the up arrow on your<br>
+| keyboard until you get to this command (z * 2 + 100), then<br>
+| change 100 to 1000 and hit Enter. If the up arrow doesn't work<br>
+| for you, just type the corrected command.</p>
+<blockquote>
+<p>z*2+1000<br>
+[1] 1002.20 1018.00 1006.28</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|======================================================   |  95%<br>
+| Finally, let's pretend you'd like to view the contents of a<br>
+| variable that you created earlier, but you can't seem to<br>
+| remember if you named it my_div or myDiv. You could try both and<br>
+| see what works, or...</p>
+<p>...</p>
+<p>|=======================================================  |  97%<br>
+| You can type the first two letters of the variable name, then<br>
+| hit the Tab key (possibly more than once). Most programming<br>
+| environments will provide a list of variables that you've<br>
+| created that begin with 'my'. This is called auto-completion and<br>
+| can be quite handy when you have many variables in your<br>
+| workspace. Give it a try. (If auto-completion doesn't work for<br>
+| you, just type my_div and press Enter.)</p>
+<blockquote>
+<p>my_div<br>
+[1] 3.478505 3.181981 2.146460</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=========================================================| 100%<br>
+| Would you like to receive credit for completing this course on<br>
+| Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-13 23:14:53.892452 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00400/" class="u-url">R programming with swirl</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
