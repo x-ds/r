@@ -134,15 +134,27 @@ nitrate: the level of nitrate PM in the air on that date (measured in micrograms
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [1]:</div>
+<div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Create an empty file in memory</span>
 <span class="n">file</span><span class="o">&lt;-</span><span class="nf">tempfile</span><span class="p">()</span>
 <span class="c1"># Download the zip file to this empty file</span>
 <span class="nf">download.file</span><span class="p">(</span><span class="s">"http://link.datascience.eu.org/p004d1"</span><span class="p">,</span><span class="n">file</span><span class="p">)</span>
-<span class="c1"># Check data file format</span>
-<span class="nf">unzip</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [6]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Check data file format</span>
+<span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -158,23 +170,11 @@ nitrate: the level of nitrate PM in the air on that date (measured in micrograms
     <div class="prompt"></div>
 
 
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>Warning message in download.file("http://link.datascience.eu.org/p004d1", file):
-"cannot open URL 'http://link.datascience.eu.org/p004d1': HTTP status was '404 Not Found'"</pre>
-</div>
-</div>
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
 <div class="output_subarea output_text output_error">
 <pre>
-Error in download.file("http://link.datascience.eu.org/p004d1", file): cannot open URL 'http://link.datascience.eu.org/p004d1'
+Error in unz(file, list = TRUE): unused argument (list = TRUE)
 Traceback:
-
-1. download.file("http://link.datascience.eu.org/p004d1", file)</pre>
+</pre>
 </div>
 </div>
 
