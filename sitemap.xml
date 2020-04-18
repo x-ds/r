@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-17T13:05:00Z</lastmod>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
@@ -55,7 +55,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-17T13:05:00Z</lastmod>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/00100/</loc>
@@ -110,6 +110,14 @@
   <lastmod>2020-04-15T08:57:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/00410/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/posts/00411/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
@@ -119,11 +127,11 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/index-1.html</loc>
-  <lastmod>2020-04-17T13:05:00Z</lastmod>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-17T13:05:00Z</lastmod>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/all/</loc>
@@ -198,6 +206,10 @@
   <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/lapply/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/listfiles/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
@@ -254,6 +266,10 @@
   <lastmod>2020-04-10T05:50:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/sapply/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/seq/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
  </url>
@@ -286,8 +302,16 @@
   <lastmod>2020-04-13T17:47:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/tags/tapply/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/tags/unzip/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/vapply/</loc>
+  <lastmod>2020-04-18T15:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/vectors/</loc>

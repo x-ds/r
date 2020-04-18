@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>vapply and tapply | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/00411/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00410/" title="lapply and sapply" type="text/html">
+<link rel="next" href="../00501/" title="COVID-19 data" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="vapply and tapply">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/00411/">
+<meta property="og:description" content="swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you
+| did then. If you are new, call yourself something unique.
+What shall I call you? Krishnakanth Allika">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-15T12:39:56+05:30">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="swirl">
+<meta property="article:tag" content="tapply">
+<meta property="article:tag" content="vapply">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">vapply and tapply</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:39:56+05:30" itemprop="datePublished" title="2020-04-15 12:39">2020-04-15 12:39</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00411/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00411_vapply and tapply.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00411_vapply and tapply.html";
+var idcomments_post_url = "/posts/00411/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 11</p>
+<p>|                                                                                |   0%</p>
+<p>| In the last lesson, you learned about the two most fundamental members of R's *apply<br>
+| family of functions: lapply() and sapply(). Both take a list as input, apply a function<br>
+| to each element of the list, then combine and return the result. lapply() always<br>
+| returns a list, whereas sapply() attempts to simplify the result.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| In this lesson, you'll learn how to use vapply() and tapply(), each of which serves a<br>
+| very specific purpose within the Split-Apply-Combine methodology. For consistency,<br>
+| we'll use the same dataset we used in the 'lapply and sapply' lesson.</p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| The Flags dataset from the UCI Machine Learning Repository contains details of various<br>
+| nations and their flags. More information may be found here:<br>
+| <a href="http://archive.ics.uci.edu/ml/datasets/Flags">http://archive.ics.uci.edu/ml/datasets/Flags</a></p>
+<p>...</p>
+<p>|==========                                                                      |  12%<br>
+| I've stored the data in a variable called flags. If it's been a while since you<br>
+| completed the 'lapply and sapply' lesson, you may want to reacquaint yourself with the<br>
+| data by using functions like dim(), head(), str(), and summary() when you return to the<br>
+| prompt (&gt;). You can also type viewinfo() at the prompt to bring up some documentation<br>
+| for the dataset. Let's get started!</p>
+<p>...</p>
+<p>|=============                                                                   |  16%<br>
+| As you saw in the last lesson, the unique() function returns a vector of the unique<br>
+| values contained in the object passed to it. Therefore, sapply(flags, unique) returns a<br>
+| list containing one vector of unique values for each column of the flags dataset. Try<br>
+| it again now.</p>
+<blockquote>
+<p>sapply(flags, unique)<br>
+$name<br>
+  [1] Afghanistan              Albania                  Algeria<br>
+  [4] American-Samoa           Andorra                  Angola<br>
+  [7] Anguilla                 Antigua-Barbuda          Argentina<br>
+ [10] Argentine                Australia                Austria<br>
+ [13] Bahamas                  Bahrain                  Bangladesh<br>
+ [16] Barbados                 Belgium                  Belize<br>
+ [19] Benin                    Bermuda                  Bhutan<br>
+ [22] Bolivia                  Botswana                 Brazil<br>
+ [25] British-Virgin-Isles     Brunei                   Bulgaria<br>
+ [28] Burkina                  Burma                    Burundi<br>
+ [31] Cameroon                 Canada                   Cape-Verde-Islands<br>
+ [34] Cayman-Islands           Central-African-Republic Chad<br>
+ [37] Chile                    China                    Colombia<br>
+ [40] Comorro-Islands          Congo                    Cook-Islands<br>
+ [43] Costa-Rica               Cuba                     Cyprus<br>
+ [46] Czechoslovakia           Denmark                  Djibouti<br>
+ [49] Dominica                 Dominican-Republic       Ecuador<br>
+ [52] Egypt                    El-Salvador              Equatorial-Guinea<br>
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas<br>
+ [58] Fiji                     Finland                  France<br>
+ [61] French-Guiana            French-Polynesia         Gabon<br>
+ [64] Gambia                   Germany-DDR              Germany-FRG<br>
+ [67] Ghana                    Gibraltar                Greece<br>
+ [70] Greenland                Grenada                  Guam<br>
+ [73] Guatemala                Guinea                   Guinea-Bissau<br>
+ [76] Guyana                   Haiti                    Honduras<br>
+ [79] Hong-Kong                Hungary                  Iceland<br>
+ [82] India                    Indonesia                Iran<br>
+ [85] Iraq                     Ireland                  Israel<br>
+ [88] Italy                    Ivory-Coast              Jamaica<br>
+ [91] Japan                    Jordan                   Kampuchea<br>
+ [94] Kenya                    Kiribati                 Kuwait<br>
+ [97] Laos                     Lebanon                  Lesotho<br>
+[100] Liberia                  Libya                    Liechtenstein<br>
+[103] Luxembourg               Malagasy                 Malawi<br>
+[106] Malaysia                 Maldive-Islands          Mali<br>
+[109] Malta                    Marianas                 Mauritania<br>
+[112] Mauritius                Mexico                   Micronesia<br>
+[115] Monaco                   Mongolia                 Montserrat<br>
+[118] Morocco                  Mozambique               Nauru<br>
+[121] Nepal                    Netherlands              Netherlands-Antilles<br>
+[124] New-Zealand              Nicaragua                Niger<br>
+[127] Nigeria                  Niue                     North-Korea<br>
+[130] North-Yemen              Norway                   Oman<br>
+[133] Pakistan                 Panama                   Papua-New-Guinea<br>
+[136] Parguay                  Peru                     Philippines<br>
+[139] Poland                   Portugal                 Puerto-Rico<br>
+[142] Qatar                    Romania                  Rwanda<br>
+[145] San-Marino               Sao-Tome                 Saudi-Arabia<br>
+[148] Senegal                  Seychelles               Sierra-Leone<br>
+[151] Singapore                Soloman-Islands          Somalia<br>
+[154] South-Africa             South-Korea              South-Yemen<br>
+[157] Spain                    Sri-Lanka                St-Helena<br>
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent<br>
+[163] Sudan                    Surinam                  Swaziland<br>
+[166] Sweden                   Switzerland              Syria<br>
+[169] Taiwan                   Tanzania                 Thailand<br>
+[172] Togo                     Tonga                    Trinidad-Tobago<br>
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands<br>
+[178] Tuvalu                   UAE                      Uganda<br>
+[181] UK                       Uruguay                  US-Virgin-Isles<br>
+[184] USA                      USSR                     Vanuatu<br>
+[187] Vatican-City             Venezuela                Vietnam<br>
+[190] Western-Samoa            Yugoslavia               Zaire<br>
+[193] Zambia                   Zimbabwe<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 5 3 4 6 1 2</p>
+<p>$zone<br>
+[1] 1 3 2 4</p>
+<p>$area<br>
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23   113<br>
+ [15]    47  1099   600  8512     6   111   274   678    28   474  9976     4   623  1284<br>
+ [29]   757  9561  1139     2   342    51   115     9   128    43    22    49   284  1001<br>
+ [43]    21  1222    12    18   337   547    91   268    10   108   249   239   132  2176<br>
+ [57]   109   246    36   215   112    93   103  3268  1904  1648   435    70   301   323<br>
+ [71]    11   372    98   181   583   236    30  1760     3   587   118   333  1240  1031<br>
+ [85]  1973  1566   447   783   140    41  1267   925   121   195   324   212   804    76<br>
+ [99]   463   407  1285   300   313    92   237    26  2150   196    72   637  1221    99<br>
+[113]   288   505    66  2506    63    17   450   185   945   514    57     5   164   781<br>
+[127]   245   178  9363 22402    15   912   256   905   753   391</p>
+<p>$population<br>
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4   24<br>
+[18]    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118   13   77<br>
+[35]   12   56   18   84   48   36   22   29   38   49   45  231  274   60</p>
+<p>$language<br>
+ [1] 10  6  8  1  2  4  3  5  7  9</p>
+<p>$religion<br>
+[1] 2 6 1 0 5 3 4 7</p>
+<p>$bars<br>
+[1] 0 2 3 1 5</p>
+<p>$stripes<br>
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7</p>
+<p>$colours<br>
+[1] 5 3 2 8 6 4 7 1</p>
+<p>$red<br>
+[1] 1 0</p>
+<p>$green<br>
+[1] 1 0</p>
+<p>$blue<br>
+[1] 0 1</p>
+<p>$gold<br>
+[1] 1 0</p>
+<p>$white<br>
+[1] 1 0</p>
+<p>$black<br>
+[1] 1 0</p>
+<p>$orange<br>
+[1] 0 1</p>
+<p>$mainhue<br>
+[1] green  red    blue   gold   white  orange black  brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 0 1 4 2</p>
+<p>$crosses<br>
+[1] 0 1 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 1 4</p>
+<p>$sunstars<br>
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50</p>
+<p>$crescent<br>
+[1] 0 1</p>
+<p>$triangle<br>
+[1] 0 1</p>
+<p>$icon<br>
+[1] 1 0</p>
+<p>$animate<br>
+[1] 0 1</p>
+<p>$text<br>
+[1] 0 1</p>
+<p>$topleft<br>
+[1] black  red    green  blue   white  orange gold<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] green  red    white  black  blue   gold   orange brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| You got it right!</p>
+<p>|================                                                                |  20%<br>
+| What if you had forgotten how unique() works and mistakenly thought it returns the<br>
+| <em>number</em> of unique values contained in the object passed to it? Then you might have<br>
+| incorrectly expected sapply(flags, unique) to return a numeric vector, since each<br>
+| element of the list returned would contain a single number and sapply() could then<br>
+| simplify the result to a vector.</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| When working interactively (at the prompt), this is not much of a problem, since you<br>
+| see the result immediately and will quickly recognize your mistake. However, when<br>
+| working non-interactively (e.g. writing your own functions), a misunderstanding may go<br>
+| undetected and cause incorrect results later on. Therefore, you may wish to be more<br>
+| careful and that's where vapply() is useful.</p>
+<p>...</p>
+<p>|======================                                                          |  28%<br>
+| Whereas sapply() tries to 'guess' the correct format of the result, vapply() allows you<br>
+| to specify it explicitly. If the result doesn't match the format you specify, vapply()<br>
+| will throw an error, causing the operation to stop. This can prevent significant<br>
+| problems in your code that might be caused by getting unexpected return values from<br>
+| sapply().</p>
+<p>...</p>
+<p>|==========================                                                      |  32%<br>
+| Try vapply(flags, unique, numeric(1)), which says that you expect each element of the<br>
+| result to be a numeric vector of length 1. Since this is NOT actually the case, YOU<br>
+| WILL GET AN ERROR. Once you get the error, type ok() to continue to the next question.</p>
+<blockquote>
+<p>vapply(flags, unique, numeric(1))<br>
+Error in vapply(flags, unique, numeric(1)) : values must be length 1,<br>
+ but FUN(X[[1]]) result is length 194<br>
+ok()</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=============================                                                   |  36%<br>
+| Recall from the previous lesson that sapply(flags, class) will return a character<br>
+| vector containing the class of each column in the dataset. Try that again now to see<br>
+| the result.</p>
+<blockquote>
+<p>sapply(flags, class)<br>
+      name   landmass       zone       area population   language   religion       bars<br>
+  "factor"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+   stripes    colours        red      green       blue       gold      white      black<br>
+ "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+    orange    mainhue    circles    crosses   saltires   quarters   sunstars   crescent<br>
+ "integer"   "factor"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+  triangle       icon    animate       text    topleft   botright<br>
+ "integer"  "integer"  "integer"  "integer"   "factor"   "factor"</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|================================                                                |  40%<br>
+| If we wish to be explicit about the format of the result we expect, we can use<br>
+| vapply(flags, class, character(1)). The 'character(1)' argument tells R that we expect<br>
+| the class function to return a character vector of length 1 when applied to EACH column<br>
+| of the flags dataset. Try it now.</p>
+<blockquote>
+<p>vapply(flags, class,character(1))<br>
+      name   landmass       zone       area population   language   religion       bars<br>
+  "factor"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+   stripes    colours        red      green       blue       gold      white      black<br>
+ "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+    orange    mainhue    circles    crosses   saltires   quarters   sunstars   crescent<br>
+ "integer"   "factor"  "integer"  "integer"  "integer"  "integer"  "integer"  "integer"<br>
+  triangle       icon    animate       text    topleft   botright<br>
+ "integer"  "integer"  "integer"  "integer"   "factor"   "factor"</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|===================================                                             |  44%<br>
+| Note that since our expectation was correct (i.e. character(1)), the vapply() result is<br>
+| identical to the sapply() result -- a character vector of column classes.</p>
+<p>...</p>
+<p>|======================================                                          |  48%<br>
+| You might think of vapply() as being 'safer' than sapply(), since it requires you to<br>
+| specify the format of the output in advance, instead of just allowing R to 'guess' what<br>
+| you wanted. In addition, vapply() may perform faster than sapply() for large datasets.<br>
+| However, when doing data analysis interactively (at the prompt), sapply() saves you<br>
+| some typing and will often be good enough.</p>
+<p>...</p>
+<p>|==========================================                                      |  52%<br>
+| As a data analyst, you'll often wish to split your data up into groups based on the<br>
+| value of some variable, then apply a function to the members of each group. The next<br>
+| function we'll look at, tapply(), does exactly that.</p>
+<p>...</p>
+<p>|=============================================                                   |  56%<br>
+| Use ?tapply to pull up the documentation.</p>
+<blockquote>
+<p>?tapply</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|================================================                                |  60%<br>
+| The 'landmass' variable in our dataset takes on integer values between 1 and 6, each of<br>
+| which represents a different part of the world. Use table(flags$landmass) to see how<br>
+| many flags/countries fall into each group.</p>
+<blockquote>
+<p>table(flags$landmass)</p>
+</blockquote>
+<p>1  2  3  4  5  6<br>
+31 17 35 52 39 20</p>
+<p>| You're the best!</p>
+<p>|===================================================                             |  64%<br>
+| The 'animate' variable in our dataset takes the value 1 if a country's flag contains an<br>
+| animate image (e.g. an eagle, a tree, a human hand) and 0 otherwise. Use<br>
+| table(flags$animate) to see how many flags contain an animate image.</p>
+<blockquote>
+<p>table(flags$animate)</p>
+</blockquote>
+<p>0   1<br>
+155  39</p>
+<p>| Nice work!</p>
+<p>|======================================================                          |  68%<br>
+| This tells us that 39 flags contain an animate object (animate = 1) and 155 do not<br>
+| (animate = 0).</p>
+<p>...</p>
+<p>|==========================================================                      |  72%<br>
+| If you take the arithmetic mean of a bunch of 0s and 1s, you get the proportion of 1s.<br>
+| Use tapply(flags$animate, flags$landmass, mean) to apply the mean function to the<br>
+| 'animate' variable separately for each of the six landmass groups, thus giving us the<br>
+| proportion of flags containing an animate image WITHIN each landmass group.</p>
+<blockquote>
+<p>tapply(flags$animate, flags$landmass, mean)<br>
+        1         2         3         4         5         6<br>
+0.4193548 0.1764706 0.1142857 0.1346154 0.1538462 0.3000000</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=============================================================                   |  76%<br>
+| The first landmass group (landmass = 1) corresponds to North America and contains the<br>
+| highest proportion of flags with an animate image (0.4194).</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| Similarly, we can look at a summary of population values (in round millions) for<br>
+| countries with and without the color red on their flag with tapply(flags$population,  
+| flags$red, summary).</p>
+<blockquote>
+<p>tapply(flags$population,flags$red, summary)<br>
+$<code>0</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    0.00    3.00   27.63    9.00  684.00</p>
+</blockquote>
+<p>$<code>1</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+    0.0     0.0     4.0    22.1    15.0  1008.0</p>
+<p>| Great job!</p>
+<p>|===================================================================             |  84%<br>
+| What is the median population (in millions) for countries <em>without</em> the color red on<br>
+| their flag?</p>
+<p>1: 22.1<br>
+2: 27.6<br>
+3: 4.0<br>
+4: 3.0<br>
+5: 0.0<br>
+6: 9.0</p>
+<p>Selection: 4</p>
+<p>| That's correct!</p>
+<p>|======================================================================          |  88%<br>
+| Lastly, use the same approach to look at a summary of population values for each of the<br>
+| six landmasses.</p>
+<blockquote>
+<p>tapply(flags$population,flags$landmass, summary)<br>
+$<code>1</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    0.00    0.00   12.29    4.50  231.00</p>
+</blockquote>
+<p>$<code>2</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    1.00    6.00   15.71   15.00  119.00</p>
+<p>$<code>3</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    0.00    8.00   13.86   16.00   61.00</p>
+<p>$<code>4</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+  0.000   1.000   5.000   8.788   9.750  56.000</p>
+<p>$<code>5</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    2.00   10.00   69.18   39.00 1008.00</p>
+<p>$<code>6</code><br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+   0.00    0.00    0.00   11.30    1.25  157.00</p>
+<p>| You are doing so well!</p>
+<p>|==========================================================================      |  92%<br>
+| What is the maximum population (in millions) for the fourth landmass group (Africa)?</p>
+<p>1: 5.00<br>
+2: 56.00<br>
+3: 157.00<br>
+4: 119.0<br>
+5: 1010.0</p>
+<p>Selection: 2</p>
+<p>| Nice work!</p>
+<p>|=============================================================================   |  96%<br>
+| In this lesson, you learned how to use vapply() as a safer alternative to sapply(),<br>
+| which is most helpful when writing your own functions. You also learned how to use<br>
+| tapply() to split your data into groups based on the value of some variable, then apply<br>
+| a function to each group. These functions will come in handy on your quest to become a<br>
+| better data analyst.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's the answer I was looking for.</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "flags"    "ok"       "viewinfo"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-18 20:41:25.391453 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+            <li><a class="tag p-category" href="../../tags/tapply/" rel="tag">tapply</a></li>
+            <li><a class="tag p-category" href="../../tags/vapply/" rel="tag">vapply</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00410/" rel="prev" title="lapply and sapply">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../00501/" rel="next" title="COVID-19 data">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00411_vapply and tapply.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/00411/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lapply and sapply | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/00410/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00409/" title="Functions" type="text/html">
+<link rel="next" href="../00411/" title="vapply and tapply" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="lapply and sapply">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/00410/">
+<meta property="og:description" content="swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you
+| did then. If you are new, call yourself something unique.
+What shall I call you? Krishnakanth Allika">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-15T12:38:13+05:30">
+<meta property="article:tag" content="lapply">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="sapply">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">lapply and sapply</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:38:13+05:30" itemprop="datePublished" title="2020-04-15 12:38">2020-04-15 12:38</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00410/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00410_lapply and sapply.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00410_lapply and sapply.html";
+var idcomments_post_url = "/posts/00410/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p><br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 10</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, you'll learn how to use lapply() and sapply(), the two most important<br>
+| members of R's *apply family of functions, also known as loop functions.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| These powerful functions, along with their close relatives (vapply() and tapply(),<br>
+| among others) offer a concise and convenient means of implementing the<br>
+| Split-Apply-Combine strategy for data analysis.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Each of the *apply functions will SPLIT up some data into smaller pieces, APPLY a<br>
+| function to each piece, then COMBINE the results. A more detailed discussion of this<br>
+| strategy is found in Hadley Wickham's Journal of Statistical Software paper titled 'The<br>
+| Split-Apply-Combine Strategy for Data Analysis'.</p>
+<p>...</p>
+<p>|=====                                                                           |   6%<br>
+| Throughout this lesson, we'll use the Flags dataset from the UCI Machine Learning<br>
+| Repository. This dataset contains details of various nations and their flags. More<br>
+| information may be found here: <a href="http://archive.ics.uci.edu/ml/datasets/Flags">http://archive.ics.uci.edu/ml/datasets/Flags</a></p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| Let's jump right in so you can get a feel for how these special functions work!</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| I've stored the dataset in a variable called flags. Type head(flags) to preview the<br>
+| first six lines (i.e. the 'head') of the dataset.</p>
+<blockquote>
+<p>head(flags)<br>
+            name landmass zone area population language religion bars stripes colours red<br>
+1    Afghanistan        5    1  648         16       10        2    0       3       5   1<br>
+2        Albania        3    1   29          3        6        6    0       0       3   1<br>
+3        Algeria        4    1 2388         20        8        2    2       0       3   1<br>
+4 American-Samoa        6    3    0          0        1        1    0       0       5   1<br>
+5        Andorra        3    1    0          0        6        0    3       0       3   1<br>
+6         Angola        4    2 1247          7       10        5    0       2       3   1<br>
+  green blue gold white black orange mainhue circles crosses saltires quarters sunstars<br>
+1     1    0    1     1     1      0   green       0       0        0        0        1<br>
+2     0    0    1     0     1      0     red       0       0        0        0        1<br>
+3     1    0    0     1     0      0   green       0       0        0        0        1<br>
+4     0    1    1     1     0      1    blue       0       0        0        0        0<br>
+5     0    1    1     0     0      0    gold       0       0        0        0        0<br>
+6     0    0    1     0     1      0     red       0       0        0        0        1<br>
+  crescent triangle icon animate text topleft botright<br>
+1        0        0    1       0    0   black    green<br>
+2        0        0    0       1    0     red      red<br>
+3        1        0    0       0    0   green    white<br>
+4        0        1    1       1    0    blue      red<br>
+5        0        0    0       0    0    blue      red<br>
+6        0        0    1       0    0     red    black</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|==========                                                                      |  12%<br>
+| You may need to scroll up to see all of the output. Now, let's check out the dimensions<br>
+| of the dataset using dim(flags).</p>
+<blockquote>
+<p>dim(flags)<br>
+[1] 194  30</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===========                                                                     |  14%<br>
+| This tells us that there are 194 rows, or observations, and 30 columns, or variables.<br>
+| Each observation is a country and each variable describes some characteristic of that<br>
+| country or its flag. To open a more complete description of the dataset in a separate<br>
+| text file, type viewinfo() when you are back at the prompt (&gt;).</p>
+<p>...</p>
+<p>|=============                                                                   |  16%<br>
+| As with any dataset, we'd like to know in what format the variables have been stored.<br>
+| In other words, what is the 'class' of each variable? What happens if we do<br>
+| class(flags)? Try it out.</p>
+<blockquote>
+<p>class(flags)<br>
+[1] "data.frame"</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|==============                                                                  |  18%<br>
+| That just tells us that the entire dataset is stored as a 'data.frame', which doesn't<br>
+| answer our question. What we really need is to call the class() function on each<br>
+| individual column. While we could do this manually (i.e. one column at a time) it's<br>
+| much faster if we can automate the process. Sounds like a loop!</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| The lapply() function takes a list as input, applies a function to each element of the<br>
+| list, then returns a list of the same length as the original one. Since a data frame is<br>
+| really just a list of vectors (you can see this with as.list(flags)), we can use<br>
+| lapply() to apply the class() function to each column of the flags dataset. Let's see<br>
+| it in action!</p>
+<p>...</p>
+<p>|==================                                                              |  22%<br>
+| Type cls_list &lt;- lapply(flags, class) to apply the class() function to each column of<br>
+| the flags dataset and store the result in a variable called cls_list. Note that you<br>
+| just supply the name of the function you want to apply (i.e. class), without the usual<br>
+| parentheses after it.</p>
+<blockquote>
+<p><br>
+cls_list&lt;-lapply(flags,class)</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|===================                                                             |  24%<br>
+| Type cls_list to view the result.</p>
+<blockquote>
+<p>cls_list<br>
+$name<br>
+[1] "factor"</p>
+</blockquote>
+<p>$landmass<br>
+[1] "integer"</p>
+<p>$zone<br>
+[1] "integer"</p>
+<p>$area<br>
+[1] "integer"</p>
+<p>$population<br>
+[1] "integer"</p>
+<p>$language<br>
+[1] "integer"</p>
+<p>$religion<br>
+[1] "integer"</p>
+<p>$bars<br>
+[1] "integer"</p>
+<p>$stripes<br>
+[1] "integer"</p>
+<p>$colours<br>
+[1] "integer"</p>
+<p>$red<br>
+[1] "integer"</p>
+<p>$green<br>
+[1] "integer"</p>
+<p>$blue<br>
+[1] "integer"</p>
+<p>$gold<br>
+[1] "integer"</p>
+<p>$white<br>
+[1] "integer"</p>
+<p>$black<br>
+[1] "integer"</p>
+<p>$orange<br>
+[1] "integer"</p>
+<p>$mainhue<br>
+[1] "factor"</p>
+<p>$circles<br>
+[1] "integer"</p>
+<p>$crosses<br>
+[1] "integer"</p>
+<p>$saltires<br>
+[1] "integer"</p>
+<p>$quarters<br>
+[1] "integer"</p>
+<p>$sunstars<br>
+[1] "integer"</p>
+<p>$crescent<br>
+[1] "integer"</p>
+<p>$triangle<br>
+[1] "integer"</p>
+<p>$icon<br>
+[1] "integer"</p>
+<p>$animate<br>
+[1] "integer"</p>
+<p>$text<br>
+[1] "integer"</p>
+<p>$topleft<br>
+[1] "factor"</p>
+<p>$botright<br>
+[1] "factor"</p>
+<p>| You are really on a roll!</p>
+<p>|=====================                                                           |  26%<br>
+| The 'l' in 'lapply' stands for 'list'. Type class(cls_list) to confirm that lapply()<br>
+| returned a list.</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>str(cls_list)<br>
+List of 30<br>
+ $ name      : chr "factor"  
+ $ landmass  : chr "integer"<br>
+ $ zone      : chr "integer"  
+ $ area      : chr "integer"<br>
+ $ population: chr "integer"  
+ $ language  : chr "integer"<br>
+ $ religion  : chr "integer"  
+ $ bars      : chr "integer"<br>
+ $ stripes   : chr "integer"  
+ $ colours   : chr "integer"<br>
+ $ red       : chr "integer"  
+ $ green     : chr "integer"<br>
+ $ blue      : chr "integer"  
+ $ gold      : chr "integer"<br>
+ $ white     : chr "integer"  
+ $ black     : chr "integer"<br>
+ $ orange    : chr "integer"  
+ $ mainhue   : chr "factor"<br>
+ $ circles   : chr "integer"  
+ $ crosses   : chr "integer"<br>
+ $ saltires  : chr "integer"  
+ $ quarters  : chr "integer"<br>
+ $ sunstars  : chr "integer"  
+ $ crescent  : chr "integer"<br>
+ $ triangle  : chr "integer"  
+ $ icon      : chr "integer"<br>
+ $ animate   : chr "integer"  
+ $ text      : chr "integer"<br>
+ $ topleft   : chr "factor"  
+ $ botright  : chr "factor"<br>
+cls_list[1,]<br>
+Error in cls_list[1, ] : incorrect number of dimensions<br>
+as.data.frame(cls_list)[1,]<br>
+    name landmass    zone    area population language religion    bars stripes colours<br>
+1 factor  integer integer integer    integer  integer  integer integer integer integer<br>
+      red   green    blue    gold   white   black  orange mainhue circles crosses<br>
+1 integer integer integer integer integer integer integer  factor integer integer<br>
+  saltires quarters sunstars crescent triangle    icon animate    text topleft botright<br>
+1  integer  integer  integer  integer  integer integer integer integer  factor   factor<br>
+nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| The 'l' in 'lapply' stands for 'list'. Type class(cls_list) to confirm that lapply()<br>
+| returned a list.</p>
+<blockquote>
+<p>class(cls_list)<br>
+[1] "list"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|======================                                                          |  28%<br>
+| As expected, we got a list of length 30 -- one element for each variable/column. The<br>
+| output would be considerably more compact if we could represent it as a vector instead<br>
+| of a list.</p>
+<p>...</p>
+<p>|========================                                                        |  30%<br>
+| You may remember from a previous lesson that lists are most helpful for storing<br>
+| multiple classes of data. In this case, since every element of the list returned by<br>
+| lapply() is a character vector of length one (i.e. "integer" and "vector"), cls_list<br>
+| can be simplified to a character vector. To do this manually, type<br>
+| as.character(cls_list).</p>
+<blockquote>
+<p>as.character(cls_list)<br>
+ [1] "factor"  "integer" "integer" "integer" "integer" "integer" "integer" "integer"<br>
+ [9] "integer" "integer" "integer" "integer" "integer" "integer" "integer" "integer"<br>
+[17] "integer" "factor"  "integer" "integer" "integer" "integer" "integer" "integer"<br>
+[25] "integer" "integer" "integer" "integer" "factor"  "factor"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================                                                      |  32%<br>
+| sapply() allows you to automate this process by calling lapply() behind the scenes, but<br>
+| then attempting to simplify (hence the 's' in 'sapply') the result for you. Use<br>
+| sapply() the same way you used lapply() to get the class of each column of the flags<br>
+| dataset and store the result in cls_vect. If you need help, type ?sapply to bring up<br>
+| the documentation.</p>
+<blockquote>
+<p>cls_vect&lt;-sappy(flags,class)<br>
+Error in sappy(flags, class) : could not find function "sappy"<br>
+cls_vect&lt;-sapply(flags,class)</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|===========================                                                     |  34%<br>
+| Use class(cls_vect) to confirm that sapply() simplified the result to a character<br>
+| vector.</p>
+<blockquote>
+<p>class(cls_vect)<br>
+[1] "character"</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=============================                                                   |  36%<br>
+| In general, if the result is a list where every element is of length one, then sapply()<br>
+| returns a vector. If the result is a list where every element is a vector of the same<br>
+| length (&gt; 1), sapply() returns a matrix. If sapply() can't figure things out, then it<br>
+| just returns a list, no different from what lapply() would give you.</p>
+<p>...</p>
+<p>|==============================                                                  |  38%<br>
+| Let's practice using lapply() and sapply() some more!</p>
+<p>...</p>
+<p>|================================                                                |  40%<br>
+| Columns 11 through 17 of our dataset are indicator variables, each representing a<br>
+| different color. The value of the indicator variable is 1 if the color is present in a<br>
+| country's flag and 0 otherwise.</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| Therefore, if we want to know the total number of countries (in our dataset) with, for<br>
+| example, the color orange on their flag, we can just add up all of the 1s and 0s in the<br>
+| 'orange' column. Try sum(flags$orange) to see this.</p>
+<blockquote>
+<p>sum(flags$orange)<br>
+[1] 26</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===================================                                             |  44%<br>
+| Now we want to repeat this operation for each of the colors recorded in the dataset.</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| First, use flag_colors &lt;- flags[, 11:17] to extract the columns containing the color<br>
+| data and store them in a new data frame called flag_colors. (Note the comma before<br>
+| 11:17. This subsetting command tells R that we want all rows, but only columns 11<br>
+| through 17.)</p>
+<blockquote>
+<p>flag_colors&lt;-flags[,11:17]</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|======================================                                          |  48%<br>
+| Use the head() function to look at the first 6 lines of flag_colors.</p>
+<blockquote>
+<p>head(flag_colors)<br>
+  red green blue gold white black orange<br>
+1   1     1    0    1     1     1      0<br>
+2   1     0    0    1     0     1      0<br>
+3   1     1    0    0     1     0      0<br>
+4   1     0    1    1     1     0      1<br>
+5   1     0    1    1     0     0      0<br>
+6   1     0    0    1     0     1      0</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|========================================                                        |  50%<br>
+| To get a list containing the sum of each column of flag_colors, call the lapply()<br>
+| function with two arguments. The first argument is the object over which we are looping<br>
+| (i.e. flag_colors) and the second argument is the name of the function we wish to apply<br>
+| to each column (i.e. sum). Remember that the second argument is just the name of the<br>
+| function with no parentheses, etc.</p>
+<blockquote>
+<p>lapply(flag_colors,aum)<br>
+Error in match.fun(FUN) : object 'aum' not found<br>
+lapply(flag_colors,sum)<br>
+$red<br>
+[1] 153</p>
+</blockquote>
+<p>$green<br>
+[1] 91</p>
+<p>$blue<br>
+[1] 99</p>
+<p>$gold<br>
+[1] 91</p>
+<p>$white<br>
+[1] 146</p>
+<p>$black<br>
+[1] 52</p>
+<p>$orange<br>
+[1] 26</p>
+<p>| All that hard work is paying off!</p>
+<p>|==========================================                                      |  52%<br>
+| This tells us that of the 194 flags in our dataset, 153 contain the color red, 91<br>
+| contain green, 99 contain blue, and so on.</p>
+<p>...</p>
+<p>|===========================================                                     |  54%<br>
+| The result is a list, since lapply() always returns a list. Each element of this list<br>
+| is of length one, so the result can be simplified to a vector by calling sapply()<br>
+| instead of lapply(). Try it now.</p>
+<blockquote>
+<p>sapply(flag_colors,sum)<br>
+   red  green   blue   gold  white  black orange<br>
+   153     91     99     91    146     52     26</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================================                                   |  56%<br>
+| Perhaps it's more informative to find the proportion of flags (out of 194) containing<br>
+| each color. Since each column is just a bunch of 1s and 0s, the arithmetic mean of each<br>
+| column will give us the proportion of 1s. (If it's not clear why, think of a simpler<br>
+| situation where you have three 1s and two 0s -- (1 + 1 + 1 + 0 + 0)/5 = 3/5 = 0.6).</p>
+<p>...</p>
+<p>|==============================================                                  |  58%<br>
+| Use sapply() to apply the mean() function to each column of flag_colors. Remember that<br>
+| the second argument to sapply() should just specify the name of the function (i.e.<br>
+| mean) that you want to apply.</p>
+<blockquote>
+<p>sapply(flag_colors,mean)<br>
+      red     green      blue      gold     white     black    orange<br>
+0.7886598 0.4690722 0.5103093 0.4690722 0.7525773 0.2680412 0.1340206</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|================================================                                |  60%<br>
+| In the examples we've looked at so far, sapply() has been able to simplify the result<br>
+| to vector. That's because each element of the list returned by lapply() was a vector of<br>
+| length one. Recall that sapply() instead returns a matrix when each element of the list<br>
+| returned by lapply() is a vector of the same length (&gt; 1).</p>
+<p>...</p>
+<p>|==================================================                              |  62%<br>
+| To illustrate this, let's extract columns 19 through 23 from the flags dataset and<br>
+| store the result in a new data frame called flag_shapes. flag_shapes &lt;- flags[, 19:23]<br>
+| will do it.</p>
+<blockquote>
+<p>flag_shapes&lt;-flags[,19:23]</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================================================                             |  64%<br>
+| Each of these columns (i.e. variables) represents the number of times a particular<br>
+| shape or design appears on a country's flag. We are interested in the minimum and<br>
+| maximum number of times each shape or design appears.</p>
+<p>...</p>
+<p>|=====================================================                           |  66%<br>
+| The range() function returns the minimum and maximum of its first argument, which<br>
+| should be a numeric vector. Use lapply() to apply the range function to each column of<br>
+| flag_shapes. Don't worry about storing the result in a new variable. By now, we know<br>
+| that lapply() always returns a list.</p>
+<blockquote>
+<p>lapply(flag_shapes,range)<br>
+$circles<br>
+[1] 0 4</p>
+</blockquote>
+<p>$crosses<br>
+[1] 0 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 4</p>
+<p>$sunstars<br>
+[1]  0 50</p>
+<p>| You are quite good my friend!</p>
+<p>|======================================================                          |  68%<br>
+| Do the same operation, but using sapply() and store the result in a variable called<br>
+| shape_mat.</p>
+<blockquote>
+<p>shape_mat&lt;-sapply(flag_shapes,range)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|========================================================                        |  70%<br>
+| View the contents of shape_mat.</p>
+<blockquote>
+<p>shape_mat<br>
+     circles crosses saltires quarters sunstars<br>
+[1,]       0       0        0        0        0<br>
+[2,]       4       2        1        4       50</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|==========================================================                      |  72%<br>
+| Each column of shape_mat gives the minimum (row 1) and maximum (row 2) number of times<br>
+| its respective shape appears in different flags.</p>
+<p>...</p>
+<p>|===========================================================                     |  74%<br>
+| Use the class() function to confirm that shape_mat is a matrix.</p>
+<blockquote>
+<p>class(shape_mat)<br>
+[1] "matrix"</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=============================================================                   |  76%<br>
+| As we've seen, sapply() always attempts to simplify the result given by lapply(). It<br>
+| has been successful in doing so for each of the examples we've looked at so far. Let's<br>
+| look at an example where sapply() can't figure out how to simplify the result and thus<br>
+| returns a list, no different from lapply().</p>
+<p>...</p>
+<p>|==============================================================                  |  78%<br>
+| When given a vector, the unique() function returns a vector with all duplicate elements<br>
+| removed. In other words, unique() returns a vector of only the 'unique' elements. To<br>
+| see how it works, try unique(c(3, 4, 5, 5, 5, 6, 6)).</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>as.data.frame(shape_mat)<br>
+  circles crosses saltires quarters sunstars<br>
+1       0       0        0        0        0<br>
+2       4       2        1        4       50<br>
+nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| When given a vector, the unique() function returns a vector with all duplicate elements<br>
+| removed. In other words, unique() returns a vector of only the 'unique' elements. To<br>
+| see how it works, try unique(c(3, 4, 5, 5, 5, 6, 6)).</p>
+<blockquote>
+<p>unique(c(3, 4, 5, 5, 5, 6, 6))<br>
+[1] 3 4 5 6</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|================================================================                |  80%<br>
+| We want to know the unique values for each variable in the flags dataset. To accomplish<br>
+| this, use lapply() to apply the unique() function to each column in the flags dataset,<br>
+| storing the result in a variable called unique_vals.</p>
+<blockquote>
+<p>unique_vals&lt;-lapply(flags,unique)</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==================================================================              |  82%<br>
+| Print the value of unique_vals to the console.</p>
+<blockquote>
+<p>unique_vals<br>
+$name<br>
+  [1] Afghanistan              Albania                  Algeria<br>
+  [4] American-Samoa           Andorra                  Angola<br>
+  [7] Anguilla                 Antigua-Barbuda          Argentina<br>
+ [10] Argentine                Australia                Austria<br>
+ [13] Bahamas                  Bahrain                  Bangladesh<br>
+ [16] Barbados                 Belgium                  Belize<br>
+ [19] Benin                    Bermuda                  Bhutan<br>
+ [22] Bolivia                  Botswana                 Brazil<br>
+ [25] British-Virgin-Isles     Brunei                   Bulgaria<br>
+ [28] Burkina                  Burma                    Burundi<br>
+ [31] Cameroon                 Canada                   Cape-Verde-Islands<br>
+ [34] Cayman-Islands           Central-African-Republic Chad<br>
+ [37] Chile                    China                    Colombia<br>
+ [40] Comorro-Islands          Congo                    Cook-Islands<br>
+ [43] Costa-Rica               Cuba                     Cyprus<br>
+ [46] Czechoslovakia           Denmark                  Djibouti<br>
+ [49] Dominica                 Dominican-Republic       Ecuador<br>
+ [52] Egypt                    El-Salvador              Equatorial-Guinea<br>
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas<br>
+ [58] Fiji                     Finland                  France<br>
+ [61] French-Guiana            French-Polynesia         Gabon<br>
+ [64] Gambia                   Germany-DDR              Germany-FRG<br>
+ [67] Ghana                    Gibraltar                Greece<br>
+ [70] Greenland                Grenada                  Guam<br>
+ [73] Guatemala                Guinea                   Guinea-Bissau<br>
+ [76] Guyana                   Haiti                    Honduras<br>
+ [79] Hong-Kong                Hungary                  Iceland<br>
+ [82] India                    Indonesia                Iran<br>
+ [85] Iraq                     Ireland                  Israel<br>
+ [88] Italy                    Ivory-Coast              Jamaica<br>
+ [91] Japan                    Jordan                   Kampuchea<br>
+ [94] Kenya                    Kiribati                 Kuwait<br>
+ [97] Laos                     Lebanon                  Lesotho<br>
+[100] Liberia                  Libya                    Liechtenstein<br>
+[103] Luxembourg               Malagasy                 Malawi<br>
+[106] Malaysia                 Maldive-Islands          Mali<br>
+[109] Malta                    Marianas                 Mauritania<br>
+[112] Mauritius                Mexico                   Micronesia<br>
+[115] Monaco                   Mongolia                 Montserrat<br>
+[118] Morocco                  Mozambique               Nauru<br>
+[121] Nepal                    Netherlands              Netherlands-Antilles<br>
+[124] New-Zealand              Nicaragua                Niger<br>
+[127] Nigeria                  Niue                     North-Korea<br>
+[130] North-Yemen              Norway                   Oman<br>
+[133] Pakistan                 Panama                   Papua-New-Guinea<br>
+[136] Parguay                  Peru                     Philippines<br>
+[139] Poland                   Portugal                 Puerto-Rico<br>
+[142] Qatar                    Romania                  Rwanda<br>
+[145] San-Marino               Sao-Tome                 Saudi-Arabia<br>
+[148] Senegal                  Seychelles               Sierra-Leone<br>
+[151] Singapore                Soloman-Islands          Somalia<br>
+[154] South-Africa             South-Korea              South-Yemen<br>
+[157] Spain                    Sri-Lanka                St-Helena<br>
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent<br>
+[163] Sudan                    Surinam                  Swaziland<br>
+[166] Sweden                   Switzerland              Syria<br>
+[169] Taiwan                   Tanzania                 Thailand<br>
+[172] Togo                     Tonga                    Trinidad-Tobago<br>
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands<br>
+[178] Tuvalu                   UAE                      Uganda<br>
+[181] UK                       Uruguay                  US-Virgin-Isles<br>
+[184] USA                      USSR                     Vanuatu<br>
+[187] Vatican-City             Venezuela                Vietnam<br>
+[190] Western-Samoa            Yugoslavia               Zaire<br>
+[193] Zambia                   Zimbabwe<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 5 3 4 6 1 2</p>
+<p>$zone<br>
+[1] 1 3 2 4</p>
+<p>$area<br>
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23   113<br>
+ [15]    47  1099   600  8512     6   111   274   678    28   474  9976     4   623  1284<br>
+ [29]   757  9561  1139     2   342    51   115     9   128    43    22    49   284  1001<br>
+ [43]    21  1222    12    18   337   547    91   268    10   108   249   239   132  2176<br>
+ [57]   109   246    36   215   112    93   103  3268  1904  1648   435    70   301   323<br>
+ [71]    11   372    98   181   583   236    30  1760     3   587   118   333  1240  1031<br>
+ [85]  1973  1566   447   783   140    41  1267   925   121   195   324   212   804    76<br>
+ [99]   463   407  1285   300   313    92   237    26  2150   196    72   637  1221    99<br>
+[113]   288   505    66  2506    63    17   450   185   945   514    57     5   164   781<br>
+[127]   245   178  9363 22402    15   912   256   905   753   391</p>
+<p>$population<br>
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4   24<br>
+[18]    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118   13   77<br>
+[35]   12   56   18   84   48   36   22   29   38   49   45  231  274   60</p>
+<p>$language<br>
+ [1] 10  6  8  1  2  4  3  5  7  9</p>
+<p>$religion<br>
+[1] 2 6 1 0 5 3 4 7</p>
+<p>$bars<br>
+[1] 0 2 3 1 5</p>
+<p>$stripes<br>
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7</p>
+<p>$colours<br>
+[1] 5 3 2 8 6 4 7 1</p>
+<p>$red<br>
+[1] 1 0</p>
+<p>$green<br>
+[1] 1 0</p>
+<p>$blue<br>
+[1] 0 1</p>
+<p>$gold<br>
+[1] 1 0</p>
+<p>$white<br>
+[1] 1 0</p>
+<p>$black<br>
+[1] 1 0</p>
+<p>$orange<br>
+[1] 0 1</p>
+<p>$mainhue<br>
+[1] green  red    blue   gold   white  orange black  brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 0 1 4 2</p>
+<p>$crosses<br>
+[1] 0 1 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 1 4</p>
+<p>$sunstars<br>
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50</p>
+<p>$crescent<br>
+[1] 0 1</p>
+<p>$triangle<br>
+[1] 0 1</p>
+<p>$icon<br>
+[1] 1 0</p>
+<p>$animate<br>
+[1] 0 1</p>
+<p>$text<br>
+[1] 0 1</p>
+<p>$topleft<br>
+[1] black  red    green  blue   white  orange gold<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] green  red    white  black  blue   gold   orange brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===================================================================             |  84%<br>
+| Since unique_vals is a list, you can use what you've learned to determine the length of<br>
+| each element of unique_vals (i.e. the number of unique values for each variable).<br>
+| Simplify the result, if possible. Hint: Apply the length() function to each element of<br>
+| unique_vals.</p>
+<blockquote>
+<p>sapply(unique_vals,length)<br>
+      name   landmass       zone       area population   language   religion       bars<br>
+       194          6          4        136         48         10          8          5<br>
+   stripes    colours        red      green       blue       gold      white      black<br>
+        12          8          2          2          2          2          2          2<br>
+    orange    mainhue    circles    crosses   saltires   quarters   sunstars   crescent<br>
+         2          8          4          3          2          3         14          2<br>
+  triangle       icon    animate       text    topleft   botright<br>
+         2          2          2          2          7          8</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|=====================================================================           |  86%<br>
+| The fact that the elements of the unique_vals list are all vectors of <em>different</em><br>
+| length poses a problem for sapply(), since there's no obvious way of simplifying the<br>
+| result.</p>
+<p>...</p>
+<p>|======================================================================          |  88%<br>
+| Use sapply() to apply the unique() function to each column of the flags dataset to see<br>
+| that you get the same unsimplified list that you got from lapply().</p>
+<blockquote>
+<p>sapply(flags,unique)<br>
+$name<br>
+  [1] Afghanistan              Albania                  Algeria<br>
+  [4] American-Samoa           Andorra                  Angola<br>
+  [7] Anguilla                 Antigua-Barbuda          Argentina<br>
+ [10] Argentine                Australia                Austria<br>
+ [13] Bahamas                  Bahrain                  Bangladesh<br>
+ [16] Barbados                 Belgium                  Belize<br>
+ [19] Benin                    Bermuda                  Bhutan<br>
+ [22] Bolivia                  Botswana                 Brazil<br>
+ [25] British-Virgin-Isles     Brunei                   Bulgaria<br>
+ [28] Burkina                  Burma                    Burundi<br>
+ [31] Cameroon                 Canada                   Cape-Verde-Islands<br>
+ [34] Cayman-Islands           Central-African-Republic Chad<br>
+ [37] Chile                    China                    Colombia<br>
+ [40] Comorro-Islands          Congo                    Cook-Islands<br>
+ [43] Costa-Rica               Cuba                     Cyprus<br>
+ [46] Czechoslovakia           Denmark                  Djibouti<br>
+ [49] Dominica                 Dominican-Republic       Ecuador<br>
+ [52] Egypt                    El-Salvador              Equatorial-Guinea<br>
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas<br>
+ [58] Fiji                     Finland                  France<br>
+ [61] French-Guiana            French-Polynesia         Gabon<br>
+ [64] Gambia                   Germany-DDR              Germany-FRG<br>
+ [67] Ghana                    Gibraltar                Greece<br>
+ [70] Greenland                Grenada                  Guam<br>
+ [73] Guatemala                Guinea                   Guinea-Bissau<br>
+ [76] Guyana                   Haiti                    Honduras<br>
+ [79] Hong-Kong                Hungary                  Iceland<br>
+ [82] India                    Indonesia                Iran<br>
+ [85] Iraq                     Ireland                  Israel<br>
+ [88] Italy                    Ivory-Coast              Jamaica<br>
+ [91] Japan                    Jordan                   Kampuchea<br>
+ [94] Kenya                    Kiribati                 Kuwait<br>
+ [97] Laos                     Lebanon                  Lesotho<br>
+[100] Liberia                  Libya                    Liechtenstein<br>
+[103] Luxembourg               Malagasy                 Malawi<br>
+[106] Malaysia                 Maldive-Islands          Mali<br>
+[109] Malta                    Marianas                 Mauritania<br>
+[112] Mauritius                Mexico                   Micronesia<br>
+[115] Monaco                   Mongolia                 Montserrat<br>
+[118] Morocco                  Mozambique               Nauru<br>
+[121] Nepal                    Netherlands              Netherlands-Antilles<br>
+[124] New-Zealand              Nicaragua                Niger<br>
+[127] Nigeria                  Niue                     North-Korea<br>
+[130] North-Yemen              Norway                   Oman<br>
+[133] Pakistan                 Panama                   Papua-New-Guinea<br>
+[136] Parguay                  Peru                     Philippines<br>
+[139] Poland                   Portugal                 Puerto-Rico<br>
+[142] Qatar                    Romania                  Rwanda<br>
+[145] San-Marino               Sao-Tome                 Saudi-Arabia<br>
+[148] Senegal                  Seychelles               Sierra-Leone<br>
+[151] Singapore                Soloman-Islands          Somalia<br>
+[154] South-Africa             South-Korea              South-Yemen<br>
+[157] Spain                    Sri-Lanka                St-Helena<br>
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent<br>
+[163] Sudan                    Surinam                  Swaziland<br>
+[166] Sweden                   Switzerland              Syria<br>
+[169] Taiwan                   Tanzania                 Thailand<br>
+[172] Togo                     Tonga                    Trinidad-Tobago<br>
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands<br>
+[178] Tuvalu                   UAE                      Uganda<br>
+[181] UK                       Uruguay                  US-Virgin-Isles<br>
+[184] USA                      USSR                     Vanuatu<br>
+[187] Vatican-City             Venezuela                Vietnam<br>
+[190] Western-Samoa            Yugoslavia               Zaire<br>
+[193] Zambia                   Zimbabwe<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 5 3 4 6 1 2</p>
+<p>$zone<br>
+[1] 1 3 2 4</p>
+<p>$area<br>
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23   113<br>
+ [15]    47  1099   600  8512     6   111   274   678    28   474  9976     4   623  1284<br>
+ [29]   757  9561  1139     2   342    51   115     9   128    43    22    49   284  1001<br>
+ [43]    21  1222    12    18   337   547    91   268    10   108   249   239   132  2176<br>
+ [57]   109   246    36   215   112    93   103  3268  1904  1648   435    70   301   323<br>
+ [71]    11   372    98   181   583   236    30  1760     3   587   118   333  1240  1031<br>
+ [85]  1973  1566   447   783   140    41  1267   925   121   195   324   212   804    76<br>
+ [99]   463   407  1285   300   313    92   237    26  2150   196    72   637  1221    99<br>
+[113]   288   505    66  2506    63    17   450   185   945   514    57     5   164   781<br>
+[127]   245   178  9363 22402    15   912   256   905   753   391</p>
+<p>$population<br>
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4   24<br>
+[18]    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118   13   77<br>
+[35]   12   56   18   84   48   36   22   29   38   49   45  231  274   60</p>
+<p>$language<br>
+ [1] 10  6  8  1  2  4  3  5  7  9</p>
+<p>$religion<br>
+[1] 2 6 1 0 5 3 4 7</p>
+<p>$bars<br>
+[1] 0 2 3 1 5</p>
+<p>$stripes<br>
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7</p>
+<p>$colours<br>
+[1] 5 3 2 8 6 4 7 1</p>
+<p>$red<br>
+[1] 1 0</p>
+<p>$green<br>
+[1] 1 0</p>
+<p>$blue<br>
+[1] 0 1</p>
+<p>$gold<br>
+[1] 1 0</p>
+<p>$white<br>
+[1] 1 0</p>
+<p>$black<br>
+[1] 1 0</p>
+<p>$orange<br>
+[1] 0 1</p>
+<p>$mainhue<br>
+[1] green  red    blue   gold   white  orange black  brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 0 1 4 2</p>
+<p>$crosses<br>
+[1] 0 1 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 1 4</p>
+<p>$sunstars<br>
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50</p>
+<p>$crescent<br>
+[1] 0 1</p>
+<p>$triangle<br>
+[1] 0 1</p>
+<p>$icon<br>
+[1] 1 0</p>
+<p>$animate<br>
+[1] 0 1</p>
+<p>$text<br>
+[1] 0 1</p>
+<p>$topleft<br>
+[1] black  red    green  blue   white  orange gold<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] green  red    white  black  blue   gold   orange brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| You're the best!</p>
+<p>|========================================================================        |  90%<br>
+| Occasionally, you may need to apply a function that is not yet defined, thus requiring<br>
+| you to write your own. Writing functions in R is beyond the scope of this lesson, but<br>
+| let's look at a quick example of how you might do so in the context of loop functions.</p>
+<p>...</p>
+<p>|==========================================================================      |  92%<br>
+| Pretend you are interested in only the second item from each element of the unique_vals<br>
+| list that you just created. Since each element of the unique_vals list is a vector and<br>
+| we're not aware of any built-in function in R that returns the second element of a<br>
+| vector, we will construct our own function.</p>
+<p>...</p>
+<p>|===========================================================================     |  94%<br>
+| lapply(unique_vals, function(elem) elem[2]) will return a list containing the second<br>
+| item from each element of the unique_vals list. Note that our function takes one<br>
+| argument, elem, which is just a 'dummy variable' that takes on the value of each<br>
+| element of unique_vals, in turn.</p>
+<blockquote>
+<p>lapply(unique_vals, function(elem) elem[2])<br>
+$name<br>
+[1] Albania<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 3</p>
+<p>$zone<br>
+[1] 3</p>
+<p>$area<br>
+[1] 29</p>
+<p>$population<br>
+[1] 3</p>
+<p>$language<br>
+[1] 6</p>
+<p>$religion<br>
+[1] 6</p>
+<p>$bars<br>
+[1] 2</p>
+<p>$stripes<br>
+[1] 0</p>
+<p>$colours<br>
+[1] 3</p>
+<p>$red<br>
+[1] 0</p>
+<p>$green<br>
+[1] 0</p>
+<p>$blue<br>
+[1] 1</p>
+<p>$gold<br>
+[1] 0</p>
+<p>$white<br>
+[1] 0</p>
+<p>$black<br>
+[1] 0</p>
+<p>$orange<br>
+[1] 1</p>
+<p>$mainhue<br>
+[1] red<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 1</p>
+<p>$crosses<br>
+[1] 1</p>
+<p>$saltires<br>
+[1] 1</p>
+<p>$quarters<br>
+[1] 1</p>
+<p>$sunstars<br>
+[1] 0</p>
+<p>$crescent<br>
+[1] 1</p>
+<p>$triangle<br>
+[1] 1</p>
+<p>$icon<br>
+[1] 0</p>
+<p>$animate<br>
+[1] 1</p>
+<p>$text<br>
+[1] 1</p>
+<p>$topleft<br>
+[1] red<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] red<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| Great job!</p>
+<p>|=============================================================================   |  96%<br>
+| The only difference between previous examples and this one is that we are defining and<br>
+| using our own function right in the call to lapply(). Our function has no name and<br>
+| disappears as soon as lapply() is done using it. So-called 'anonymous functions' can be<br>
+| very useful when one of R's built-in functions isn't an option.</p>
+<p>...</p>
+<p>|==============================================================================  |  98%<br>
+| In this lesson, you learned how to use the powerful lapply() and sapply() functions to<br>
+| apply an operation over the elements of a list. In the next lesson, we'll take a look<br>
+| at some close relatives of lapply() and sapply().</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's the answer I was looking for.</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "cls_list"    "cls_vect"    "flag_colors" "flag_shapes" "flags"       "shape_mat"<br>
+[7] "unique_vals" "viewinfo"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-18 20:39:08.401287 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/lapply/" rel="tag">lapply</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/sapply/" rel="tag">sapply</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00409/" rel="prev" title="Functions">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../00411/" rel="next" title="vapply and tapply">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00410_lapply and sapply.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/00410/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>
