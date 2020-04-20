@@ -13,7 +13,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="canonical" href="https://www.datascience.eu.org/r/posts/index-1.html">
 <link rel="icon" href="../files/favicon.ico" sizes="16x16">
-<link rel="prev" href="." type="text/html">
+<link rel="prev" href="index-2.html" type="text/html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -73,7 +73,936 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00403/" class="u-url">Sequences of Numbers</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00406/" class="u-url">Subsetting Vectors</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00406/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-14T10:11:00+05:30" itemprop="datePublished" title="2020-04-14 10:11">2020-04-14 10:11</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00406/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00406_Subsetting Vectors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00406_Subsetting Vectors.html";
+var idcomments_post_url = "/posts/00406/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 3.6.3 (2020-02-29) -- "Holding the Windsock"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<p>[Workspace loaded from C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/.RData]</p>
+<blockquote>
+<p>library("swirl")</p>
+</blockquote>
+<p>| Hi! I see that you have some variables saved in your workspace. To keep things running<br>
+| smoothly, I recommend you clean up before starting swirl.</p>
+<p>| Type ls() to see a list of the variables in your workspace. Then, type rm(list=ls()) to<br>
+| clear your workspace.</p>
+<p>| Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>ls()<br>
+ [1] "my_char"  "my_data"  "my_div"   "my_na"    "my_name"  "my_seq"   "my_sqrt"<br>
+ [8] "num_vect" "old.dir"  "tf"       "x"        "y"        "z"<br>
+rm(list=ls())<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 6</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, we'll see how to extract elements from a vector based on some<br>
+| conditions that we specify.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| For example, we may only be interested in the first 20 elements of a vector, or only<br>
+| the elements that are not NA, or only those that are positive or correspond to a<br>
+| specific variable of interest. By the end of this lesson, you'll know how to handle<br>
+| each of these scenarios.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| I've created for you a vector called x that contains a random ordering of 20 numbers<br>
+| (from a standard normal distribution) and 20 NAs. Type x now to see what it looks like.</p>
+<blockquote>
+<p>x<br>
+ [1] -0.68754438          NA          NA          NA          NA          NA          NA<br>
+ [8]          NA -0.01654302  1.03010195 -0.40799451 -0.55849418          NA -0.07687958<br>
+[15] -0.05351510          NA          NA  1.16924926  1.60452324 -0.08284351  1.66735009<br>
+[22]          NA          NA  2.18942224 -0.14724334          NA          NA -0.99999522<br>
+[29]          NA          NA -0.12665386 -0.61215464 -0.58919026          NA          NA<br>
+[36]  1.12894965 -1.36770314          NA -1.33061090          NA</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|======                                                                          |   8%<br>
+| The way you tell R that you want to select some particular elements (i.e. a 'subset')<br>
+| from a vector is by placing an 'index vector' in square brackets immediately following<br>
+| the name of the vector.</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| For a simple example, try x[1:10] to view the first ten elements of x.</p>
+<blockquote>
+<p>x[1:10]<br>
+ [1] -0.68754438          NA          NA          NA          NA          NA          NA<br>
+ [8]          NA -0.01654302  1.03010195</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|==========                                                                      |  13%<br>
+| Index vectors come in four different flavors -- logical vectors, vectors of positive<br>
+| integers, vectors of negative integers, and vectors of character strings -- each of<br>
+| which we'll cover in this lesson.</p>
+<p>...</p>
+<p>|============                                                                    |  15%<br>
+| Let's start by indexing with logical vectors. One common scenario when working with<br>
+| real-world data is that we want to extract all elements of a vector that are not NA<br>
+| (i.e. missing data). Recall that is.na(x) yields a vector of logical values the same<br>
+| length as x, with TRUEs corresponding to NA values in x and FALSEs corresponding to<br>
+| non-NA values in x.</p>
+<p>...</p>
+<p>|==============                                                                  |  18%<br>
+| What do you think x[is.na(x)] will give you?</p>
+<p>1: A vector of length 0<br>
+2: A vector of all NAs<br>
+3: A vector of TRUEs and FALSEs<br>
+4: A vector with no NAs</p>
+<p>Selection: 2</p>
+<p>| That's the answer I was looking for.</p>
+<p>|================                                                                |  21%<br>
+| Prove it to yourself by typing x[is.na(x)].</p>
+<blockquote>
+<p>x[is.na(x)]<br>
+ [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|==================                                                              |  23%<br>
+| Recall that <code>!</code> gives us the negation of a logical expression, so !is.na(x) can be read<br>
+| as 'is not NA'. Therefore, if we want to create a vector called y that contains all of<br>
+| the non-NA values from x, we can use y &lt;- x[!is.na(x)]. Give it a try.</p>
+<blockquote>
+<p>x[!is.na(x)]<br>
+ [1] -0.68754438 -0.01654302  1.03010195 -0.40799451 -0.55849418 -0.07687958 -0.05351510<br>
+ [8]  1.16924926  1.60452324 -0.08284351  1.66735009  2.18942224 -0.14724334 -0.99999522<br>
+[15] -0.12665386 -0.61215464 -0.58919026  1.12894965 -1.36770314 -1.33061090</p>
+</blockquote>
+<p>| Nice try, but that's not exactly what I was hoping for. Try again. Or, type info() for<br>
+| more options.</p>
+<p>| Type y &lt;- x[!is.na(x)] to capture all non-missing values from x.</p>
+<blockquote>
+<p>y&lt;-x[!is.na(x)]</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=====================                                                           |  26%<br>
+| Print y to the console.</p>
+<blockquote>
+<p>y<br>
+ [1] -0.68754438 -0.01654302  1.03010195 -0.40799451 -0.55849418 -0.07687958 -0.05351510<br>
+ [8]  1.16924926  1.60452324 -0.08284351  1.66735009  2.18942224 -0.14724334 -0.99999522<br>
+[15] -0.12665386 -0.61215464 -0.58919026  1.12894965 -1.36770314 -1.33061090</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=======================                                                         |  28%<br>
+| Now that we've isolated the non-missing values of x and put them in y, we can subset y<br>
+| as we please.</p>
+<p>...</p>
+<p>|=========================                                                       |  31%<br>
+| Recall that the expression y &gt; 0 will give us a vector of logical values the same<br>
+| length as y, with TRUEs corresponding to values of y that are greater than zero and<br>
+| FALSEs corresponding to values of y that are less than or equal to zero. What do you<br>
+| think y[y &gt; 0] will give you?</p>
+<p>1: A vector of all the negative elements of y<br>
+2: A vector of length 0<br>
+3: A vector of TRUEs and FALSEs<br>
+4: A vector of all NAs<br>
+5: A vector of all the positive elements of y</p>
+<p>Selection: 5</p>
+<p>| You are quite good my friend!</p>
+<p>|===========================                                                     |  33%<br>
+| Type y[y &gt; 0] to see that we get all of the positive elements of y, which are also the<br>
+| positive elements of our original vector x.</p>
+<blockquote>
+<p>y[y&gt;0]<br>
+[1] 1.030102 1.169249 1.604523 1.667350 2.189422 1.128950</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|=============================                                                   |  36%<br>
+| You might wonder why we didn't just start with x[x &gt; 0] to isolate the positive<br>
+| elements of x. Try that now to see why.</p>
+<blockquote>
+<p>x[x&gt;0]<br>
+ [1]       NA       NA       NA       NA       NA       NA       NA 1.030102       NA<br>
+[10]       NA       NA 1.169249 1.604523 1.667350       NA       NA 2.189422       NA<br>
+[19]       NA       NA       NA       NA       NA 1.128950       NA       NA</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============================                                                 |  38%<br>
+| Since NA is not a value, but rather a placeholder for an unknown quantity, the<br>
+| expression NA &gt; 0 evaluates to NA. Hence we get a bunch of NAs mixed in with our<br>
+| positive numbers when we do this.</p>
+<p>...</p>
+<p>|=================================                                               |  41%<br>
+| Combining our knowledge of logical operators with our new knowledge of subsetting, we<br>
+| could do this -- x[!is.na(x) &amp; x &gt; 0]. Try it out.</p>
+<blockquote>
+<p>x[!is.na(x)&amp;x&gt;0]<br>
+[1] 1.030102 1.169249 1.604523 1.667350 2.189422 1.128950</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|===================================                                             |  44%<br>
+| In this case, we request only values of x that are both non-missing AND greater than<br>
+| zero.</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| I've already shown you how to subset just the first ten values of x using x[1:10]. In<br>
+| this case, we're providing a vector of positive integers inside of the square brackets,<br>
+| which tells R to return only the elements of x numbered 1 through 10.</p>
+<p>...</p>
+<p>|=======================================                                         |  49%<br>
+| Many programming languages use what's called 'zero-based indexing', which means that<br>
+| the first element of a vector is considered element 0. R uses 'one-based indexing',<br>
+| which (you guessed it!) means the first element of a vector is considered element 1.</p>
+<p>...</p>
+<p>|=========================================                                       |  51%<br>
+| Can you figure out how we'd subset the 3rd, 5th, and 7th elements of x? Hint -- Use the<br>
+| c() function to specify the element numbers as a numeric vector.</p>
+<blockquote>
+<p>x[c(3,5,7)]<br>
+[1] NA NA NA</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|===========================================                                     |  54%<br>
+| It's important that when using integer vectors to subset our vector x, we stick with<br>
+| the set of indexes {1, 2, ..., 40} since x only has 40 elements. What happens if we ask<br>
+| for the zeroth element of x (i.e. x[0])? Give it a try.</p>
+<blockquote>
+<p>x[0]<br>
+numeric(0)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|=============================================                                   |  56%<br>
+| As you might expect, we get nothing useful. Unfortunately, R doesn't prevent us from<br>
+| doing this. What if we ask for the 3000th element of x? Try it out.</p>
+<blockquote>
+<p>x[3000]<br>
+[1] NA</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===============================================                                 |  59%<br>
+| Again, nothing useful, but R doesn't prevent us from asking for it. This should be a<br>
+| cautionary tale. You should always make sure that what you are asking for is within the<br>
+| bounds of the vector you're working with.</p>
+<p>...</p>
+<p>|=================================================                               |  62%<br>
+| What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be<br>
+| pretty tedious to construct a vector containing all numbers 1 through 40 EXCEPT 2 and<br>
+| 10.</p>
+<p>...</p>
+<p>|===================================================                             |  64%<br>
+| Luckily, R accepts negative integer indexes. Whereas x[c(2, 10)] gives us ONLY the 2nd<br>
+| and 10th elements of x, x[c(-2, -10)] gives us all elements of x EXCEPT for the 2nd and<br>
+| 10 elements.  Try x[c(-2, -10)] now to see this.</p>
+<blockquote>
+<p>x[c(-2,-10)]<br>
+ [1] -0.68754438          NA          NA          NA          NA          NA          NA<br>
+ [8] -0.01654302 -0.40799451 -0.55849418          NA -0.07687958 -0.05351510          NA<br>
+[15]          NA  1.16924926  1.60452324 -0.08284351  1.66735009          NA          NA<br>
+[22]  2.18942224 -0.14724334          NA          NA -0.99999522          NA          NA<br>
+[29] -0.12665386 -0.61215464 -0.58919026          NA          NA  1.12894965 -1.36770314<br>
+[36]          NA -1.33061090          NA</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|=====================================================                           |  67%<br>
+| A shorthand way of specifying multiple negative numbers is to put the negative sign out<br>
+| in front of the vector of positive numbers. Type x[-c(2, 10)] to get the exact same<br>
+| result.</p>
+<blockquote>
+<p>x[-c(2,10)]<br>
+ [1] -0.68754438          NA          NA          NA          NA          NA          NA<br>
+ [8] -0.01654302 -0.40799451 -0.55849418          NA -0.07687958 -0.05351510          NA<br>
+[15]          NA  1.16924926  1.60452324 -0.08284351  1.66735009          NA          NA<br>
+[22]  2.18942224 -0.14724334          NA          NA -0.99999522          NA          NA<br>
+[29] -0.12665386 -0.61215464 -0.58919026          NA          NA  1.12894965 -1.36770314<br>
+[36]          NA -1.33061090          NA</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================================                         |  69%<br>
+| So far, we've covered three types of index vectors -- logical, positive integer, and<br>
+| negative integer. The only remaining type requires us to introduce the concept of<br>
+| 'named' elements.</p>
+<p>...</p>
+<p>|=========================================================                       |  72%<br>
+| Create a numeric vector with three named elements using vect &lt;- c(foo = 11, bar = 2,<br>
+| norf = NA).</p>
+<blockquote>
+<p>vect&lt;-c(foo=11,bar=2,norf=NA)</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===========================================================                     |  74%<br>
+| When we print vect to the console, you'll see that each element has a name. Try it out.</p>
+<blockquote>
+<p>vect<br>
+ foo  bar norf<br>
+  11    2   NA</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|==============================================================                  |  77%<br>
+| We can also get the names of vect by passing vect as an argument to the names()<br>
+| function. Give that a try.</p>
+<blockquote>
+<p>names(vect)<br>
+[1] "foo"  "bar"  "norf"</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|================================================================                |  79%<br>
+| Alternatively, we can create an unnamed vector vect2 with c(11, 2, NA). Do that now.</p>
+<blockquote>
+<p>vect2&lt;-c(11,2,NA)</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==================================================================              |  82%<br>
+| Then, we can add the <code>names</code> attribute to vect2 after the fact with names(vect2) &lt;-<br>
+| c("foo", "bar", "norf"). Go ahead.</p>
+<blockquote>
+<p>names(vect2)&lt;-c("foo","bar","norf")</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|====================================================================            |  85%<br>
+| Now, let's check that vect and vect2 are the same by passing them as arguments to the<br>
+| identical() function.</p>
+<blockquote>
+<p>identical(vect,vect2)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|======================================================================          |  87%<br>
+| Indeed, vect and vect2 are identical named vectors.</p>
+<p>...</p>
+<p>|========================================================================        |  90%<br>
+| Now, back to the matter of subsetting a vector by named elements. Which of the<br>
+| following commands do you think would give us the second element of vect?</p>
+<p>1: vect["2"]<br>
+2: vect["bar"]<br>
+3: vect[bar]</p>
+<p>Selection: 2</p>
+<p>| That's a job well done!</p>
+<p>|==========================================================================      |  92%<br>
+| Now, try it out.</p>
+<blockquote>
+<p>vect["bar"]<br>
+bar<br>
+  2</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================================================================    |  95%<br>
+| Likewise, we can specify a vector of names with vect[c("foo", "bar")]. Try it out.</p>
+<blockquote>
+<p>vect[c("foo","bar",'norf')]<br>
+ foo  bar norf<br>
+  11    2   NA</p>
+</blockquote>
+<p>| You're close...I can feel it! Try it again. Or, type info() for more options.</p>
+<p>| Use vect[c("foo", "bar")] to get only the elements of vect named "foo" and "bar".</p>
+<blockquote>
+<p>vect[c("foo","bar")]<br>
+foo bar<br>
+ 11   2</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==============================================================================  |  97%<br>
+| Now you know all four methods of subsetting data from vectors. Different approaches are<br>
+| best in different scenarios and when in doubt, try it out!</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You got it right!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-14 10:13:49.166837 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00405/" class="u-url">Missing Values</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00405/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:33:38+05:30" itemprop="datePublished" title="2020-04-13 23:33">2020-04-13 23:33</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00405/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00405_Missing Values.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00405_Missing Values.html";
+var idcomments_post_url = "/posts/00405/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 5</p>
+<p>|                                                                                |   0%</p>
+<p>| Missing values play an important role in statistics and data analysis. Often, missing<br>
+| values must not be ignored, but rather they should be carefully studied to see if<br>
+| there's an underlying pattern or cause for their missingness.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| In R, NA is used to represent any value that is 'not available' or 'missing' (in the<br>
+| statistical sense). In this lesson, we'll explore missing values further.</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| Any operation involving NA generally yields NA as the result. To illustrate, let's<br>
+| create a vector c(44, NA, 5, NA) and assign it to a variable x.</p>
+<blockquote>
+<p>x&lt;-c(44, NA, 5, NA)</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|============                                                                    |  15%<br>
+| Now, let's multiply x by 3.</p>
+<blockquote>
+<p>x*3<br>
+[1] 132  NA  15  NA</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|================                                                                |  20%<br>
+| Notice that the elements of the resulting vector that correspond with the NA values in<br>
+| x are also NA.</p>
+<p>...</p>
+<p>|====================                                                            |  25%<br>
+| To make things a little more interesting, lets create a vector containing 1000 draws<br>
+| from a standard normal distribution with y &lt;- rnorm(1000).</p>
+<blockquote>
+<p>y&lt;-rnorm(1000)</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|========================                                                        |  30%<br>
+| Next, let's create a vector containing 1000 NAs with z &lt;- rep(NA, 1000).</p>
+<blockquote>
+<p>z&lt;-rep(NA,1000)</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================                                                    |  35%<br>
+| Finally, let's select 100 elements at random from these 2000 values (combining y and z)<br>
+| such that we don't know how many NAs we'll wind up with or what positions they'll<br>
+| occupy in our final vector -- my_data &lt;- sample(c(y, z), 100).</p>
+<blockquote>
+<p>my_data&lt;-sample(c(y,z),100)</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|================================                                                |  40%<br>
+| Let's first ask the question of where our NAs are located in our data. The is.na()<br>
+| function tells us whether each element of a vector is NA. Call is.na() on my_data and<br>
+| assign the result to my_na.</p>
+<blockquote>
+<p>my_na&lt;-is.na(my_data)</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|====================================                                            |  45%<br>
+| Now, print my_na to see what you came up with.</p>
+<blockquote>
+<p>my_na<br>
+  [1] FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE<br>
+ [15]  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE<br>
+ [29]  TRUE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE  TRUE FALSE<br>
+ [43] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE<br>
+ [57]  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE<br>
+ [71]  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE<br>
+ [85] FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE<br>
+ [99]  TRUE FALSE</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|========================================                                        |  50%<br>
+| Everywhere you see a TRUE, you know the corresponding element of my_data is NA.<br>
+| Likewise, everywhere you see a FALSE, you know the corresponding element of my_data is<br>
+| one of our random draws from the standard normal distribution.</p>
+<p>...</p>
+<p>|============================================                                    |  55%<br>
+| In our previous discussion of logical operators, we introduced the <code>==</code> operator as a<br>
+| method of testing for equality between two objects. So, you might think the expression<br>
+| my_data == NA yields the same results as is.na(). Give it a try.</p>
+<blockquote>
+<p>my_data==NA<br>
+  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [29] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [57] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA<br>
+ [85] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|================================================                                |  60%<br>
+| The reason you got a vector of all NAs is that NA is not really a value, but just a<br>
+| placeholder for a quantity that is not available. Therefore the logical expression is<br>
+| incomplete and R has no choice but to return a vector of the same length as my_data<br>
+| that contains all NAs.</p>
+<p>...</p>
+<p>|====================================================                            |  65%<br>
+| Don't worry if that's a little confusing. The key takeaway is to be cautious when using<br>
+| logical expressions anytime NAs might creep in, since a single NA value can derail the<br>
+| entire thing.</p>
+<p>...</p>
+<p>|========================================================                        |  70%<br>
+| So, back to the task at hand. Now that we have a vector, my_na, that has a TRUE for<br>
+| every NA and FALSE for every numeric value, we can compute the total number of NAs in<br>
+| our data.</p>
+<p>...</p>
+<p>|============================================================                    |  75%<br>
+| The trick is to recognize that underneath the surface, R represents TRUE as the number<br>
+| 1 and FALSE as the number 0. Therefore, if we take the sum of a bunch of TRUEs and<br>
+| FALSEs, we get the total number of TRUEs.</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| Let's give that a try here. Call the sum() function on my_na to count the total number<br>
+| of TRUEs in my_na, and thus the total number of NAs in my_data. Don't assign the result<br>
+| to a new variable.</p>
+<blockquote>
+<p>sum(my_na)<br>
+[1] 43</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|====================================================================            |  85%<br>
+| Pretty cool, huh? Finally, let's take a look at the data to convince ourselves that<br>
+| everything 'adds up'. Print my_data to the console.</p>
+<blockquote>
+<p>my_data<br>
+  [1] -0.578578797           NA -0.112639140  0.836412196 -1.074043937           NA<br>
+  [7]           NA  1.303020726           NA  1.514220057 -1.533126560 -0.366673361<br>
+ [13]           NA -1.032058614           NA -1.631213149  0.379297612 -0.706613051<br>
+ [19]           NA -0.692352920           NA           NA  0.535394170 -1.872906664<br>
+ [25] -0.861449272 -1.321735747           NA -0.787816086           NA  0.801388943<br>
+ [31]           NA -1.487792282  0.470028145           NA           NA  1.187583726<br>
+ [37] -1.704604005           NA  0.596807280           NA           NA -1.493099149<br>
+ [43]  0.265671235           NA -0.985396879 -0.974373033           NA  1.377397659<br>
+ [49] -0.637308342 -1.450105656  0.192263390  0.776355028           NA           NA<br>
+ [55]           NA           NA           NA  1.567478781 -0.511602362  0.107048330<br>
+ [61]           NA           NA -0.408394399  0.592123817           NA  0.305403550<br>
+ [67]  3.201114883  0.806735141  0.698544788           NA           NA           NA<br>
+ [73] -2.671330480  0.123440813           NA           NA           NA -1.236370155<br>
+ [79]  0.936670598           NA           NA  1.519229128           NA -1.366810674<br>
+ [85]  0.211749069           NA  0.203741812  1.319234085           NA -0.432928319<br>
+ [91] -0.006566875           NA           NA  0.060568295  0.292428312           NA<br>
+ [97]           NA  0.717821949           NA  0.359249723</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|========================================================================        |  90%<br>
+| Now that we've got NAs down pat, let's look at a second type of missing value -- NaN,<br>
+| which stands for 'not a number'. To generate NaN, try dividing (using a forward slash)<br>
+| 0 by 0 now.</p>
+<blockquote>
+<p>0/0<br>
+[1] NaN</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|============================================================================    |  95%<br>
+| Let's do one more, just for fun. In R, Inf stands for infinity. What happens if you<br>
+| subtract Inf from Inf?</p>
+<blockquote>
+<p>Inf-Inf<br>
+[1] NaN</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-13 23:32:50.765370 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00404/" class="u-url">Vectors</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00404/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-13T23:31:09+05:30" itemprop="datePublished" title="2020-04-13 23:31">2020-04-13 23:31</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00404/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00404_Vectors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00404_Vectors.html";
+var idcomments_post_url = "/posts/00404/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 4</p>
+<p>|                                                                                |   0%</p>
+<p>| The simplest and most common data structure in R is the vector.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| Vectors come in two different flavors: atomic vectors and lists. An atomic vector<br>
+| contains exactly one data type, whereas a list may contain multiple data types. We'll<br>
+| explore atomic vectors further before we get to lists.</p>
+<p>...</p>
+<p>|====                                                                            |   5%<br>
+| In previous lessons, we dealt entirely with numeric vectors, which are one type of<br>
+| atomic vector. Other types of atomic vectors include logical, character, integer, and<br>
+| complex. In this lesson, we'll take a closer look at logical and character vectors.</p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| Logical vectors can contain the values TRUE, FALSE, and NA (for 'not available'). These<br>
+| values are generated as the result of logical 'conditions'. Let's experiment with some<br>
+| simple conditions.</p>
+<p>...</p>
+<p>|========                                                                        |  11%<br>
+| First, create a numeric vector num_vect that contains the values 0.5, 55, -10, and 6.</p>
+<blockquote>
+<p>num_vect&lt;-c(0.5, 55, -10, 6)</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|===========                                                                     |  13%<br>
+| Now, create a variable called tf that gets the result of num_vect &lt; 1, which is read as<br>
+| 'num_vect is less than 1'.</p>
+<blockquote>
+<p>tf&lt;-num_vect&lt;1</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=============                                                                   |  16%<br>
+| What do you think tf will look like?</p>
+<p>1: a vector of 4 logical values<br>
+2: a single logical value</p>
+<p>Selection: 1</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============                                                                 |  18%<br>
+| Print the contents of tf now.</p>
+<blockquote>
+<p>tf<br>
+[1]  TRUE FALSE  TRUE FALSE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=================                                                               |  21%<br>
+| The statement num_vect &lt; 1 is a condition and tf tells us whether each corresponding<br>
+| element of our numeric vector num_vect satisfies this condition.</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| The first element of num_vect is 0.5, which is less than 1 and therefore the statement<br>
+| 0.5 &lt; 1 is TRUE. The second element of num_vect is 55, which is greater than 1, so the<br>
+| statement 55 &lt; 1 is FALSE. The same logic applies for the third and fourth elements.</p>
+<p>...</p>
+<p>|=====================                                                           |  26%<br>
+| Let's try another. Type num_vect &gt;= 6 without assigning the result to a new variable.</p>
+<blockquote>
+<p>num_vect&gt;=6<br>
+[1] FALSE  TRUE FALSE  TRUE</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=======================                                                         |  29%<br>
+| This time, we are asking whether each individual element of num_vect is greater than OR<br>
+| equal to 6. Since only 55 and 6 are greater than or equal to 6, the second and fourth<br>
+| elements of the result are TRUE and the first and third elements are FALSE.</p>
+<p>...</p>
+<p>|=========================                                                       |  32%<br>
+| The <code>&lt;</code> and <code>&gt;=</code> symbols in these examples are called 'logical operators'. Other<br>
+| logical operators include <code>&gt;</code>, <code>&lt;=</code>, <code>==</code> for exact equality, and <code>!=</code> for inequality.</p>
+<p>...</p>
+<p>|===========================                                                     |  34%<br>
+| If we have two logical expressions, A and B, we can ask whether at least one is TRUE<br>
+| with A | B (logical 'or' a.k.a. 'union') or whether they are both TRUE with A &amp; B<br>
+| (logical 'and' a.k.a. 'intersection'). Lastly, !A is the negation of A and is TRUE when<br>
+| A is FALSE and vice versa.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| It's a good idea to spend some time playing around with various combinations of these<br>
+| logical operators until you get comfortable with their use. We'll do a few examples<br>
+| here to get you started.</p>
+<p>...</p>
+<p>|================================                                                |  39%<br>
+| Try your best to predict the result of each of the following statements. You can use<br>
+| pencil and paper to work them out if it's helpful. If you get stuck, just guess and<br>
+| you've got a 50% chance of getting the right answer!</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| (3 &gt; 5) &amp; (4 == 4)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| That's correct!</p>
+<p>|====================================                                            |  45%<br>
+| (TRUE == TRUE) | (TRUE == FALSE)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You are quite good my friend!</p>
+<p>|======================================                                          |  47%<br>
+| ((111 &gt;= 111) | !(TRUE)) &amp; ((4 + 1) == 5)</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 1</p>
+<p>| Not exactly. Give it another go.</p>
+<p>| This is a tricky one. Remember that the <code>!</code> symbol negates whatever comes after it.<br>
+| There's also an 'order of operations' going on here. Conditions that are enclosed<br>
+| within parentheses should be evaluated first. Then, work your way outwards.</p>
+<p>1: FALSE<br>
+2: TRUE</p>
+<p>Selection: 2</p>
+<p>| You nailed it! Good job!</p>
+<p>|========================================                                        |  50%<br>
+| Don't worry if you found these to be tricky. They're supposed to be. Working with<br>
+| logical statements in R takes practice, but your efforts will be rewarded in future<br>
+| lessons (e.g. subsetting and control structures).</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| Character vectors are also very common in R. Double quotes are used to distinguish<br>
+| character objects, as in the following example.</p>
+<p>...</p>
+<p>|============================================                                    |  55%<br>
+| Create a character vector that contains the following words: "My", "name", "is".<br>
+| Remember to enclose each word in its own set of double quotes, so that R knows they are<br>
+| character strings. Store the vector in a variable called my_char.</p>
+<blockquote>
+<p>my_char&lt;-c( "My", "name", "is")</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==============================================                                  |  58%<br>
+| Print the contents of my_char to see what it looks like.</p>
+<blockquote>
+<p>my_char<br>
+[1] "My"   "name" "is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|================================================                                |  61%<br>
+| Right now, my_char is a character vector of length 3. Let's say we want to join the<br>
+| elements of my_char together into one continuous character string (i.e. a character<br>
+| vector of length 1). We can do this using the paste() function.</p>
+<p>...</p>
+<p>|===================================================                             |  63%<br>
+| Type paste(my_char, collapse = " ") now. Make sure there's a space between the double<br>
+| quotes in the <code>collapse</code> argument. You'll see why in a second.</p>
+<blockquote>
+<p>paste(my_char,collapse = " ")<br>
+[1] "My name is"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================                           |  66%<br>
+| The <code>collapse</code> argument to the paste() function tells R that when we join together the<br>
+| elements of the my_char character vector, we'd like to separate them with single<br>
+| spaces.</p>
+<p>...</p>
+<p>|=======================================================                         |  68%<br>
+| It seems that we're missing something.... Ah, yes! Your name!</p>
+<p>...</p>
+<p>|=========================================================                       |  71%<br>
+| To add (or 'concatenate') your name to the end of my_char, use the c() function like<br>
+| this: c(my_char, "your_name_here"). Place your name in double quotes where I've put<br>
+| "your_name_here". Try it now, storing the result in a new variable called my_name.</p>
+<blockquote>
+<p>my_name&lt;-c(my_char,"Krishnakanth Allika")</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===========================================================                     |  74%<br>
+| Take a look at the contents of my_name.</p>
+<blockquote>
+<p>my_name<br>
+[1] "My"                  "name"                "is"<br>
+[4] "Krishnakanth Allika"</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================================================                   |  76%<br>
+| Now, use the paste() function once more to join the words in my_name together into a<br>
+| single character string. Don't forget to say collapse = " "!</p>
+<blockquote>
+<p>paste(my_name,collapse = " ")<br>
+[1] "My name is Krishnakanth Allika"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================================================                 |  79%<br>
+| In this example, we used the paste() function to collapse the elements of a single<br>
+| character vector. paste() can also be used to join the elements of multiple character<br>
+| vectors.</p>
+<p>...</p>
+<p>|=================================================================               |  82%<br>
+| In the simplest case, we can join two character vectors that are each of length 1 (i.e.<br>
+| join two words). Try paste("Hello", "world!", sep = " "), where the <code>sep</code> argument<br>
+| tells R that we want to separate the joined elements with a single space.</p>
+<blockquote>
+<p>paste("Hello","world!",sep=" ")<br>
+[1] "Hello world!"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================================================================             |  84%<br>
+| For a slightly more complicated example, we can join two vectors, each of length 3. Use<br>
+| paste() to join the integer vector 1:3 with the character vector c("X", "Y", "Z"). This<br>
+| time, use sep = "" to leave no space between the joined elements.</p>
+<blockquote>
+<p>paste(1:3,c("X", "Y", "Z"),sep="")<br>
+[1] "1X" "2Y" "3Z"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=====================================================================           |  87%<br>
+| What do you think will happen if our vectors are of different length? (Hint: we talked<br>
+| about this in a previous lesson.)</p>
+<p>...</p>
+<p>|========================================================================        |  89%<br>
+| Vector recycling! Try paste(LETTERS, 1:4, sep = "-"), where LETTERS is a predefined<br>
+| variable in R containing a character vector of all 26 letters in the English alphabet.</p>
+<blockquote>
+<p>paste(LETTERS,1:4,sep="-")<br>
+ [1] "A-1" "B-2" "C-3" "D-4" "E-1" "F-2" "G-3" "H-4" "I-1" "J-2" "K-3" "L-4" "M-1" "N-2"<br>
+[15] "O-3" "P-4" "Q-1" "R-2" "S-3" "T-4" "U-1" "V-2" "W-3" "X-4" "Y-1" "Z-2"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================================================================      |  92%<br>
+| Since the character vector LETTERS is longer than the numeric vector 1:4, R simply<br>
+| recycles, or repeats, 1:4 until it matches the length of LETTERS.</p>
+<p>...</p>
+<p>|============================================================================    |  95%<br>
+| Also worth noting is that the numeric vector 1:4 gets 'coerced' into a character vector<br>
+| by the paste() function.</p>
+<p>...</p>
+<p>|==============================================================================  |  97%<br>
+| We'll discuss coercion in another lesson, but all it really means is that the numbers<br>
+| 1, 2, 3, and 4 in the output above are no longer numbers to R, but rather characters<br>
+| "1", "2", "3", and "4".</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are doing so well!</p>
+<p>| You've reached the end of this lesson! Returning to the main<br>
+| menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-13 23:32:50.765370 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00403/" class="u-url">Sequences of Numbers</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -1676,7 +2605,7 @@ var idcomments_post_url = "/posts/00100/";
 </div>
 
         <ul class="pager postindexpager clearfix">
-<li class="previous"><a href="." rel="prev">Newer posts</a></li>
+<li class="previous"><a href="index-2.html" rel="prev">Newer posts</a></li>
         </ul>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

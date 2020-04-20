@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Data Science with R">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Science with R (old posts, page 2) | Data Science with R</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/index-2.html">
+<link rel="icon" href="../files/favicon.ico" sizes="16x16">
+<link rel="prev" href="." type="text/html">
+<link rel="next" href="index-1.html" type="text/html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00407/" class="u-url">Matrices and Data Frames</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00407/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-14T10:14:30+05:30" itemprop="datePublished" title="2020-04-14 10:14">2020-04-14 10:14</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00407/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00407_Matrices and Data Frames.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00407_Matrices and Data Frames.html";
+var idcomments_post_url = "/posts/00407/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 7</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, we'll cover matrices and data frames. Both represent 'rectangular' data<br>
+| types, meaning that they are used to store tabular data, with rows and columns.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| The main difference, as you'll see, is that matrices can only contain a single class of<br>
+| data, while data frames can consist of many different classes of data.</p>
+<p>...</p>
+<p>|====                                                                            |   6%<br>
+| Let's create a vector containing the numbers 1 through 20 using the <code>:</code> operator. Store<br>
+| the result in a variable called my_vector.</p>
+<blockquote>
+<p>my_vector&lt;-1:20</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|=======                                                                         |   8%<br>
+| View the contents of the vector you just created.</p>
+<blockquote>
+<p>my_vector<br>
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|=========                                                                       |  11%<br>
+| The dim() function tells us the 'dimensions' of an object. What happens if we do<br>
+| dim(my_vector)? Give it a try.</p>
+<blockquote>
+<p>dim(my_vector)<br>
+NULL</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===========                                                                     |  14%<br>
+| Clearly, that's not very helpful! Since my_vector is a vector, it doesn't have a <code>dim</code><br>
+| attribute (so it's just NULL), but we can find its length using the length() function.<br>
+| Try that now.</p>
+<blockquote>
+<p>length(my_vector)<br>
+[1] 20</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=============                                                                   |  17%<br>
+| Ah! That's what we wanted. But, what happens if we give my_vector a <code>dim</code> attribute?<br>
+| Let's give it a try. Type dim(my_vector) &lt;- c(4, 5).</p>
+<blockquote>
+<p>dim(my_vector)&lt;-c(4,5)</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|================                                                                |  19%<br>
+| It's okay if that last command seemed a little strange to you. It should! The dim()<br>
+| function allows you to get OR set the <code>dim</code> attribute for an R object. In this case, we<br>
+| assigned the value c(4, 5) to the <code>dim</code> attribute of my_vector.</p>
+<p>...</p>
+<p>|==================                                                              |  22%<br>
+| Use dim(my_vector) to confirm that we've set the <code>dim</code> attribute correctly.</p>
+<blockquote>
+<p>dim(my_vector)<br>
+[1] 4 5</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|====================                                                            |  25%<br>
+| Another way to see this is by calling the attributes() function on my_vector. Try it<br>
+| now.</p>
+<blockquote>
+<p>attributes(my_vector)<br>
+$dim<br>
+[1] 4 5</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|======================                                                          |  28%<br>
+| Just like in math class, when dealing with a 2-dimensional object (think rectangular<br>
+| table), the first number is the number of rows and the second is the number of columns.<br>
+| Therefore, we just gave my_vector 4 rows and 5 columns.</p>
+<p>...</p>
+<p>|========================                                                        |  31%<br>
+| But, wait! That doesn't sound like a vector any more. Well, it's not. Now it's a<br>
+| matrix. View the contents of my_vector now to see what it looks like.</p>
+<blockquote>
+<p>my_vector<br>
+     [,1] [,2] [,3] [,4] [,5]<br>
+[1,]    1    5    9   13   17<br>
+[2,]    2    6   10   14   18<br>
+[3,]    3    7   11   15   19<br>
+[4,]    4    8   12   16   20</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|===========================                                                     |  33%<br>
+| Now, let's confirm it's actually a matrix by using the class() function. Type<br>
+| class(my_vector) to see what I mean.</p>
+<blockquote>
+<p>class(my_vector)<br>
+[1] "matrix"</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|=============================                                                   |  36%<br>
+| Sure enough, my_vector is now a matrix. We should store it in a new variable that helps<br>
+| us remember what it is. Store the value of my_vector in a new variable called<br>
+| my_matrix.</p>
+<blockquote>
+<p>my_matrix&lt;-my_vector</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|===============================                                                 |  39%<br>
+| The example that we've used so far was meant to illustrate the point that a matrix is<br>
+| simply an atomic vector with a dimension attribute. A more direct method of creating<br>
+| the same matrix uses the matrix() function.</p>
+<p>...</p>
+<p>|=================================                                               |  42%<br>
+| Bring up the help file for the matrix() function now using the <code>?</code> function.</p>
+<blockquote>
+<p>?matrix</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|====================================                                            |  44%<br>
+| Now, look at the documentation for the matrix function and see if you can figure out<br>
+| how to create a matrix containing the same numbers (1-20) and dimensions (4 rows, 5<br>
+| columns) by calling the matrix() function. Store the result in a variable called<br>
+| my_matrix2.</p>
+<blockquote>
+<p>my_matrix2&lt;-matrix(data=1:20,nrow = 4,ncol = 5)</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|======================================                                          |  47%<br>
+| Finally, let's confirm that my_matrix and my_matrix2 are actually identical. The<br>
+| identical() function will tell us if its first two arguments are the same. Try it out.</p>
+<blockquote>
+<p>identical(my_matrix,my_matrix2)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|========================================                                        |  50%<br>
+| Now, imagine that the numbers in our table represent some measurements from a clinical<br>
+| experiment, where each row represents one patient and each column represents one<br>
+| variable for which measurements were taken.</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| We may want to label the rows, so that we know which numbers belong to each patient in<br>
+| the experiment. One way to do this is to add a column to the matrix, which contains the<br>
+| names of all four people.</p>
+<p>...</p>
+<p>|============================================                                    |  56%<br>
+| Let's start by creating a character vector containing the names of our patients --<br>
+| Bill, Gina, Kelly, and Sean. Remember that double quotes tell R that something is a<br>
+| character string. Store the result in a variable called patients.</p>
+<blockquote>
+<p>patients&lt;-c("Bill","Gina","Kelly","Sean")</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|===============================================                                 |  58%<br>
+| Now we'll use the cbind() function to 'combine columns'. Don't worry about storing the<br>
+| result in a new variable. Just call cbind() with two arguments -- the patients vector<br>
+| and my_matrix.</p>
+<blockquote>
+<p>cbind(patients,my_matrix)<br>
+     patients<br>
+[1,] "Bill"   "1" "5" "9"  "13" "17"<br>
+[2,] "Gina"   "2" "6" "10" "14" "18"<br>
+[3,] "Kelly"  "3" "7" "11" "15" "19"<br>
+[4,] "Sean"   "4" "8" "12" "16" "20"</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|=================================================                               |  61%<br>
+| Something is fishy about our result! It appears that combining the character vector<br>
+| with our matrix of numbers caused everything to be enclosed in double quotes. This<br>
+| means we're left with a matrix of character strings, which is no good.</p>
+<p>...</p>
+<p>|===================================================                             |  64%<br>
+| If you remember back to the beginning of this lesson, I told you that matrices can only<br>
+| contain ONE class of data. Therefore, when we tried to combine a character vector with<br>
+| a numeric matrix, R was forced to 'coerce' the numbers to characters, hence the double<br>
+| quotes.</p>
+<p>...</p>
+<p>|=====================================================                           |  67%<br>
+| This is called 'implicit coercion', because we didn't ask for it. It just happened. But<br>
+| why didn't R just convert the names of our patients to numbers? I'll let you ponder<br>
+| that question on your own.</p>
+<p>...</p>
+<p>|========================================================                        |  69%<br>
+| So, we're still left with the question of how to include the names of our patients in<br>
+| the table without destroying the integrity of our numeric data. Try the following --<br>
+| my_data &lt;- data.frame(patients, my_matrix)</p>
+<blockquote>
+<p>my_data&lt;-data.frame(patients,my_matrix)</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|==========================================================                      |  72%<br>
+| Now view the contents of my_data to see what we've come up with.</p>
+<blockquote>
+<p>my_data<br>
+  patients X1 X2 X3 X4 X5<br>
+1     Bill  1  5  9 13 17<br>
+2     Gina  2  6 10 14 18<br>
+3    Kelly  3  7 11 15 19<br>
+4     Sean  4  8 12 16 20</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================================================                    |  75%<br>
+| It looks like the data.frame() function allowed us to store our character vector of<br>
+| names right alongside our matrix of numbers. That's exactly what we were hoping for!</p>
+<p>...</p>
+<p>|==============================================================                  |  78%<br>
+| Behind the scenes, the data.frame() function takes any number of arguments and returns<br>
+| a single object of class <code>data.frame</code> that is composed of the original objects.</p>
+<p>...</p>
+<p>|================================================================                |  81%<br>
+| Let's confirm this by calling the class() function on our newly created data frame.</p>
+<blockquote>
+<p>class(my_data)<br>
+[1] "data.frame"</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|===================================================================             |  83%<br>
+| It's also possible to assign names to the individual rows and columns of a data frame,<br>
+| which presents another possible way of determining which row of values in our table<br>
+| belongs to each patient.</p>
+<p>...</p>
+<p>|=====================================================================           |  86%<br>
+| However, since we've already solved that problem, let's solve a different problem by<br>
+| assigning names to the columns of our data frame so that we know what type of<br>
+| measurement each column represents.</p>
+<p>...</p>
+<p>|=======================================================================         |  89%<br>
+| Since we have six columns (including patient names), we'll need to first create a<br>
+| vector containing one element for each column. Create a character vector called cnames<br>
+| that contains the following values (in order) -- "patient", "age", "weight", "bp",<br>
+| "rating", "test".</p>
+<blockquote>
+<p>cnames&lt;-c("patient", "age", "weight", "bp", "rating", "test")</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=========================================================================       |  92%<br>
+| Now, use the colnames() function to set the <code>colnames</code> attribute for our data frame.<br>
+| This is similar to the way we used the dim() function earlier in this lesson.</p>
+<blockquote>
+<p>colnames(my_data)&lt;-cnames</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|============================================================================    |  94%<br>
+| Let's see if that got the job done. Print the contents of my_data.</p>
+<blockquote>
+<p>my_data<br>
+  patient age weight bp rating test<br>
+1    Bill   1      5  9     13   17<br>
+2    Gina   2      6 10     14   18<br>
+3   Kelly   3      7 11     15   19<br>
+4    Sean   4      8 12     16   20</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|==============================================================================  |  97%<br>
+| In this lesson, you learned the basics of working with two very important and common<br>
+| data structures -- matrices and data frames. There's much more to learn and we'll be<br>
+| covering more advanced topics, particularly with respect to data frames, in future<br>
+| lessons.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You got it right!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "cnames"     "my_data"    "my_matrix"  "my_matrix2" "my_vector"  "patients"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-14 10:18:05.910590 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <ul class="pager postindexpager clearfix">
+<li class="previous"><a href="." rel="prev">Newer posts</a></li>
+            <li class="next"><a href="index-1.html" rel="next">Older posts</a></li>
+        </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

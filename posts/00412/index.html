@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Looking at Data | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/00412/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00411/" title="vapply and tapply" type="text/html">
+<link rel="next" href="../00413/" title="Simulation" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Looking at Data">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/00412/">
+<meta property="og:description" content="swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you
+| did then. If you are new, call yourself something unique.
+What shall I call you? Krishnakanth Allika">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-04-15T12:40:07+05:30">
+<meta property="article:tag" content="head">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="str">
+<meta property="article:tag" content="summary">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Looking at Data</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:40:07+05:30" itemprop="datePublished" title="2020-04-15 12:40">2020-04-15 12:40</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00412/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00412_Looking at Data.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00412_Looking at Data.html";
+var idcomments_post_url = "/posts/00412/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 12</p>
+<p>|                                                                                |   0%</p>
+<p>| Whenever you're working with a new dataset, the first thing you should do is look at<br>
+| it! What is the format of the data? What are the dimensions? What are the variable<br>
+| names? How are the variables stored? Are there missing data? Are there any flaws in the<br>
+| data?</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| This lesson will teach you how to answer these questions and more using R's built-in<br>
+| functions. We'll be using a dataset constructed from the United States Department of<br>
+| Agriculture's PLANTS Database (<a href="http://plants.usda.gov/adv_search.html">http://plants.usda.gov/adv_search.html</a>).</p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| I've stored the data for you in a variable called plants. Type ls() to list the<br>
+| variables in your workspace, among which should be plants.</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>write.csv(plants,"plants.csv")<br>
+nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| I've stored the data for you in a variable called plants. Type ls() to list the<br>
+| variables in your workspace, among which should be plants.</p>
+<blockquote>
+<p>ls()<br>
+[1] "plants"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|==========                                                                      |  12%<br>
+| Let's begin by checking the class of the plants variable with class(plants). This will<br>
+| give us a clue as to the overall structure of the data.</p>
+<blockquote>
+<p>class(plants)<br>
+[1] "data.frame"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=============                                                                   |  16%<br>
+| It's very common for data to be stored in a data frame. It is the default class for<br>
+| data read into R using functions like read.csv() and read.table(), which you'll learn<br>
+| about in another lesson.</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| Since the dataset is stored in a data frame, we know it is rectangular. In other words,<br>
+| it has two dimensions (rows and columns) and fits neatly into a table or spreadsheet.<br>
+| Use dim(plants) to see exactly how many rows and columns we're dealing with.</p>
+<blockquote>
+<p>dim(plants)<br>
+[1] 5166   10</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================                                                             |  24%<br>
+| The first number you see (5166) is the number of rows (observations) and the second<br>
+| number (10) is the number of columns (variables).</p>
+<p>...</p>
+<p>|======================                                                          |  28%<br>
+| You can also use nrow(plants) to see only the number of rows. Try it out.</p>
+<blockquote>
+<p>nrow(plants)<br>
+[1] 5166</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================                                                      |  32%<br>
+| ... And ncol(plants) to see only the number of columns.</p>
+<blockquote>
+<p>ncol(plants)<br>
+[1] 10</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|=============================                                                   |  36%<br>
+| If you are curious as to how much space the dataset is occupying in memory, you can use<br>
+| object.size(plants).</p>
+<blockquote>
+<p>object.size(plants)<br>
+686080 bytes</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|================================                                                |  40%<br>
+| Now that we have a sense of the shape and size of the dataset, let's get a feel for<br>
+| what's inside. names(plants) will return a character vector of column (i.e. variable)<br>
+| names. Give it a shot.</p>
+<blockquote>
+<p>names(plants)<br>
+ [1] "Scientific_Name"      "Duration"             "Active_Growth_Period"<br>
+ [4] "Foliage_Color"        "pH_Min"               "pH_Max"<br>
+ [7] "Precip_Min"           "Precip_Max"           "Shade_Tolerance"<br>
+[10] "Temp_Min_F"</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|===================================                                             |  44%<br>
+| We've applied fairly descriptive variable names to this dataset, but that won't always<br>
+| be the case. A logical next step is to peek at the actual data. However, our dataset<br>
+| contains over 5000 observations (rows), so it's impractical to view the whole thing all<br>
+| at once.</p>
+<p>...</p>
+<p>|======================================                                          |  48%<br>
+| The head() function allows you to preview the top of the dataset. Give it a try with<br>
+| only one argument.</p>
+<blockquote>
+<p>head(plants)<br>
+               Scientific_Name          Duration Active_Growth_Period Foliage_Color<br>
+1                  Abelmoschus              <na><na><na><br>
+2       Abelmoschus esculentus Annual, Perennial                 <na><na><br>
+3                        Abies              <na><na><na><br>
+4               Abies balsamea         Perennial    Spring and Summer         Green<br>
+5 Abies balsamea var. balsamea         Perennial                 <na><na><br>
+6                     Abutilon              <na><na><na><br>
+  pH_Min pH_Max Precip_Min Precip_Max Shade_Tolerance Temp_Min_F<br>
+1     NA     NA         NA         NA            <na>         NA<br>
+2     NA     NA         NA         NA            <na>         NA<br>
+3     NA     NA         NA         NA            <na>         NA<br>
+4      4      6         13         60        Tolerant        -43<br>
+5     NA     NA         NA         NA            <na>         NA<br>
+6     NA     NA         NA         NA            <na>         NA</na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|==========================================                                      |  52%<br>
+| Take a minute to look through and understand the output above. Each row is labeled with<br>
+| the observation number and each column with the variable name. Your screen is probably<br>
+| not wide enough to view all 10 columns side-by-side, in which case R displays as many<br>
+| columns as it can on each line before continuing on the next.</p>
+<p>...</p>
+<p>|=============================================                                   |  56%<br>
+| By default, head() shows you the first six rows of the data. You can alter this<br>
+| behavior by passing as a second argument the number of rows you'd like to view. Use<br>
+| head() to preview the first 10 rows of plants.</p>
+<blockquote>
+<p>head(plants,n=10)<br>
+                     Scientific_Name          Duration Active_Growth_Period Foliage_Color<br>
+1                        Abelmoschus              <na><na><na><br>
+2             Abelmoschus esculentus Annual, Perennial                 <na><na><br>
+3                              Abies              <na><na><na><br>
+4                     Abies balsamea         Perennial    Spring and Summer         Green<br>
+5       Abies balsamea var. balsamea         Perennial                 <na><na><br>
+6                           Abutilon              <na><na><na><br>
+7               Abutilon theophrasti            Annual                 <na><na><br>
+8                             Acacia              <na><na><na><br>
+9                  Acacia constricta         Perennial    Spring and Summer         Green<br>
+10 Acacia constricta var. constricta         Perennial                 <na><na><br>
+   pH_Min pH_Max Precip_Min Precip_Max Shade_Tolerance Temp_Min_F<br>
+1      NA     NA         NA         NA            <na>         NA<br>
+2      NA     NA         NA         NA            <na>         NA<br>
+3      NA     NA         NA         NA            <na>         NA<br>
+4       4    6.0         13         60        Tolerant        -43<br>
+5      NA     NA         NA         NA            <na>         NA<br>
+6      NA     NA         NA         NA            <na>         NA<br>
+7      NA     NA         NA         NA            <na>         NA<br>
+8      NA     NA         NA         NA            <na>         NA<br>
+9       7    8.5          4         20      Intolerant        -13<br>
+10     NA     NA         NA         NA            <na>         NA</na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|================================================                                |  60%<br>
+| The same applies for using tail() to preview the end of the dataset. Use tail() to view<br>
+| the last 15 rows.</p>
+<blockquote>
+<p>tail(plants,n=15)<br>
+                      Scientific_Name  Duration Active_Growth_Period Foliage_Color pH_Min<br>
+5152                          Zizania      <na><na><na>     NA<br>
+5153                 Zizania aquatica    Annual               Spring         Green    6.4<br>
+5154   Zizania aquatica var. aquatica    Annual                 <na><na>     NA<br>
+5155                Zizania palustris    Annual                 <na><na>     NA<br>
+5156 Zizania palustris var. palustris    Annual                 <na><na>     NA<br>
+5157                      Zizaniopsis      <na><na><na>     NA<br>
+5158             Zizaniopsis miliacea Perennial    Spring and Summer         Green    4.3<br>
+5159                            Zizia      <na><na><na>     NA<br>
+5160                     Zizia aptera Perennial                 <na><na>     NA<br>
+5161                      Zizia aurea Perennial                 <na><na>     NA<br>
+5162                 Zizia trifoliata Perennial                 <na><na>     NA<br>
+5163                          Zostera      <na><na><na>     NA<br>
+5164                   Zostera marina Perennial                 <na><na>     NA<br>
+5165                           Zoysia      <na><na><na>     NA<br>
+5166                  Zoysia japonica Perennial                 <na><na>     NA<br>
+     pH_Max Precip_Min Precip_Max Shade_Tolerance Temp_Min_F<br>
+5152     NA         NA         NA            <na>         NA<br>
+5153    7.4         30         50      Intolerant         32<br>
+5154     NA         NA         NA            <na>         NA<br>
+5155     NA         NA         NA            <na>         NA<br>
+5156     NA         NA         NA            <na>         NA<br>
+5157     NA         NA         NA            <na>         NA<br>
+5158    9.0         35         70      Intolerant         12<br>
+5159     NA         NA         NA            <na>         NA<br>
+5160     NA         NA         NA            <na>         NA<br>
+5161     NA         NA         NA            <na>         NA<br>
+5162     NA         NA         NA            <na>         NA<br>
+5163     NA         NA         NA            <na>         NA<br>
+5164     NA         NA         NA            <na>         NA<br>
+5165     NA         NA         NA            <na>         NA<br>
+5166     NA         NA         NA            <na>         NA</na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|===================================================                             |  64%<br>
+| After previewing the top and bottom of the data, you probably noticed lots of NAs,<br>
+| which are R's placeholders for missing values. Use summary(plants) to get a better feel<br>
+| for how each variable is distributed and how much of the dataset is missing.</p>
+<blockquote>
+<p>summary(plants)<br>
+                     Scientific_Name              Duration<br>
+ Abelmoschus                 :   1   Perennial        :3031<br>
+ Abelmoschus esculentus      :   1   Annual           : 682<br>
+ Abies                       :   1   Annual, Perennial: 179<br>
+ Abies balsamea              :   1   Annual, Biennial :  95<br>
+ Abies balsamea var. balsamea:   1   Biennial         :  57<br>
+ Abutilon                    :   1   (Other)          :  92<br>
+ (Other)                     :5160   NA's             :1030<br>
+           Active_Growth_Period      Foliage_Color      pH_Min          pH_Max<br>
+ Spring and Summer   : 447      Dark Green  :  82   Min.   :3.000   Min.   : 5.100<br>
+ Spring              : 144      Gray-Green  :  25   1st Qu.:4.500   1st Qu.: 7.000<br>
+ Spring, Summer, Fall:  95      Green       : 692   Median :5.000   Median : 7.300<br>
+ Summer              :  92      Red         :   4   Mean   :4.997   Mean   : 7.344<br>
+ Summer and Fall     :  24      White-Gray  :   9   3rd Qu.:5.500   3rd Qu.: 7.800<br>
+ (Other)             :  30      Yellow-Green:  20   Max.   :7.000   Max.   :10.000<br>
+ NA's                :4334      NA's        :4334   NA's   :4327    NA's   :4327<br>
+   Precip_Min      Precip_Max         Shade_Tolerance   Temp_Min_F<br>
+ Min.   : 4.00   Min.   : 16.00   Intermediate: 242   Min.   :-79.00<br>
+ 1st Qu.:16.75   1st Qu.: 55.00   Intolerant  : 349   1st Qu.:-38.00<br>
+ Median :28.00   Median : 60.00   Tolerant    : 246   Median :-33.00<br>
+ Mean   :25.57   Mean   : 58.73   NA's        :4329   Mean   :-22.53<br>
+ 3rd Qu.:32.00   3rd Qu.: 60.00                       3rd Qu.:-18.00<br>
+ Max.   :60.00   Max.   :200.00                       Max.   : 52.00<br>
+ NA's   :4338    NA's   :4338                         NA's   :4328</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|======================================================                          |  68%<br>
+| summary() provides different output for each variable, depending on its class. For<br>
+| numeric data such as Precip_Min, summary() displays the minimum, 1st quartile, median,<br>
+| mean, 3rd quartile, and maximum. These values help us understand how the data are<br>
+| distributed.</p>
+<p>...</p>
+<p>|==========================================================                      |  72%<br>
+| For categorical variables (called 'factor' variables in R), summary() displays the<br>
+| number of times each value (or 'level') occurs in the data. For example, each value of<br>
+| Scientific_Name only appears once, since it is unique to a specific plant. In contrast,<br>
+| the summary for Duration (also a factor variable) tells us that our dataset contains<br>
+| 3031 Perennial plants, 682 Annual plants, etc.</p>
+<p>...</p>
+<p>|=============================================================                   |  76%<br>
+| You can see that R truncated the summary for Active_Growth_Period by including a<br>
+| catch-all category called 'Other'. Since it is a categorical/factor variable, we can<br>
+| see how many times each value actually occurs in the data with<br>
+| table(plants$Active_Growth_Period).</p>
+<blockquote>
+<p>table(plants$Active_Growth_Period)</p>
+</blockquote>
+<p>Fall, Winter and Spring                  Spring         Spring and Fall<br>
+                     15                     144                      10<br>
+      Spring and Summer    Spring, Summer, Fall                  Summer<br>
+                    447                      95                      92<br>
+        Summer and Fall              Year Round<br>
+                     24                       5</p>
+<p>| Your dedication is inspiring!</p>
+<p>|================================================================                |  80%<br>
+| Each of the functions we've introduced so far has its place in helping you to better<br>
+| understand the structure of your data. However, we've left the best for last....</p>
+<p>...</p>
+<p>|===================================================================             |  84%<br>
+| Perhaps the most useful and concise function for understanding the <em>str</em>ucture of your<br>
+| data is str(). Give it a try now.</p>
+<blockquote>
+<p>str(plants)<br>
+'data.frame':   5166 obs. of  10 variables:<br>
+ $ Scientific_Name     : Factor w/ 5166 levels "Abelmoschus",..: 1 2 3 4 5 6 7 8 9 10 ...  
+ $ Duration            : Factor w/ 8 levels "Annual","Annual, Biennial",..: NA 4 NA 7 7 NA 1 NA 7 7 ...<br>
+ $ Active_Growth_Period: Factor w/ 8 levels "Fall, Winter and Spring",..: NA NA NA 4 NA NA NA NA 4 NA ...  
+ $ Foliage_Color       : Factor w/ 6 levels "Dark Green","Gray-Green",..: NA NA NA 3 NA NA NA NA 3 NA ...<br>
+ $ pH_Min              : num  NA NA NA 4 NA NA NA NA 7 NA ...  
+ $ pH_Max              : num  NA NA NA 6 NA NA NA NA 8.5 NA ...<br>
+ $ Precip_Min          : int  NA NA NA 13 NA NA NA NA 4 NA ...  
+ $ Precip_Max          : int  NA NA NA 60 NA NA NA NA 20 NA ...<br>
+ $ Shade_Tolerance     : Factor w/ 3 levels "Intermediate",..: NA NA NA 3 NA NA NA NA 2 NA ...  
+ $ Temp_Min_F          : int  NA NA NA -43 NA NA NA NA -13 NA ...</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|======================================================================          |  88%<br>
+| The beauty of str() is that it combines many of the features of the other functions<br>
+| you've already seen, all in a concise and readable format. At the very top, it tells us<br>
+| that the class of plants is 'data.frame' and that it has 5166 observations and 10<br>
+| variables. It then gives us the name and class of each variable, as well as a preview<br>
+| of its contents.</p>
+<p>...</p>
+<p>|==========================================================================      |  92%<br>
+| str() is actually a very general function that you can use on most objects in R. Any<br>
+| time you want to understand the structure of something (a dataset, function, etc.),<br>
+| str() is a good place to start.</p>
+<p>...</p>
+<p>|=============================================================================   |  96%<br>
+| In this lesson, you learned how to get a feel for the structure and contents of a new<br>
+| dataset using a collection of simple and useful functions. Taking the time to do this<br>
+| upfront can save you time and frustration later on in your analysis.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| All that hard work is paying off!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "plants"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-20 21:28:58.953203 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/head/" rel="tag">head</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/str/" rel="tag">str</a></li>
+            <li><a class="tag p-category" href="../../tags/summary/" rel="tag">summary</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00411/" rel="prev" title="vapply and tapply">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../00413/" rel="next" title="Simulation">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00412_Looking at Data.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/00412/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>
