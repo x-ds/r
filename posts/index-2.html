@@ -74,7 +74,2096 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00407/" class="u-url">Matrices and Data Frames</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00410/" class="u-url">lapply and sapply</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00410/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:38:13+05:30" itemprop="datePublished" title="2020-04-15 12:38">2020-04-15 12:38</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00410/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00410_lapply and sapply.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00410_lapply and sapply.html";
+var idcomments_post_url = "/posts/00410/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p><br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 10</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, you'll learn how to use lapply() and sapply(), the two most important<br>
+| members of R's *apply family of functions, also known as loop functions.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| These powerful functions, along with their close relatives (vapply() and tapply(),<br>
+| among others) offer a concise and convenient means of implementing the<br>
+| Split-Apply-Combine strategy for data analysis.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Each of the *apply functions will SPLIT up some data into smaller pieces, APPLY a<br>
+| function to each piece, then COMBINE the results. A more detailed discussion of this<br>
+| strategy is found in Hadley Wickham's Journal of Statistical Software paper titled 'The<br>
+| Split-Apply-Combine Strategy for Data Analysis'.</p>
+<p>...</p>
+<p>|=====                                                                           |   6%<br>
+| Throughout this lesson, we'll use the Flags dataset from the UCI Machine Learning<br>
+| Repository. This dataset contains details of various nations and their flags. More<br>
+| information may be found here: <a href="http://archive.ics.uci.edu/ml/datasets/Flags">http://archive.ics.uci.edu/ml/datasets/Flags</a></p>
+<p>...</p>
+<p>|======                                                                          |   8%<br>
+| Let's jump right in so you can get a feel for how these special functions work!</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| I've stored the dataset in a variable called flags. Type head(flags) to preview the<br>
+| first six lines (i.e. the 'head') of the dataset.</p>
+<blockquote>
+<p>head(flags)<br>
+            name landmass zone area population language religion bars stripes colours red<br>
+1    Afghanistan        5    1  648         16       10        2    0       3       5   1<br>
+2        Albania        3    1   29          3        6        6    0       0       3   1<br>
+3        Algeria        4    1 2388         20        8        2    2       0       3   1<br>
+4 American-Samoa        6    3    0          0        1        1    0       0       5   1<br>
+5        Andorra        3    1    0          0        6        0    3       0       3   1<br>
+6         Angola        4    2 1247          7       10        5    0       2       3   1<br>
+  green blue gold white black orange mainhue circles crosses saltires quarters sunstars<br>
+1     1    0    1     1     1      0   green       0       0        0        0        1<br>
+2     0    0    1     0     1      0     red       0       0        0        0        1<br>
+3     1    0    0     1     0      0   green       0       0        0        0        1<br>
+4     0    1    1     1     0      1    blue       0       0        0        0        0<br>
+5     0    1    1     0     0      0    gold       0       0        0        0        0<br>
+6     0    0    1     0     1      0     red       0       0        0        0        1<br>
+  crescent triangle icon animate text topleft botright<br>
+1        0        0    1       0    0   black    green<br>
+2        0        0    0       1    0     red      red<br>
+3        1        0    0       0    0   green    white<br>
+4        0        1    1       1    0    blue      red<br>
+5        0        0    0       0    0    blue      red<br>
+6        0        0    1       0    0     red    black</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|==========                                                                      |  12%<br>
+| You may need to scroll up to see all of the output. Now, let's check out the dimensions<br>
+| of the dataset using dim(flags).</p>
+<blockquote>
+<p>dim(flags)<br>
+[1] 194  30</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===========                                                                     |  14%<br>
+| This tells us that there are 194 rows, or observations, and 30 columns, or variables.<br>
+| Each observation is a country and each variable describes some characteristic of that<br>
+| country or its flag. To open a more complete description of the dataset in a separate<br>
+| text file, type viewinfo() when you are back at the prompt (&gt;).</p>
+<p>...</p>
+<p>|=============                                                                   |  16%<br>
+| As with any dataset, we'd like to know in what format the variables have been stored.<br>
+| In other words, what is the 'class' of each variable? What happens if we do<br>
+| class(flags)? Try it out.</p>
+<blockquote>
+<p>class(flags)<br>
+[1] "data.frame"</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|==============                                                                  |  18%<br>
+| That just tells us that the entire dataset is stored as a 'data.frame', which doesn't<br>
+| answer our question. What we really need is to call the class() function on each<br>
+| individual column. While we could do this manually (i.e. one column at a time) it's<br>
+| much faster if we can automate the process. Sounds like a loop!</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| The lapply() function takes a list as input, applies a function to each element of the<br>
+| list, then returns a list of the same length as the original one. Since a data frame is<br>
+| really just a list of vectors (you can see this with as.list(flags)), we can use<br>
+| lapply() to apply the class() function to each column of the flags dataset. Let's see<br>
+| it in action!</p>
+<p>...</p>
+<p>|==================                                                              |  22%<br>
+| Type cls_list &lt;- lapply(flags, class) to apply the class() function to each column of<br>
+| the flags dataset and store the result in a variable called cls_list. Note that you<br>
+| just supply the name of the function you want to apply (i.e. class), without the usual<br>
+| parentheses after it.</p>
+<blockquote>
+<p><br>
+cls_list&lt;-lapply(flags,class)</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|===================                                                             |  24%<br>
+| Type cls_list to view the result.</p>
+<blockquote>
+<p>cls_list<br>
+$name<br>
+[1] "factor"</p>
+</blockquote>
+<p>$landmass<br>
+[1] "integer"</p>
+<p>$zone<br>
+[1] "integer"</p>
+<p>$area<br>
+[1] "integer"</p>
+<p>$population<br>
+[1] "integer"</p>
+<p>$language<br>
+[1] "integer"</p>
+<p>$religion<br>
+[1] "integer"</p>
+<p>$bars<br>
+[1] "integer"</p>
+<p>$stripes<br>
+[1] "integer"</p>
+<p>$colours<br>
+[1] "integer"</p>
+<p>$red<br>
+[1] "integer"</p>
+<p>$green<br>
+[1] "integer"</p>
+<p>$blue<br>
+[1] "integer"</p>
+<p>$gold<br>
+[1] "integer"</p>
+<p>$white<br>
+[1] "integer"</p>
+<p>$black<br>
+[1] "integer"</p>
+<p>$orange<br>
+[1] "integer"</p>
+<p>$mainhue<br>
+[1] "factor"</p>
+<p>$circles<br>
+[1] "integer"</p>
+<p>$crosses<br>
+[1] "integer"</p>
+<p>$saltires<br>
+[1] "integer"</p>
+<p>$quarters<br>
+[1] "integer"</p>
+<p>$sunstars<br>
+[1] "integer"</p>
+<p>$crescent<br>
+[1] "integer"</p>
+<p>$triangle<br>
+[1] "integer"</p>
+<p>$icon<br>
+[1] "integer"</p>
+<p>$animate<br>
+[1] "integer"</p>
+<p>$text<br>
+[1] "integer"</p>
+<p>$topleft<br>
+[1] "factor"</p>
+<p>$botright<br>
+[1] "factor"</p>
+<p>| You are really on a roll!</p>
+<p>|=====================                                                           |  26%<br>
+| The 'l' in 'lapply' stands for 'list'. Type class(cls_list) to confirm that lapply()<br>
+| returned a list.</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>str(cls_list)<br>
+List of 30<br>
+ $ name      : chr "factor"  
+ $ landmass  : chr "integer"<br>
+ $ zone      : chr "integer"  
+ $ area      : chr "integer"<br>
+ $ population: chr "integer"  
+ $ language  : chr "integer"<br>
+ $ religion  : chr "integer"  
+ $ bars      : chr "integer"<br>
+ $ stripes   : chr "integer"  
+ $ colours   : chr "integer"<br>
+ $ red       : chr "integer"  
+ $ green     : chr "integer"<br>
+ $ blue      : chr "integer"  
+ $ gold      : chr "integer"<br>
+ $ white     : chr "integer"  
+ $ black     : chr "integer"<br>
+ $ orange    : chr "integer"  
+ $ mainhue   : chr "factor"<br>
+ $ circles   : chr "integer"  
+ $ crosses   : chr "integer"<br>
+ $ saltires  : chr "integer"  
+ $ quarters  : chr "integer"<br>
+ $ sunstars  : chr "integer"  
+ $ crescent  : chr "integer"<br>
+ $ triangle  : chr "integer"  
+ $ icon      : chr "integer"<br>
+ $ animate   : chr "integer"  
+ $ text      : chr "integer"<br>
+ $ topleft   : chr "factor"  
+ $ botright  : chr "factor"<br>
+cls_list[1,]<br>
+Error in cls_list[1, ] : incorrect number of dimensions<br>
+as.data.frame(cls_list)[1,]<br>
+    name landmass    zone    area population language religion    bars stripes colours<br>
+1 factor  integer integer integer    integer  integer  integer integer integer integer<br>
+      red   green    blue    gold   white   black  orange mainhue circles crosses<br>
+1 integer integer integer integer integer integer integer  factor integer integer<br>
+  saltires quarters sunstars crescent triangle    icon animate    text topleft botright<br>
+1  integer  integer  integer  integer  integer integer integer integer  factor   factor<br>
+nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| The 'l' in 'lapply' stands for 'list'. Type class(cls_list) to confirm that lapply()<br>
+| returned a list.</p>
+<blockquote>
+<p>class(cls_list)<br>
+[1] "list"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|======================                                                          |  28%<br>
+| As expected, we got a list of length 30 -- one element for each variable/column. The<br>
+| output would be considerably more compact if we could represent it as a vector instead<br>
+| of a list.</p>
+<p>...</p>
+<p>|========================                                                        |  30%<br>
+| You may remember from a previous lesson that lists are most helpful for storing<br>
+| multiple classes of data. In this case, since every element of the list returned by<br>
+| lapply() is a character vector of length one (i.e. "integer" and "vector"), cls_list<br>
+| can be simplified to a character vector. To do this manually, type<br>
+| as.character(cls_list).</p>
+<blockquote>
+<p>as.character(cls_list)<br>
+ [1] "factor"  "integer" "integer" "integer" "integer" "integer" "integer" "integer"<br>
+ [9] "integer" "integer" "integer" "integer" "integer" "integer" "integer" "integer"<br>
+[17] "integer" "factor"  "integer" "integer" "integer" "integer" "integer" "integer"<br>
+[25] "integer" "integer" "integer" "integer" "factor"  "factor"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==========================                                                      |  32%<br>
+| sapply() allows you to automate this process by calling lapply() behind the scenes, but<br>
+| then attempting to simplify (hence the 's' in 'sapply') the result for you. Use<br>
+| sapply() the same way you used lapply() to get the class of each column of the flags<br>
+| dataset and store the result in cls_vect. If you need help, type ?sapply to bring up<br>
+| the documentation.</p>
+<blockquote>
+<p>cls_vect&lt;-sappy(flags,class)<br>
+Error in sappy(flags, class) : could not find function "sappy"<br>
+cls_vect&lt;-sapply(flags,class)</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|===========================                                                     |  34%<br>
+| Use class(cls_vect) to confirm that sapply() simplified the result to a character<br>
+| vector.</p>
+<blockquote>
+<p>class(cls_vect)<br>
+[1] "character"</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=============================                                                   |  36%<br>
+| In general, if the result is a list where every element is of length one, then sapply()<br>
+| returns a vector. If the result is a list where every element is a vector of the same<br>
+| length (&gt; 1), sapply() returns a matrix. If sapply() can't figure things out, then it<br>
+| just returns a list, no different from what lapply() would give you.</p>
+<p>...</p>
+<p>|==============================                                                  |  38%<br>
+| Let's practice using lapply() and sapply() some more!</p>
+<p>...</p>
+<p>|================================                                                |  40%<br>
+| Columns 11 through 17 of our dataset are indicator variables, each representing a<br>
+| different color. The value of the indicator variable is 1 if the color is present in a<br>
+| country's flag and 0 otherwise.</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| Therefore, if we want to know the total number of countries (in our dataset) with, for<br>
+| example, the color orange on their flag, we can just add up all of the 1s and 0s in the<br>
+| 'orange' column. Try sum(flags$orange) to see this.</p>
+<blockquote>
+<p>sum(flags$orange)<br>
+[1] 26</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===================================                                             |  44%<br>
+| Now we want to repeat this operation for each of the colors recorded in the dataset.</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| First, use flag_colors &lt;- flags[, 11:17] to extract the columns containing the color<br>
+| data and store them in a new data frame called flag_colors. (Note the comma before<br>
+| 11:17. This subsetting command tells R that we want all rows, but only columns 11<br>
+| through 17.)</p>
+<blockquote>
+<p>flag_colors&lt;-flags[,11:17]</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|======================================                                          |  48%<br>
+| Use the head() function to look at the first 6 lines of flag_colors.</p>
+<blockquote>
+<p>head(flag_colors)<br>
+  red green blue gold white black orange<br>
+1   1     1    0    1     1     1      0<br>
+2   1     0    0    1     0     1      0<br>
+3   1     1    0    0     1     0      0<br>
+4   1     0    1    1     1     0      1<br>
+5   1     0    1    1     0     0      0<br>
+6   1     0    0    1     0     1      0</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|========================================                                        |  50%<br>
+| To get a list containing the sum of each column of flag_colors, call the lapply()<br>
+| function with two arguments. The first argument is the object over which we are looping<br>
+| (i.e. flag_colors) and the second argument is the name of the function we wish to apply<br>
+| to each column (i.e. sum). Remember that the second argument is just the name of the<br>
+| function with no parentheses, etc.</p>
+<blockquote>
+<p>lapply(flag_colors,aum)<br>
+Error in match.fun(FUN) : object 'aum' not found<br>
+lapply(flag_colors,sum)<br>
+$red<br>
+[1] 153</p>
+</blockquote>
+<p>$green<br>
+[1] 91</p>
+<p>$blue<br>
+[1] 99</p>
+<p>$gold<br>
+[1] 91</p>
+<p>$white<br>
+[1] 146</p>
+<p>$black<br>
+[1] 52</p>
+<p>$orange<br>
+[1] 26</p>
+<p>| All that hard work is paying off!</p>
+<p>|==========================================                                      |  52%<br>
+| This tells us that of the 194 flags in our dataset, 153 contain the color red, 91<br>
+| contain green, 99 contain blue, and so on.</p>
+<p>...</p>
+<p>|===========================================                                     |  54%<br>
+| The result is a list, since lapply() always returns a list. Each element of this list<br>
+| is of length one, so the result can be simplified to a vector by calling sapply()<br>
+| instead of lapply(). Try it now.</p>
+<blockquote>
+<p>sapply(flag_colors,sum)<br>
+   red  green   blue   gold  white  black orange<br>
+   153     91     99     91    146     52     26</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================================                                   |  56%<br>
+| Perhaps it's more informative to find the proportion of flags (out of 194) containing<br>
+| each color. Since each column is just a bunch of 1s and 0s, the arithmetic mean of each<br>
+| column will give us the proportion of 1s. (If it's not clear why, think of a simpler<br>
+| situation where you have three 1s and two 0s -- (1 + 1 + 1 + 0 + 0)/5 = 3/5 = 0.6).</p>
+<p>...</p>
+<p>|==============================================                                  |  58%<br>
+| Use sapply() to apply the mean() function to each column of flag_colors. Remember that<br>
+| the second argument to sapply() should just specify the name of the function (i.e.<br>
+| mean) that you want to apply.</p>
+<blockquote>
+<p>sapply(flag_colors,mean)<br>
+      red     green      blue      gold     white     black    orange<br>
+0.7886598 0.4690722 0.5103093 0.4690722 0.7525773 0.2680412 0.1340206</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|================================================                                |  60%<br>
+| In the examples we've looked at so far, sapply() has been able to simplify the result<br>
+| to vector. That's because each element of the list returned by lapply() was a vector of<br>
+| length one. Recall that sapply() instead returns a matrix when each element of the list<br>
+| returned by lapply() is a vector of the same length (&gt; 1).</p>
+<p>...</p>
+<p>|==================================================                              |  62%<br>
+| To illustrate this, let's extract columns 19 through 23 from the flags dataset and<br>
+| store the result in a new data frame called flag_shapes. flag_shapes &lt;- flags[, 19:23]<br>
+| will do it.</p>
+<blockquote>
+<p>flag_shapes&lt;-flags[,19:23]</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===================================================                             |  64%<br>
+| Each of these columns (i.e. variables) represents the number of times a particular<br>
+| shape or design appears on a country's flag. We are interested in the minimum and<br>
+| maximum number of times each shape or design appears.</p>
+<p>...</p>
+<p>|=====================================================                           |  66%<br>
+| The range() function returns the minimum and maximum of its first argument, which<br>
+| should be a numeric vector. Use lapply() to apply the range function to each column of<br>
+| flag_shapes. Don't worry about storing the result in a new variable. By now, we know<br>
+| that lapply() always returns a list.</p>
+<blockquote>
+<p>lapply(flag_shapes,range)<br>
+$circles<br>
+[1] 0 4</p>
+</blockquote>
+<p>$crosses<br>
+[1] 0 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 4</p>
+<p>$sunstars<br>
+[1]  0 50</p>
+<p>| You are quite good my friend!</p>
+<p>|======================================================                          |  68%<br>
+| Do the same operation, but using sapply() and store the result in a variable called<br>
+| shape_mat.</p>
+<blockquote>
+<p>shape_mat&lt;-sapply(flag_shapes,range)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|========================================================                        |  70%<br>
+| View the contents of shape_mat.</p>
+<blockquote>
+<p>shape_mat<br>
+     circles crosses saltires quarters sunstars<br>
+[1,]       0       0        0        0        0<br>
+[2,]       4       2        1        4       50</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|==========================================================                      |  72%<br>
+| Each column of shape_mat gives the minimum (row 1) and maximum (row 2) number of times<br>
+| its respective shape appears in different flags.</p>
+<p>...</p>
+<p>|===========================================================                     |  74%<br>
+| Use the class() function to confirm that shape_mat is a matrix.</p>
+<blockquote>
+<p>class(shape_mat)<br>
+[1] "matrix"</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=============================================================                   |  76%<br>
+| As we've seen, sapply() always attempts to simplify the result given by lapply(). It<br>
+| has been successful in doing so for each of the examples we've looked at so far. Let's<br>
+| look at an example where sapply() can't figure out how to simplify the result and thus<br>
+| returns a list, no different from lapply().</p>
+<p>...</p>
+<p>|==============================================================                  |  78%<br>
+| When given a vector, the unique() function returns a vector with all duplicate elements<br>
+| removed. In other words, unique() returns a vector of only the 'unique' elements. To<br>
+| see how it works, try unique(c(3, 4, 5, 5, 5, 6, 6)).</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>as.data.frame(shape_mat)<br>
+  circles crosses saltires quarters sunstars<br>
+1       0       0        0        0        0<br>
+2       4       2        1        4       50<br>
+nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| When given a vector, the unique() function returns a vector with all duplicate elements<br>
+| removed. In other words, unique() returns a vector of only the 'unique' elements. To<br>
+| see how it works, try unique(c(3, 4, 5, 5, 5, 6, 6)).</p>
+<blockquote>
+<p>unique(c(3, 4, 5, 5, 5, 6, 6))<br>
+[1] 3 4 5 6</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|================================================================                |  80%<br>
+| We want to know the unique values for each variable in the flags dataset. To accomplish<br>
+| this, use lapply() to apply the unique() function to each column in the flags dataset,<br>
+| storing the result in a variable called unique_vals.</p>
+<blockquote>
+<p>unique_vals&lt;-lapply(flags,unique)</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==================================================================              |  82%<br>
+| Print the value of unique_vals to the console.</p>
+<blockquote>
+<p>unique_vals<br>
+$name<br>
+  [1] Afghanistan              Albania                  Algeria<br>
+  [4] American-Samoa           Andorra                  Angola<br>
+  [7] Anguilla                 Antigua-Barbuda          Argentina<br>
+ [10] Argentine                Australia                Austria<br>
+ [13] Bahamas                  Bahrain                  Bangladesh<br>
+ [16] Barbados                 Belgium                  Belize<br>
+ [19] Benin                    Bermuda                  Bhutan<br>
+ [22] Bolivia                  Botswana                 Brazil<br>
+ [25] British-Virgin-Isles     Brunei                   Bulgaria<br>
+ [28] Burkina                  Burma                    Burundi<br>
+ [31] Cameroon                 Canada                   Cape-Verde-Islands<br>
+ [34] Cayman-Islands           Central-African-Republic Chad<br>
+ [37] Chile                    China                    Colombia<br>
+ [40] Comorro-Islands          Congo                    Cook-Islands<br>
+ [43] Costa-Rica               Cuba                     Cyprus<br>
+ [46] Czechoslovakia           Denmark                  Djibouti<br>
+ [49] Dominica                 Dominican-Republic       Ecuador<br>
+ [52] Egypt                    El-Salvador              Equatorial-Guinea<br>
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas<br>
+ [58] Fiji                     Finland                  France<br>
+ [61] French-Guiana            French-Polynesia         Gabon<br>
+ [64] Gambia                   Germany-DDR              Germany-FRG<br>
+ [67] Ghana                    Gibraltar                Greece<br>
+ [70] Greenland                Grenada                  Guam<br>
+ [73] Guatemala                Guinea                   Guinea-Bissau<br>
+ [76] Guyana                   Haiti                    Honduras<br>
+ [79] Hong-Kong                Hungary                  Iceland<br>
+ [82] India                    Indonesia                Iran<br>
+ [85] Iraq                     Ireland                  Israel<br>
+ [88] Italy                    Ivory-Coast              Jamaica<br>
+ [91] Japan                    Jordan                   Kampuchea<br>
+ [94] Kenya                    Kiribati                 Kuwait<br>
+ [97] Laos                     Lebanon                  Lesotho<br>
+[100] Liberia                  Libya                    Liechtenstein<br>
+[103] Luxembourg               Malagasy                 Malawi<br>
+[106] Malaysia                 Maldive-Islands          Mali<br>
+[109] Malta                    Marianas                 Mauritania<br>
+[112] Mauritius                Mexico                   Micronesia<br>
+[115] Monaco                   Mongolia                 Montserrat<br>
+[118] Morocco                  Mozambique               Nauru<br>
+[121] Nepal                    Netherlands              Netherlands-Antilles<br>
+[124] New-Zealand              Nicaragua                Niger<br>
+[127] Nigeria                  Niue                     North-Korea<br>
+[130] North-Yemen              Norway                   Oman<br>
+[133] Pakistan                 Panama                   Papua-New-Guinea<br>
+[136] Parguay                  Peru                     Philippines<br>
+[139] Poland                   Portugal                 Puerto-Rico<br>
+[142] Qatar                    Romania                  Rwanda<br>
+[145] San-Marino               Sao-Tome                 Saudi-Arabia<br>
+[148] Senegal                  Seychelles               Sierra-Leone<br>
+[151] Singapore                Soloman-Islands          Somalia<br>
+[154] South-Africa             South-Korea              South-Yemen<br>
+[157] Spain                    Sri-Lanka                St-Helena<br>
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent<br>
+[163] Sudan                    Surinam                  Swaziland<br>
+[166] Sweden                   Switzerland              Syria<br>
+[169] Taiwan                   Tanzania                 Thailand<br>
+[172] Togo                     Tonga                    Trinidad-Tobago<br>
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands<br>
+[178] Tuvalu                   UAE                      Uganda<br>
+[181] UK                       Uruguay                  US-Virgin-Isles<br>
+[184] USA                      USSR                     Vanuatu<br>
+[187] Vatican-City             Venezuela                Vietnam<br>
+[190] Western-Samoa            Yugoslavia               Zaire<br>
+[193] Zambia                   Zimbabwe<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 5 3 4 6 1 2</p>
+<p>$zone<br>
+[1] 1 3 2 4</p>
+<p>$area<br>
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23   113<br>
+ [15]    47  1099   600  8512     6   111   274   678    28   474  9976     4   623  1284<br>
+ [29]   757  9561  1139     2   342    51   115     9   128    43    22    49   284  1001<br>
+ [43]    21  1222    12    18   337   547    91   268    10   108   249   239   132  2176<br>
+ [57]   109   246    36   215   112    93   103  3268  1904  1648   435    70   301   323<br>
+ [71]    11   372    98   181   583   236    30  1760     3   587   118   333  1240  1031<br>
+ [85]  1973  1566   447   783   140    41  1267   925   121   195   324   212   804    76<br>
+ [99]   463   407  1285   300   313    92   237    26  2150   196    72   637  1221    99<br>
+[113]   288   505    66  2506    63    17   450   185   945   514    57     5   164   781<br>
+[127]   245   178  9363 22402    15   912   256   905   753   391</p>
+<p>$population<br>
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4   24<br>
+[18]    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118   13   77<br>
+[35]   12   56   18   84   48   36   22   29   38   49   45  231  274   60</p>
+<p>$language<br>
+ [1] 10  6  8  1  2  4  3  5  7  9</p>
+<p>$religion<br>
+[1] 2 6 1 0 5 3 4 7</p>
+<p>$bars<br>
+[1] 0 2 3 1 5</p>
+<p>$stripes<br>
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7</p>
+<p>$colours<br>
+[1] 5 3 2 8 6 4 7 1</p>
+<p>$red<br>
+[1] 1 0</p>
+<p>$green<br>
+[1] 1 0</p>
+<p>$blue<br>
+[1] 0 1</p>
+<p>$gold<br>
+[1] 1 0</p>
+<p>$white<br>
+[1] 1 0</p>
+<p>$black<br>
+[1] 1 0</p>
+<p>$orange<br>
+[1] 0 1</p>
+<p>$mainhue<br>
+[1] green  red    blue   gold   white  orange black  brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 0 1 4 2</p>
+<p>$crosses<br>
+[1] 0 1 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 1 4</p>
+<p>$sunstars<br>
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50</p>
+<p>$crescent<br>
+[1] 0 1</p>
+<p>$triangle<br>
+[1] 0 1</p>
+<p>$icon<br>
+[1] 1 0</p>
+<p>$animate<br>
+[1] 0 1</p>
+<p>$text<br>
+[1] 0 1</p>
+<p>$topleft<br>
+[1] black  red    green  blue   white  orange gold<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] green  red    white  black  blue   gold   orange brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===================================================================             |  84%<br>
+| Since unique_vals is a list, you can use what you've learned to determine the length of<br>
+| each element of unique_vals (i.e. the number of unique values for each variable).<br>
+| Simplify the result, if possible. Hint: Apply the length() function to each element of<br>
+| unique_vals.</p>
+<blockquote>
+<p>sapply(unique_vals,length)<br>
+      name   landmass       zone       area population   language   religion       bars<br>
+       194          6          4        136         48         10          8          5<br>
+   stripes    colours        red      green       blue       gold      white      black<br>
+        12          8          2          2          2          2          2          2<br>
+    orange    mainhue    circles    crosses   saltires   quarters   sunstars   crescent<br>
+         2          8          4          3          2          3         14          2<br>
+  triangle       icon    animate       text    topleft   botright<br>
+         2          2          2          2          7          8</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|=====================================================================           |  86%<br>
+| The fact that the elements of the unique_vals list are all vectors of <em>different</em><br>
+| length poses a problem for sapply(), since there's no obvious way of simplifying the<br>
+| result.</p>
+<p>...</p>
+<p>|======================================================================          |  88%<br>
+| Use sapply() to apply the unique() function to each column of the flags dataset to see<br>
+| that you get the same unsimplified list that you got from lapply().</p>
+<blockquote>
+<p>sapply(flags,unique)<br>
+$name<br>
+  [1] Afghanistan              Albania                  Algeria<br>
+  [4] American-Samoa           Andorra                  Angola<br>
+  [7] Anguilla                 Antigua-Barbuda          Argentina<br>
+ [10] Argentine                Australia                Austria<br>
+ [13] Bahamas                  Bahrain                  Bangladesh<br>
+ [16] Barbados                 Belgium                  Belize<br>
+ [19] Benin                    Bermuda                  Bhutan<br>
+ [22] Bolivia                  Botswana                 Brazil<br>
+ [25] British-Virgin-Isles     Brunei                   Bulgaria<br>
+ [28] Burkina                  Burma                    Burundi<br>
+ [31] Cameroon                 Canada                   Cape-Verde-Islands<br>
+ [34] Cayman-Islands           Central-African-Republic Chad<br>
+ [37] Chile                    China                    Colombia<br>
+ [40] Comorro-Islands          Congo                    Cook-Islands<br>
+ [43] Costa-Rica               Cuba                     Cyprus<br>
+ [46] Czechoslovakia           Denmark                  Djibouti<br>
+ [49] Dominica                 Dominican-Republic       Ecuador<br>
+ [52] Egypt                    El-Salvador              Equatorial-Guinea<br>
+ [55] Ethiopia                 Faeroes                  Falklands-Malvinas<br>
+ [58] Fiji                     Finland                  France<br>
+ [61] French-Guiana            French-Polynesia         Gabon<br>
+ [64] Gambia                   Germany-DDR              Germany-FRG<br>
+ [67] Ghana                    Gibraltar                Greece<br>
+ [70] Greenland                Grenada                  Guam<br>
+ [73] Guatemala                Guinea                   Guinea-Bissau<br>
+ [76] Guyana                   Haiti                    Honduras<br>
+ [79] Hong-Kong                Hungary                  Iceland<br>
+ [82] India                    Indonesia                Iran<br>
+ [85] Iraq                     Ireland                  Israel<br>
+ [88] Italy                    Ivory-Coast              Jamaica<br>
+ [91] Japan                    Jordan                   Kampuchea<br>
+ [94] Kenya                    Kiribati                 Kuwait<br>
+ [97] Laos                     Lebanon                  Lesotho<br>
+[100] Liberia                  Libya                    Liechtenstein<br>
+[103] Luxembourg               Malagasy                 Malawi<br>
+[106] Malaysia                 Maldive-Islands          Mali<br>
+[109] Malta                    Marianas                 Mauritania<br>
+[112] Mauritius                Mexico                   Micronesia<br>
+[115] Monaco                   Mongolia                 Montserrat<br>
+[118] Morocco                  Mozambique               Nauru<br>
+[121] Nepal                    Netherlands              Netherlands-Antilles<br>
+[124] New-Zealand              Nicaragua                Niger<br>
+[127] Nigeria                  Niue                     North-Korea<br>
+[130] North-Yemen              Norway                   Oman<br>
+[133] Pakistan                 Panama                   Papua-New-Guinea<br>
+[136] Parguay                  Peru                     Philippines<br>
+[139] Poland                   Portugal                 Puerto-Rico<br>
+[142] Qatar                    Romania                  Rwanda<br>
+[145] San-Marino               Sao-Tome                 Saudi-Arabia<br>
+[148] Senegal                  Seychelles               Sierra-Leone<br>
+[151] Singapore                Soloman-Islands          Somalia<br>
+[154] South-Africa             South-Korea              South-Yemen<br>
+[157] Spain                    Sri-Lanka                St-Helena<br>
+[160] St-Kitts-Nevis           St-Lucia                 St-Vincent<br>
+[163] Sudan                    Surinam                  Swaziland<br>
+[166] Sweden                   Switzerland              Syria<br>
+[169] Taiwan                   Tanzania                 Thailand<br>
+[172] Togo                     Tonga                    Trinidad-Tobago<br>
+[175] Tunisia                  Turkey                   Turks-Cocos-Islands<br>
+[178] Tuvalu                   UAE                      Uganda<br>
+[181] UK                       Uruguay                  US-Virgin-Isles<br>
+[184] USA                      USSR                     Vanuatu<br>
+[187] Vatican-City             Venezuela                Vietnam<br>
+[190] Western-Samoa            Yugoslavia               Zaire<br>
+[193] Zambia                   Zimbabwe<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 5 3 4 6 1 2</p>
+<p>$zone<br>
+[1] 1 3 2 4</p>
+<p>$area<br>
+  [1]   648    29  2388     0  1247  2777  7690    84    19     1   143    31    23   113<br>
+ [15]    47  1099   600  8512     6   111   274   678    28   474  9976     4   623  1284<br>
+ [29]   757  9561  1139     2   342    51   115     9   128    43    22    49   284  1001<br>
+ [43]    21  1222    12    18   337   547    91   268    10   108   249   239   132  2176<br>
+ [57]   109   246    36   215   112    93   103  3268  1904  1648   435    70   301   323<br>
+ [71]    11   372    98   181   583   236    30  1760     3   587   118   333  1240  1031<br>
+ [85]  1973  1566   447   783   140    41  1267   925   121   195   324   212   804    76<br>
+ [99]   463   407  1285   300   313    92   237    26  2150   196    72   637  1221    99<br>
+[113]   288   505    66  2506    63    17   450   185   945   514    57     5   164   781<br>
+[127]   245   178  9363 22402    15   912   256   905   753   391</p>
+<p>$population<br>
+ [1]   16    3   20    0    7   28   15    8   90   10    1    6  119    9   35    4   24<br>
+[18]    2   11 1008    5   47   31   54   17   61   14  684  157   39   57  118   13   77<br>
+[35]   12   56   18   84   48   36   22   29   38   49   45  231  274   60</p>
+<p>$language<br>
+ [1] 10  6  8  1  2  4  3  5  7  9</p>
+<p>$religion<br>
+[1] 2 6 1 0 5 3 4 7</p>
+<p>$bars<br>
+[1] 0 2 3 1 5</p>
+<p>$stripes<br>
+ [1]  3  0  2  1  5  9 11 14  4  6 13  7</p>
+<p>$colours<br>
+[1] 5 3 2 8 6 4 7 1</p>
+<p>$red<br>
+[1] 1 0</p>
+<p>$green<br>
+[1] 1 0</p>
+<p>$blue<br>
+[1] 0 1</p>
+<p>$gold<br>
+[1] 1 0</p>
+<p>$white<br>
+[1] 1 0</p>
+<p>$black<br>
+[1] 1 0</p>
+<p>$orange<br>
+[1] 0 1</p>
+<p>$mainhue<br>
+[1] green  red    blue   gold   white  orange black  brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 0 1 4 2</p>
+<p>$crosses<br>
+[1] 0 1 2</p>
+<p>$saltires<br>
+[1] 0 1</p>
+<p>$quarters<br>
+[1] 0 1 4</p>
+<p>$sunstars<br>
+ [1]  1  0  6 22 14  3  4  5 15 10  7  2  9 50</p>
+<p>$crescent<br>
+[1] 0 1</p>
+<p>$triangle<br>
+[1] 0 1</p>
+<p>$icon<br>
+[1] 1 0</p>
+<p>$animate<br>
+[1] 0 1</p>
+<p>$text<br>
+[1] 0 1</p>
+<p>$topleft<br>
+[1] black  red    green  blue   white  orange gold<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] green  red    white  black  blue   gold   orange brown<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| You're the best!</p>
+<p>|========================================================================        |  90%<br>
+| Occasionally, you may need to apply a function that is not yet defined, thus requiring<br>
+| you to write your own. Writing functions in R is beyond the scope of this lesson, but<br>
+| let's look at a quick example of how you might do so in the context of loop functions.</p>
+<p>...</p>
+<p>|==========================================================================      |  92%<br>
+| Pretend you are interested in only the second item from each element of the unique_vals<br>
+| list that you just created. Since each element of the unique_vals list is a vector and<br>
+| we're not aware of any built-in function in R that returns the second element of a<br>
+| vector, we will construct our own function.</p>
+<p>...</p>
+<p>|===========================================================================     |  94%<br>
+| lapply(unique_vals, function(elem) elem[2]) will return a list containing the second<br>
+| item from each element of the unique_vals list. Note that our function takes one<br>
+| argument, elem, which is just a 'dummy variable' that takes on the value of each<br>
+| element of unique_vals, in turn.</p>
+<blockquote>
+<p>lapply(unique_vals, function(elem) elem[2])<br>
+$name<br>
+[1] Albania<br>
+194 Levels: Afghanistan Albania Algeria American-Samoa Andorra Angola ... Zimbabwe</p>
+</blockquote>
+<p>$landmass<br>
+[1] 3</p>
+<p>$zone<br>
+[1] 3</p>
+<p>$area<br>
+[1] 29</p>
+<p>$population<br>
+[1] 3</p>
+<p>$language<br>
+[1] 6</p>
+<p>$religion<br>
+[1] 6</p>
+<p>$bars<br>
+[1] 2</p>
+<p>$stripes<br>
+[1] 0</p>
+<p>$colours<br>
+[1] 3</p>
+<p>$red<br>
+[1] 0</p>
+<p>$green<br>
+[1] 0</p>
+<p>$blue<br>
+[1] 1</p>
+<p>$gold<br>
+[1] 0</p>
+<p>$white<br>
+[1] 0</p>
+<p>$black<br>
+[1] 0</p>
+<p>$orange<br>
+[1] 1</p>
+<p>$mainhue<br>
+[1] red<br>
+Levels: black blue brown gold green orange red white</p>
+<p>$circles<br>
+[1] 1</p>
+<p>$crosses<br>
+[1] 1</p>
+<p>$saltires<br>
+[1] 1</p>
+<p>$quarters<br>
+[1] 1</p>
+<p>$sunstars<br>
+[1] 0</p>
+<p>$crescent<br>
+[1] 1</p>
+<p>$triangle<br>
+[1] 1</p>
+<p>$icon<br>
+[1] 0</p>
+<p>$animate<br>
+[1] 1</p>
+<p>$text<br>
+[1] 1</p>
+<p>$topleft<br>
+[1] red<br>
+Levels: black blue gold green orange red white</p>
+<p>$botright<br>
+[1] red<br>
+Levels: black blue brown gold green orange red white</p>
+<p>| Great job!</p>
+<p>|=============================================================================   |  96%<br>
+| The only difference between previous examples and this one is that we are defining and<br>
+| using our own function right in the call to lapply(). Our function has no name and<br>
+| disappears as soon as lapply() is done using it. So-called 'anonymous functions' can be<br>
+| very useful when one of R's built-in functions isn't an option.</p>
+<p>...</p>
+<p>|==============================================================================  |  98%<br>
+| In this lesson, you learned how to use the powerful lapply() and sapply() functions to<br>
+| apply an operation over the elements of a list. In the next lesson, we'll take a look<br>
+| at some close relatives of lapply() and sapply().</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's the answer I was looking for.</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "cls_list"    "cls_vect"    "flag_colors" "flag_shapes" "flags"       "shape_mat"<br>
+[7] "unique_vals" "viewinfo"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-18 20:39:08.401287 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00409/" class="u-url">Functions</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00409/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:37:15+05:30" itemprop="datePublished" title="2020-04-15 12:37">2020-04-15 12:37</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00409/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00409_Functions.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00409_Functions.html";
+var idcomments_post_url = "/posts/00409/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 9</p>
+<p>|                                                                                |   0%</p>
+<p>| Functions are one of the fundamental building blocks of the R language. They are small<br>
+| pieces of reusable code that can be treated like any other R object.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| If you've worked through any other part of this course, you've probably used some<br>
+| functions already. Functions are usually characterized by the name of the function<br>
+| followed by parentheses.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Let's try using a few basic functions just for fun. The Sys.Date() function returns a<br>
+| string representing today's date. Type Sys.Date() below and see what happens.</p>
+<blockquote>
+<p>Sys.Date()<br>
+[1] "2020-04-15"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=====                                                                           |   6%<br>
+| Most functions in R return a value. Functions like Sys.Date() return a value based on<br>
+| your computer's environment, while other functions manipulate input data in order to<br>
+| compute a return value.</p>
+<p>...</p>
+<p>|=======                                                                         |   8%<br>
+| The mean() function takes a vector of numbers as input, and returns the average of all<br>
+| of the numbers in the input vector. Inputs to functions are often called arguments.<br>
+| Providing arguments to a function is also sometimes called passing arguments to that<br>
+| function. Arguments you want to pass to a function go inside the function's<br>
+| parentheses. Try passing the argument c(2, 4, 5) to the mean() function.</p>
+<blockquote>
+<p>mean(c(2,4,5))<br>
+[1] 3.666667</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|========                                                                        |  10%<br>
+| Functions usually take arguments which are variables that the function operates on. For<br>
+| example, the mean() function takes a vector as an argument, like in the case of<br>
+| mean(c(2,6,8)). The mean() function then adds up all of the numbers in the vector and<br>
+| divides that sum by the length of the vector.</p>
+<p>...</p>
+<p>|==========                                                                      |  12%<br>
+| In the following question you will be asked to modify a script that will appear as soon<br>
+| as you move on from this question. When you have finished modifying the script, save<br>
+| your changes to the script and type submit() and the script will be evaluated. There<br>
+| will be some comments in the script that opens up, so be sure to read them!</p>
+<p>...</p>
+<p>|===========                                                                     |  14%<br>
+| The last R expression to be evaluated in a function will become the return value of<br>
+| that function. We want this function to take one argument, x, and return x without<br>
+| modifying it. Delete the pound sign so that x is returned without any modification.<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># You're about to write your first function! Just like you would assign a value 
+# to a variable with the assignment operator, you assign functions in the following
+# way:
+#
+# function_name &lt;- function(arg1, arg2){
+#   # Manipulate arguments in some way
+#   # Return a value
+# }
+#
+# The "variable name" you assign will become the name of your function. arg1 and
+# arg2 represent the arguments of your function. You can manipulate the arguments
+# you specify within the function. After sourcing the function, you can use the 
+# function by typing:
+# 
+# function_name(value1, value2)
+#
+# Below we will create a function called boring_function. This function takes
+# the argument `x` as input, and returns the value of x without modifying it.
+# Delete the pound sign in front of the x to make the function work! Be sure to 
+# save this script and type submit() in the console after you make your changes.
+
+boring_function &lt;- function(x) {
+  x
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You got it right!</p>
+<p>|=============                                                                   |  16%<br>
+| Now that you've created your first function let's test it! Type: boring_function('My<br>
+| first function!'). If your function works, it should just return the string: 'My first<br>
+| function!'</p>
+<blockquote>
+<p>boring_function('My first function!')<br>
+[1] "My first function!"</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|===============                                                                 |  18%<br>
+| Congratulations on writing your first function. By writing functions, you can gain<br>
+| serious insight into how R works. As John Chambers, the creator of R once said:<br>
+|<br>
+| To understand computations in R, two slogans are helpful: 1. Everything that exists is<br>
+| an object. 2. Everything that happens is a function call.</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| If you want to see the source code for any function, just type the function name<br>
+| without any arguments or parentheses. Let's try this out with the function you just<br>
+| created. Type: boring_function to view its source code.</p>
+<blockquote>
+<p>boring_function<br>
+function(x) {<br>
+  x<br>
+}</p>
+<p>&lt;bytecode: 0x00000000190a1b98&gt;</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==================                                                              |  22%<br>
+| Time to make a more useful function! We're going to replicate the functionality of the<br>
+| mean() function by creating a function called: my_mean(). Remember that to calculate<br>
+| the average of all of the numbers in a vector you find the sum of all the numbers in<br>
+| the vector, and then divide that sum by the number of numbers in the vector.</p>
+<p>...</p>
+<p>|====================                                                            |  24%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># You're free to implement the function my_mean however you want, as long as it
+# returns the average of all of the numbers in `my_vector`.
+#
+# Hint #1: sum() returns the sum of a vector.
+#   Ex: sum(c(1, 2, 3)) evaluates to 6
+#
+# Hint #2: length() returns the size of a vector.
+#   Ex: length(c(1, 2, 3)) evaluates to 3
+#
+# Hint #3: The mean of all the numbers in a vector is equal to the sum of all of
+#          the numbers in the vector divided by the size of the vector.
+#
+# Note for those of you feeling super clever: Please do not use the mean()
+# function while writing this function. We're trying to teach you something 
+# here!
+#
+# Be sure to save this script and type submit() in the console after you make 
+# your changes.
+
+my_mean &lt;- function(my_vector) {
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  sum(my_vector)/length(my_vector)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You got it right!</p>
+<p>|=====================                                                           |  27%<br>
+| Now test out your my_mean() function by finding the mean of the vector c(4, 5, 10).</p>
+<blockquote>
+<p>my_mean(c(4,5,10))<br>
+[1] 6.333333</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=======================                                                         |  29%<br>
+| Next, let's try writing a function with default arguments. You can set default values<br>
+| for a function's arguments, and this can be useful if you think someone who uses your<br>
+| function will set a certain argument to the same value most of the time.</p>
+<p>...</p>
+<p>|========================                                                        |  31%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># Let me show you an example of a function I'm going to make up called
+# increment(). Most of the time I want to use this function to increase the
+# value of a number by one. This function will take two arguments: "number" and
+# "by" where "number" is the digit I want to increment and "by" is the amount I
+# want to increment "number" by. I've written the function below. 
+#
+# increment &lt;- function(number, by = 1){
+#     number + by
+# }
+#
+# If you take a look in between the parentheses you can see that I've set
+# "by" equal to 1. This means that the "by" argument will have the default
+# value of 1.
+#
+# I can now use the increment function without providing a value for "by": 
+# increment(5) will evaluate to 6. 
+#
+# However if I want to provide a value for the "by" argument I still can! The
+# expression: increment(5, 2) will evaluate to 7. 
+# 
+# You're going to write a function called "remainder." remainder() will take
+# two arguments: "num" and "divisor" where "num" is divided by "divisor" and
+# the remainder is returned. Imagine that you usually want to know the remainder
+# when you divide by 2, so set the default value of "divisor" to 2. Please be
+# sure that "num" is the first argument and "divisor" is the second argument.
+#
+# Hint #1: You can use the modulus operator %% to find the remainder.
+#   Ex: 7 %% 4 evaluates to 3. 
+#
+# Remember to set appropriate default values! Be sure to save this 
+# script and type submit() in the console after you write the function.
+
+remainder &lt;- function(num, divisor=2) {
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  num%%divisor
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==========================                                                      |  33%<br>
+| Let's do some testing of the remainder function. Run remainder(5) and see what happens.</p>
+<blockquote>
+<p>remainder(5)<br>
+[1] 1</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|============================                                                    |  35%<br>
+| Let's take a moment to examine what just happened. You provided one argument to the<br>
+| function, and R matched that argument to 'num' since 'num' is the first argument. The<br>
+| default value for 'divisor' is 2, so the function used the default value you provided.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| Now let's test the remainder function by providing two arguments. Type: remainder(11,<br>
+| 5) and let's see what happens.</p>
+<blockquote>
+<p>remainder(11,5)<br>
+[1] 1</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================                                                 |  39%<br>
+| Once again, the arguments have been matched appropriately.</p>
+<p>...</p>
+<p>|=================================                                               |  41%<br>
+| You can also explicitly specify arguments in a function. When you explicitly designate<br>
+| argument values by name, the ordering of the arguments becomes unimportant. You can try<br>
+| this out by typing: remainder(divisor = 11, num = 5).</p>
+<blockquote>
+<p>remainder(divisor = 11, num = 5)<br>
+[1] 5</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==================================                                              |  43%<br>
+| As you can see, there is a significant difference between remainder(11, 5) and<br>
+| remainder(divisor = 11, num = 5)!</p>
+<p>...</p>
+<p>|====================================                                            |  45%<br>
+| R can also partially match arguments. Try typing remainder(4, div = 2) to see this<br>
+| feature in action.</p>
+<blockquote>
+<p>remainder(4, div = 2)<br>
+[1] 0</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|======================================                                          |  47%<br>
+| A word of warning: in general you want to make your code as easy to understand as<br>
+| possible. Switching around the orders of arguments by specifying their names or only<br>
+| using partial argument names can be confusing, so use these features with caution!</p>
+<p>...</p>
+<p>|=======================================                                         |  49%<br>
+| With all of this talk about arguments, you may be wondering if there is a way you can<br>
+| see a function's arguments (besides looking at the documentation). Thankfully, you can<br>
+| use the args() function! Type: args(remainder) to examine the arguments for the<br>
+| remainder function.</p>
+<blockquote>
+<p>args(remainder)<br>
+function (num, divisor = 2)<br>
+NULL</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|=========================================                                       |  51%<br>
+| You may not realize it but I just tricked you into doing something pretty interesting!<br>
+| args() is a function, remainder() is a function, yet remainder was an argument for<br>
+| args(). Yes it's true: you can pass functions as arguments! This is a very powerful<br>
+| concept. Let's write a script to see how it works.</p>
+<p>...</p>
+<p>|==========================================                                      |  53%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># You can pass functions as arguments to other functions just like you can pass
+# data to functions. Let's say you define the following functions:
+#
+# add_two_numbers &lt;- function(num1, num2){
+#    num1 + num2
+# }
+#
+# multiply_two_numbers &lt;- function(num1, num2){
+#   num1 * num2
+# }
+#
+# some_function &lt;- function(func){
+#    func(2, 4)
+# }
+#
+# As you can see we use the argument name "func" like a function inside of 
+# "some_function()." By passing functions as arguments 
+# some_function(add_two_numbers) will evaluate to 6, while
+# some_function(multiply_two_numbers) will evaluate to 8.
+# 
+# Finish the function definition below so that if a function is passed into the
+# "func" argument and some data (like a vector) is passed into the dat argument
+# the evaluate() function will return the result of dat being passed as an
+# argument to func.
+#
+# Hints: This exercise is a little tricky so I'll provide a few example of how
+# evaluate() should act:
+#    1. evaluate(sum, c(2, 4, 6)) should evaluate to 12
+#    2. evaluate(median, c(7, 40, 9)) should evaluate to 9
+#    3. evaluate(floor, 11.1) should evaluate to 11
+
+evaluate &lt;- function(func, dat){
+  # Write your code here!
+  # Remember: the last expression evaluated will be returned! 
+  func(dat)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You are really on a roll!</p>
+<p>|============================================                                    |  55%<br>
+| Let's take your new evaluate() function for a spin! Use evaluate to find the standard<br>
+| deviation of the vector c(1.4, 3.6, 7.9, 8.8).</p>
+<blockquote>
+<p>evaluate(sd,c(1.4, 3.6, 7.9, 8.8))<br>
+[1] 3.514138</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|==============================================                                  |  57%<br>
+| The idea of passing functions as arguments to other functions is an important and<br>
+| fundamental concept in programming.</p>
+<p>...</p>
+<p>|===============================================                                 |  59%<br>
+| You may be surprised to learn that you can pass a function as an argument without first<br>
+| defining the passed function. Functions that are not named are appropriately known as<br>
+| anonymous functions.</p>
+<p>...</p>
+<p>|=================================================                               |  61%<br>
+| Let's use the evaluate function to explore how anonymous functions work. For the first<br>
+| argument of the evaluate function we're going to write a tiny function that fits on one<br>
+| line. In the second argument we'll pass some data to the tiny anonymous function in the<br>
+| first argument.</p>
+<p>...</p>
+<p>|===================================================                             |  63%<br>
+| Type the following command and then we'll discuss how it works:<br>
+| evaluate(function(x){x+1}, 6)</p>
+<blockquote>
+<p>evaluate(function(x){x+1}, 6)<br>
+[1] 7</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|====================================================                            |  65%<br>
+| The first argument is a tiny anonymous function that takes one argument <code>x</code> and returns<br>
+| <code>x+1</code>. We passed the number 6 into this function so the entire expression evaluates to<br>
+| 7.</p>
+<p>...</p>
+<p>|======================================================                          |  67%<br>
+| Try using evaluate() along with an anonymous function to return the first element of<br>
+| the vector c(8, 4, 0). Your anonymous function should only take one argument which<br>
+| should be a variable <code>x</code>.</p>
+<blockquote>
+<p>evaluate(function(x){x[1]},c(8, 4, 0))<br>
+[1] 8</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|========================================================                        |  69%<br>
+| Now try using evaluate() along with an anonymous function to return the last element of<br>
+| the vector c(8, 4, 0). Your anonymous function should only take one argument which<br>
+| should be a variable <code>x</code>.</p>
+<blockquote>
+<p>evaluate(function(x){tail(x,n=1)},c(8, 4, 0))<br>
+[1] 0</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=========================================================                       |  71%<br>
+| For the rest of the course we're going to use the paste() function frequently. Type<br>
+| ?paste so we can take a look at the documentation for the paste function.</p>
+<blockquote>
+<p>?paste</p>
+</blockquote>
+<p><img src="../images/r0040030.png" alt="paste()" title="paste()"></p>
+<p>| Nice work!</p>
+<p>|===========================================================                     |  73%<br>
+| As you can see the first argument of paste() is <code>...</code> which is referred to as an<br>
+| ellipsis or simply dot-dot-dot. The ellipsis allows an indefinite number of arguments<br>
+| to be passed into a function. In the case of paste() any number of strings can be<br>
+| passed as arguments and paste() will return all of the strings combined into one<br>
+| string.</p>
+<p>...</p>
+<p>|============================================================                    |  76%<br>
+| Just to see how paste() works, type paste("Programming", "is", "fun!")</p>
+<blockquote>
+<p>paste("Programming", "is", "fun!")<br>
+[1] "Programming is fun!"</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==============================================================                  |  78%<br>
+| Time to write our own modified version of paste().</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># The ellipses can be used to pass on arguments to other functions that are
+# used within the function you're writing. Usually a function that has the
+# ellipses as an argument has the ellipses as the last argument. The usage of
+# such a function would look like:
+#
+# ellipses_func(arg1, arg2 = TRUE, ...)
+#
+# In the above example arg1 has no default value, so a value must be provided
+# for arg1. arg2 has a default value, and other arguments can come after arg2
+# depending on how they're defined in the ellipses_func() documentation.
+# Interestingly the usage for the paste function is as follows:
+#
+# paste (..., sep = " ", collapse = NULL)
+#
+# Notice that the ellipses is the first argument, and all other arguments after
+# the ellipses have default values. This is a strict rule in R programming: all
+# arguments after an ellipses must have default values. Take a look at the
+# simon_says function below:
+#
+# simon_says &lt;- function(...){
+#   paste("Simon says:", ...)
+# }
+#
+# The simon_says function works just like the paste function, except the
+# begining of every string is prepended by the string "Simon says:"
+#
+# Telegrams used to be peppered with the words START and STOP in order to
+# demarcate the beginning and end of sentences. Write a function below called 
+# telegram that formats sentences for telegrams.
+# For example the expression `telegram("Good", "morning")` should evaluate to:
+# "START Good morning STOP"
+
+telegram &lt;- function(...){
+  paste("START",...,"STOP")
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| All that hard work is paying off!</p>
+<p>|=================================================================               |  82%<br>
+| Now let's test out your telegram function. Use your new telegram function passing in<br>
+| whatever arguments you wish!</p>
+<blockquote>
+<p>telegram("Happy","birthday")<br>
+[1] "START Happy birthday STOP"</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===================================================================             |  84%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># Let's explore how to "unpack" arguments from an ellipses when you use the
+# ellipses as an argument in a function. Below I have an example function that
+# is supposed to add two explicitly named arguments called alpha and beta.
+# 
+# add_alpha_and_beta &lt;- function(...){
+#   # First we must capture the ellipsis inside of a list
+#   # and then assign the list to a variable. Let's name this
+#   # variable `args`.
+#
+#   args &lt;- list(...)
+#
+#   # We're now going to assume that there are two named arguments within args
+#   # with the names `alpha` and `beta.` We can extract named arguments from
+#   # the args list by using the name of the argument and double brackets. The
+#   # `args` variable is just a regular list after all!
+#   
+#   alpha &lt;- args[["alpha"]]
+#   beta  &lt;- args[["beta"]]
+#
+#   # Then we return the sum of alpha and beta.
+#
+#   alpha + beta 
+# }
+#
+# Have you ever played Mad Libs before? The function below will construct a
+# sentence from parts of speech that you provide as arguments. We'll write most
+# of the function, but you'll need to unpack the appropriate arguments from the
+# ellipses.
+
+mad_libs &lt;- function(...){
+  # Do your argument unpacking here!
+  args&lt;-list(...)
+  place&lt;-args[["place"]]
+  adjective&lt;-args[["adjective"]]
+  noun&lt;-args[["noun"]]
+  # Don't modify any code below this comment.
+  # Notice the variables you'll need to create in order for the code below to
+  # be functional!
+  paste("News from", place, "today where", adjective, "students took to the streets in protest of the new", noun, "being installed on campus.")
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| You are amazing!</p>
+<p>|=====================================================================           |  86%<br>
+| Time to use your mad_libs function. Make sure to name the place, adjective, and noun<br>
+| arguments in order for your function to work.</p>
+<blockquote>
+<p>mad_libs(place="India",adjective="many",noun="'Get back to your classrooms and learn something' billboard")<br>
+[1] "News from India today where many students took to the streets in protest of the new 'Get back to your classrooms and learn something' billboard being installed on campus."</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|======================================================================          |  88%<br>
+| We're coming to the end of this lesson, but there's still one more idea you should be<br>
+| made aware of.</p>
+<p>...</p>
+<p>|========================================================================        |  90%<br>
+| You're familiar with adding, subtracting, multiplying, and dividing numbers in R. To do<br>
+| this you use the +, -, *, and / symbols. These symbols are called binary operators<br>
+| because they take two inputs, an input from the left and an input from the right.</p>
+<p>...</p>
+<p>|=========================================================================       |  92%<br>
+| In R you can define your own binary operators. In the next script I'll show you how.</p>
+<p>...</p>
+<p>|===========================================================================     |  94%<br>
+| Make sure to save your script before you type submit().</p>
+
+<pre><code># The syntax for creating new binary operators in R is unlike anything else in
+# R, but it allows you to define a new syntax for your function. I would only
+# recommend making your own binary operator if you plan on using it often!
+#
+# User-defined binary operators have the following syntax:
+#      %[whatever]% 
+# where [whatever] represents any valid variable name.
+# 
+# Let's say I wanted to define a binary operator that multiplied two numbers and
+# then added one to the product. An implementation of that operator is below:
+#
+# "%mult_add_one%" &lt;- function(left, right){ # Notice the quotation marks!
+#   left * right + 1
+# }
+#
+# I could then use this binary operator like `4 %mult_add_one% 5` which would
+# evaluate to 21.
+#
+# Write your own binary operator below from absolute scratch! Your binary
+# operator must be called %p% so that the expression:
+#
+#       "Good" %p% "job!"
+#
+# will evaluate to: "Good job!"
+
+"%p%" &lt;- function(x,y){ # Remember to add arguments!
+  paste(x,y)
+}</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>| Excellent job!</p>
+<p>|=============================================================================   |  96%<br>
+| You made your own binary operator! Let's test it out. Paste together the strings: 'I',<br>
+| 'love', 'R!' using your new binary operator.</p>
+<blockquote>
+<p>"I" %p% "love" %p% "R!"<br>
+[1] "I love R!"</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|==============================================================================  |  98%<br>
+| We've come to the end of our lesson! Go out there and write some great functions!</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "%p%"             "boring_function" "evaluate"        "mad_libs"<br>
+[5] "my_mean"         "remainder"       "telegram"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-15 14:35:14.297421 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00408/" class="u-url">Logic</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00408/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:36:09+05:30" itemprop="datePublished" title="2020-04-15 12:36">2020-04-15 12:36</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00408/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00408_Logic.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00408_Logic.html";
+var idcomments_post_url = "/posts/00408/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 3.6.3 (2020-02-29) -- "Holding the Windsock"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>library("swirl")</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 8</p>
+<p>|                                                                                |   0%</p>
+<p>| This lesson is meant to be a short introduction to logical operations in R.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| There are two logical values in R, also called boolean values. They are TRUE and FALSE.<br>
+| In R you can construct logical expressions which will evaluate to either TRUE or FALSE.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| Many of the questions in this lesson will involve evaluating logical expressions. It<br>
+| may be useful to open up a second R terminal where you can experiment with some of<br>
+| these expressions.</p>
+<p>...</p>
+<p>|=====                                                                           |   6%<br>
+| Creating logical expressions requires logical operators. You're probably familiar with<br>
+| arithmetic operators like <code>+</code>, <code>-</code>, <code>*</code>, and <code>/</code>. The first logical operator we are<br>
+| going to discuss is the equality operator, represented by two equals signs <code>==</code>. Use<br>
+| the equality operator below to find out if TRUE is equal to TRUE.</p>
+<blockquote>
+<p>TRUE==TRUE<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|======                                                                          |   8%<br>
+| Just like arithmetic, logical expressions can be grouped by parenthesis so that the<br>
+| entire expression (TRUE == TRUE) == TRUE evaluates to TRUE.</p>
+<p>...</p>
+<p>|========                                                                        |  10%<br>
+| To test out this property, try evaluating (FALSE == TRUE) == FALSE .</p>
+<blockquote>
+<p>(FALSE==TRUE)==TRUE<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Not quite right, but keep trying. Or, type info() for more options.</p>
+<p>| Try typing: (FALSE == TRUE) == FALSE</p>
+<blockquote>
+<p>(FALSE==TRUE)==FALSE<br>
+[1] TRUE</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=========                                                                       |  12%<br>
+| The equality operator can also be used to compare numbers. Use <code>==</code> to see if 6 is<br>
+| equal to 7.</p>
+<blockquote>
+<p>6==7<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===========                                                                     |  13%<br>
+| The previous expression evaluates to FALSE because 6 is less than 7. Thankfully, there<br>
+| are inequality operators that allow us to test if a value is less than or greater than<br>
+| another value.</p>
+<p>...</p>
+<p>|============                                                                    |  15%<br>
+| The less than operator <code>&lt;</code> tests whether the number on the left side of the operator<br>
+| (called the left operand) is less than the number on the right side of the operator<br>
+| (called the right operand). Write an expression to test whether 6 is less than 7.</p>
+<blockquote>
+<p>6&lt;7<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|==============                                                                  |  17%<br>
+| There is also a less-than-or-equal-to operator <code>&lt;=</code> which tests whether the left<br>
+| operand is less than or equal to the right operand. Write an expression to test whether<br>
+| 10 is less than or equal to 10.</p>
+<blockquote>
+<p>10&lt;=10<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============                                                                 |  19%<br>
+| Keep in mind that there are the corresponding greater than <code>&gt;</code> and<br>
+| greater-than-or-equal-to <code>&gt;=</code> operators.</p>
+<p>...</p>
+<p>|=================                                                               |  21%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: 7 == 7<br>
+2: 0 &gt; -36<br>
+3: 6 &lt; 8<br>
+4: 9 &gt;= 10</p>
+<p>Selection: 4</p>
+<p>| That's correct!</p>
+<p>|==================                                                              |  23%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: -6 &gt; -7<br>
+2: 7 == 9<br>
+3: 9 &gt;= 10<br>
+4: 57 &lt; 8</p>
+<p>Selection: 1</p>
+<p>| That's correct!</p>
+<p>|====================                                                            |  25%<br>
+| The next operator we will discuss is the 'not equals' operator represented by <code>!=</code>. Not<br>
+| equals tests whether two values are unequal, so TRUE != FALSE evaluates to TRUE. Like<br>
+| the equality operator, <code>!=</code> can also be used with numbers. Try writing an expression to<br>
+| see if 5 is not equal to 7.</p>
+<blockquote>
+<p>5!=7<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|======================                                                          |  27%<br>
+| In order to negate boolean expressions you can use the NOT operator. An exclamation<br>
+| point <code>!</code> will cause !TRUE (say: not true) to evaluate to FALSE and !FALSE (say: not<br>
+| false) to evaluate to TRUE. Try using the NOT operator and the equals operator to find<br>
+| the opposite of whether 5 is equal to 7.</p>
+<blockquote>
+<p>!(5==7)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=======================                                                         |  29%<br>
+| Let's take a moment to review. The equals operator <code>==</code> tests whether two boolean<br>
+| values or numbers are equal, the not equals operator <code>!=</code> tests whether two boolean<br>
+| values or numbers are unequal, and the NOT operator <code>!</code> negates logical expressions so<br>
+| that TRUE expressions become FALSE and FALSE expressions become TRUE.</p>
+<p>...</p>
+<p>|=========================                                                       |  31%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: !(0 &gt;= -1)<br>
+2: !FALSE<br>
+3: 9 &lt; 10<br>
+4: 7 != 8</p>
+<p>Selection: 1</p>
+<p>| That's a job well done!</p>
+<p>|==========================                                                      |  33%<br>
+| What do you think the following expression will evaluate to?: (TRUE != FALSE) == !(6 ==<br>
+| 7)</p>
+<p>1: %&gt;%<br>
+2: FALSE<br>
+3: Can there be objective truth when programming?<br>
+4: TRUE</p>
+<p>Selection: 4</p>
+<p>| You are amazing!</p>
+<p>|============================                                                    |  35%<br>
+| At some point you may need to examine relationships between multiple logical<br>
+| expressions. This is where the AND operator and the OR operator come in.</p>
+<p>...</p>
+<p>|=============================                                                   |  37%<br>
+| Let's look at how the AND operator works. There are two AND operators in R, <code>&amp;</code> and<br>
+| <code>&amp;&amp;</code>. Both operators work similarly, if the right and left operands of AND are both<br>
+| TRUE the entire expression is TRUE, otherwise it is FALSE. For example, TRUE &amp; TRUE<br>
+| evaluates to TRUE. Try typing FALSE &amp; FALSE to how it is evaluated.</p>
+<blockquote>
+<p>FALSE&amp;FALSE<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================                                                 |  38%<br>
+| You can use the <code>&amp;</code> operator to evaluate AND across a vector. The <code>&amp;&amp;</code> version of AND<br>
+| only evaluates the first member of a vector. Let's test both for practice. Type the<br>
+| expression TRUE &amp; c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE&amp;c(TRUE,FALSE,FALSE)<br>
+[1]  TRUE FALSE FALSE</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|================================                                                |  40%<br>
+| What happens in this case is that the left operand <code>TRUE</code> is recycled across every<br>
+| element in the vector of the right operand. This is the equivalent statement as c(TRUE,<br>
+| TRUE, TRUE) &amp; c(TRUE, FALSE, FALSE).</p>
+<p>...</p>
+<p>|==================================                                              |  42%<br>
+| Now we'll type the same expression except we'll use the <code>&amp;&amp;</code> operator. Type the<br>
+| expression TRUE &amp;&amp; c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE&amp;&amp;c(TRUE,FALSE,FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|===================================                                             |  44%<br>
+| In this case, the left operand is only evaluated with the first member of the right<br>
+| operand (the vector). The rest of the elements in the vector aren't evaluated at all in<br>
+| this expression.</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| The OR operator follows a similar set of rules. The <code>|</code> version of OR evaluates OR<br>
+| across an entire vector, while the <code>||</code> version of OR only evaluates the first member<br>
+| of a vector.</p>
+<p>...</p>
+<p>|======================================                                          |  48%<br>
+| An expression using the OR operator will evaluate to TRUE if the left operand or the<br>
+| right operand is TRUE. If both are TRUE, the expression will evaluate to TRUE, however<br>
+| if neither are TRUE, then the expression will be FALSE.</p>
+<p>...</p>
+<p>|========================================                                        |  50%<br>
+| Let's test out the vectorized version of the OR operator. Type the expression TRUE |<br>
+| c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE|c(TRUE, FALSE, FALSE)<br>
+[1] TRUE TRUE TRUE</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|==========================================                                      |  52%<br>
+| Now let's try out the non-vectorized version of the OR operator. Type the expression<br>
+| TRUE || c(TRUE, FALSE, FALSE).</p>
+<blockquote>
+<p>TRUE||c(TRUE, FALSE, FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|===========================================                                     |  54%<br>
+| Logical operators can be chained together just like arithmetic operators. The<br>
+| expressions: <code>6 != 10 &amp;&amp; FALSE &amp;&amp; 1 &gt;= 2</code> or <code>TRUE || 5 &lt; 9.3 || FALSE</code> are perfectly<br>
+| normal to see.</p>
+<p>...</p>
+<p>|=============================================                                   |  56%<br>
+| As you may recall, arithmetic has an order of operations and so do logical expressions.<br>
+| All AND operators are evaluated before OR operators. Let's look at an example of an<br>
+| ambiguous case. Type: 5 &gt; 8 || 6 != 8 &amp;&amp; 4 &gt; 3.9</p>
+<blockquote>
+<p>5 &gt; 8 || 6 != 8 &amp;&amp; 4 &gt; 3.9<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==============================================                                  |  58%<br>
+| Let's walk through the order of operations in the above case. First the left and right<br>
+| operands of the AND operator are evaluated. 6 is not equal 8, 4 is greater than 3.9,<br>
+| therefore both operands are TRUE so the resulting expression <code>TRUE &amp;&amp; TRUE</code> evaluates<br>
+| to TRUE. Then the left operand of the OR operator is evaluated: 5 is not greater than 8<br>
+| so the entire expression is reduced to FALSE || TRUE. Since the right operand of this<br>
+| expression is TRUE the entire expression evaluates to TRUE.</p>
+<p>...</p>
+<p>|================================================                                |  60%<br>
+| Which one of the following expressions evaluates to TRUE?</p>
+<p>1: TRUE &amp;&amp; FALSE || 9 &gt;= 4 &amp;&amp; 3 &lt; 6<br>
+2: FALSE || TRUE &amp;&amp; FALSE<br>
+3: 99.99 &gt; 100 || 45 &lt; 7.3 || 4 != 4.0<br>
+4: TRUE &amp;&amp; 62 &lt; 62 &amp;&amp; 44 &gt;= 44</p>
+<p>Selection: 1</p>
+<p>| Excellent work!</p>
+<p>|=================================================                               |  62%<br>
+| Which one of the following expressions evaluates to FALSE?</p>
+<p>1: FALSE &amp;&amp; 6 &gt;= 6 || 7 &gt;= 8 || 50 &lt;= 49.5<br>
+2: FALSE || TRUE &amp;&amp; 6 != 4 || 9 &gt; 4<br>
+3: 6 &gt;= -9 &amp;&amp; !(6 &gt; 7) &amp;&amp; !(!TRUE)<br>
+4: !(8 &gt; 4) ||  5 == 5.0 &amp;&amp; 7.8 &gt;= 7.79</p>
+<p>Selection: 1</p>
+<p>| You got it!</p>
+<p>|===================================================                             |  63%<br>
+| Now that you're familiar with R's logical operators you can take advantage of a few<br>
+| functions that R provides for dealing with logical expressions.</p>
+<p>...</p>
+<p>|====================================================                            |  65%<br>
+| The function isTRUE() takes one argument. If that argument evaluates to TRUE, the<br>
+| function will return TRUE. Otherwise, the function will return FALSE. Try using this<br>
+| function by typing: isTRUE(6 &gt; 4)</p>
+<blockquote>
+<p>isTRUE(6&gt;4)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|======================================================                          |  67%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: isTRUE(NA)<br>
+2: isTRUE(!TRUE)<br>
+3: !isTRUE(4 &lt; 3)<br>
+4: isTRUE(3)<br>
+5: !isTRUE(8 != 5)</p>
+<p>Selection: 5</p>
+<p>| You're close...I can feel it! Try it again.</p>
+<p>| isTRUE() will only return TRUE if the statement passed to it as an argument is TRUE.</p>
+<p>1: isTRUE(NA)<br>
+2: !isTRUE(4 &lt; 3)<br>
+3: isTRUE(3)<br>
+4: !isTRUE(8 != 5)<br>
+5: isTRUE(!TRUE)</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|=======================================================                         |  69%<br>
+| The function identical() will return TRUE if the two R objects passed to it as<br>
+| arguments are identical. Try out the identical() function by typing: identical('twins',<br>
+| 'twins')</p>
+<blockquote>
+<p>identical('twins','twins')<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|=========================================================                       |  71%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: identical(5 &gt; 4, 3 &lt; 3.1)<br>
+2: !identical(7, 7)<br>
+3: identical(4, 3.1)<br>
+4: identical('hello', 'Hello')</p>
+<p>Selection: 1</p>
+<p>| You are amazing!</p>
+<p>|==========================================================                      |  73%<br>
+| You should also be aware of the xor() function, which takes two arguments. The xor()<br>
+| function stands for exclusive OR. If one argument evaluates to TRUE and one argument<br>
+| evaluates to FALSE, then this function will return TRUE, otherwise it will return<br>
+| FALSE. Try out the xor() function by typing: xor(5 == 6, !FALSE)</p>
+<blockquote>
+<p>xor(5 == 6, !FALSE)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|============================================================                    |  75%<br>
+| 5 == 6 evaluates to FALSE, !FALSE evaluates to TRUE, so xor(FALSE, TRUE) evaluates to<br>
+| TRUE. On the other hand if the first argument was changed to 5 == 5 and the second<br>
+| argument was unchanged then both arguments would have been TRUE, so xor(TRUE, TRUE)<br>
+| would have evaluated to FALSE.</p>
+<p>...</p>
+<p>|==============================================================                  |  77%<br>
+| Which of the following evaluates to FALSE?</p>
+<p>1: xor(!!TRUE, !!FALSE)<br>
+2: xor(4 &gt;= 9, 8 != 8.0)<br>
+3: xor(identical(xor, 'xor'), 7 == 7.0)<br>
+4: xor(!isTRUE(TRUE), 6 &gt; -1)</p>
+<p>Selection: 8!=8.0<br>
+Enter an item from the menu, or 0 to exit<br>
+Selection: 2</p>
+<p>| That's the answer I was looking for.</p>
+<p>|===============================================================                 |  79%<br>
+| For the next few questions, we're going to need to create a vector of integers called<br>
+| ints. Create this vector by typing: ints &lt;- sample(10)</p>
+<blockquote>
+<p>ints&lt;-sample(10)</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|=================================================================               |  81%<br>
+| Now simply display the contents of ints.</p>
+<blockquote>
+<p>ints<br>
+ [1]  7  1  3  4  8  2 10  6  9  5</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==================================================================              |  83%<br>
+| The vector <code>ints</code> is a random sampling of integers from 1 to 10 without replacement.<br>
+| Let's say we wanted to ask some logical questions about contents of ints. If we type<br>
+| ints &gt; 5, we will get a logical vector corresponding to whether each element of ints is<br>
+| greater than 5. Try typing: ints &gt; 5</p>
+<blockquote>
+<p>ints&gt;5<br>
+ [1]  TRUE FALSE FALSE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|====================================================================            |  85%<br>
+| We can use the resulting logical vector to ask other questions about ints. The which()<br>
+| function takes a logical vector as an argument and returns the indices of the vector<br>
+| that are TRUE. For example which(c(TRUE, FALSE, TRUE)) would return the vector c(1, 3).</p>
+<p>...</p>
+<p>|=====================================================================           |  87%<br>
+| Use the which() function to find the indices of ints that are greater than 7.</p>
+<blockquote>
+<p>which(int&gt;7)<br>
+Error in which(int &gt; 7) : object 'int' not found<br>
+which(ints&gt;7)<br>
+[1] 5 7 9</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|=======================================================================         |  88%<br>
+| Which of the following commands would produce the indices of the elements in ints that<br>
+| are less than or equal to 2?</p>
+<p>1: ints &lt; 2<br>
+2: ints &lt;= 2<br>
+3: which(ints &lt;= 2)<br>
+4: which(ints &lt; 2)</p>
+<p>Selection: 3</p>
+<p>| All that practice is paying off!</p>
+<p>|========================================================================        |  90%<br>
+| Like the which() function, the functions any() and all() take logical vectors as their<br>
+| argument. The any() function will return TRUE if one or more of the elements in the<br>
+| logical vector is TRUE. The all() function will return TRUE if every element in the<br>
+| logical vector is TRUE.</p>
+<p>...</p>
+<p>|==========================================================================      |  92%<br>
+| Use the any() function to see if any of the elements of ints are less than zero.</p>
+<blockquote>
+<p>any(ints&lt;0)<br>
+[1] FALSE</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|===========================================================================     |  94%<br>
+| Use the all() function to see if all of the elements of ints are greater than zero.</p>
+<blockquote>
+<p>all(ints&gt;0)<br>
+[1] TRUE</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|=============================================================================   |  96%<br>
+| Which of the following evaluates to TRUE?</p>
+<p>1: any(ints == 2.5)<br>
+2: all(c(TRUE, FALSE, TRUE))<br>
+3: all(ints == 10)<br>
+4: any(ints == 10)</p>
+<p>Selection: 4</p>
+<p>| Keep up the great work!</p>
+<p>|==============================================================================  |  98%<br>
+| That's all for this introduction to logic in R. If you really want to see what you can<br>
+| do with logic, check out the control flow lesson!</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's a job well done!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "ints"<br>
+rm(list=ls())  
+</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-15 14:05:54.787418 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00407/" class="u-url">Matrices and Data Frames</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
