@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Principles of Analytic Graphs | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://www.datascience.eu.org/r/posts/00419/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00418/" title="Tidying Data with tidyr" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Principles of Analytic Graphs">
+<meta property="og:url" content="https://www.datascience.eu.org/r/posts/00419/">
+<meta property="og:description" content='R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+R is free software and comes with ABSOLUTELY NO WARR'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-02T16:38:15+05:30">
+<meta property="article:tag" content="Graphs">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://www.datascience.eu.org/r/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://www.datascience.eu.org/r/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Principles of Analytic Graphs</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-02T16:38:15+05:30" itemprop="datePublished" title="2020-05-02 16:38">2020-05-02 16:38</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00419/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00419_Principles of Analytic Graphs.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00419_Principles of Analytic Graphs.html";
+var idcomments_post_url = "/posts/00419/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<p>[Workspace loaded from C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/.RData]</p>
+<blockquote>
+<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/04_Exploratory_Data_Analysis/week01/workspace")<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! I see that you have some variables saved in your workspace. To keep things running<br>
+| smoothly, I recommend you clean up before starting swirl.</p>
+<p>| Type ls() to see a list of the variables in your workspace. Then, type rm(list=ls()) to<br>
+| clear your workspace.</p>
+<p>| Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Getting and Cleaning Data<br>
+3: R Programming<br>
+4: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 1</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>|                                                                                   |   0%</p>
+<p>| Principles_of_Analytic_Graphs. (Slides for this and other Data Science courses may be<br>
+| found at github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/Principles_of_Analytic_Graphics.)</p>
+<p>...</p>
+<p>|==                                                                                 |   3%<br>
+| In this lesson, we'll discuss some basic principles of presenting data effectively. These<br>
+| will illustrate some fundamental concepts of displaying results in order to make them more<br>
+| meaningful and convincing. These principles are cribbed from Edward Tufte's great 2006<br>
+| book, Beautiful Evidence. You can read more about them at the www.edwardtufte.com website.</p>
+<p>...</p>
+<p>|=====                                                                              |   6%<br>
+| As a warm-up, which of the following would NOT be a good use of analytic graphing?</p>
+<p>1: To show causality, mechanism, explanation<br>
+2: To show multivariate data<br>
+3: To decide which horse to bet on at the track<br>
+4: To show comparisons</p>
+<p>Selection: 3</p>
+<p>| Keep up the great work!</p>
+<p>|=======                                                                            |   8%<br>
+| You're ready to start. Graphs give us a visual form of data, and the first principle of<br>
+| analytic graphs is to show some comparison. You'll hear more about this when you study<br>
+| statistical inference (another great course BTW), but evidence for a hypothesis is always<br>
+| relative to another competing or alternative hypothesis.</p>
+<p>...</p>
+<p>|=========                                                                          |  11%<br>
+| When presented with a claim that something is good, you should always ask "Compared to<br>
+| What?" This is why in commercials you often hear the phrase "other leading brands". An<br>
+| implicit comparison, right?</p>
+<p>...</p>
+<p>|============                                                                       |  14%<br>
+| Consider this boxplot which shows the relationship between the use of an air cleaner and<br>
+| the number of symptom-free days of asthmatic children. (The top and bottom lines of the<br>
+| box indicate the 25% and 75% quartiles of the data, and the horizontal line in the box<br>
+| shows the 50%.) Since the box is above 0, the number of symptom-free days for children<br>
+| with asthma is bigger using the air cleaner. This is good, right?</p>
+<p>...</p>
+<p><img src="../../images/r0040230.png" alt="graph" title="graph"></p>
+<p>|==============                                                                     |  17%<br>
+| How many days of improvement does the median correspond to?</p>
+<p>1: 4<br>
+2: -2<br>
+3: 1<br>
+4: 12</p>
+<p>Selection: 3</p>
+<p>| That's correct!</p>
+<p>|================                                                                   |  19%<br>
+| While it's somewhat informative, it's also somewhat cryptic, since the y-axis is claiming<br>
+| to show a change in number of symptom-free days. Wouldn't it be better to show a<br>
+| comparison?</p>
+<p>...</p>
+<p>|==================                                                                 |  22%<br>
+| Like this? Here's a graphic which shows two boxplots, the one on the left showing the<br>
+| results for a control group that doesn't use an air cleaner alongside the previously shown<br>
+| boxplot.</p>
+<p>...</p>
+<p>|=====================                                                              |  25%<br>
+| By showing the two boxplots side by side, you can clearly see that using the air cleaner<br>
+| increases the number of symptom-free days for most asthmatic children. The plot on the<br>
+| right (using the air cleaner) is generally higher than the one on the left (the control<br>
+| group).</p>
+<p>...</p>
+<p><img src="../../images/r0040240.png" alt="graph" title="graph"></p>
+<p>|=======================                                                            |  28%<br>
+| What does this graph NOT show you?</p>
+<p>1: Half the chidren in the control group had no improvement<br>
+2: Children in the control group had at most 3 symptom-free days<br>
+3: 75% of the children using the air cleaner had at most 3 symptom-free days<br>
+4: Using the air cleaner makes asthmatic children sicker</p>
+<p>Selection: 4</p>
+<p>| You're the best!</p>
+<p>|=========================                                                          |  31%<br>
+| So the first principle was to show a comparison. The second principle is to show causality<br>
+| or a mechanism of how your theory of the data works. This explanation or systematic<br>
+| structure shows your causal framework for thinking about the question you're trying to<br>
+| answer.</p>
+<p>...</p>
+<p>|============================                                                       |  33%<br>
+| Consider this plot which shows the dual boxplot we just showed, but next to it we have a<br>
+| corresponding plot of changes in measures of particulate matter.</p>
+<p>...</p>
+<p><img src="../../images/r0040250.png" alt="graph" title="graph"></p>
+<p>|==============================                                                     |  36%<br>
+| This picture tries to explain how the air cleaner increases the number of symptom-free<br>
+| days for asthmatic children. What mechanism does the graph imply?</p>
+<p>1: That the air cleaner increases pollution<br>
+2: That the air cleaner reduces pollution<br>
+3: That the children in the control group are healthier<br>
+4: That the air in the control group is cleaner than the air in the other group</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|================================                                                   |  39%<br>
+| By showing the two sets of boxplots side by side you're explaining your theory of why the<br>
+| air cleaner increases the number of symptom-free days. Onward!</p>
+<p>...</p>
+<p>|===================================                                                |  42%<br>
+| So the first principle was to show some comparison, the second was to show a mechanism, so<br>
+| what will the third principle say to show?</p>
+<p>...</p>
+<p>|=====================================                                              |  44%<br>
+| Multivariate data!</p>
+<p>...</p>
+<p>|=======================================                                            |  47%<br>
+| What is multivariate data you might ask? In technical (scientific) literature this term<br>
+| means more than 2 variables. Two-variable plots are what you saw in high school algebra.<br>
+| Remember those x,y plots when you were learning about slopes and intercepts and equations<br>
+| of lines? They're valuable, but usually questions are more complicated and require more<br>
+| variables.</p>
+<p>...</p>
+<p>|==========================================                                         |  50%<br>
+| Sometimes, if you restrict yourself to two variables you'll be misled and draw an<br>
+| incorrect conclusion.</p>
+<p>...</p>
+<p>|============================================                                       |  53%<br>
+| Consider this plot which shows the relationship between air pollution (x-axis) and<br>
+| mortality rates among the elderly (y-axis). The blue regression line shows a surprising<br>
+| result. (You'll learn about regression lines when you take the fabulous Regression Models<br>
+| course.)</p>
+<p>...</p>
+<p><img src="../../images/r0040260.png" alt="graph" title="graph"></p>
+<p>|==============================================                                     |  56%<br>
+| What does the blue regression line indicate?</p>
+<p>1: Pollution doesn't really increase, it just gets reported more<br>
+2: As pollution increases fewer people die<br>
+3: As pollution increases the number of deaths doesn't change<br>
+4: As pollution increases more people die</p>
+<p>Selection: 2</p>
+<p>| Excellent job!</p>
+<p>|================================================                                   |  58%<br>
+| Fewer deaths with more pollution? That's a surprise! Something's gotta be wrong, right? In<br>
+| fact, this is an example of Simpson's paradox, or the Yule–Simpson effect. Wikipedia<br>
+| (<a href="http://en.wikipedia.org/wiki/Simpson%27s_paradox">http://en.wikipedia.org/wiki/Simpson%27s_paradox</a>) tells us that this "is a paradox in<br>
+| probability and statistics, in which a trend that appears in different groups of data<br>
+| disappears when these groups are combined."</p>
+<p>...</p>
+<p>|===================================================                                |  61%<br>
+| Suppose we divided this mortality/pollution data into the four seasons. Would we see<br>
+| different trends?</p>
+<p>...</p>
+<p>|=====================================================                              |  64%<br>
+| Yes, we do! Plotting the same data for the 4 seasons individually we see a different<br>
+| result.</p>
+<p>...</p>
+<p><img src="../../images/r0040270.png" alt="graph" title="graph"></p>
+<p>|=======================================================                            |  67%<br>
+| What does the new plot indicate?</p>
+<p>1: Pollution doesn't really increase, it just gets reported more<br>
+2: As pollution increases the seasons change<br>
+3: As pollution increases more people die in all seasons<br>
+4: As pollution increases fewer people die in all seasons</p>
+<p>Selection: 3</p>
+<p>| That's correct!</p>
+<p>|==========================================================                         |  69%<br>
+| The fourth principle of analytic graphing involves integrating evidence. This means not<br>
+| limiting yourself to one form of expression. You can use words, numbers, images as well as<br>
+| diagrams. Graphics should make use of many modes of data presentation. Remember, "Don't<br>
+| let the tool drive the analysis!"</p>
+<p>...</p>
+<p>|============================================================                       |  72%<br>
+| To show you what we mean, here's an example of a figure taken from a paper published in<br>
+| the Journal of the AMA. It shows the relationship between pollution and hospitalization of<br>
+| people with heart disease. As you can see, it's a lot different from our previous plots.<br>
+| The solid circles in the center portion indicate point estimates of percentage changes in<br>
+| hospitalization rates for different levels of pollution. The lines through the circles<br>
+| indicate confidence intervals associated with these estimates. (You'll learn more about<br>
+| confidence intervals in another great course, the one on statistical inference.)</p>
+<p><img src="../../images/r0040280.png" alt="graph" title="graph"><br>
+...</p>
+<p>|==============================================================                     |  75%<br>
+| Note that on the right side of the figure is another column of numbers, one for each of<br>
+| the point estimates given. This column shows posterior probabilities that relative risk is<br>
+| greater than 0. This, in effect, is a measure of the strength of the evidence showing the<br>
+| correlation between pollution and hospitalization.  The point here is that all of this<br>
+| information is located in one picture so that the reader can see the strength of not only<br>
+| the correlations but the evidence as well.</p>
+<p>...</p>
+<p>|=================================================================                  |  78%<br>
+| The fifth principle of graphing involves describing and documenting the evidence with<br>
+| sources and appropriate labels and scales. Credibility is important so the data graphics<br>
+| should tell a complete story. Also, using R, you want to preserve any code you use to<br>
+| generate your data and graphics so that the research can be replicated if necessary. This<br>
+| allows for easy verification or finding bugs in your analysis.</p>
+<p>...</p>
+<p>|===================================================================                |  81%<br>
+| The sixth and final principle of analytic graphing is maybe the most important. Content is<br>
+| king! If you don't have something interesting to report, your graphs won't save you.<br>
+| Analytical presentations ultimately stand or fall depending on the quality, relevance, and<br>
+| integrity of their content.</p>
+<p>...</p>
+<p>|=====================================================================              |  83%<br>
+| Review time!!!</p>
+<p>...</p>
+<p>|=======================================================================            |  86%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To integrate multiple modes of evidence<br>
+2: Having unreadable labels<br>
+3: To describe and document evidence<br>
+4: Content is king</p>
+<p>Selection: 2</p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================================         |  89%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To prove you're always right<br>
+2: To show two competing hypotheses<br>
+3: To demonstrate a causative mechanism underlying a correlation<br>
+4: Content is king</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|============================================================================       |  92%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To integrate different types of evidence<br>
+2: To show that some fonts are better than others<br>
+3: To show good labels and scales<br>
+4: Content is king</p>
+<p>Selection: 2</p>
+<p>| That's the answer I was looking for.</p>
+<p>|==============================================================================     |  94%<br>
+| True or False? Color is king.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| Not quite, but you're learning! Try again.</p>
+<p>| Think of the sixth principle</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You are doing so well!</p>
+<p>|=================================================================================  |  97%<br>
+| Congrats! You've concluded exploring this lesson on principles of graphing. We hope you<br>
+| found it principally principled.</p>
+<p>...</p>
+<p>|===================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 1</p>
+<p>| Nice work!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Getting and Cleaning Data<br>
+3: R Programming<br>
+4: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-02 16:41:08.783416 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/graphs/" rel="tag">Graphs</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00418/" rel="prev" title="Tidying Data with tidyr">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00419_Principles of Analytic Graphs.html";
+var idcomments_post_url = "https://www.datascience.eu.org/r/posts/00419/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

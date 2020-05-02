@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/archive.html</loc>
-  <lastmod>2020-04-23T15:46:00Z</lastmod>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/categories/</loc>
@@ -55,7 +55,7 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/</loc>
-  <lastmod>2020-04-23T15:47:00Z</lastmod>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/00100/</loc>
@@ -146,6 +146,10 @@
   <lastmod>2020-04-23T15:47:00Z</lastmod>
  </url>
  <url>
+  <loc>https://www.datascience.eu.org/r/posts/00419/</loc>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://www.datascience.eu.org/r/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
@@ -159,11 +163,11 @@
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/posts/index-2.html</loc>
-  <lastmod>2020-04-23T15:47:00Z</lastmod>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/</loc>
-  <lastmod>2020-04-23T15:47:00Z</lastmod>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/all/</loc>
@@ -256,6 +260,10 @@
  <url>
   <loc>https://www.datascience.eu.org/r/tags/graphics/</loc>
   <lastmod>2020-04-20T17:28:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://www.datascience.eu.org/r/tags/graphs/</loc>
+  <lastmod>2020-05-02T11:12:00Z</lastmod>
  </url>
  <url>
   <loc>https://www.datascience.eu.org/r/tags/group_by/</loc>
