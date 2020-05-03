@@ -1,4 +1,4 @@
-Sitemap: https://www.datascience.eu.org/sitemapindex.xml
+Sitemap: https://r.datascience.eu.org/sitemapindex.xml
 
 User-Agent: *
-Host: www.datascience.eu.org
+Host: r.datascience.eu.org
