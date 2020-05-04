@@ -73,7 +73,332 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00420/" class="u-url">Exploratory Graphs</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00421/" class="u-url">Graphics Devices in R</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00421/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-04T13:21:25+05:30" itemprop="datePublished" title="2020-05-04 13:21">2020-05-04 13:21</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00421/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00421_Graphics Devices in R.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00421_Graphics Devices in R.html";
+var idcomments_post_url = "/posts/00421/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/04_Exploratory_Data_Analysis/week01/workspace")<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 3<br>
+  |                                                                                   |   0%</p>
+<p>| Graphics_Devices_in_R. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them,<br>
+| they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/Graphics_Devices_in_R.)</p>
+<p>...</p>
+<p>|==                                                                                 |   3%<br>
+| As the title suggests, this will be a short lesson introducing you to graphics devices in<br>
+| R. So, what IS a graphics device?</p>
+<p>...</p>
+<p>|=====                                                                              |   6%<br>
+| Would you believe that it is something where you can make a plot appear, either a screen<br>
+| device, such as a window on your computer, OR a file device?</p>
+<p>...</p>
+<p>|=======                                                                            |   9%<br>
+| There are several different kinds of file devices with particular characteristics and<br>
+| hence uses. These include PDF, PNG, JPEG, SVG, and TIFF. We'll talk more about these<br>
+| later.</p>
+<p>...</p>
+<p>|==========                                                                         |  12%<br>
+| To be clear, when you make a plot in R, it has to be "sent" to a specific graphics device.<br>
+| Usually this is the screen (the default device), especially when you're doing exploratory<br>
+| work. You'll send your plots to files when you're ready to publish a report, make a<br>
+| presentation, or send info to colleagues.</p>
+<p>...</p>
+<p>|============                                                                       |  15%<br>
+| How you access your screen device depends on what computer system you're using. On a Mac<br>
+| the screen device is launched with the call quartz(), on Windows you use the call<br>
+| windows(), and on Unix/Linux x11().  On a given platform (Mac, Windows, Unix/Linux) there<br>
+| is only one screen device, and obviously not all graphics devices are available on all<br>
+| platforms (i.e. you cannot launch windows() on a Mac).</p>
+<p>...</p>
+<p>|===============                                                                    |  18%<br>
+| Run the R command ?Devices to see what graphics devices are available on your system.</p>
+<blockquote>
+<p>?Devices</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=================                                                                  |  21%<br>
+| R Documentation shows you what's available.</p>
+<p>...</p>
+<p>|====================                                                               |  24%<br>
+| There are two basic approaches to plotting. The first, plotting to the screen, is the most<br>
+| common. It's simple - you call a plotting function like plot, xyplot, or qplot (which you<br>
+| call depends on the plotting system you favor, but that's another lesson), so that the<br>
+| plot appears on the screen. Then you annotate (add to) the plot if necessary.</p>
+<p>...</p>
+<p>|======================                                                             |  26%<br>
+| As an example, run the R command with with 2 arguments. The first is a dataset, faithful,<br>
+| which comes with R, and the second is a call to the base plotting function plot. Your call<br>
+| to plot should have two arguments, eruptions and waiting. Try this now to see what<br>
+| happens.</p>
+<blockquote>
+<p>with(faithful,plot(eruptions,waiting))</p>
+</blockquote>
+<p><img src="../images/r0040470.png" alt="graph" title="graph"></p>
+<p>| Excellent job!</p>
+<p>|========================                                                           |  29%<br>
+| See how R created a scatterplot on the screen for you? This shows that relationship<br>
+| between eruptions of the geyser Old Faithful and waiting time. Now use the R function<br>
+| title with the argument main set equal to the string "Old Faithful Geyser data". This is<br>
+| an annotation to the plot.</p>
+<blockquote>
+<p>title(main="Old Faithful Geyser data")</p>
+</blockquote>
+<p><img src="../images/r0040480.png" alt="graph" title="graph"></p>
+<p>| You are amazing!</p>
+<p>|===========================                                                        |  32%<br>
+| Simple, right?  Now run the command dev.cur(). This will show you the current plotting<br>
+| device, the screen.</p>
+<blockquote>
+<p>dev.cur()<br>
+RStudioGD<br>
+        2</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================                                                      |  35%<br>
+| The second way to create a plot is to send it to a file device. Depending on the type of<br>
+| plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the<br>
+| command pdf(file="myplot.pdf") to launch the file device. This will create the pdf file<br>
+| myplot.pdf in your working directory.</p>
+<blockquote>
+<p>pdf(file="myplot.pdf")</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|================================                                                   |  38%<br>
+| You then call the plotting function (if you are using a file device, no plot will appear<br>
+| on the screen). Run the with command again to plot the Old Faithful data. Use the up arrow<br>
+| key to recover the command and save yourself some typing.</p>
+<blockquote>
+<p>with(faithful,plot(eruptions,waiting))</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|==================================                                                 |  41%<br>
+| Now rerun the title command and annotate the plot. (Up arrow keys are great!)</p>
+<blockquote>
+<p>title(main="Old Faithful Geyser data")</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=====================================                                              |  44%<br>
+| Finally, when plotting to a file device, you have to close the device with the command<br>
+| dev.off(). This is very important! Don't do it yet, though. After closing, you'll be able<br>
+| to view the pdf file on your computer.</p>
+<p>...</p>
+<p>|=======================================                                            |  47%<br>
+| There are two basic types of file devices, vector and bitmap devices. These use different<br>
+| formats and have different characteristics. Vector formats are good for line drawings and<br>
+| plots with solid colors using a modest number of points, while bitmap formats are good for<br>
+| plots with a large number of points, natural scenes or web-based plots.</p>
+<p>...</p>
+<p>|==========================================                                         |  50%<br>
+| We'll mention 4 specific vector formats. The first is pdf, which we've just used in our<br>
+| example. This is useful for line-type graphics and papers. It resizes well, is usually<br>
+| portable, but it is not efficient if a plot has many objects/points.</p>
+<p>...</p>
+<p>|============================================                                       |  53%<br>
+| The second is svg which is XML-based, scalable vector graphics. This supports animation<br>
+| and interactivity and is potentially useful for web-based plots.</p>
+<p>...</p>
+<p>|==============================================                                     |  56%<br>
+| The last two vector formats are win.metafile, a Windows-only metafile format, and<br>
+| postscript (ps), an older format which also resizes well, is usually portable, and can be<br>
+| used to create encapsulated postscript files. Unfortunately, Windows systems often don’t<br>
+| have a postscript viewer.</p>
+<p>...</p>
+<p>|=================================================                                  |  59%<br>
+| We'll also mention 4 different bitmap formats. The first is png (Portable Network<br>
+| Graphics) which is good for line drawings or images with solid colors. It uses lossless<br>
+| compression (like the old GIF format), and most web browsers can read this format<br>
+| natively. In addition, png is good for plots with many points, but it does not resize<br>
+| well.</p>
+<p>...</p>
+<p>|===================================================                                |  62%<br>
+| In contrast, jpeg files are good for photographs or natural scenes. They use lossy<br>
+| compression, so they're good for plots with many points. Files in jpeg format don't resize<br>
+| well, but they can be read by almost any computer and any web browser. They're not great<br>
+| for line drawings.</p>
+<p>...</p>
+<p>|======================================================                             |  65%<br>
+| The last two bitmap formats are tiff, an older lossless compression meta-format and bmp<br>
+| which is a native Windows bitmapped format.</p>
+<p>...</p>
+<p>|========================================================                           |  68%<br>
+| Although it is possible to open multiple graphics devices (screen, file, or both), when<br>
+| viewing multiple plots at once, plotting can only occur on one graphics device at a time.</p>
+<p>...</p>
+<p>|===========================================================                        |  71%<br>
+| The currently active graphics device can be found by calling dev.cur(). Try it now to see<br>
+| what number is assigned to your pdf device.</p>
+<blockquote>
+<p>dev.cur()<br>
+pdf<br>
+  4</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=============================================================                      |  74%<br>
+| Now use dev.off() to close the device.</p>
+<blockquote>
+<p>dev.off()<br>
+RStudioGD<br>
+        2</p>
+</blockquote>
+<p>View <a href="00421/f0040010.pdf">myplot.pdf</a></p>
+<p>| You are quite good my friend!</p>
+<p>|===============================================================                    |  76%<br>
+| Now rerun dev.cur() to see what integer your plotting window is assigned.</p>
+<blockquote>
+<p>dev.cur()<br>
+RStudioGD<br>
+        2</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|==================================================================                 |  79%<br>
+| The device is back to what it was when you started. As you might have guessed, every open<br>
+| graphics device is assigned an integer greater than or equal to 2. You can change the<br>
+| active graphics device with dev.set(<integer>) where <integer> is the number associated<br>
+| with the graphics device you want to switch to.</integer></integer></p>
+<p>...</p>
+<p>|====================================================================               |  82%<br>
+| You can also copy a plot from one device to another. This can save you some time but<br>
+| beware! Copying a plot is not an exact operation, so the result may not be identical to<br>
+| the original. R provides some functions to help you do this. The function dev.copy copies<br>
+| a plot from one device to another, and dev.copy2pdf specifically copies a plot to a PDF<br>
+| file.</p>
+<p>...</p>
+<p>|=======================================================================            |  85%<br>
+| Just for fun, rerun the with command again, with(faithful, plot(eruptions, waiting)), to<br>
+| plot the Old Faithful data. Use the up arrow key to recover the command if you don't feel<br>
+| like typing.</p>
+<blockquote>
+<p>with(faithful,plot(eruptions,waiting))</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=========================================================================          |  88%<br>
+| Now rerun the title command, title(main = "Old Faithful Geyser data"), to annotate the<br>
+| plot. (Up arrow keys are great!)</p>
+<blockquote>
+<p>title(main="Old Faithful Geyser data")</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|============================================================================       |  91%<br>
+| Now run dev.copy with the 2 arguments. The first is png, and the second is file set equal<br>
+| to "geyserplot.png". This will copy your screen plot to a png file in your working<br>
+| directory which you can view AFTER you close the device.</p>
+<blockquote>
+<p>dev.copy(png,"geyserplot.png")<br>
+png<br>
+  4</p>
+</blockquote>
+<p>| Not quite, but you're learning! Try again. Or, type info() for more options.</p>
+<p>| Type dev.copy(png, file = "geyserplot.png") at the command prompt.</p>
+<blockquote>
+<p>dev.copy(png,file="geyserplot.png")<br>
+png<br>
+  5</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|==============================================================================     |  94%<br>
+| Don't forget to close the PNG device! Do it NOW!!! Then you'll be able to view the file.</p>
+<blockquote>
+<p>dev.off()<br>
+RStudioGD<br>
+        2</p>
+</blockquote>
+<p><img src="../images/r0040490.png" alt="geyserplot.png" title="geyserplot.png"></p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|=================================================================================  |  97%<br>
+| Congrats! We hope you found this lesson deviced well!</p>
+<p>...</p>
+<p>|===================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| All that hard work is paying off!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-04 13:23:19.344014 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00420/" class="u-url">Exploratory Graphs</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -7179,382 +7504,6 @@ rm(list=ls())</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-20 23:37:33.781884 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00413/" class="u-url">Simulation</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00413/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-15T12:41:56+05:30" itemprop="datePublished" title="2020-04-15 12:41">2020-04-15 12:41</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00413/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00413_Simulation.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00413_Simulation.html";
-var idcomments_post_url = "/posts/00413/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
-| did then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth Allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.<br>
-| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
- 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
- 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
-10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
-13: Simulation                14: Dates and Times           15: Base Graphics</p>
-<p>Selection: 13</p>
-<p>|                                                                                |   0%</p>
-<p>| One of the great advantages of using a statistical programming language like R is its<br>
-| vast collection of tools for simulating random numbers.</p>
-<p>...</p>
-<p>|==                                                                              |   3%<br>
-| This lesson assumes familiarity with a few common probability distributions, but these<br>
-| topics will only be discussed with respect to random number generation. Even if you<br>
-| have no prior experience with these concepts, you should be able to complete the lesson<br>
-| and understand the main ideas.</p>
-<p>...</p>
-<p>|=====                                                                           |   6%<br>
-| The first function we'll use to generate random numbers is sample(). Use ?sample to<br>
-| pull up the documentation.</p>
-<blockquote>
-<p>?sample</p>
-</blockquote>
-<p>| Nice work!</p>
-<p>|=======                                                                         |   9%<br>
-| Let's simulate rolling four six-sided dice: sample(1:6, 4, replace = TRUE).</p>
-<blockquote>
-<p>sample(1:6,4,replace=TRUE)<br>
-[1] 3 5 5 3</p>
-</blockquote>
-<p>| Keep up the great work!</p>
-<p>|==========                                                                      |  12%<br>
-| Now repeat the command to see how your result differs. (The probability of rolling the<br>
-| exact same result is (1/6)^4 = 0.00077, which is pretty small!)</p>
-<blockquote>
-<p>sample(1:6,4,replace=TRUE)<br>
-[1] 2 6 6 3</p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|============                                                                    |  15%<br>
-| sample(1:6, 4, replace = TRUE) instructs R to randomly select four numbers between 1<br>
-| and 6, WITH replacement. Sampling with replacement simply means that each number is<br>
-| "replaced" after it is selected, so that the same number can show up more than once.<br>
-| This is what we want here, since what you roll on one die shouldn't affect what you<br>
-| roll on any of the others.</p>
-<p>...</p>
-<p>|===============                                                                 |  18%<br>
-| Now sample 10 numbers between 1 and 20, WITHOUT replacement. To sample without<br>
-| replacement, simply leave off the 'replace' argument.</p>
-<blockquote>
-<p>sample(1:20,10)<br>
- [1] 11  1 12 10  9 20 17  8  7  5</p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|=================                                                               |  21%<br>
-| Since the last command sampled without replacement, no number appears more than once in<br>
-| the output.</p>
-<p>...</p>
-<p>|===================                                                             |  24%<br>
-| LETTERS is a predefined variable in R containing a vector of all 26 letters of the<br>
-| English alphabet. Take a look at it now.</p>
-<blockquote>
-<p>LETTERS<br>
- [1] "A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L" "M" "N" "O" "P" "Q" "R" "S" "T" "U"<br>
-[22] "V" "W" "X" "Y" "Z"</p>
-</blockquote>
-<p>| You got it!</p>
-<p>|======================                                                          |  27%<br>
-| The sample() function can also be used to permute, or rearrange, the elements of a<br>
-| vector. For example, try sample(LETTERS) to permute all 26 letters of the English<br>
-| alphabet.</p>
-<blockquote>
-<p>sample(LETTERS)<br>
- [1] "A" "G" "K" "S" "B" "C" "U" "D" "P" "I" "Z" "V" "M" "R" "E" "Q" "Y" "N" "F" "T" "L"<br>
-[22] "J" "X" "O" "H" "W"</p>
-</blockquote>
-<p>| You are amazing!</p>
-<p>|========================                                                        |  30%<br>
-| This is identical to taking a sample of size 26 from LETTERS, without replacement. When<br>
-| the 'size' argument to sample() is not specified, R takes a sample equal in size to the<br>
-| vector from which you are sampling.</p>
-<p>...</p>
-<p>|===========================                                                     |  33%<br>
-| Now, suppose we want to simulate 100 flips of an unfair two-sided coin. This particular<br>
-| coin has a 0.3 probability of landing 'tails' and a 0.7 probability of landing 'heads'.</p>
-<p>...</p>
-<p>|=============================                                                   |  36%<br>
-| Let the value 0 represent tails and the value 1 represent heads. Use sample() to draw a<br>
-| sample of size 100 from the vector c(0,1), with replacement. Since the coin is unfair,<br>
-| we must attach specific probabilities to the values 0 (tails) and 1 (heads) with a<br>
-| fourth argument, prob = c(0.3, 0.7). Assign the result to a new variable called flips.</p>
-<blockquote>
-<p>flips&lt;-sample(c(0,1),100,prob=c(0.3,0.7))<br>
-Error in sample.int(length(x), size, replace, prob) :<br>
-  cannot take a sample larger than the population when 'replace = FALSE'<br>
-flips&lt;-sample(c(0,1),100,prob=c(0.3,0.7),replace = TRUE)</p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|================================                                                |  39%<br>
-| View the contents of the flips variable.</p>
-<blockquote>
-<p>flips<br>
-  [1] 1 0 1 1 1 0 1 1 1 0 1 1 1 1 0 1 1 0 1 1 1 1 1 1 1 1 1 1 0 0 0 1 0 0 1 1 1 1 0 1 1 0<br>
- [43] 1 0 1 0 1 1 0 1 1 1 1 1 0 0 1 0 1 1 0 0 0 1 1 1 1 0 0 1 0 1 1 1 1 1 1 0 0 1 0 1 1 1<br>
- [85] 0 1 1 0 1 1 1 0 1 1 1 0 1 0 0 1</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|==================================                                              |  42%<br>
-| Since we set the probability of landing heads on any given flip to be 0.7, we'd expect<br>
-| approximately 70 of our coin flips to have the value 1. Count the actual number of 1s<br>
-| contained in flips using the sum() function.</p>
-<blockquote>
-<p>sum(flips)<br>
-[1] 67</p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|====================================                                            |  45%<br>
-| A coin flip is a binary outcome (0 or 1) and we are performing 100 independent trials<br>
-| (coin flips), so we can use rbinom() to simulate a binomial random variable. Pull up<br>
-| the documentation for rbinom() using ?rbinom.</p>
-<blockquote>
-<p>?rbinom</p>
-</blockquote>
-<p>| You nailed it! Good job!</p>
-<p>|=======================================                                         |  48%<br>
-| Each probability distribution in R has an r<strong><em> function (for "random"), a d</em></strong> function<br>
-| (for "density"), a p<strong><em> (for "probability"), and q</em></strong> (for "quantile"). We are most<br>
-| interested in the r*** functions in this lesson, but I encourage you to explore the<br>
-| others on your own.</p>
-<p>...</p>
-<p>|=========================================                                       |  52%<br>
-| A binomial random variable represents the number of 'successes' (heads) in a given<br>
-| number of independent 'trials' (coin flips). Therefore, we can generate a single random<br>
-| variable that represents the number of heads in 100 flips of our unfair coin using<br>
-| rbinom(1, size = 100, prob = 0.7). Note that you only specify the probability of<br>
-| 'success' (heads) and NOT the probability of 'failure' (tails). Try it now.</p>
-<blockquote>
-<p>rbinom(1,size=100,prob=0.7)<br>
-[1] 64</p>
-</blockquote>
-<p>| Perseverance, that's the answer.</p>
-<p>|============================================                                    |  55%<br>
-| Equivalently, if we want to see all of the 0s and 1s, we can request 100 observations,<br>
-| each of size 1, with success probability of 0.7. Give it a try, assigning the result to<br>
-| a new variable called flips2.</p>
-<blockquote>
-<p>flips2&lt;-rbinom(100,size=100,prob=0.7)</p>
-</blockquote>
-<p>| Not quite, but you're learning! Try again. Or, type info() for more options.</p>
-<p>| Call rbinom() with n = 100, size = 1, and prob = 0.7 and assign the result to flips2.</p>
-<blockquote>
-<p>flips2&lt;-rbinom(100,size=1,prob=0.7)</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|==============================================                                  |  58%<br>
-| View the contents of flips2.</p>
-<blockquote>
-<p>flips2<br>
-  [1] 1 1 1 1 1 0 1 0 1 1 0 1 1 1 0 1 1 1 0 0 1 0 1 1 1 1 1 0 0 1 0 0 1 1 1 1 1 1 1 0 1 1<br>
- [43] 1 0 1 0 1 1 1 1 1 1 0 1 0 1 1 1 0 1 1 1 1 1 1 0 0 0 1 1 1 1 0 1 1 1 1 1 0 0 0 1 1 1<br>
- [85] 1 0 1 1 1 0 0 1 1 1 1 1 1 1 1 1</p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|================================================                                |  61%<br>
-| Now use sum() to count the number of 1s (heads) in flips2. It should be close to 70!</p>
-<blockquote>
-<p>sum(flips2)<br>
-[1] 73</p>
-</blockquote>
-<p>| Great job!</p>
-<p>|===================================================                             |  64%<br>
-| Similar to rbinom(), we can use R to simulate random numbers from many other<br>
-| probability distributions. Pull up the documentation for rnorm() now.</p>
-<blockquote>
-<p>?rnorm</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|=====================================================                           |  67%<br>
-| The standard normal distribution has mean 0 and standard deviation 1. As you can see<br>
-| under the 'Usage' section in the documentation, the default values for the 'mean' and<br>
-| 'sd' arguments to rnorm() are 0 and 1, respectively. Thus, rnorm(10) will generate 10<br>
-| random numbers from a standard normal distribution. Give it a try.</p>
-<blockquote>
-<p>rnorm(10)<br>
- [1]  0.3573471  0.7579807 -2.3097147 -0.1032675 -1.9347451 -0.2738356 -0.3452365<br>
- [8]  0.7985894  0.9606335  0.7152267</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|========================================================                        |  70%<br>
-| Now do the same, except with a mean of 100 and a standard deviation of 25.</p>
-<blockquote>
-<p>rnorm(10,mean=100,sd=25)<br>
- [1]  94.27487 100.14298 100.07092  93.08279  61.79063 102.18774 108.74859 103.19485<br>
- [9] 123.83857 143.24210</p>
-</blockquote>
-<p>| Nice work!</p>
-<p>|==========================================================                      |  73%<br>
-| Finally, what if we want to simulate 100 <em>groups</em> of random numbers, each containing 5<br>
-| values generated from a Poisson distribution with mean 10? Let's start with one group<br>
-| of 5 numbers, then I'll show you how to repeat the operation 100 times in a convenient<br>
-| and compact way.</p>
-<p>...</p>
-<p>|=============================================================                   |  76%<br>
-| Generate 5 random values from a Poisson distribution with mean 10. Check out the<br>
-| documentation for rpois() if you need help.</p>
-<blockquote>
-<p>?rpois<br>
-rpois(5,10)<br>
-[1] 14 12 13  8  8</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|===============================================================                 |  79%<br>
-| Now use replicate(100, rpois(5, 10)) to perform this operation 100 times. Store the<br>
-| result in a new variable called my_pois.</p>
-<blockquote>
-<p>my_pois&lt;-replicate(100,rpois(5,10))</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|=================================================================               |  82%<br>
-| Take a look at the contents of my_pois.</p>
-<blockquote>
-<p>my_pois<br>
-     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14] [,15]<br>
-[1,]    7    8    7   12   16   10   11    8   16    11     8     6    13     7     9<br>
-[2,]    8    8    7   12   13   11   15   12   14    14     8    12     8    11    10<br>
-[3,]   12    7   12    7    9    9   16    4   11    13    16    19    13     8     8<br>
-[4,]    8    7   11    4    5   10   10   11    9    12     8    10    10     8     6<br>
-[5,]   13    8   15   11    8    8    7   13    8     4    14     8    11     5    14<br>
-     [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24] [,25] [,26] [,27] [,28] [,29]<br>
-[1,]     9     7    10     6     8     9     9    12     6     9     1    13     8    10<br>
-[2,]    12    11     8    11     9     5     2     6    11     9    16    12    10    12<br>
-[3,]    13    14     6     8     7     8     9     7    16    12    15    11     5    11<br>
-[4,]    17    11    12     9    16    11     8    10     4     8    15     9     6    10<br>
-[5,]     8    10    10     8    12    15     8     8    12     7     9     8    14    11<br>
-     [,30] [,31] [,32] [,33] [,34] [,35] [,36] [,37] [,38] [,39] [,40] [,41] [,42] [,43]<br>
-[1,]    10     8     5     5     5     6    13     7    11     8    15    10    12     5<br>
-[2,]    17     9     8    11    11    11     7    15    10     9     6    10     8     8<br>
-[3,]    13    17    14     8    12    10     8    13     9     4    10    14    13     8<br>
-[4,]     6    17    12    11    13    10    16     3     9     8     4    12    11    15<br>
-[5,]     8     4    10    11    17     7    13     8     5     9     8    10     8     8<br>
-     [,44] [,45] [,46] [,47] [,48] [,49] [,50] [,51] [,52] [,53] [,54] [,55] [,56] [,57]<br>
-[1,]    16    11    15     9    10    14    13    11     8     6    11    11    14     9<br>
-[2,]    11    12    10     7     7     7     2    11     8     9    12     6    10    10<br>
-[3,]     8     9     9     9    10    12     4    17     9     7    17     8    11    10<br>
-[4,]    14    10    13    11     5     5     8     9     5    14     9    15     9    16<br>
-[5,]    13     9     9     6     6     8     6     9    11    16    13     7     6    14<br>
-     [,58] [,59] [,60] [,61] [,62] [,63] [,64] [,65] [,66] [,67] [,68] [,69] [,70] [,71]<br>
-[1,]     9     9     9    10     9     7     9     8    12    13     9     7     9     9<br>
-[2,]     8     8    13    15    10     7    16     5    13     8    12    10    10    10<br>
-[3,]     5     4     6    10    11    11    17     8    12     5     6     9     6    13<br>
-[4,]    10    12     9    11     9    15    10     6     9    14     7    11    14    11<br>
-[5,]    13    11    11     8    13    14     4     4    13     9     7     9    12    10<br>
-     [,72] [,73] [,74] [,75] [,76] [,77] [,78] [,79] [,80] [,81] [,82] [,83] [,84] [,85]<br>
-[1,]     9     9    11     9    14     9    12    15     5     3     6     4    12     8<br>
-[2,]    16     8     6     9    10     8     9     3    12     7    11    10    10    12<br>
-[3,]     9    14    11    16    11    18     7    13     8    11    10    16    10    12<br>
-[4,]    11    11    11    11     9    14     6     5     8    14    14     8    16    14<br>
-[5,]    15    11     9    18    13    10     9     6     8    11     7     6    11    15<br>
-     [,86] [,87] [,88] [,89] [,90] [,91] [,92] [,93] [,94] [,95] [,96] [,97] [,98] [,99]<br>
-[1,]     9    10    11    14     9    12    16     7     4     7    13     6    12    10<br>
-[2,]    14    15     9    12    13    11    10     5    10    15    12    10     9     7<br>
-[3,]     7    15    13     7    12     7     8    13     9    15     8    11     6    15<br>
-[4,]    10    10    10     6    11    16    12     9     6    10    10    13    10     9<br>
-[5,]     6     7     5    12    11     9    13     9    13     4    12    11     8    11<br>
-     [,100]<br>
-[1,]     10<br>
-[2,]      8<br>
-[3,]     11<br>
-[4,]     10<br>
-[5,]     19</p>
-</blockquote>
-<p>| You got it!</p>
-<p>|====================================================================            |  85%<br>
-| replicate() created a matrix, each column of which contains 5 random numbers generated<br>
-| from a Poisson distribution with mean 10. Now we can find the mean of each column in<br>
-| my_pois using the colMeans() function. Store the result in a variable called cm.</p>
-<blockquote>
-<p>cm&lt;-colMeans(my_pois)</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|======================================================================          |  88%<br>
-| And let's take a look at the distribution of our column means by plotting a histogram<br>
-| with hist(cm).</p>
-<blockquote>
-<p>hist(cm)</p>
-</blockquote>
-<p><img src="../images/r0040040.png" alt="hist(cm)" title="hist(cm)"></p>
-<p>| That's the answer I was looking for.</p>
-<p>|=========================================================================       |  91%<br>
-| Looks like our column means are almost normally distributed, right? That's the Central<br>
-| Limit Theorem at work, but that's a lesson for another day!</p>
-<p>...</p>
-<p>|===========================================================================     |  94%<br>
-| All of the standard probability distributions are built into R, including exponential<br>
-| (rexp()), chi-squared (rchisq()), gamma (rgamma()), .... Well, you see the pattern.</p>
-<p>...</p>
-<p>|==============================================================================  |  97%<br>
-| Simulation is practically a field of its own and we've only skimmed the surface of<br>
-| what's possible. I encourage you to explore these and other functions further on your<br>
-| own.</p>
-<p>...</p>
-<p>|================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: Yes<br>
-2: No</p>
-<p>Selection: 1<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| You are amazing!</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-<blockquote>
-<p>ls()<br>
-[1] "cm"      "flips"   "flips2"  "my_pois"<br>
-rm(list=ls())</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-20 22:36:53.783177 IST</em></p>
 
 </div>
 </div>

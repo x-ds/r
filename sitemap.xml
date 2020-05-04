@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/archive.html</loc>
-  <lastmod>2020-05-03T22:12:00Z</lastmod>
+  <lastmod>2020-05-04T07:55:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/categories/</loc>
@@ -55,7 +55,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/</loc>
-  <lastmod>2020-05-03T18:19:00Z</lastmod>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/00100/</loc>
@@ -154,6 +154,10 @@
   <lastmod>2020-05-02T13:49:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/posts/00421/</loc>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
@@ -167,11 +171,11 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/index-2.html</loc>
-  <lastmod>2020-05-03T22:12:00Z</lastmod>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/</loc>
-  <lastmod>2020-05-02T11:12:00Z</lastmod>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/all/</loc>
@@ -216,6 +220,14 @@
  <url>
   <loc>https://r.datascience.eu.org/tags/date/</loc>
   <lastmod>2020-04-20T18:09:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/devcopydevoff/</loc>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/devcur/</loc>
+  <lastmod>2020-05-04T07:56:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/dim/</loc>
