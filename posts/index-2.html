@@ -74,7 +74,747 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00413/" class="u-url">Simulation</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00415/" class="u-url">Base Graphics</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00415/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:43:20+05:30" itemprop="datePublished" title="2020-04-15 12:43">2020-04-15 12:43</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00415/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00415_Base Graphics.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00415_Base Graphics.html";
+var idcomments_post_url = "/posts/00415/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 15</p>
+<p>|                                                                                |   0%</p>
+<p>| One of the greatest strengths of R, relative to other programming languages, is the<br>
+| ease with which we can create publication-quality graphics. In this lesson, you'll<br>
+| learn about base graphics in R.</p>
+<p>...</p>
+<p>|==                                                                              |   2%<br>
+| We do not cover the more advanced portions of graphics in R in this lesson. These<br>
+| include lattice, ggplot2 and ggvis.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| There is a school of thought that this approach is backwards, that we should teach<br>
+| ggplot2 first. See <a href="http://varianceexplained.org/r/teach_ggplot2_to_beginners/">http://varianceexplained.org/r/teach_ggplot2_to_beginners/</a> for an<br>
+| outline of this view.</p>
+<p>...</p>
+<p>|=====                                                                           |   7%<br>
+| Load the included data frame cars with data(cars).</p>
+<blockquote>
+<p>data(cars)</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=======                                                                         |   9%<br>
+| To fix ideas, we will work with simple data frames. Our main goal is to introduce<br>
+| various plotting functions and their arguments. All the output would look more<br>
+| interesting with larger, more complex data sets.</p>
+<p>...</p>
+<p>|=========                                                                       |  11%<br>
+| Pull up the help page for cars.</p>
+<blockquote>
+<p>?cars</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|==========                                                                      |  13%<br>
+| As you can see in the help page, the cars data set has only two variables: speed and<br>
+| stopping distance. Note that the data is from the 1920s.</p>
+<p>...</p>
+<p>|============                                                                    |  15%<br>
+| Run head() on the cars data.</p>
+<blockquote>
+<p>head(cars)<br>
+  speed dist<br>
+1     4    2<br>
+2     4   10<br>
+3     7    4<br>
+4     7   22<br>
+5     8   16<br>
+6     9   10</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|==============                                                                  |  17%<br>
+| Before plotting, it is always a good idea to get a sense of the data. Key R commands<br>
+| for doing so include, dim(), names(), head(), tail() and summary().</p>
+<p>...</p>
+<p>|================                                                                |  20%<br>
+| Run the plot() command on the cars data frame.</p>
+<blockquote>
+<p>plot(cars)</p>
+</blockquote>
+<p><img src="../images/r0040050.png" alt="plot(cars)" title="plot(cars)"></p>
+<p>| You are amazing!</p>
+<p>|=================                                                               |  22%<br>
+| As always, R tries very hard to give you something sensible given the information that<br>
+| you have provided to it. First, R notes that the data frame you have given it has just<br>
+| two columns, so it assumes that you want to plot one column versus the other.</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| Second, since we do not provide labels for either axis, R uses the names of the<br>
+| columns. Third, it creates axis tick marks at nice round numbers and labels them<br>
+| accordingly. Fourth, it uses the other defaults supplied in plot().</p>
+<p>...</p>
+<p>|=====================                                                           |  26%<br>
+| We will now spend some time exploring plot, but many of the topics covered here will<br>
+| apply to most other R graphics functions. Note that 'plot' is short for scatterplot.</p>
+<p>...</p>
+<p>|=======================                                                         |  28%<br>
+| Look up the help page for plot().</p>
+<blockquote>
+<p>?plot</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|========================                                                        |  30%<br>
+| The help page for plot() highlights the different arguments that the function can take.<br>
+| The two most important are x and y, the variables that will be plotted. For the next<br>
+| set of questions, include the argument names in your answers. That is, do not type<br>
+| plot(cars$speed, cars$dist), although that will work. Instead use plot(x = cars$speed,  
+| y = cars$dist).</p>
+<p>...</p>
+<p>|==========================                                                      |  33%<br>
+| Use plot() command to show speed on the x-axis and dist on the y-axis from the cars<br>
+| data frame. Use the form of the plot command in which vectors are explicitly passed in<br>
+| as arguments for x and y.</p>
+<blockquote>
+<p>plot(x=cars$speed,y=cars$dist)</p>
+</blockquote>
+<p><img src="../images/r0040060.png" alt="plot(x=cars$speed,y=cars$dist)" title="plot(x=cars$speed,y=cars$dist)"></p>
+<p>| You got it right!</p>
+<p>|============================                                                    |  35%<br>
+| Note that this produces a slightly different answer than plot(cars). In this case, R is<br>
+| not sure what you want to use as the labels on the axes, so it just uses the arguments<br>
+| which you pass in, data frame name and dollar signs included.</p>
+<p>...</p>
+<p>|==============================                                                  |  37%<br>
+| Note that there are other ways to call the plot command, i.e., using the "formula"<br>
+| interface. For example, we get a similar plot to the above with plot(dist ~ speed,<br>
+| cars). However, we will wait till later in the lesson before using the formula<br>
+| interface.</p>
+<p>...</p>
+<p>|===============================                                                 |  39%<br>
+| Use plot() command to show dist on the x-axis and speed on the y-axis from the cars<br>
+| data frame. This is the opposite of what we did above.</p>
+<blockquote>
+<p>plot(x=cars$dist,y=cars$speed)</p>
+</blockquote>
+<p><img src="../images/r0040070.png" alt="plot(x=cars$dist,y=cars$speed)" title="plot(x=cars$dist,y=cars$speed)"></p>
+<p>| Nice work!</p>
+<p>|=================================                                               |  41%<br>
+| It probably makes more sense for speed to go on the x-axis since stopping distance is a<br>
+| function of speed more than the other way around. So, for the rest of the questions in<br>
+| this portion of the lesson, always assign the arguments accordingly.</p>
+<p>...</p>
+<p>|===================================                                             |  43%<br>
+| In fact, you can assume that the answers to the next few questions are all of the form<br>
+| plot(x = cars$speed, y = cars$dist, ...) but with various arguments used in place of<br>
+| the ...</p>
+<p>...</p>
+<p>|=====================================                                           |  46%<br>
+| Recreate the plot with the label of the x-axis set to "Speed".</p>
+<blockquote>
+<p>plot(x=cars$speed,y=cars$dist,xlab="Speed")</p>
+</blockquote>
+<p><img src="../images/r0040080.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed'>')</p>
+<p>| Perseverance, that's the answer.</p>
+<p>|======================================                                          |  48%<br>
+| Recreate the plot with the label of the y-axis set to "Stopping Distance".</p>
+<blockquote>
+<p>plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")</p>
+</blockquote>
+<p><img src="../images/r0040090.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance'>')</p>
+<p>| One more time. You can do it! Or, type info() for more options.</p>
+<p>| Type plot(x = cars$speed, y = cars$dist, ylab = "Stopping Distance") to create the<br>
+| plot.</p>
+<blockquote>
+<p>plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance")</p>
+</blockquote>
+<p><img src="../images/r0040100.png" alt='plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance'>')</p>
+<p>| You are quite good my friend!</p>
+<p>|========================================                                        |  50%<br>
+| Recreate the plot with "Speed" and "Stopping Distance" as axis labels.</p>
+<blockquote>
+<p>plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")</p>
+</blockquote>
+<p><img src="../images/r0040090.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance'>')</p>
+<p>| Excellent work!</p>
+<p>|==========================================                                      |  52%<br>
+| The reason that plots(cars) worked at the beginning of the lesson was that R was smart<br>
+| enough to know that the first element (i.e., the first column) in cars should be<br>
+| assigned to the x argument and the second element to the y argument. To save on typing,<br>
+| the next set of answers will all be of the form, plot(cars, ...) with various arguments<br>
+| added.</p>
+<p>...</p>
+<p>|===========================================                                     |  54%<br>
+| For each question, we will only want one additional argument at a time. Of course, you<br>
+| can pass in more than one argument when doing a real project.</p>
+<p>...</p>
+<p>|=============================================                                   |  57%<br>
+| Plot cars with a main title of "My Plot". Note that the argument for the main title is<br>
+| "main" not "title".</p>
+<blockquote>
+<p>plot(cars,main="My Plot")</p>
+</blockquote>
+<p><img src="../images/r0040110.png" alt='plot(cars,main="My Plot")' title='plot(cars,main="My Plot'>')</p>
+<p>| Excellent work!</p>
+<p>|===============================================                                 |  59%<br>
+| Plot cars with a sub title of "My Plot Subtitle".</p>
+<blockquote>
+<p>plot(cars,sub="My Plot Subtitle")</p>
+</blockquote>
+<p><img src="../images/r0040120.png" alt='plot(cars,sub="My Plot Subtitle")' title='plot(cars,sub="My Plot Subtitle'>')</p>
+<p>| You are amazing!</p>
+<p>|=================================================                               |  61%<br>
+| The plot help page (?plot) only covers a small number of the many arguments that can be<br>
+| passed in to plot() and to other graphical functions. To begin to explore the many<br>
+| other options, look at ?par. Let's look at some of the more commonly used ones.<br>
+| Continue using plot(cars, ...) as the base answer to these questions.</p>
+<p>...</p>
+<p>|==================================================                              |  63%<br>
+| Plot cars so that the plotted points are colored red. (Use col = 2 to achieve this<br>
+| effect.)</p>
+<blockquote>
+<p>?par<br>
+plot(cars,col=2)</p>
+</blockquote>
+<p><img src="../images/r0040130.png" alt="plot(cars,col=2)" title="plot(cars,col=2)"></p>
+<p>| You are quite good my friend!</p>
+<p>|====================================================                            |  65%<br>
+| Plot cars while limiting the x-axis to 10 through 15.  (Use xlim = c(10, 15) to achieve<br>
+| this effect.)</p>
+<blockquote>
+<p>plot(cars,xlim=c(10,15))</p>
+</blockquote>
+<p><img src="../images/r0040140.png" alt="plot(cars,xlim=c(10,15))" title="plot(cars,xlim=c(10,15))"></p>
+<p>| Nice work!</p>
+<p>|======================================================                          |  67%<br>
+| You can also change the shape of the symbols in the plot. The help page for points<br>
+| (?points) provides the details.</p>
+<p>...</p>
+<p>|========================================================                        |  70%<br>
+| Plot cars using triangles.  (Use pch = 2 to achieve this effect.)</p>
+<blockquote>
+<p>plot(cars,pch=2)</p>
+</blockquote>
+<p><img src="../images/r0040150.png" alt="plot(cars,pch=2)" title="plot(cars,pch=2)"></p>
+<p>| All that hard work is paying off!</p>
+<p>|=========================================================                       |  72%<br>
+| Arguments like "col" and "pch" may not seem very intuitive. And that is because they<br>
+| aren't! So, many/most people use more modern packages, like ggplot2, for creating their<br>
+| graphics in R.</p>
+<p>...</p>
+<p>|===========================================================                     |  74%<br>
+| It is, however, useful to have an introduction to base graphics because many of the<br>
+| idioms in lattice and ggplot2 are modeled on them.</p>
+<p>...</p>
+<p>|=============================================================                   |  76%<br>
+| Let's now look at some other functions in base graphics that may be useful, starting<br>
+| with boxplots.</p>
+<p>...</p>
+<p>|===============================================================                 |  78%<br>
+| Load the mtcars data frame.</p>
+<blockquote>
+<p>data(mtcars)</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|================================================================                |  80%<br>
+| Anytime that you load up a new data frame, you should explore it before using it. In<br>
+| the middle of a swirl lesson, just type play(). This temporarily suspends the lesson<br>
+| (without losing the work you have already done) and allows you to issue commands like<br>
+| dim(mtcars) and head(mtcars). Once you are done examining the data, just type nxt() and<br>
+| the lesson will pick up where it left off.</p>
+<p>...</p>
+<p>|==================================================================              |  83%<br>
+| Look up the help page for boxplot().</p>
+<blockquote>
+<p>?boxplot</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|====================================================================            |  85%<br>
+| Instead of adding data columns directly as input arguments, as we did with plot(), it<br>
+| is often handy to pass in the entire data frame. This is what the "data" argument in<br>
+| boxplot() allows.</p>
+<p>...</p>
+<p>|======================================================================          |  87%<br>
+| boxplot(), like many R functions, also takes a "formula" argument, generally an<br>
+| expression with a tilde ("~") which indicates the relationship between the input<br>
+| variables. This allows you to enter something like mpg ~ cyl to plot the relationship<br>
+| between cyl (number of cylinders) on the x-axis and mpg (miles per gallon) on the<br>
+| y-axis.</p>
+<p>...</p>
+<p>|=======================================================================         |  89%<br>
+| Use boxplot() with formula = mpg ~ cyl and data = mtcars to create a box plot.</p>
+<blockquote>
+<p>boxplot(formula=mpg~cyl,data=mtcars)</p>
+</blockquote>
+<p><img src="../images/r0040160.png" alt="boxplot(formula=mpg~cyl,data=mtcars)" title="boxplot(formula=mpg~cyl,data=mtcars)"></p>
+<p>| All that practice is paying off!</p>
+<p>|=========================================================================       |  91%<br>
+| The plot shows that mpg is much lower for cars with more cylinders. Note that we can<br>
+| use the same set of arguments that we explored with plot() above to add axis labels,<br>
+| titles and so on.</p>
+<p>...</p>
+<p>|===========================================================================     |  93%<br>
+| When looking at a single variable, histograms are a useful tool. hist() is the<br>
+| associated R function. Like plot(), hist() is best used by just passing in a single<br>
+| vector.</p>
+<p>...</p>
+<p>|=============================================================================   |  96%<br>
+| Use hist() with the vector mtcars$mpg to create a histogram.</p>
+<blockquote>
+<p>hist(mtcars$mpg)</p>
+</blockquote>
+<p><img src="../images/r0040170.png" alt="hist(mtcars$mpg)" title="hist(mtcars$mpg)"></p>
+<p>| You are doing so well!</p>
+<p>|==============================================================================  |  98%<br>
+| In this lesson, you learned how to work with base graphics in R. The best place to go<br>
+| from here is to study the ggplot2 package. If you want to explore other elements of<br>
+| base graphics, then this web page (<a href="http://www.ling.upenn.edu/~joseff/rstudy/week4.html">http://www.ling.upenn.edu/~joseff/rstudy/week4.html</a>)<br>
+| provides a useful overview.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You are amazing!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "cars"   "mtcars"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-20 23:16:24.036922 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00414/" class="u-url">Dates and Times</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00414/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-15T12:42:20+05:30" itemprop="datePublished" title="2020-04-15 12:42">2020-04-15 12:42</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00414/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00414_Dates and Times.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00414_Dates and Times.html";
+var idcomments_post_url = "/posts/00414/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
+ 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
+ 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
+10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
+13: Simulation                14: Dates and Times           15: Base Graphics</p>
+<p>Selection: 14</p>
+<p>|                                                                                |   0%</p>
+<p>| R has a special way of representing dates and times, which can be helpful if you're<br>
+| working with data that show how something changes over time (i.e. time-series data) or<br>
+| if your data contain some other temporal information, like dates of birth.</p>
+<p>...</p>
+<p>|==                                                                              |   3%<br>
+| Dates are represented by the 'Date' class and times are represented by the 'POSIXct'<br>
+| and 'POSIXlt' classes. Internally, dates are stored as the number of days since<br>
+| 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for<br>
+| 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt').</p>
+<p>...</p>
+<p>|====                                                                            |   6%<br>
+| Let's start by using d1 &lt;- Sys.Date() to get the current date and store it in the<br>
+| variable d1. (That's the letter 'd' and the number 1.)</p>
+<blockquote>
+<p>d1&lt;-Sys.Date()</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=======                                                                         |   8%<br>
+| Use the class() function to confirm d1 is a Date object.</p>
+<blockquote>
+<p>class(d1)<br>
+[1] "Date"</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|=========                                                                       |  11%<br>
+| We can use the unclass() function to see what d1 looks like internally. Try it out.</p>
+<blockquote>
+<p>unclass(d1)<br>
+[1] 18367</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===========                                                                     |  14%<br>
+| That's the exact number of days since 1970-01-01!</p>
+<p>...</p>
+<p>|=============                                                                   |  17%<br>
+| However, if you print d1 to the console, you'll get today's date -- YEAR-MONTH-DAY.<br>
+| Give it a try.</p>
+<blockquote>
+<p>d1<br>
+[1] "2020-04-15"</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|================                                                                |  19%<br>
+| What if we need to reference a date prior to 1970-01-01? Create a variable d2<br>
+| containing as.Date("1969-01-01").</p>
+<blockquote>
+<p>d2&lt;-as.Date("1969-01-01")</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==================                                                              |  22%<br>
+| Now use unclass() again to see what d2 looks like internally.</p>
+<blockquote>
+<p>unclass(d2)<br>
+[1] -365</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|====================                                                            |  25%<br>
+| As you may have anticipated, you get a negative number. In this case, it's -365, since<br>
+| 1969-01-01 is exactly one calendar year (i.e. 365 days) BEFORE 1970-01-01.</p>
+<p>...</p>
+<p>|======================                                                          |  28%<br>
+| Now, let's take a look at how R stores times. You can access the current date and time<br>
+| using the Sys.time() function with no arguments. Do this and store the result in a<br>
+| variable called t1.</p>
+<blockquote>
+<p>t1&lt;-Sys.time()</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|========================                                                        |  31%<br>
+| View the contents of t1.</p>
+<blockquote>
+<p>t1<br>
+[1] "2020-04-15 17:21:46 IST"</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|===========================                                                     |  33%<br>
+| And check the class() of t1.</p>
+<blockquote>
+<p>class(t1)<br>
+[1] "POSIXct" "POSIXt"</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================                                                   |  36%<br>
+| As mentioned earlier, POSIXct is just one of two ways that R represents time<br>
+| information. (You can ignore the second value above, POSIXt, which just functions as a<br>
+| common language between POSIXct and POSIXlt.) Use unclass() to see what t1 looks like<br>
+| internally -- the (large) number of seconds since the beginning of 1970.</p>
+<blockquote>
+<p>unclass(t1)<br>
+[1] 1586951506</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|===============================                                                 |  39%<br>
+| By default, Sys.time() returns an object of class POSIXct, but we can coerce the result<br>
+| to POSIXlt with as.POSIXlt(Sys.time()). Give it a try and store the result in t2.</p>
+<blockquote>
+<p>t2&lt;-as.POSIXlt(Sys.time())</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=================================                                               |  42%<br>
+| Check the class of t2.</p>
+<blockquote>
+<p>class(t2)<br>
+[1] "POSIXlt" "POSIXt"</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|====================================                                            |  44%<br>
+| Now view its contents.</p>
+<blockquote>
+<p>t2<br>
+[1] "2020-04-15 17:23:09 IST"</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|======================================                                          |  47%<br>
+| The printed format of t2 is identical to that of t1. Now unclass() t2 to see how it is<br>
+| different internally.</p>
+<blockquote>
+<p>unclass(t2)<br>
+$sec<br>
+[1] 9.964687</p>
+</blockquote>
+<p>$min<br>
+[1] 23</p>
+<p>$hour<br>
+[1] 17</p>
+<p>$mday<br>
+[1] 15</p>
+<p>$mon<br>
+[1] 3</p>
+<p>$year<br>
+[1] 120</p>
+<p>$wday<br>
+[1] 3</p>
+<p>$yday<br>
+[1] 105</p>
+<p>$isdst<br>
+[1] 0</p>
+<p>$zone<br>
+[1] "IST"</p>
+<p>$gmtoff<br>
+[1] 19800</p>
+<p>attr(,"tzone")<br>
+[1] ""      "IST"   "+0630"</p>
+<p>| Keep up the great work!</p>
+<p>|========================================                                        |  50%<br>
+| t2, like all POSIXlt objects, is just a list of values that make up the date and time.<br>
+| Use str(unclass(t2)) to have a more compact view.</p>
+<blockquote>
+<p>str(unclass(t2))<br>
+List of 11<br>
+ $ sec   : num 9.96  
+ $ min   : int 23<br>
+ $ hour  : int 17  
+ $ mday  : int 15<br>
+ $ mon   : int 3  
+ $ year  : int 120<br>
+ $ wday  : int 3  
+ $ yday  : int 105<br>
+ $ isdst : int 0  
+ $ zone  : chr "IST"<br>
+ $ gmtoff: int 19800</p>
+<ul>
+<li>attr(*, "tzone")= chr [1:3] "" "IST" "+0630"  </li>
+</ul>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==========================================                                      |  53%<br>
+| If, for example, we want just the minutes from the time stored in t2, we can access<br>
+| them with t2$min. Give it a try.</p>
+<blockquote>
+<p>t2$min<br>
+[1] 23</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|============================================                                    |  56%<br>
+| Now that we have explored all three types of date and time objects, let's look at a few<br>
+| functions that extract useful information from any of these objects -- weekdays(),<br>
+| months(), and quarters().</p>
+<p>...</p>
+<p>|===============================================                                 |  58%<br>
+| The weekdays() function will return the day of week from any date or time object. Try<br>
+| it out on d1, which is the Date object that contains today's date.</p>
+<blockquote>
+<p>weekdays(d1)<br>
+[1] "Wednesday"</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|=================================================                               |  61%<br>
+| The months() function also works on any date or time object. Try it on t1, which is the<br>
+| POSIXct object that contains the current time (well, it was the current time when you<br>
+| created it).</p>
+<blockquote>
+<p>months(t1)<br>
+[1] "April"</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|===================================================                             |  64%<br>
+| The quarters() function returns the quarter of the year (Q1-Q4) from any date or time<br>
+| object. Try it on t2, which is the POSIXlt object that contains the time at which you<br>
+| created it.</p>
+<blockquote>
+<p>quarters(t2)<br>
+[1] "Q2"</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|=====================================================                           |  67%<br>
+| Often, the dates and times in a dataset will be in a format that R does not recognize.<br>
+| The strptime() function can be helpful in this situation.</p>
+<p>...</p>
+<p>|========================================================                        |  69%<br>
+| strptime() converts character vectors to POSIXlt. In that sense, it is similar to<br>
+| as.POSIXlt(), except that the input doesn't have to be in a particular format<br>
+| (YYYY-MM-DD).</p>
+<p>...</p>
+<p>|==========================================================                      |  72%<br>
+| To see how it works, store the following character string in a variable called t3:<br>
+| "October 17, 1986 08:24" (with the quotes).</p>
+<blockquote>
+<p>t3&lt;-"October 17, 1986 08:24"</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|============================================================                    |  75%<br>
+| Now, use strptime(t3, "%B %d, %Y %H:%M") to help R convert our date/time object to a<br>
+| format that it understands. Assign the result to a new variable called t4. (You should<br>
+| pull up the documentation for strptime() if you'd like to know more about how it<br>
+| works.)</p>
+<blockquote>
+<p>strptime(t3, "%B %d, %Y %H:%M")<br>
+[1] "1986-10-17 08:24:00 IST"</p>
+</blockquote>
+<p>| Not quite, but you're learning! Try again. Or, type info() for more options.</p>
+<p>| t4 &lt;- strptime(t3, "%B %d, %Y %H:%M") will convert our date/time object to a format<br>
+| that R understands.</p>
+<blockquote>
+<p>t4&lt;-strptime(t3, "%B %d, %Y %H:%M")</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|==============================================================                  |  78%<br>
+| Print the contents of t4.</p>
+<blockquote>
+<p>t4<br>
+[1] "1986-10-17 08:24:00 IST"</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|================================================================                |  81%<br>
+| That's the format we've come to expect. Now, let's check its class().</p>
+<blockquote>
+<p>class(t4)<br>
+[1] "POSIXlt" "POSIXt"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|===================================================================             |  83%<br>
+| Finally, there are a number of operations that you can perform on dates and times,<br>
+| including arithmetic operations (+ and -) and comparisons (&lt;, ==, etc.)</p>
+<p>...</p>
+<p>|=====================================================================           |  86%<br>
+| The variable t1 contains the time at which you created it (recall you used Sys.time()).<br>
+| Confirm that some time has passed since you created t1 by using the 'greater than'<br>
+| operator to compare it to the current time: Sys.time() &gt; t1</p>
+<blockquote>
+<p>Sys.time()&gt;t1<br>
+[1] TRUE</p>
+</blockquote>
+<p>| That's correct!</p>
+<p>|=======================================================================         |  89%<br>
+| So we know that some time has passed, but how much? Try subtracting t1 from the current<br>
+| time using Sys.time() - t1. Don't forget the parentheses at the end of Sys.time(),<br>
+| since it is a function.</p>
+<blockquote>
+<p>Sys.time()-t1<br>
+Time difference of 12.21747 mins</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|=========================================================================       |  92%<br>
+| The same line of thinking applies to addition and the other comparison operators. If<br>
+| you want more control over the units when finding the above difference in times, you<br>
+| can use difftime(), which allows you to specify a 'units' parameter.</p>
+<p>...</p>
+<p>|============================================================================    |  94%<br>
+| Use difftime(Sys.time(), t1, units = 'days') to find the amount of time in DAYS that<br>
+| has passed since you created t1.</p>
+<blockquote>
+<p>difftime(Sys.time(), t1, units = 'days')<br>
+Time difference of 0.01950932 days</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|==============================================================================  |  97%<br>
+| In this lesson, you learned how to work with dates and times in R. While it is<br>
+| important to understand the basics, if you find yourself working with dates and times<br>
+| often, you may want to check out the lubridate package by Hadley Wickham.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Perseverance, that's the answer.</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: R Programming<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+[1] "d1" "d2" "dl" "t1" "t2" "t3" "t4"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-20 23:37:33.781884 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00413/" class="u-url">Simulation</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika

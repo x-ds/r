@@ -73,7 +73,960 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00421/" class="u-url">Graphics Devices in R</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00423/" class="u-url">Base Plotting System</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00423/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-04T20:01:16+05:30" itemprop="datePublished" title="2020-05-04 20:01">2020-05-04 20:01</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00423/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00423_Base Plotting System.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00423_Base Plotting System.html";
+var idcomments_post_url = "/posts/00423/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 5<br>
+  |                                                                                   |   0%</p>
+<p>| Base_Plotting_System. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them,<br>
+| they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/PlottingBase.)</p>
+<p>...</p>
+<p>|=                                                                                  |   2%<br>
+| In another lesson, we gave you an overview of the three plotting systems in R. In this<br>
+| lesson we'll focus on the base plotting system and talk more about how you can exploit all<br>
+| its many parameters to get the plot you want.  We'll focus on using the base plotting<br>
+| system to create graphics on the screen device rather than another graphics device.</p>
+<p>...</p>
+<p>|===                                                                                |   3%<br>
+| The core plotting and graphics engine in R is encapsulated in two packages. The first is<br>
+| the graphics package which contains plotting functions for the "base" system. The<br>
+| functions in this package include plot, hist, boxplot, barplot, etc. The second package is<br>
+| grDevices which contains all the code implementing the various graphics devices, including<br>
+| X11, PDF, PostScript, PNG, etc.</p>
+<p>...</p>
+<p>|====                                                                               |   5%<br>
+| Base graphics are often constructed piecemeal, with each aspect of the plot handled<br>
+| separately through a particular function call. Usually you start with a plot function<br>
+| (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points)<br>
+| to add to or modify your plot.</p>
+<p>...</p>
+<p>|=====                                                                              |   6%<br>
+| Before making a plot you have to determine where the plot will appear and what it will be<br>
+| used for.  Is there a large amount of data going into the plot? Or is it just a few<br>
+| points? Do you need to be able to dynamically resize the graphic?</p>
+<p>...</p>
+<p>|======                                                                             |   8%<br>
+| What do you think is a disadvantage of the Base Plotting System?</p>
+<p>1: It mirrors how we think of building plots and analyzing data<br>
+2: You can't go back once a plot has started<br>
+3: It's intuitive and exploratory<br>
+4: A complicated plot is a series of simple R commands</p>
+<p>Selection: 2</p>
+<p>| That's a job well done!</p>
+<p>|========                                                                           |   9%<br>
+| Yes! The base system is very intuitive and easy to use. You can't go backwards, though,<br>
+| say, if you need to readjust margins or have misspelled a caption. A finished plot will be<br>
+| a series of R commands, so it's difficult to translate a finished plot into a different<br>
+| system.</p>
+<p>...</p>
+<p>|=========                                                                          |  11%<br>
+| Calling a basic routine such as plot(x, y) or hist(x) launches a graphics device (if one<br>
+| is not already open) and draws a new plot on the device. If the arguments to plot or hist<br>
+| are not of some special class, then the default method is called.</p>
+<p>...</p>
+<p>|==========                                                                         |  12%<br>
+| As you'll see, most of the base plotting functions have many arguments, for example,<br>
+| setting the title, labels of axes, plot character, etc. Some of the parameters can be set<br>
+| when you call the function or they can be added later in a separate function call.</p>
+<p>...</p>
+<p>|===========                                                                        |  14%<br>
+| Now we'll go through some quick examples of basic plotting before we delve into gory<br>
+| details. We'll use the dataset airquality (part of the library datasets) which we've<br>
+| loaded for you. This shows ozone and other air measurements for New York City for 5 months<br>
+| in 1973.</p>
+<p>...</p>
+<p>|=============                                                                      |  15%<br>
+| Use the R command head with airquality as an argument to see what the data looks like.</p>
+<blockquote>
+<p>head(airquality)<br>
+  Ozone Solar.R Wind Temp Month Day<br>
+1    41     190  7.4   67     5   1<br>
+2    36     118  8.0   72     5   2<br>
+3    12     149 12.6   74     5   3<br>
+4    18     313 11.5   62     5   4<br>
+5    NA      NA 14.3   56     5   5<br>
+6    28      NA 14.9   66     5   6</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|==============                                                                     |  17%<br>
+| We see the dataset contains 6 columns of data. Run the command range with two arguments.<br>
+| The first is the ozone column of airquality, specified by airquality\$Ozone, and the second<br>
+| is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you<br>
+| won't get a meaningful result.</p>
+<blockquote>
+<p>range(airquality\$Ozone,na.rm=TRUE)<br>
+[1]   1 168</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===============                                                                    |  18%<br>
+| So the measurements range from 1 to 168. First we'll do a simple histogram of this ozone<br>
+| column to show the distribution of measurements. Use the R command hist with the argument<br>
+| airquality\$Ozone.</p>
+<blockquote>
+<p>hist(airquality\$Ozone)</p>
+</blockquote>
+<p><img src="../images/r0040550.png" alt="graph" title="graph"></p>
+<p>| You're the best!</p>
+<p>|================                                                                   |  20%<br>
+| Simple, right? R put a title on the histogram and labeled both axes for you. What is the<br>
+| most frequent count?</p>
+<p>1: Under 25<br>
+2: Over 100<br>
+3: Over 150<br>
+4: Between 60 and 75</p>
+<p>Selection: 1</p>
+<p>| Great job!</p>
+<p>|==================                                                                 |  21%<br>
+| Next we'll do a boxplot. First, though, run the R command table with the argument<br>
+| airquality\$Month.</p>
+<blockquote>
+<p>table(airquality\$Month)</p>
+</blockquote>
+<p>5  6  7  8  9<br>
+31 30 31 31 30</p>
+<p>| Excellent work!</p>
+<p>|===================                                                                |  23%<br>
+| We see that the data covers 5 months, May through September. We'll want a boxplot of ozone<br>
+| as a function of the month in which the measurements were taken so we'll use the R formula<br>
+| Ozone~Month as the first argument of boxplot. Our second argument will be airquality, the<br>
+| dataset from which the variables of the first argument are taken.  Try this now.</p>
+<blockquote>
+<p>boxplot(Ozone~Month,airquality)</p>
+</blockquote>
+<p><img src="../images/r0040560.png" alt="graph" title="graph"></p>
+<p>| Keep up the great work!</p>
+<p>|====================                                                               |  24%<br>
+| Note that boxplot, unlike hist, did NOT specify a title and axis labels for you<br>
+| automatically.</p>
+<p>...</p>
+<p>|=====================                                                              |  26%<br>
+| Let's call boxplot again to specify labels. (Use the up arrow to recover the previous<br>
+| command and save yourself some typing.) We'll add more arguments to the call to specify<br>
+| labels for the 2 axes. Set xlab equal to "Month" and ylab equal to "Ozone (ppb)". Specify<br>
+| col.axis equal to "blue" and col.lab equal to "red". Try this now.</p>
+<blockquote>
+<p>boxplot(Ozone~Month,airquality,xlab="Month",ylab="Ozone (ppb)",col.axis="blue",col.lab="red")</p>
+</blockquote>
+<p><img src="../images/r0040570.png" alt="graph" title="graph"></p>
+<p>| All that practice is paying off!</p>
+<p>|=======================                                                            |  27%<br>
+| Nice colors, but still no title. Let's add one with the R command title. Use the argument<br>
+| main set equal to the string "Ozone and Wind in New York City".</p>
+<blockquote>
+<p>title(main="Ozone and Wind in New York City")</p>
+</blockquote>
+<p><img src="../images/r0040580.png" alt="graph" title="graph"></p>
+<p>| Nice work!</p>
+<p>|========================                                                           |  29%<br>
+| Now we'll show you how to plot a simple two-dimensional scatterplot using the R function<br>
+| plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the<br>
+| function plot with those two arguments (Wind and Ozone, in that order). To save some<br>
+| typing, though, we'll call the R command with using 2 arguments. The first argument of<br>
+| with will be airquality, the dataset containing Wind and Ozone; the second argument will<br>
+| be the call to plot. Doing this allows us to avoid using the longer notation, e.g.,<br>
+| airquality\$Wind. Try this now.</p>
+<blockquote>
+<p>with(airquality,plot(Wind,Ozone))</p>
+</blockquote>
+<p><img src="../images/r0040590.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|=========================                                                          |  30%<br>
+| Note that plot generated labels for the x and y axes but no title.</p>
+<p>...</p>
+<p>|==========================                                                         |  32%<br>
+| Add one now with the R command title. Use the argument main set equal to the string "Ozone<br>
+| and Wind in New York City". (You can use the up arrow to recover the command if you don't<br>
+| want to type it.)</p>
+<blockquote>
+<p>title(main="Ozone and Wind in New York City")</p>
+</blockquote>
+<p><img src="../images/r0040600.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|============================                                                       |  33%<br>
+| The basic plotting parameters are documented in the R help page for the function par. You<br>
+| can use par to set parameters OR to find out what values are already set. To see just how<br>
+| much flexibility you have, run the R command length with the argument par() now.</p>
+<blockquote>
+<p>length(par())<br>
+[1] 72</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================                                                      |  35%<br>
+| So there are a boatload (72) of parameters that par() gives you access to. Run the R<br>
+| function names with par() as its argument to see what these parameters are.</p>
+<blockquote>
+<p>names(par())<br>
+ [1] "xlog"      "ylog"      "adj"       "ann"       "ask"       "bg"        "bty"<br>
+ [8] "cex"       "cex.axis"  "cex.lab"   "cex.main"  "cex.sub"   "cin"       "col"<br>
+[15] "col.axis"  "col.lab"   "col.main"  "col.sub"   "cra"       "crt"       "csi"<br>
+[22] "cxy"       "din"       "err"       "family"    "fg"        "fig"       "fin"<br>
+[29] "font"      "font.axis" "font.lab"  "font.main" "font.sub"  "lab"       "las"<br>
+[36] "lend"      "lheight"   "ljoin"     "lmitre"    "lty"       "lwd"       "mai"<br>
+[43] "mar"       "mex"       "mfcol"     "mfg"       "mfrow"     "mgp"       "mkh"<br>
+[50] "new"       "oma"       "omd"       "omi"       "page"      "pch"       "pin"<br>
+[57] "plt"       "ps"        "pty"       "smo"       "srt"       "tck"       "tcl"<br>
+[64] "usr"       "xaxp"      "xaxs"      "xaxt"      "xpd"       "yaxp"      "yaxs"<br>
+[71] "yaxt"      "ylbias"</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|==============================                                                     |  36%<br>
+| Variety is the spice of life. You might recognize some of these such as col and lwd from<br>
+| previous swirl lessons. You can always run ?par to see what they do. For now, run the<br>
+| command par()\$pin and see what you get.</p>
+<blockquote>
+<p>par()\$pin<br>
+[1] 4.520417 1.805833</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================                                                    |  38%<br>
+| Alternatively, you could have gotten the same result by running par("pin") or par('pin')).<br>
+| What do you think these two numbers represent?</p>
+<p>1: Coordinates of the center of the plot window<br>
+2: Random numbers<br>
+3: A confidence interval<br>
+4: Plot dimensions in inches</p>
+<p>Selection: 4</p>
+<p>| All that hard work is paying off!</p>
+<p>|=================================                                                  |  39%<br>
+| Now, run the command par("fg") or or par('fg') or par()\$fg and see what you get.</p>
+<blockquote>
+<p>par("fg")<br>
+[1] "black"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==================================                                                 |  41%<br>
+| It gave you a color, right? Since par()\$fg specifies foreground color, what do you think  
+| par()\\$bg specifies?</p>
+<p>1: Beautiful color<br>
+2: blue-green<br>
+3: Better color<br>
+4: Background color</p>
+<p>Selection: 4</p>
+<p>| You are amazing!</p>
+<p>|===================================                                                |  42%<br>
+| Many base plotting functions share a set of parameters. We'll go through some of the more<br>
+| commonly used ones now. See if you can tell what they do from their names.</p>
+<p>...</p>
+<p>|====================================                                               |  44%<br>
+| What do you think the graphical parameter pch controls?</p>
+<p>1: pc help<br>
+2: plot character<br>
+3: point control height<br>
+4: picture characteristics</p>
+<p>Selection: 2</p>
+<p>| You are doing so well!</p>
+<p>|===================================                                          |  45%<br>
+| The plot character default is the open circle, but it "can either be a single<br>
+| character or an integer code for one of a set of graphics symbols." Run the command<br>
+| par("pch") to see the integer value of the default. When you need to, you can use<br>
+| R's Documentation (?pch) to find what the other values mean.</p>
+<blockquote>
+<p>par("pch")<br>
+[1] 1</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|====================================                                         |  47%<br>
+| So 1 is the code for the open circle. What do you think the graphical parameters lty<br>
+| and lwd control respectively?</p>
+<p>1: line length and width<br>
+2: line slope and intercept<br>
+3: line type and width<br>
+4: line width and type</p>
+<p>Selection: 3</p>
+<p>| You nailed it! Good job!</p>
+<p>|=====================================                                        |  48%<br>
+| Run the command par("lty") to see the default line type.</p>
+<blockquote>
+<p>par("lty")<br>
+[1] "solid"</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|======================================                                       |  50%<br>
+| So the default line type is solid, but it can be dashed, dotted, etc. Once again,<br>
+| R's ?par documentation will tell you what other line types are available. The line<br>
+| width is a positive integer; the default value is 1.</p>
+<p>...</p>
+<p>|========================================                                     |  52%<br>
+| We've seen a lot of examples of col, the plotting color, specified as a number,<br>
+| string, or hex code; the colors() function gives you a vector of colors by name.</p>
+<p>...</p>
+<p>|=========================================                                    |  53%<br>
+| What do you think the graphical parameters xlab and ylab control respectively?</p>
+<p>1: labels for the y- and x- axes<br>
+2: labels for the x- and y- axes</p>
+<p>Selection: 2</p>
+<p>| You are quite good my friend!</p>
+<p>|==========================================                                   |  55%<br>
+| The par() function is used to specify global graphics parameters that affect all<br>
+| plots in an R session. (Use dev.off or plot.new to reset to the defaults.) These<br>
+| parameters can be overridden when specified as arguments to specific plotting<br>
+| functions. These include las (the orientation of the axis labels on the plot), bg<br>
+| (background color), mar (margin size), oma (outer margin size), mfrow and mfcol<br>
+| (number of plots per row, column).</p>
+<p>...</p>
+<p>|===========================================                                  |  56%<br>
+| The last two, mfrow and mfcol, both deal with multiple plots in that they specify<br>
+| the number of plots per row and column. The difference between them is the order in<br>
+| which they fill the plot matrix. The call mfrow will fill the rows first while mfcol<br>
+| fills the columns first.</p>
+<p>...</p>
+<p>|============================================                                 |  58%<br>
+| So to reiterate, first call a basic plotting routine. For instance, plot makes a<br>
+| scatterplot or other type of plot depending on the class of the object being<br>
+| plotted.</p>
+<p>...</p>
+<p>|==============================================                               |  59%<br>
+| As we've seen, R provides several annotating functions. Which of the following is<br>
+| NOT one of them?</p>
+<p>1: title<br>
+2: hist<br>
+3: lines<br>
+4: text<br>
+5: points</p>
+<p>Selection: 2</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================                              |  61%<br>
+| So you can add text, title, points, and lines to an existing plot. To add lines, you<br>
+| give a vector of x values and a corresponding vector of y values (or a 2-column<br>
+| matrix); the function lines just connects the dots. The function text adds text<br>
+| labels to a plot using specified x, y coordinates.</p>
+<p>...</p>
+<p>|================================================                             |  62%<br>
+| The function title adds annotations. These include x- and y- axis labels, title,<br>
+| subtitle, and outer margin. Two other annotating functions are mtext which adds<br>
+| arbitrary text to either the outer or inner margins of the plot and axis which adds<br>
+| axis ticks and labels. Another useful function is legend which explains to the<br>
+| reader what the symbols your plot uses mean.</p>
+<p>...</p>
+<p>|=================================================                            |  64%<br>
+| Before we close, let's test your ability to make a somewhat complicated scatterplot.<br>
+| First run plot with 3 arguments. airquality\$Wind, airquality\\$Ozone, and type set<br>
+| equal to "n". This tells R to set up the plot but not to put the data in it.</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,type="n")<br>
+There were 12 warnings (use warnings() to see them)</p>
+</blockquote>
+<p><img src="../images/r0040610.png" alt="graph" title="graph"></p>
+<p>| You got it!</p>
+<p>|==================================================                           |  65%<br>
+| Now for the test. (You might need to check R's documentation for some of these.) Add<br>
+| a title with the argument main set equal to the string "Wind and Ozone in NYC"</p>
+<blockquote>
+<p>title(main = "Wind and Ozone in NYC")</p>
+</blockquote>
+<p><img src="../images/r0040620.png" alt="graph" title="graph"></p>
+<p>| That's the answer I was looking for.</p>
+<p>|===================================================                          |  67%<br>
+| Now create a variable called may by subsetting airquality appropriately. (Recall<br>
+| that the data specifies months by number and May is the fifth month of the year.)</p>
+<blockquote>
+<p>may&lt;-subset(airquality,Month==5)</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|=====================================================                        |  68%<br>
+| Now use the R command points to plot May's wind and ozone (in that order) as solid<br>
+| blue triangles. You have to set the color and plot character with two separate<br>
+| arguments. Note we use points because we're adding to an existing plot.</p>
+<blockquote>
+<p>points(may\$Wind,may\\$Ozone,col="blue",pch=17)</p>
+</blockquote>
+<p><img src="../images/r0040630.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|======================================================                       |  70%<br>
+| Now create the variable notmay by subsetting airquality appropriately.</p>
+<blockquote>
+<p>notmay&lt;-subset(airquality,Month!=5)</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=======================================================                      |  71%<br>
+| Now use the R command points to plot these notmay's wind and ozone (in that order)<br>
+| as red snowflakes.</p>
+<blockquote>
+<p>points(notmay\$Wind,notmay\\$Ozone,col="red",pch=8)</p>
+</blockquote>
+<p><img src="../images/r0040640.png" alt="graph" title="graph"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|========================================================                     |  73%<br>
+| Now we'll use the R command legend to clarify the plot and explain what it means.<br>
+| The function has a lot of arguments, but we'll only use 4. The first will be the<br>
+| string "topright" to tell R where to put the legend. The remaining 3 arguments will<br>
+| each be 2-long vectors created by R's concatenate function, e.g., c(). These<br>
+| arguments are pch, col, and legend. The first is the vector (17,8), the second<br>
+| ("blue","red"), and the third ("May","Other Months"). Try it now.</p>
+<blockquote>
+<p>legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))</p>
+</blockquote>
+<p><img src="../images/r0040650.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|=========================================================                    |  74%<br>
+| Now add a vertical line at the median of airquality\$Wind. Make it dashed (lty=2)<br>
+| with a width of 2.</p>
+<blockquote>
+<p>abline(v=median(airquality\$Wind),lty=2,lwd=2)</p>
+</blockquote>
+<p><img src="../images/r0040660.png" alt="graph" title="graph"></p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================                   |  76%<br>
+| Use par with the parameter mfrow set equal to the vector (1,2) to set up the plot<br>
+| window for two plots side by side. You won't see a result.</p>
+<blockquote>
+<p>par(mfrow=c(1,2))</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================================================                 |  77%<br>
+| Now plot airquality\$Wind and airquality\\$Ozone and use main to specify the title<br>
+| "Ozone and Wind".</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,main="Ozone and Wind")</p>
+</blockquote>
+<p><img src="../images/r0040670.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|=============================================================                |  79%<br>
+| Now for the second plot.</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| Plot airquality\$Ozone and airquality\\$Solar.R and use main to specify the title<br>
+| "Ozone and Solar Radiation".</p>
+<blockquote>
+<p>plot(airquality\$Ozone,airquality\\$Solar.R,main="Ozone and Solar Radiation")</p>
+</blockquote>
+<p><img src="../images/r0040680.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|===============================================================              |  82%<br>
+| Now for something more challenging.</p>
+<p>...</p>
+<p>|================================================================             |  83%<br>
+| This one with 3 plots, to illustrate inner and outer margins. First, set up the plot<br>
+| window by typing par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))</p>
+<blockquote>
+<p>par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|=================================================================            |  85%<br>
+| Margins are specified as 4-long vectors of integers. Each number tells how many<br>
+| lines of text to leave at each side. The numbers are assigned clockwise starting at<br>
+| the bottom. The default for the inner margin is c(5.1, 4.1, 4.1, 2.1) so you can see<br>
+| we reduced each of these so we'll have room for some outer text.</p>
+<p>...</p>
+<p>|==================================================================           |  86%<br>
+| The first plot should be familiar. Plot airquality\$Wind and airquality\\$Ozone with<br>
+| the title (argument main) as "Ozone and Wind".</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,main="Ozone and Wind")</p>
+</blockquote>
+<p><img src="../images/r0040690.png" alt="graph" title="graph"></p>
+<p>| You nailed it! Good job!</p>
+<p>|====================================================================         |  88%<br>
+| The second plot is similar.</p>
+<p>...</p>
+<p>|=====================================================================        |  89%<br>
+| Plot airquality\$Solar.R and airquality\\$Ozone with the title (argument main) as<br>
+| "Ozone and Solar Radiation".</p>
+<blockquote>
+<p>plot(airquality\$Solar.R,airquality\\$Ozone,main="Ozone and Solar Radiation")</p>
+</blockquote>
+<p><img src="../images/r0040700.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|======================================================================       |  91%<br>
+| Now for the final panel.</p>
+<p>...</p>
+<p>|=======================================================================      |  92%<br>
+| Plot airquality\$Temp and airquality\\$Ozone with the title (argument main) as "Ozone<br>
+| and Temperature".</p>
+<blockquote>
+<p>plot(airquality\$Temp,airquality\\$Ozone,main="Ozone and Temperature")</p>
+</blockquote>
+<p><img src="../images/r0040710.png" alt="graph" title="graph"></p>
+<p>| You got it!</p>
+<p>|========================================================================     |  94%<br>
+| Now we'll put in a title.</p>
+<p>...</p>
+<p>|==========================================================================   |  95%<br>
+| Since this is the main title, we specify it with the R command mtext. Call mtext<br>
+| with the string "Ozone and Weather in New York City" and the argument outer set<br>
+| equal to TRUE.</p>
+<blockquote>
+<p>mtext("Ozone and Weather in New York City",outer=TRUE)</p>
+</blockquote>
+<p><img src="../images/r0040720.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|===========================================================================  |  97%<br>
+| Voila! Beautiful, right?</p>
+<p>...</p>
+<p>|============================================================================ |  98%<br>
+| Congrats! You've weathered this lesson nicely and passed out of the No!zone.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| All that practice is paying off!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-04 20:05:26.618647 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00422/" class="u-url">Plotting Systems</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00422/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-04T19:56:24+05:30" itemprop="datePublished" title="2020-05-04 19:56">2020-05-04 19:56</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00422/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00422_Plotting Systems.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00422_Plotting Systems.html";
+var idcomments_post_url = "/posts/00422/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/04_Exploratory_Data_Analysis/week01/workspace")<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Would you like to continue with one of these lessons?</p>
+<p>1: Exploratory Data Analysis Plotting Systems<br>
+2: No. Let me start something new.</p>
+<p>Selection: 1</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘ggplot2’ loaded correctly!</p>
+<p>| Package ‘lattice’ loaded correctly!</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>| Plotting_Systems. (Slides for this and other Data Science courses may be found at github<br>
+| <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them, they must<br>
+| be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/PlottingSystems.)</p>
+<p>...</p>
+<p>|==                                                                                 |   3%<br>
+| In this lesson, we'll give you a brief overview of the three plotting systems in R, their<br>
+| differences, strengths, and weaknesses. We'll only cover the basics here to give you a<br>
+| general idea of the systems and in later lessons we'll cover each system in more depth.</p>
+<p>...</p>
+<p>|====                                                                               |   5%<br>
+| The first plotting system is the Base Plotting System which comes with R. It's the oldest<br>
+| system which uses a simple "Artist's palette" model. What this means is that you start<br>
+| with a blank canvas and build your plot up from there, step by step.</p>
+<p>...</p>
+<p>|=======                                                                            |   8%<br>
+| Usually you start with a plot function (or something similar), then you use annotation<br>
+| functions to add to or modify your plot. R provides many annotating functions such as<br>
+| text, lines, points, and axis. R provides documentation for each of these. They all add to<br>
+| an already existing plot.</p>
+<p>...</p>
+<p>|=========                                                                          |  11%<br>
+| What do you think is a disadvantage of the Base Plotting System?</p>
+<p>1: It mirrors how we think of building plots and analyzing data<br>
+2: A complicated plot is a series of simple R commands<br>
+3: You can't go back once a plot has started<br>
+4: It's intuitive and exploratory</p>
+<p>Selection: 3</p>
+<p>| Nice work!</p>
+<p>|===========                                                                        |  14%<br>
+| Yes! The base system is very intuitive and easy to use when you're starting to do<br>
+| exploratory graphing and looking for a research direction. You can't go backwards, though,<br>
+| say, if you need to readjust margins or fix a misspelled a caption. A finished plot will<br>
+| be a series of R commands, so it's difficult to translate a finished plot into a different<br>
+| system.</p>
+<p>...</p>
+<p>|=============                                                                      |  16%<br>
+| We've loaded the dataset cars for you to demonstrate how easy it is to plot. First, use<br>
+| the R command head with cars as an argument to see what the data looks like.</p>
+<blockquote>
+<p>head(cars)<br>
+  speed dist<br>
+1     4    2<br>
+2     4   10<br>
+3     7    4<br>
+4     7   22<br>
+5     8   16<br>
+6     9   10</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|================                                                                   |  19%<br>
+| So the dataset collates the speeds and distances needed to stop for 50 cars. This data was<br>
+| recorded in the 1920's.</p>
+<p>...</p>
+<p>|==================                                                                 |  22%<br>
+| We'll use the R command with which takes two arguments. The first specifies a dataset or<br>
+| environment in which to run the second argument, an R expression. This will save us a bit<br>
+| of typing. Try running the command with now using cars as the first argument and a call to<br>
+| plot as the second. The call to plot will take two arguments, speed and dist. Please<br>
+| specify them in that order.</p>
+<blockquote>
+<p>with(cars,plot(speed,dist))</p>
+</blockquote>
+<p><img src="../images/r0040500.png" alt="graph" title="graph"></p>
+<p>| You got it right!</p>
+<p>|====================                                                               |  24%<br>
+| Simple, right? You can see the relationship between the two variables, speed and distance.<br>
+| The first variable is plotted along the x-axis and the second along the y-axis.</p>
+<p>...</p>
+<p>|======================                                                             |  27%<br>
+| Now we'll show you what the function text does. Run the command text with three arguments.<br>
+| The first two, x and y coordinates, specify the placement of the third argument, the text<br>
+| to be added to the plot. Let the first argument be mean(cars\$speed), the second  
+| max(cars\\$dist), and the third the string "SWIRL rules!". Try it now.</p>
+<blockquote>
+<p>text(mean(cars\$speed),max(cars\\$dist),"SWIRL rules!")</p>
+</blockquote>
+<p><img src="../images/r0040510.png" alt="graph" title="graph"></p>
+<p>| You are quite good my friend!</p>
+<p>|=========================                                                          |  30%<br>
+| Ain't it the truth?</p>
+<p>...</p>
+<p>|===========================                                                        |  32%<br>
+| Now we'll move on to the second plotting system, the Lattice System which comes in the<br>
+| package of the same name. Unlike the Base System, lattice plots are created with a single<br>
+| function call such as xyplot or bwplot. Margins and spacing are set automatically because<br>
+| the entire plot is specified at once.</p>
+<p>...</p>
+<p>|=============================                                                      |  35%<br>
+| The lattice system is most useful for conditioning types of plots which display how y<br>
+| changes with x across levels of z. The variable z might be a categorical variable of your<br>
+| data. This system is also good for putting many plots on a screen at once.</p>
+<p>...</p>
+<p>|===============================                                                    |  38%<br>
+| The lattice system has several disadvantages. First, it is sometimes awkward to specify an<br>
+| entire plot in a single function call. Annotating a plot may not be especially intuitive.<br>
+| Second, using panel functions and subscripts is somewhat difficult and requires<br>
+| preparation. Finally, you cannot "add" to the plot once it is created as you can with the<br>
+| base system.</p>
+<p>...</p>
+<p>|==================================                                                 |  41%</p>
+<p>| As before, we've loaded some data for you in the variable state. This data comes with the<br>
+| lattice package and it concerns various characteristics of the 50 states in the U.S. Use<br>
+| the R command head to see the first few entries of state now.</p>
+<blockquote>
+<p>head(state)<br>
+           Population Income Illiteracy Life.Exp Murder HS.Grad Frost   Area region<br>
+Alabama          3615   3624        2.1    69.05   15.1    41.3    20  50708  South<br>
+Alaska            365   6315        1.5    69.31   11.3    66.7   152 566432   West<br>
+Arizona          2212   4530        1.8    70.55    7.8    58.1    15 113417   West<br>
+Arkansas         2110   3378        1.9    70.66   10.1    39.9    65  51945  South<br>
+California      21198   5114        1.1    71.71   10.3    62.6    20 156361   West<br>
+Colorado         2541   4884        0.7    72.06    6.8    63.9   166 103766   West</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|====================================                                               |  43%<br>
+| As you can see state holds 9 pieces of information for each of the 50 states. The last<br>
+| variable, region, specifies a category for each state. Run the R command table with the<br>
+| argument state\$region to see how many categories there are and how many states are in<br>
+| each.</p>
+<blockquote>
+<p>table(state\$region)</p>
+</blockquote>
+
+<pre><code>Northeast         South North Central          West   
+        9            16            12            13   
+
+</code></pre>
+<p>| Your dedication is inspiring!</p>
+<p>|======================================                                             |  46%<br>
+| So there are 4 categories and the 50 states are sorted into them appropriately. Let's use<br>
+| the lattice command xyplot to see how life expectancy varies with income in each of the<br>
+| four regions.</p>
+<p>...</p>
+<p>|========================================                                           |  49%<br>
+| To do this we'll give xyplot 3 arguments. The first is the most complicated. It is this R<br>
+| formula, Life.Exp ~ Income | region, which indicates we're plotting life expectancy as it<br>
+| depends on income for each region. The second argument, data, is set equal to state. This<br>
+| allows us to use "Life.Exp" and "Income" in the formula instead of specifying the dataset<br>
+| state for each term (as in state\$Income). The third argument, layout, is set equal to the<br>
+| two-long vector c(4,1). Run xyplot now with these three arguments.</p>
+<blockquote>
+<p>xyplot(Life.Exp~Income|region,data=state,layout=c(4,1))</p>
+</blockquote>
+<p><img src="../images/r0040520.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|===========================================                                        |  51%<br>
+| We see the data for each of the 4 regions plotted in one row. Based on this plot, which<br>
+| region of the U.S. seems to have the shortest life expectancy?</p>
+<p>1: West<br>
+2: South<br>
+3: Northeast<br>
+4: North Central</p>
+<p>Selection: 2</p>
+<p>| You got it!</p>
+<p>|=============================================                                      |  54%<br>
+| Just for fun rerun the xyplot and this time set layout to the vector c(2,2). To save<br>
+| typing use the up arrow to recover the previous xyplot command.</p>
+<blockquote>
+<p>xyplot(Life.Exp~Income|region,data=state,layout=c(2,2))</p>
+</blockquote>
+<p><img src="../images/r0040530.png" alt="graph" title="graph"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================                                    |  57%<br>
+| See how the plot changed? No need for you to worry about margins or labels. The package<br>
+| took care of all that for you.</p>
+<p>...</p>
+<p>|=================================================                                  |  59%<br>
+| Now for the last plotting system, ggplot2, which is a hybrid of the base and lattice<br>
+| systems. It automatically deals with spacing, text, titles (as Lattice does) but also<br>
+| allows you to annotate by "adding" to a plot (as Base does), so it's the best of both<br>
+| worlds.</p>
+<p>...</p>
+<p>|====================================================                               |  62%<br>
+| Although ggplot2 bears a superficial similarity to lattice, it's generally easier and more<br>
+| intuitive to use. Its default mode makes many choices for you but you can still customize<br>
+| a lot. The package is based on a "grammar of graphics" (hence the gg in the name), so you<br>
+| can control the aesthetics of your plots. For instance, you can plot conditioning graphs<br>
+| and panel plots as we did in the lattice example.</p>
+<p>...</p>
+<p>|======================================================                             |  65%<br>
+| We'll see an example now of ggplot2 with a simple (single) command. As before, we've<br>
+| loaded a dataset for you from the ggplot2 package. This mpg data holds fuel economy data<br>
+| between 1999 and 2008 for 38 different models of cars. Run head with mpg as an argument so<br>
+| you get an idea of what the data looks like.</p>
+<blockquote>
+<p>head(mpg)</p>
+<h2 id="A-tibble:-6-x-11">A tibble: 6 x 11<a class="anchor-link" href="00422/#A-tibble:-6-x-11">¶</a>
+</h2>
+<p>manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class<br><chr><chr><dbl><int><int><chr><chr><int><int><chr><chr><br>
+1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compact<br>
+2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compact<br>
+3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compact<br>
+4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compact<br>
+5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compact<br>
+6 audi         a4      2.8  1999     6 manual(m5) f        18    26 p     compact</chr></chr></int></int></chr></chr></int></int></dbl></chr></chr></p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|========================================================                           |  68%<br>
+| Looks complicated. Run dim with the argument mpg to see how big the dataset is.</p>
+<blockquote>
+<p>dim(mpg)<br>
+[1] 234  11</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|==========================================================                         |  70%<br>
+| Holy cow! That's a lot of information for just 38 models of cars. Run the R command table<br>
+| with the argument mpg\$model. This will tell us how many models of cars we're dealing with.</p>
+<blockquote>
+<p>table(mpg\$model)</p>
+</blockquote>
+
+<pre><code>       4runner 4wd                     a4             a4 quattro             a6 quattro   
+                 6                      7                      8                      3   
+            altima     c1500 suburban 2wd                  camry           camry solara   
+                 6                      5                      7                      7   
+       caravan 2wd                  civic                corolla               corvette   
+                11                      9                      5                      5   
+ dakota pickup 4wd            durango 4wd         expedition 2wd           explorer 4wd   
+                 9                      7                      3                      6   
+   f150 pickup 4wd           forester awd     grand cherokee 4wd             grand prix   
+                 7                      6                      8                      5   
+               gti            impreza awd                  jetta        k1500 tahoe 4wd   
+                 5                      8                      9                      4   
+</code></pre>
+<p>land cruiser wagon 4wd                 malibu                 maxima        mountaineer 4wd<br>
+                     2                      5                      3                      4<br>
+               mustang          navigator 2wd             new beetle                 passat<br>
+                     9                      3                      6                      7<br>
+        pathfinder 4wd    ram 1500 pickup 4wd            range rover                 sonata<br>
+                     4                     10                      4                      7<br>
+               tiburon      toyota tacoma 4wd<br>
+                     7                      7</p>
+<p>| Nice work!</p>
+<p>|=============================================================                      |  73%<br>
+| Oh, there are 38 models. We're interested in the effect engine displacement (displ) has on<br>
+| highway gas mileage (hwy), so we'll use the ggplot2 command qplot to display this<br>
+| relationship. Run qplot now with three arguments. The first two are the variables displ<br>
+| and hwy we want to plot, and the third is the argument data set equal to mpg. As before,<br>
+| this allows us to avoid using the mpg\$variable notation for the first two arguments.</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg)</p>
+</blockquote>
+<p><img src="../images/r0040540.png" alt="graph" title="graph"></p>
+<p>| You are doing so well!</p>
+<p>|===============================================================                    |  76%<br>
+| Not surprisingly we see that the bigger the engine displacement the lower the gas mileage.</p>
+<p>...</p>
+<p>|=================================================================                  |  78%<br>
+| Let's review!</p>
+<p>...</p>
+<p>|===================================================================                |  81%<br>
+| Which R plotting system is based on an artist's palette?</p>
+<p>1: Winsor&amp;Newton<br>
+2: ggplot2<br>
+3: base<br>
+4: lattice</p>
+<p>Selection: 3</p>
+<p>| All that practice is paying off!</p>
+<p>|======================================================================             |  84%<br>
+| Which R plotting system does NOT allow you to annotate plots with separate calls?</p>
+<p>1: base<br>
+2: ggplot2<br>
+3: Winsor&amp;Newton<br>
+4: lattice</p>
+<p>Selection: 4</p>
+<p>| You got it right!</p>
+<p>|========================================================================           |  86%<br>
+| Which R plotting system combines the best features of the other two?</p>
+<p>1: base<br>
+2: Winsor&amp;Newton<br>
+3: lattice<br>
+4: ggplot2</p>
+<p>Selection: 4</p>
+<p>| You are doing so well!</p>
+<p>|==========================================================================         |  89%<br>
+| Which R plotting system uses a graphics grammar?</p>
+<p>1: lattice<br>
+2: base<br>
+3: Winsor&amp;Newton<br>
+4: ggplot2</p>
+<p>Selection: 4</p>
+<p>| You're the best!</p>
+<p>|============================================================================       |  92%<br>
+| Which R plotting system forces you to make your entire plot with one call?</p>
+<p>1: Winsor&amp;Newton<br>
+2: lattice<br>
+3: ggplot2<br>
+4: base</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|===============================================================================    |  95%<br>
+| Which of the following sells high quality artists' brushes?</p>
+<p>1: Winsor&amp;Newton<br>
+2: base<br>
+3: ggplot2<br>
+4: lattice</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|=================================================================================  |  97%<br>
+| Congrats! You've concluded this plotting lesson. We hope you didn't find it plodding.</p>
+<p>...</p>
+<p>|===================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You nailed it! Good job!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-04 19:59:20.871482 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00421/" class="u-url">Graphics Devices in R</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -6764,746 +7717,6 @@ We only need Country, cases, deaths, population.</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-15 11:52:46.054857 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00415/" class="u-url">Base Graphics</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00415/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-15T12:43:20+05:30" itemprop="datePublished" title="2020-04-15 12:43">2020-04-15 12:43</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00415/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00415_Base Graphics.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00415_Base Graphics.html";
-var idcomments_post_url = "/posts/00415/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
-| did then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth Allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
- 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
- 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
-10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
-13: Simulation                14: Dates and Times           15: Base Graphics</p>
-<p>Selection: 15</p>
-<p>|                                                                                |   0%</p>
-<p>| One of the greatest strengths of R, relative to other programming languages, is the<br>
-| ease with which we can create publication-quality graphics. In this lesson, you'll<br>
-| learn about base graphics in R.</p>
-<p>...</p>
-<p>|==                                                                              |   2%<br>
-| We do not cover the more advanced portions of graphics in R in this lesson. These<br>
-| include lattice, ggplot2 and ggvis.</p>
-<p>...</p>
-<p>|===                                                                             |   4%<br>
-| There is a school of thought that this approach is backwards, that we should teach<br>
-| ggplot2 first. See <a href="http://varianceexplained.org/r/teach_ggplot2_to_beginners/">http://varianceexplained.org/r/teach_ggplot2_to_beginners/</a> for an<br>
-| outline of this view.</p>
-<p>...</p>
-<p>|=====                                                                           |   7%<br>
-| Load the included data frame cars with data(cars).</p>
-<blockquote>
-<p>data(cars)</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|=======                                                                         |   9%<br>
-| To fix ideas, we will work with simple data frames. Our main goal is to introduce<br>
-| various plotting functions and their arguments. All the output would look more<br>
-| interesting with larger, more complex data sets.</p>
-<p>...</p>
-<p>|=========                                                                       |  11%<br>
-| Pull up the help page for cars.</p>
-<blockquote>
-<p>?cars</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|==========                                                                      |  13%<br>
-| As you can see in the help page, the cars data set has only two variables: speed and<br>
-| stopping distance. Note that the data is from the 1920s.</p>
-<p>...</p>
-<p>|============                                                                    |  15%<br>
-| Run head() on the cars data.</p>
-<blockquote>
-<p>head(cars)<br>
-  speed dist<br>
-1     4    2<br>
-2     4   10<br>
-3     7    4<br>
-4     7   22<br>
-5     8   16<br>
-6     9   10</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|==============                                                                  |  17%<br>
-| Before plotting, it is always a good idea to get a sense of the data. Key R commands<br>
-| for doing so include, dim(), names(), head(), tail() and summary().</p>
-<p>...</p>
-<p>|================                                                                |  20%<br>
-| Run the plot() command on the cars data frame.</p>
-<blockquote>
-<p>plot(cars)</p>
-</blockquote>
-<p><img src="../images/r0040050.png" alt="plot(cars)" title="plot(cars)"></p>
-<p>| You are amazing!</p>
-<p>|=================                                                               |  22%<br>
-| As always, R tries very hard to give you something sensible given the information that<br>
-| you have provided to it. First, R notes that the data frame you have given it has just<br>
-| two columns, so it assumes that you want to plot one column versus the other.</p>
-<p>...</p>
-<p>|===================                                                             |  24%<br>
-| Second, since we do not provide labels for either axis, R uses the names of the<br>
-| columns. Third, it creates axis tick marks at nice round numbers and labels them<br>
-| accordingly. Fourth, it uses the other defaults supplied in plot().</p>
-<p>...</p>
-<p>|=====================                                                           |  26%<br>
-| We will now spend some time exploring plot, but many of the topics covered here will<br>
-| apply to most other R graphics functions. Note that 'plot' is short for scatterplot.</p>
-<p>...</p>
-<p>|=======================                                                         |  28%<br>
-| Look up the help page for plot().</p>
-<blockquote>
-<p>?plot</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|========================                                                        |  30%<br>
-| The help page for plot() highlights the different arguments that the function can take.<br>
-| The two most important are x and y, the variables that will be plotted. For the next<br>
-| set of questions, include the argument names in your answers. That is, do not type<br>
-| plot(cars$speed, cars$dist), although that will work. Instead use plot(x = cars$speed,  
-| y = cars$dist).</p>
-<p>...</p>
-<p>|==========================                                                      |  33%<br>
-| Use plot() command to show speed on the x-axis and dist on the y-axis from the cars<br>
-| data frame. Use the form of the plot command in which vectors are explicitly passed in<br>
-| as arguments for x and y.</p>
-<blockquote>
-<p>plot(x=cars$speed,y=cars$dist)</p>
-</blockquote>
-<p><img src="../images/r0040060.png" alt="plot(x=cars$speed,y=cars$dist)" title="plot(x=cars$speed,y=cars$dist)"></p>
-<p>| You got it right!</p>
-<p>|============================                                                    |  35%<br>
-| Note that this produces a slightly different answer than plot(cars). In this case, R is<br>
-| not sure what you want to use as the labels on the axes, so it just uses the arguments<br>
-| which you pass in, data frame name and dollar signs included.</p>
-<p>...</p>
-<p>|==============================                                                  |  37%<br>
-| Note that there are other ways to call the plot command, i.e., using the "formula"<br>
-| interface. For example, we get a similar plot to the above with plot(dist ~ speed,<br>
-| cars). However, we will wait till later in the lesson before using the formula<br>
-| interface.</p>
-<p>...</p>
-<p>|===============================                                                 |  39%<br>
-| Use plot() command to show dist on the x-axis and speed on the y-axis from the cars<br>
-| data frame. This is the opposite of what we did above.</p>
-<blockquote>
-<p>plot(x=cars$dist,y=cars$speed)</p>
-</blockquote>
-<p><img src="../images/r0040070.png" alt="plot(x=cars$dist,y=cars$speed)" title="plot(x=cars$dist,y=cars$speed)"></p>
-<p>| Nice work!</p>
-<p>|=================================                                               |  41%<br>
-| It probably makes more sense for speed to go on the x-axis since stopping distance is a<br>
-| function of speed more than the other way around. So, for the rest of the questions in<br>
-| this portion of the lesson, always assign the arguments accordingly.</p>
-<p>...</p>
-<p>|===================================                                             |  43%<br>
-| In fact, you can assume that the answers to the next few questions are all of the form<br>
-| plot(x = cars$speed, y = cars$dist, ...) but with various arguments used in place of<br>
-| the ...</p>
-<p>...</p>
-<p>|=====================================                                           |  46%<br>
-| Recreate the plot with the label of the x-axis set to "Speed".</p>
-<blockquote>
-<p>plot(x=cars$speed,y=cars$dist,xlab="Speed")</p>
-</blockquote>
-<p><img src="../images/r0040080.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed'>')</p>
-<p>| Perseverance, that's the answer.</p>
-<p>|======================================                                          |  48%<br>
-| Recreate the plot with the label of the y-axis set to "Stopping Distance".</p>
-<blockquote>
-<p>plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")</p>
-</blockquote>
-<p><img src="../images/r0040090.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance'>')</p>
-<p>| One more time. You can do it! Or, type info() for more options.</p>
-<p>| Type plot(x = cars$speed, y = cars$dist, ylab = "Stopping Distance") to create the<br>
-| plot.</p>
-<blockquote>
-<p>plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance")</p>
-</blockquote>
-<p><img src="../images/r0040100.png" alt='plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,ylab="Stopping Distance'>')</p>
-<p>| You are quite good my friend!</p>
-<p>|========================================                                        |  50%<br>
-| Recreate the plot with "Speed" and "Stopping Distance" as axis labels.</p>
-<blockquote>
-<p>plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")</p>
-</blockquote>
-<p><img src="../images/r0040090.png" alt='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance")' title='plot(x=cars$speed,y=cars$dist,xlab="Speed",ylab="Stopping Distance'>')</p>
-<p>| Excellent work!</p>
-<p>|==========================================                                      |  52%<br>
-| The reason that plots(cars) worked at the beginning of the lesson was that R was smart<br>
-| enough to know that the first element (i.e., the first column) in cars should be<br>
-| assigned to the x argument and the second element to the y argument. To save on typing,<br>
-| the next set of answers will all be of the form, plot(cars, ...) with various arguments<br>
-| added.</p>
-<p>...</p>
-<p>|===========================================                                     |  54%<br>
-| For each question, we will only want one additional argument at a time. Of course, you<br>
-| can pass in more than one argument when doing a real project.</p>
-<p>...</p>
-<p>|=============================================                                   |  57%<br>
-| Plot cars with a main title of "My Plot". Note that the argument for the main title is<br>
-| "main" not "title".</p>
-<blockquote>
-<p>plot(cars,main="My Plot")</p>
-</blockquote>
-<p><img src="../images/r0040110.png" alt='plot(cars,main="My Plot")' title='plot(cars,main="My Plot'>')</p>
-<p>| Excellent work!</p>
-<p>|===============================================                                 |  59%<br>
-| Plot cars with a sub title of "My Plot Subtitle".</p>
-<blockquote>
-<p>plot(cars,sub="My Plot Subtitle")</p>
-</blockquote>
-<p><img src="../images/r0040120.png" alt='plot(cars,sub="My Plot Subtitle")' title='plot(cars,sub="My Plot Subtitle'>')</p>
-<p>| You are amazing!</p>
-<p>|=================================================                               |  61%<br>
-| The plot help page (?plot) only covers a small number of the many arguments that can be<br>
-| passed in to plot() and to other graphical functions. To begin to explore the many<br>
-| other options, look at ?par. Let's look at some of the more commonly used ones.<br>
-| Continue using plot(cars, ...) as the base answer to these questions.</p>
-<p>...</p>
-<p>|==================================================                              |  63%<br>
-| Plot cars so that the plotted points are colored red. (Use col = 2 to achieve this<br>
-| effect.)</p>
-<blockquote>
-<p>?par<br>
-plot(cars,col=2)</p>
-</blockquote>
-<p><img src="../images/r0040130.png" alt="plot(cars,col=2)" title="plot(cars,col=2)"></p>
-<p>| You are quite good my friend!</p>
-<p>|====================================================                            |  65%<br>
-| Plot cars while limiting the x-axis to 10 through 15.  (Use xlim = c(10, 15) to achieve<br>
-| this effect.)</p>
-<blockquote>
-<p>plot(cars,xlim=c(10,15))</p>
-</blockquote>
-<p><img src="../images/r0040140.png" alt="plot(cars,xlim=c(10,15))" title="plot(cars,xlim=c(10,15))"></p>
-<p>| Nice work!</p>
-<p>|======================================================                          |  67%<br>
-| You can also change the shape of the symbols in the plot. The help page for points<br>
-| (?points) provides the details.</p>
-<p>...</p>
-<p>|========================================================                        |  70%<br>
-| Plot cars using triangles.  (Use pch = 2 to achieve this effect.)</p>
-<blockquote>
-<p>plot(cars,pch=2)</p>
-</blockquote>
-<p><img src="../images/r0040150.png" alt="plot(cars,pch=2)" title="plot(cars,pch=2)"></p>
-<p>| All that hard work is paying off!</p>
-<p>|=========================================================                       |  72%<br>
-| Arguments like "col" and "pch" may not seem very intuitive. And that is because they<br>
-| aren't! So, many/most people use more modern packages, like ggplot2, for creating their<br>
-| graphics in R.</p>
-<p>...</p>
-<p>|===========================================================                     |  74%<br>
-| It is, however, useful to have an introduction to base graphics because many of the<br>
-| idioms in lattice and ggplot2 are modeled on them.</p>
-<p>...</p>
-<p>|=============================================================                   |  76%<br>
-| Let's now look at some other functions in base graphics that may be useful, starting<br>
-| with boxplots.</p>
-<p>...</p>
-<p>|===============================================================                 |  78%<br>
-| Load the mtcars data frame.</p>
-<blockquote>
-<p>data(mtcars)</p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|================================================================                |  80%<br>
-| Anytime that you load up a new data frame, you should explore it before using it. In<br>
-| the middle of a swirl lesson, just type play(). This temporarily suspends the lesson<br>
-| (without losing the work you have already done) and allows you to issue commands like<br>
-| dim(mtcars) and head(mtcars). Once you are done examining the data, just type nxt() and<br>
-| the lesson will pick up where it left off.</p>
-<p>...</p>
-<p>|==================================================================              |  83%<br>
-| Look up the help page for boxplot().</p>
-<blockquote>
-<p>?boxplot</p>
-</blockquote>
-<p>| Excellent job!</p>
-<p>|====================================================================            |  85%<br>
-| Instead of adding data columns directly as input arguments, as we did with plot(), it<br>
-| is often handy to pass in the entire data frame. This is what the "data" argument in<br>
-| boxplot() allows.</p>
-<p>...</p>
-<p>|======================================================================          |  87%<br>
-| boxplot(), like many R functions, also takes a "formula" argument, generally an<br>
-| expression with a tilde ("~") which indicates the relationship between the input<br>
-| variables. This allows you to enter something like mpg ~ cyl to plot the relationship<br>
-| between cyl (number of cylinders) on the x-axis and mpg (miles per gallon) on the<br>
-| y-axis.</p>
-<p>...</p>
-<p>|=======================================================================         |  89%<br>
-| Use boxplot() with formula = mpg ~ cyl and data = mtcars to create a box plot.</p>
-<blockquote>
-<p>boxplot(formula=mpg~cyl,data=mtcars)</p>
-</blockquote>
-<p><img src="../images/r0040160.png" alt="boxplot(formula=mpg~cyl,data=mtcars)" title="boxplot(formula=mpg~cyl,data=mtcars)"></p>
-<p>| All that practice is paying off!</p>
-<p>|=========================================================================       |  91%<br>
-| The plot shows that mpg is much lower for cars with more cylinders. Note that we can<br>
-| use the same set of arguments that we explored with plot() above to add axis labels,<br>
-| titles and so on.</p>
-<p>...</p>
-<p>|===========================================================================     |  93%<br>
-| When looking at a single variable, histograms are a useful tool. hist() is the<br>
-| associated R function. Like plot(), hist() is best used by just passing in a single<br>
-| vector.</p>
-<p>...</p>
-<p>|=============================================================================   |  96%<br>
-| Use hist() with the vector mtcars$mpg to create a histogram.</p>
-<blockquote>
-<p>hist(mtcars$mpg)</p>
-</blockquote>
-<p><img src="../images/r0040170.png" alt="hist(mtcars$mpg)" title="hist(mtcars$mpg)"></p>
-<p>| You are doing so well!</p>
-<p>|==============================================================================  |  98%<br>
-| In this lesson, you learned how to work with base graphics in R. The best place to go<br>
-| from here is to study the ggplot2 package. If you want to explore other elements of<br>
-| base graphics, then this web page (<a href="http://www.ling.upenn.edu/~joseff/rstudy/week4.html">http://www.ling.upenn.edu/~joseff/rstudy/week4.html</a>)<br>
-| provides a useful overview.</p>
-<p>...</p>
-<p>|================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: No<br>
-2: Yes</p>
-<p>Selection: 2<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| You are amazing!</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-<blockquote>
-<p>ls()<br>
-[1] "cars"   "mtcars"<br>
-rm(list=ls())</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-20 23:16:24.036922 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00414/" class="u-url">Dates and Times</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00414/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-15T12:42:20+05:30" itemprop="datePublished" title="2020-04-15 12:42">2020-04-15 12:42</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00414/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00414_Dates and Times.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00414_Dates and Times.html";
-var idcomments_post_url = "/posts/00414/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
-| did then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth Allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers<br>
- 4: Vectors                    5: Missing Values             6: Subsetting Vectors<br>
- 7: Matrices and Data Frames   8: Logic                      9: Functions<br>
-10: lapply and sapply         11: vapply and tapply         12: Looking at Data<br>
-13: Simulation                14: Dates and Times           15: Base Graphics</p>
-<p>Selection: 14</p>
-<p>|                                                                                |   0%</p>
-<p>| R has a special way of representing dates and times, which can be helpful if you're<br>
-| working with data that show how something changes over time (i.e. time-series data) or<br>
-| if your data contain some other temporal information, like dates of birth.</p>
-<p>...</p>
-<p>|==                                                                              |   3%<br>
-| Dates are represented by the 'Date' class and times are represented by the 'POSIXct'<br>
-| and 'POSIXlt' classes. Internally, dates are stored as the number of days since<br>
-| 1970-01-01 and times are stored as either the number of seconds since 1970-01-01 (for<br>
-| 'POSIXct') or a list of seconds, minutes, hours, etc. (for 'POSIXlt').</p>
-<p>...</p>
-<p>|====                                                                            |   6%<br>
-| Let's start by using d1 &lt;- Sys.Date() to get the current date and store it in the<br>
-| variable d1. (That's the letter 'd' and the number 1.)</p>
-<blockquote>
-<p>d1&lt;-Sys.Date()</p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|=======                                                                         |   8%<br>
-| Use the class() function to confirm d1 is a Date object.</p>
-<blockquote>
-<p>class(d1)<br>
-[1] "Date"</p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|=========                                                                       |  11%<br>
-| We can use the unclass() function to see what d1 looks like internally. Try it out.</p>
-<blockquote>
-<p>unclass(d1)<br>
-[1] 18367</p>
-</blockquote>
-<p>| Keep up the great work!</p>
-<p>|===========                                                                     |  14%<br>
-| That's the exact number of days since 1970-01-01!</p>
-<p>...</p>
-<p>|=============                                                                   |  17%<br>
-| However, if you print d1 to the console, you'll get today's date -- YEAR-MONTH-DAY.<br>
-| Give it a try.</p>
-<blockquote>
-<p>d1<br>
-[1] "2020-04-15"</p>
-</blockquote>
-<p>| You got it!</p>
-<p>|================                                                                |  19%<br>
-| What if we need to reference a date prior to 1970-01-01? Create a variable d2<br>
-| containing as.Date("1969-01-01").</p>
-<blockquote>
-<p>d2&lt;-as.Date("1969-01-01")</p>
-</blockquote>
-<p>| You nailed it! Good job!</p>
-<p>|==================                                                              |  22%<br>
-| Now use unclass() again to see what d2 looks like internally.</p>
-<blockquote>
-<p>unclass(d2)<br>
-[1] -365</p>
-</blockquote>
-<p>| That's a job well done!</p>
-<p>|====================                                                            |  25%<br>
-| As you may have anticipated, you get a negative number. In this case, it's -365, since<br>
-| 1969-01-01 is exactly one calendar year (i.e. 365 days) BEFORE 1970-01-01.</p>
-<p>...</p>
-<p>|======================                                                          |  28%<br>
-| Now, let's take a look at how R stores times. You can access the current date and time<br>
-| using the Sys.time() function with no arguments. Do this and store the result in a<br>
-| variable called t1.</p>
-<blockquote>
-<p>t1&lt;-Sys.time()</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|========================                                                        |  31%<br>
-| View the contents of t1.</p>
-<blockquote>
-<p>t1<br>
-[1] "2020-04-15 17:21:46 IST"</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|===========================                                                     |  33%<br>
-| And check the class() of t1.</p>
-<blockquote>
-<p>class(t1)<br>
-[1] "POSIXct" "POSIXt"</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|=============================                                                   |  36%<br>
-| As mentioned earlier, POSIXct is just one of two ways that R represents time<br>
-| information. (You can ignore the second value above, POSIXt, which just functions as a<br>
-| common language between POSIXct and POSIXlt.) Use unclass() to see what t1 looks like<br>
-| internally -- the (large) number of seconds since the beginning of 1970.</p>
-<blockquote>
-<p>unclass(t1)<br>
-[1] 1586951506</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|===============================                                                 |  39%<br>
-| By default, Sys.time() returns an object of class POSIXct, but we can coerce the result<br>
-| to POSIXlt with as.POSIXlt(Sys.time()). Give it a try and store the result in t2.</p>
-<blockquote>
-<p>t2&lt;-as.POSIXlt(Sys.time())</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|=================================                                               |  42%<br>
-| Check the class of t2.</p>
-<blockquote>
-<p>class(t2)<br>
-[1] "POSIXlt" "POSIXt"</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|====================================                                            |  44%<br>
-| Now view its contents.</p>
-<blockquote>
-<p>t2<br>
-[1] "2020-04-15 17:23:09 IST"</p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|======================================                                          |  47%<br>
-| The printed format of t2 is identical to that of t1. Now unclass() t2 to see how it is<br>
-| different internally.</p>
-<blockquote>
-<p>unclass(t2)<br>
-$sec<br>
-[1] 9.964687</p>
-</blockquote>
-<p>$min<br>
-[1] 23</p>
-<p>$hour<br>
-[1] 17</p>
-<p>$mday<br>
-[1] 15</p>
-<p>$mon<br>
-[1] 3</p>
-<p>$year<br>
-[1] 120</p>
-<p>$wday<br>
-[1] 3</p>
-<p>$yday<br>
-[1] 105</p>
-<p>$isdst<br>
-[1] 0</p>
-<p>$zone<br>
-[1] "IST"</p>
-<p>$gmtoff<br>
-[1] 19800</p>
-<p>attr(,"tzone")<br>
-[1] ""      "IST"   "+0630"</p>
-<p>| Keep up the great work!</p>
-<p>|========================================                                        |  50%<br>
-| t2, like all POSIXlt objects, is just a list of values that make up the date and time.<br>
-| Use str(unclass(t2)) to have a more compact view.</p>
-<blockquote>
-<p>str(unclass(t2))<br>
-List of 11<br>
- $ sec   : num 9.96  
- $ min   : int 23<br>
- $ hour  : int 17  
- $ mday  : int 15<br>
- $ mon   : int 3  
- $ year  : int 120<br>
- $ wday  : int 3  
- $ yday  : int 105<br>
- $ isdst : int 0  
- $ zone  : chr "IST"<br>
- $ gmtoff: int 19800</p>
-<ul>
-<li>attr(*, "tzone")= chr [1:3] "" "IST" "+0630"  </li>
-</ul>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|==========================================                                      |  53%<br>
-| If, for example, we want just the minutes from the time stored in t2, we can access<br>
-| them with t2$min. Give it a try.</p>
-<blockquote>
-<p>t2$min<br>
-[1] 23</p>
-</blockquote>
-<p>| Nice work!</p>
-<p>|============================================                                    |  56%<br>
-| Now that we have explored all three types of date and time objects, let's look at a few<br>
-| functions that extract useful information from any of these objects -- weekdays(),<br>
-| months(), and quarters().</p>
-<p>...</p>
-<p>|===============================================                                 |  58%<br>
-| The weekdays() function will return the day of week from any date or time object. Try<br>
-| it out on d1, which is the Date object that contains today's date.</p>
-<blockquote>
-<p>weekdays(d1)<br>
-[1] "Wednesday"</p>
-</blockquote>
-<p>| Perseverance, that's the answer.</p>
-<p>|=================================================                               |  61%<br>
-| The months() function also works on any date or time object. Try it on t1, which is the<br>
-| POSIXct object that contains the current time (well, it was the current time when you<br>
-| created it).</p>
-<blockquote>
-<p>months(t1)<br>
-[1] "April"</p>
-</blockquote>
-<p>| Excellent job!</p>
-<p>|===================================================                             |  64%<br>
-| The quarters() function returns the quarter of the year (Q1-Q4) from any date or time<br>
-| object. Try it on t2, which is the POSIXlt object that contains the time at which you<br>
-| created it.</p>
-<blockquote>
-<p>quarters(t2)<br>
-[1] "Q2"</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|=====================================================                           |  67%<br>
-| Often, the dates and times in a dataset will be in a format that R does not recognize.<br>
-| The strptime() function can be helpful in this situation.</p>
-<p>...</p>
-<p>|========================================================                        |  69%<br>
-| strptime() converts character vectors to POSIXlt. In that sense, it is similar to<br>
-| as.POSIXlt(), except that the input doesn't have to be in a particular format<br>
-| (YYYY-MM-DD).</p>
-<p>...</p>
-<p>|==========================================================                      |  72%<br>
-| To see how it works, store the following character string in a variable called t3:<br>
-| "October 17, 1986 08:24" (with the quotes).</p>
-<blockquote>
-<p>t3&lt;-"October 17, 1986 08:24"</p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|============================================================                    |  75%<br>
-| Now, use strptime(t3, "%B %d, %Y %H:%M") to help R convert our date/time object to a<br>
-| format that it understands. Assign the result to a new variable called t4. (You should<br>
-| pull up the documentation for strptime() if you'd like to know more about how it<br>
-| works.)</p>
-<blockquote>
-<p>strptime(t3, "%B %d, %Y %H:%M")<br>
-[1] "1986-10-17 08:24:00 IST"</p>
-</blockquote>
-<p>| Not quite, but you're learning! Try again. Or, type info() for more options.</p>
-<p>| t4 &lt;- strptime(t3, "%B %d, %Y %H:%M") will convert our date/time object to a format<br>
-| that R understands.</p>
-<blockquote>
-<p>t4&lt;-strptime(t3, "%B %d, %Y %H:%M")</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|==============================================================                  |  78%<br>
-| Print the contents of t4.</p>
-<blockquote>
-<p>t4<br>
-[1] "1986-10-17 08:24:00 IST"</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|================================================================                |  81%<br>
-| That's the format we've come to expect. Now, let's check its class().</p>
-<blockquote>
-<p>class(t4)<br>
-[1] "POSIXlt" "POSIXt"</p>
-</blockquote>
-<p>| Great job!</p>
-<p>|===================================================================             |  83%<br>
-| Finally, there are a number of operations that you can perform on dates and times,<br>
-| including arithmetic operations (+ and -) and comparisons (&lt;, ==, etc.)</p>
-<p>...</p>
-<p>|=====================================================================           |  86%<br>
-| The variable t1 contains the time at which you created it (recall you used Sys.time()).<br>
-| Confirm that some time has passed since you created t1 by using the 'greater than'<br>
-| operator to compare it to the current time: Sys.time() &gt; t1</p>
-<blockquote>
-<p>Sys.time()&gt;t1<br>
-[1] TRUE</p>
-</blockquote>
-<p>| That's correct!</p>
-<p>|=======================================================================         |  89%<br>
-| So we know that some time has passed, but how much? Try subtracting t1 from the current<br>
-| time using Sys.time() - t1. Don't forget the parentheses at the end of Sys.time(),<br>
-| since it is a function.</p>
-<blockquote>
-<p>Sys.time()-t1<br>
-Time difference of 12.21747 mins</p>
-</blockquote>
-<p>| You are amazing!</p>
-<p>|=========================================================================       |  92%<br>
-| The same line of thinking applies to addition and the other comparison operators. If<br>
-| you want more control over the units when finding the above difference in times, you<br>
-| can use difftime(), which allows you to specify a 'units' parameter.</p>
-<p>...</p>
-<p>|============================================================================    |  94%<br>
-| Use difftime(Sys.time(), t1, units = 'days') to find the amount of time in DAYS that<br>
-| has passed since you created t1.</p>
-<blockquote>
-<p>difftime(Sys.time(), t1, units = 'days')<br>
-Time difference of 0.01950932 days</p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|==============================================================================  |  97%<br>
-| In this lesson, you learned how to work with dates and times in R. While it is<br>
-| important to understand the basics, if you find yourself working with dates and times<br>
-| often, you may want to check out the lubridate package by Hadley Wickham.</p>
-<p>...</p>
-<p>|================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: No<br>
-2: Yes</p>
-<p>Selection: 2<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| Perseverance, that's the answer.</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: R Programming<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-<blockquote>
-<p>ls()<br>
-[1] "d1" "d2" "dl" "t1" "t2" "t3" "t4"<br>
-rm(list=ls())</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-20 23:37:33.781884 IST</em></p>
 
 </div>
 </div>

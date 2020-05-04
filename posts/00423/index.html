@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Base Plotting System | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/00423/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00422/" title="Plotting Systems" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Base Plotting System">
+<meta property="og:url" content="https://r.datascience.eu.org/posts/00423/">
+<meta property="og:description" content="library(swirl)
+swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did
+| then. If you are new, call yourself something unique.
+What shall I call you? Kris">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-04T20:01:16+05:30">
+<meta property="article:tag" content="boxplot()">
+<meta property="article:tag" content="col">
+<meta property="article:tag" content="hist()">
+<meta property="article:tag" content="legend()">
+<meta property="article:tag" content="lty">
+<meta property="article:tag" content="lwd">
+<meta property="article:tag" content="mar">
+<meta property="article:tag" content="mfcol">
+<meta property="article:tag" content="mfrow">
+<meta property="article:tag" content="mtext()">
+<meta property="article:tag" content="oma">
+<meta property="article:tag" content="par()">
+<meta property="article:tag" content="pch">
+<meta property="article:tag" content="plot()">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="swirl">
+<meta property="article:tag" content="title()">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Base Plotting System</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-04T20:01:16+05:30" itemprop="datePublished" title="2020-05-04 20:01">2020-05-04 20:01</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00423/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00423_Base Plotting System.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00423_Base Plotting System.html";
+var idcomments_post_url = "/posts/00423/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 5<br>
+  |                                                                                   |   0%</p>
+<p>| Base_Plotting_System. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them,<br>
+| they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/PlottingBase.)</p>
+<p>...</p>
+<p>|=                                                                                  |   2%<br>
+| In another lesson, we gave you an overview of the three plotting systems in R. In this<br>
+| lesson we'll focus on the base plotting system and talk more about how you can exploit all<br>
+| its many parameters to get the plot you want.  We'll focus on using the base plotting<br>
+| system to create graphics on the screen device rather than another graphics device.</p>
+<p>...</p>
+<p>|===                                                                                |   3%<br>
+| The core plotting and graphics engine in R is encapsulated in two packages. The first is<br>
+| the graphics package which contains plotting functions for the "base" system. The<br>
+| functions in this package include plot, hist, boxplot, barplot, etc. The second package is<br>
+| grDevices which contains all the code implementing the various graphics devices, including<br>
+| X11, PDF, PostScript, PNG, etc.</p>
+<p>...</p>
+<p>|====                                                                               |   5%<br>
+| Base graphics are often constructed piecemeal, with each aspect of the plot handled<br>
+| separately through a particular function call. Usually you start with a plot function<br>
+| (such as plot, hist, or boxplot), then you use annotation functions (text, abline, points)<br>
+| to add to or modify your plot.</p>
+<p>...</p>
+<p>|=====                                                                              |   6%<br>
+| Before making a plot you have to determine where the plot will appear and what it will be<br>
+| used for.  Is there a large amount of data going into the plot? Or is it just a few<br>
+| points? Do you need to be able to dynamically resize the graphic?</p>
+<p>...</p>
+<p>|======                                                                             |   8%<br>
+| What do you think is a disadvantage of the Base Plotting System?</p>
+<p>1: It mirrors how we think of building plots and analyzing data<br>
+2: You can't go back once a plot has started<br>
+3: It's intuitive and exploratory<br>
+4: A complicated plot is a series of simple R commands</p>
+<p>Selection: 2</p>
+<p>| That's a job well done!</p>
+<p>|========                                                                           |   9%<br>
+| Yes! The base system is very intuitive and easy to use. You can't go backwards, though,<br>
+| say, if you need to readjust margins or have misspelled a caption. A finished plot will be<br>
+| a series of R commands, so it's difficult to translate a finished plot into a different<br>
+| system.</p>
+<p>...</p>
+<p>|=========                                                                          |  11%<br>
+| Calling a basic routine such as plot(x, y) or hist(x) launches a graphics device (if one<br>
+| is not already open) and draws a new plot on the device. If the arguments to plot or hist<br>
+| are not of some special class, then the default method is called.</p>
+<p>...</p>
+<p>|==========                                                                         |  12%<br>
+| As you'll see, most of the base plotting functions have many arguments, for example,<br>
+| setting the title, labels of axes, plot character, etc. Some of the parameters can be set<br>
+| when you call the function or they can be added later in a separate function call.</p>
+<p>...</p>
+<p>|===========                                                                        |  14%<br>
+| Now we'll go through some quick examples of basic plotting before we delve into gory<br>
+| details. We'll use the dataset airquality (part of the library datasets) which we've<br>
+| loaded for you. This shows ozone and other air measurements for New York City for 5 months<br>
+| in 1973.</p>
+<p>...</p>
+<p>|=============                                                                      |  15%<br>
+| Use the R command head with airquality as an argument to see what the data looks like.</p>
+<blockquote>
+<p>head(airquality)<br>
+  Ozone Solar.R Wind Temp Month Day<br>
+1    41     190  7.4   67     5   1<br>
+2    36     118  8.0   72     5   2<br>
+3    12     149 12.6   74     5   3<br>
+4    18     313 11.5   62     5   4<br>
+5    NA      NA 14.3   56     5   5<br>
+6    28      NA 14.9   66     5   6</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|==============                                                                     |  17%<br>
+| We see the dataset contains 6 columns of data. Run the command range with two arguments.<br>
+| The first is the ozone column of airquality, specified by airquality\$Ozone, and the second<br>
+| is the boolean na.rm set equal to TRUE. If you don't specify this second argument, you<br>
+| won't get a meaningful result.</p>
+<blockquote>
+<p>range(airquality\$Ozone,na.rm=TRUE)<br>
+[1]   1 168</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===============                                                                    |  18%<br>
+| So the measurements range from 1 to 168. First we'll do a simple histogram of this ozone<br>
+| column to show the distribution of measurements. Use the R command hist with the argument<br>
+| airquality\$Ozone.</p>
+<blockquote>
+<p>hist(airquality\$Ozone)</p>
+</blockquote>
+<p><img src="../../images/r0040550.png" alt="graph" title="graph"></p>
+<p>| You're the best!</p>
+<p>|================                                                                   |  20%<br>
+| Simple, right? R put a title on the histogram and labeled both axes for you. What is the<br>
+| most frequent count?</p>
+<p>1: Under 25<br>
+2: Over 100<br>
+3: Over 150<br>
+4: Between 60 and 75</p>
+<p>Selection: 1</p>
+<p>| Great job!</p>
+<p>|==================                                                                 |  21%<br>
+| Next we'll do a boxplot. First, though, run the R command table with the argument<br>
+| airquality\$Month.</p>
+<blockquote>
+<p>table(airquality\$Month)</p>
+</blockquote>
+<p>5  6  7  8  9<br>
+31 30 31 31 30</p>
+<p>| Excellent work!</p>
+<p>|===================                                                                |  23%<br>
+| We see that the data covers 5 months, May through September. We'll want a boxplot of ozone<br>
+| as a function of the month in which the measurements were taken so we'll use the R formula<br>
+| Ozone~Month as the first argument of boxplot. Our second argument will be airquality, the<br>
+| dataset from which the variables of the first argument are taken.  Try this now.</p>
+<blockquote>
+<p>boxplot(Ozone~Month,airquality)</p>
+</blockquote>
+<p><img src="../../images/r0040560.png" alt="graph" title="graph"></p>
+<p>| Keep up the great work!</p>
+<p>|====================                                                               |  24%<br>
+| Note that boxplot, unlike hist, did NOT specify a title and axis labels for you<br>
+| automatically.</p>
+<p>...</p>
+<p>|=====================                                                              |  26%<br>
+| Let's call boxplot again to specify labels. (Use the up arrow to recover the previous<br>
+| command and save yourself some typing.) We'll add more arguments to the call to specify<br>
+| labels for the 2 axes. Set xlab equal to "Month" and ylab equal to "Ozone (ppb)". Specify<br>
+| col.axis equal to "blue" and col.lab equal to "red". Try this now.</p>
+<blockquote>
+<p>boxplot(Ozone~Month,airquality,xlab="Month",ylab="Ozone (ppb)",col.axis="blue",col.lab="red")</p>
+</blockquote>
+<p><img src="../../images/r0040570.png" alt="graph" title="graph"></p>
+<p>| All that practice is paying off!</p>
+<p>|=======================                                                            |  27%<br>
+| Nice colors, but still no title. Let's add one with the R command title. Use the argument<br>
+| main set equal to the string "Ozone and Wind in New York City".</p>
+<blockquote>
+<p>title(main="Ozone and Wind in New York City")</p>
+</blockquote>
+<p><img src="../../images/r0040580.png" alt="graph" title="graph"></p>
+<p>| Nice work!</p>
+<p>|========================                                                           |  29%<br>
+| Now we'll show you how to plot a simple two-dimensional scatterplot using the R function<br>
+| plot. We'll show the relationship between Wind (x-axis) and Ozone (y-axis). We'll use the<br>
+| function plot with those two arguments (Wind and Ozone, in that order). To save some<br>
+| typing, though, we'll call the R command with using 2 arguments. The first argument of<br>
+| with will be airquality, the dataset containing Wind and Ozone; the second argument will<br>
+| be the call to plot. Doing this allows us to avoid using the longer notation, e.g.,<br>
+| airquality\$Wind. Try this now.</p>
+<blockquote>
+<p>with(airquality,plot(Wind,Ozone))</p>
+</blockquote>
+<p><img src="../../images/r0040590.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|=========================                                                          |  30%<br>
+| Note that plot generated labels for the x and y axes but no title.</p>
+<p>...</p>
+<p>|==========================                                                         |  32%<br>
+| Add one now with the R command title. Use the argument main set equal to the string "Ozone<br>
+| and Wind in New York City". (You can use the up arrow to recover the command if you don't<br>
+| want to type it.)</p>
+<blockquote>
+<p>title(main="Ozone and Wind in New York City")</p>
+</blockquote>
+<p><img src="../../images/r0040600.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|============================                                                       |  33%<br>
+| The basic plotting parameters are documented in the R help page for the function par. You<br>
+| can use par to set parameters OR to find out what values are already set. To see just how<br>
+| much flexibility you have, run the R command length with the argument par() now.</p>
+<blockquote>
+<p>length(par())<br>
+[1] 72</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================                                                      |  35%<br>
+| So there are a boatload (72) of parameters that par() gives you access to. Run the R<br>
+| function names with par() as its argument to see what these parameters are.</p>
+<blockquote>
+<p>names(par())<br>
+ [1] "xlog"      "ylog"      "adj"       "ann"       "ask"       "bg"        "bty"<br>
+ [8] "cex"       "cex.axis"  "cex.lab"   "cex.main"  "cex.sub"   "cin"       "col"<br>
+[15] "col.axis"  "col.lab"   "col.main"  "col.sub"   "cra"       "crt"       "csi"<br>
+[22] "cxy"       "din"       "err"       "family"    "fg"        "fig"       "fin"<br>
+[29] "font"      "font.axis" "font.lab"  "font.main" "font.sub"  "lab"       "las"<br>
+[36] "lend"      "lheight"   "ljoin"     "lmitre"    "lty"       "lwd"       "mai"<br>
+[43] "mar"       "mex"       "mfcol"     "mfg"       "mfrow"     "mgp"       "mkh"<br>
+[50] "new"       "oma"       "omd"       "omi"       "page"      "pch"       "pin"<br>
+[57] "plt"       "ps"        "pty"       "smo"       "srt"       "tck"       "tcl"<br>
+[64] "usr"       "xaxp"      "xaxs"      "xaxt"      "xpd"       "yaxp"      "yaxs"<br>
+[71] "yaxt"      "ylbias"</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|==============================                                                     |  36%<br>
+| Variety is the spice of life. You might recognize some of these such as col and lwd from<br>
+| previous swirl lessons. You can always run ?par to see what they do. For now, run the<br>
+| command par()\$pin and see what you get.</p>
+<blockquote>
+<p>par()\$pin<br>
+[1] 4.520417 1.805833</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|===============================                                                    |  38%<br>
+| Alternatively, you could have gotten the same result by running par("pin") or par('pin')).<br>
+| What do you think these two numbers represent?</p>
+<p>1: Coordinates of the center of the plot window<br>
+2: Random numbers<br>
+3: A confidence interval<br>
+4: Plot dimensions in inches</p>
+<p>Selection: 4</p>
+<p>| All that hard work is paying off!</p>
+<p>|=================================                                                  |  39%<br>
+| Now, run the command par("fg") or or par('fg') or par()\$fg and see what you get.</p>
+<blockquote>
+<p>par("fg")<br>
+[1] "black"</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|==================================                                                 |  41%<br>
+| It gave you a color, right? Since par()\$fg specifies foreground color, what do you think  
+| par()\\$bg specifies?</p>
+<p>1: Beautiful color<br>
+2: blue-green<br>
+3: Better color<br>
+4: Background color</p>
+<p>Selection: 4</p>
+<p>| You are amazing!</p>
+<p>|===================================                                                |  42%<br>
+| Many base plotting functions share a set of parameters. We'll go through some of the more<br>
+| commonly used ones now. See if you can tell what they do from their names.</p>
+<p>...</p>
+<p>|====================================                                               |  44%<br>
+| What do you think the graphical parameter pch controls?</p>
+<p>1: pc help<br>
+2: plot character<br>
+3: point control height<br>
+4: picture characteristics</p>
+<p>Selection: 2</p>
+<p>| You are doing so well!</p>
+<p>|===================================                                          |  45%<br>
+| The plot character default is the open circle, but it "can either be a single<br>
+| character or an integer code for one of a set of graphics symbols." Run the command<br>
+| par("pch") to see the integer value of the default. When you need to, you can use<br>
+| R's Documentation (?pch) to find what the other values mean.</p>
+<blockquote>
+<p>par("pch")<br>
+[1] 1</p>
+</blockquote>
+<p>| You're the best!</p>
+<p>|====================================                                         |  47%<br>
+| So 1 is the code for the open circle. What do you think the graphical parameters lty<br>
+| and lwd control respectively?</p>
+<p>1: line length and width<br>
+2: line slope and intercept<br>
+3: line type and width<br>
+4: line width and type</p>
+<p>Selection: 3</p>
+<p>| You nailed it! Good job!</p>
+<p>|=====================================                                        |  48%<br>
+| Run the command par("lty") to see the default line type.</p>
+<blockquote>
+<p>par("lty")<br>
+[1] "solid"</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|======================================                                       |  50%<br>
+| So the default line type is solid, but it can be dashed, dotted, etc. Once again,<br>
+| R's ?par documentation will tell you what other line types are available. The line<br>
+| width is a positive integer; the default value is 1.</p>
+<p>...</p>
+<p>|========================================                                     |  52%<br>
+| We've seen a lot of examples of col, the plotting color, specified as a number,<br>
+| string, or hex code; the colors() function gives you a vector of colors by name.</p>
+<p>...</p>
+<p>|=========================================                                    |  53%<br>
+| What do you think the graphical parameters xlab and ylab control respectively?</p>
+<p>1: labels for the y- and x- axes<br>
+2: labels for the x- and y- axes</p>
+<p>Selection: 2</p>
+<p>| You are quite good my friend!</p>
+<p>|==========================================                                   |  55%<br>
+| The par() function is used to specify global graphics parameters that affect all<br>
+| plots in an R session. (Use dev.off or plot.new to reset to the defaults.) These<br>
+| parameters can be overridden when specified as arguments to specific plotting<br>
+| functions. These include las (the orientation of the axis labels on the plot), bg<br>
+| (background color), mar (margin size), oma (outer margin size), mfrow and mfcol<br>
+| (number of plots per row, column).</p>
+<p>...</p>
+<p>|===========================================                                  |  56%<br>
+| The last two, mfrow and mfcol, both deal with multiple plots in that they specify<br>
+| the number of plots per row and column. The difference between them is the order in<br>
+| which they fill the plot matrix. The call mfrow will fill the rows first while mfcol<br>
+| fills the columns first.</p>
+<p>...</p>
+<p>|============================================                                 |  58%<br>
+| So to reiterate, first call a basic plotting routine. For instance, plot makes a<br>
+| scatterplot or other type of plot depending on the class of the object being<br>
+| plotted.</p>
+<p>...</p>
+<p>|==============================================                               |  59%<br>
+| As we've seen, R provides several annotating functions. Which of the following is<br>
+| NOT one of them?</p>
+<p>1: title<br>
+2: hist<br>
+3: lines<br>
+4: text<br>
+5: points</p>
+<p>Selection: 2</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================                              |  61%<br>
+| So you can add text, title, points, and lines to an existing plot. To add lines, you<br>
+| give a vector of x values and a corresponding vector of y values (or a 2-column<br>
+| matrix); the function lines just connects the dots. The function text adds text<br>
+| labels to a plot using specified x, y coordinates.</p>
+<p>...</p>
+<p>|================================================                             |  62%<br>
+| The function title adds annotations. These include x- and y- axis labels, title,<br>
+| subtitle, and outer margin. Two other annotating functions are mtext which adds<br>
+| arbitrary text to either the outer or inner margins of the plot and axis which adds<br>
+| axis ticks and labels. Another useful function is legend which explains to the<br>
+| reader what the symbols your plot uses mean.</p>
+<p>...</p>
+<p>|=================================================                            |  64%<br>
+| Before we close, let's test your ability to make a somewhat complicated scatterplot.<br>
+| First run plot with 3 arguments. airquality\$Wind, airquality\\$Ozone, and type set<br>
+| equal to "n". This tells R to set up the plot but not to put the data in it.</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,type="n")<br>
+There were 12 warnings (use warnings() to see them)</p>
+</blockquote>
+<p><img src="../../images/r0040610.png" alt="graph" title="graph"></p>
+<p>| You got it!</p>
+<p>|==================================================                           |  65%<br>
+| Now for the test. (You might need to check R's documentation for some of these.) Add<br>
+| a title with the argument main set equal to the string "Wind and Ozone in NYC"</p>
+<blockquote>
+<p>title(main = "Wind and Ozone in NYC")</p>
+</blockquote>
+<p><img src="../../images/r0040620.png" alt="graph" title="graph"></p>
+<p>| That's the answer I was looking for.</p>
+<p>|===================================================                          |  67%<br>
+| Now create a variable called may by subsetting airquality appropriately. (Recall<br>
+| that the data specifies months by number and May is the fifth month of the year.)</p>
+<blockquote>
+<p>may&lt;-subset(airquality,Month==5)</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|=====================================================                        |  68%<br>
+| Now use the R command points to plot May's wind and ozone (in that order) as solid<br>
+| blue triangles. You have to set the color and plot character with two separate<br>
+| arguments. Note we use points because we're adding to an existing plot.</p>
+<blockquote>
+<p>points(may\$Wind,may\\$Ozone,col="blue",pch=17)</p>
+</blockquote>
+<p><img src="../../images/r0040630.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|======================================================                       |  70%<br>
+| Now create the variable notmay by subsetting airquality appropriately.</p>
+<blockquote>
+<p>notmay&lt;-subset(airquality,Month!=5)</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=======================================================                      |  71%<br>
+| Now use the R command points to plot these notmay's wind and ozone (in that order)<br>
+| as red snowflakes.</p>
+<blockquote>
+<p>points(notmay\$Wind,notmay\\$Ozone,col="red",pch=8)</p>
+</blockquote>
+<p><img src="../../images/r0040640.png" alt="graph" title="graph"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|========================================================                     |  73%<br>
+| Now we'll use the R command legend to clarify the plot and explain what it means.<br>
+| The function has a lot of arguments, but we'll only use 4. The first will be the<br>
+| string "topright" to tell R where to put the legend. The remaining 3 arguments will<br>
+| each be 2-long vectors created by R's concatenate function, e.g., c(). These<br>
+| arguments are pch, col, and legend. The first is the vector (17,8), the second<br>
+| ("blue","red"), and the third ("May","Other Months"). Try it now.</p>
+<blockquote>
+<p>legend("topright",pch=c(17,8),col=c("blue","red"),legend=c("May","Other Months"))</p>
+</blockquote>
+<p><img src="../../images/r0040650.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|=========================================================                    |  74%<br>
+| Now add a vertical line at the median of airquality\$Wind. Make it dashed (lty=2)<br>
+| with a width of 2.</p>
+<blockquote>
+<p>abline(v=median(airquality\$Wind),lty=2,lwd=2)</p>
+</blockquote>
+<p><img src="../../images/r0040660.png" alt="graph" title="graph"></p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================                   |  76%<br>
+| Use par with the parameter mfrow set equal to the vector (1,2) to set up the plot<br>
+| window for two plots side by side. You won't see a result.</p>
+<blockquote>
+<p>par(mfrow=c(1,2))</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|============================================================                 |  77%<br>
+| Now plot airquality\$Wind and airquality\\$Ozone and use main to specify the title<br>
+| "Ozone and Wind".</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,main="Ozone and Wind")</p>
+</blockquote>
+<p><img src="../../images/r0040670.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|=============================================================                |  79%<br>
+| Now for the second plot.</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| Plot airquality\$Ozone and airquality\\$Solar.R and use main to specify the title<br>
+| "Ozone and Solar Radiation".</p>
+<blockquote>
+<p>plot(airquality\$Ozone,airquality\\$Solar.R,main="Ozone and Solar Radiation")</p>
+</blockquote>
+<p><img src="../../images/r0040680.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|===============================================================              |  82%<br>
+| Now for something more challenging.</p>
+<p>...</p>
+<p>|================================================================             |  83%<br>
+| This one with 3 plots, to illustrate inner and outer margins. First, set up the plot<br>
+| window by typing par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))</p>
+<blockquote>
+<p>par(mfrow = c(1, 3), mar = c(4, 4, 2, 1), oma = c(0, 0, 2, 0))</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|=================================================================            |  85%<br>
+| Margins are specified as 4-long vectors of integers. Each number tells how many<br>
+| lines of text to leave at each side. The numbers are assigned clockwise starting at<br>
+| the bottom. The default for the inner margin is c(5.1, 4.1, 4.1, 2.1) so you can see<br>
+| we reduced each of these so we'll have room for some outer text.</p>
+<p>...</p>
+<p>|==================================================================           |  86%<br>
+| The first plot should be familiar. Plot airquality\$Wind and airquality\\$Ozone with<br>
+| the title (argument main) as "Ozone and Wind".</p>
+<blockquote>
+<p>plot(airquality\$Wind,airquality\\$Ozone,main="Ozone and Wind")</p>
+</blockquote>
+<p><img src="../../images/r0040690.png" alt="graph" title="graph"></p>
+<p>| You nailed it! Good job!</p>
+<p>|====================================================================         |  88%<br>
+| The second plot is similar.</p>
+<p>...</p>
+<p>|=====================================================================        |  89%<br>
+| Plot airquality\$Solar.R and airquality\\$Ozone with the title (argument main) as<br>
+| "Ozone and Solar Radiation".</p>
+<blockquote>
+<p>plot(airquality\$Solar.R,airquality\\$Ozone,main="Ozone and Solar Radiation")</p>
+</blockquote>
+<p><img src="../../images/r0040700.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|======================================================================       |  91%<br>
+| Now for the final panel.</p>
+<p>...</p>
+<p>|=======================================================================      |  92%<br>
+| Plot airquality\$Temp and airquality\\$Ozone with the title (argument main) as "Ozone<br>
+| and Temperature".</p>
+<blockquote>
+<p>plot(airquality\$Temp,airquality\\$Ozone,main="Ozone and Temperature")</p>
+</blockquote>
+<p><img src="../../images/r0040710.png" alt="graph" title="graph"></p>
+<p>| You got it!</p>
+<p>|========================================================================     |  94%<br>
+| Now we'll put in a title.</p>
+<p>...</p>
+<p>|==========================================================================   |  95%<br>
+| Since this is the main title, we specify it with the R command mtext. Call mtext<br>
+| with the string "Ozone and Weather in New York City" and the argument outer set<br>
+| equal to TRUE.</p>
+<blockquote>
+<p>mtext("Ozone and Weather in New York City",outer=TRUE)</p>
+</blockquote>
+<p><img src="../../images/r0040720.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|===========================================================================  |  97%<br>
+| Voila! Beautiful, right?</p>
+<p>...</p>
+<p>|============================================================================ |  98%<br>
+| Congrats! You've weathered this lesson nicely and passed out of the No!zone.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| All that practice is paying off!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-04 20:05:26.618647 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/boxplot/" rel="tag">boxplot()</a></li>
+            <li><a class="tag p-category" href="../../tags/col/" rel="tag">col</a></li>
+            <li><a class="tag p-category" href="../../tags/hist/" rel="tag">hist()</a></li>
+            <li><a class="tag p-category" href="../../tags/legend/" rel="tag">legend()</a></li>
+            <li><a class="tag p-category" href="../../tags/lty/" rel="tag">lty</a></li>
+            <li><a class="tag p-category" href="../../tags/lwd/" rel="tag">lwd</a></li>
+            <li><a class="tag p-category" href="../../tags/mar/" rel="tag">mar</a></li>
+            <li><a class="tag p-category" href="../../tags/mfcol/" rel="tag">mfcol</a></li>
+            <li><a class="tag p-category" href="../../tags/mfrow/" rel="tag">mfrow</a></li>
+            <li><a class="tag p-category" href="../../tags/mtext/" rel="tag">mtext()</a></li>
+            <li><a class="tag p-category" href="../../tags/oma/" rel="tag">oma</a></li>
+            <li><a class="tag p-category" href="../../tags/par/" rel="tag">par()</a></li>
+            <li><a class="tag p-category" href="../../tags/pch/" rel="tag">pch</a></li>
+            <li><a class="tag p-category" href="../../tags/plot/" rel="tag">plot()</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+            <li><a class="tag p-category" href="../../tags/title/" rel="tag">title()</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00422/" rel="prev" title="Plotting Systems">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00423_Base Plotting System.html";
+var idcomments_post_url = "https://r.datascience.eu.org/posts/00423/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>
