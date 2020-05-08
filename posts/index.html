@@ -13,7 +13,7 @@
 <meta name="generator" content="Nikola (getnikola.com)">
 <link rel="canonical" href="https://r.datascience.eu.org/posts/">
 <link rel="icon" href="../files/favicon.ico" sizes="16x16">
-<link rel="next" href="index-2.html" type="text/html">
+<link rel="next" href="index-3.html" type="text/html">
 <!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
 </head>
 <body>
@@ -73,7 +73,632 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00424/" class="u-url">Lattice Plotting System</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00425/" class="u-url">Working with Colors</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00425/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-08T19:00:30+05:30" itemprop="datePublished" title="2020-05-08 19:00">2020-05-08 19:00</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00425/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00425_Working with Colors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00425_Working with Colors.html";
+var idcomments_post_url = "/posts/00425/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>setwd("C:/Users/kk/Downloads/edu/DataScienceJHU/DataScienceWithR/04_Exploratory_Data_Analysis/workspace")<br>
+library(ggplot2)<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Principles of Analytic Graphs   2: Exploratory Graphs             
+ 3: Graphics Devices in R           4: Plotting Systems               
+ 5: Base Plotting System            6: Lattice Plotting System        
+ 7: Working with Colors             8: GGPlot2 Part1                  
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras                 
+11: Hierarchical Clustering        12: K Means Clustering             
+13: Dimension Reduction            14: Clustering Example             
+15: CaseStudy</code></pre>
+<p>Selection: 7</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>| Package ‘RColorBrewer’ loaded correctly!</p>
+<p>| Package ‘datasets’ loaded correctly!</p>
+<p>|                                                                             |   0%</p>
+<p>| Working_with_Colors. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson<br>
+| corresponds to 04_ExploratoryAnalysis/Colors.)</p>
+<p>...</p>
+<p>|=                                                                            |   1%<br>
+| This lesson is about using colors in R. It really supplements the lessons on<br>
+| plotting with the base and lattice packages which contain functions that are able to<br>
+| take the argument col. We'll discuss ways to set this argument more colorfully.</p>
+<p>...</p>
+<p>|==                                                                           |   3%<br>
+| Of course, color choice is secondary to your data and how you analyze it, but<br>
+| effectively using colors can enhance your plots and presentations, emphasizing the<br>
+| important points you're trying to convey.</p>
+<p>...</p>
+<p>|===                                                                          |   4%<br>
+| The motivation for this lesson is that the default color schemes for most plots in R<br>
+| are not optimal. Fortunately there have been recent developments to improve the<br>
+| handling and specification of colors in plots and graphs. We'll cover some functions<br>
+| in R as well as in external packages that are very handy. If you know how to use<br>
+| some of these then you'll have more options when you create your displays.</p>
+<p>...</p>
+<p>|====                                                                         |   6%<br>
+| We'll begin with a motivating example - a typical R plot using 3 default colors.</p>
+<p><img src="../images/r0040830.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|======                                                                       |   7%<br>
+| According to the plot, what is color 2?</p>
+<p>1: Blue<br>
+2: Empty black circles<br>
+3: Red<br>
+4: Green</p>
+<p>Selection: 3</p>
+<p>| Nice work!</p>
+<p>|=======                                                                      |   9%<br>
+| So these are the first 3 default values. If you were plotting and just specified<br>
+| col=c(1:3) as one of your arguments, these are colors you'd get. Maybe you like<br>
+| them, but they might not be the best choice for your application.</p>
+<p>...</p>
+<p>|========                                                                     |  10%<br>
+| To show you some options, here's a display of two color palettes that come with the<br>
+| grDevices package available to you. The left shows you some colors from the function<br>
+| heat.colors. Here low values are represented in red and as the values increase the<br>
+| colors move through yellow towards white. This is consistent with the physical<br>
+| properties of fire. The right display is from the function topo.colors which uses<br>
+| topographical colors ranging from blue (low values) towards brown (higher values).</p>
+<p><img src="../images/r0040840.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|=========                                                                    |  12%<br>
+| So we'll first discuss some functions that the grDevices package offers. The<br>
+| function colors() lists the names of 657 predefined colors you can use in any<br>
+| plotting function.  These names are returned as strings. Run the R command sample<br>
+| with colors() as its first argument and 10 as its second to give you an idea of the<br>
+| choices you have.</p>
+<blockquote>
+<p>sample(colors(),10)<br>
+ [1] "gray1"         "darkorchid2"   "blue3"         "darkorchid3"   "gray10"<br>
+ [6] "firebrick1"    "magenta3"      "gray75"        "lemonchiffon4" "rosybrown3"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|==========                                                                   |  13%<br>
+| We see a lot of variety in the colors, some of which are names followed by numbers<br>
+| indicating that there are multiple forms of that particular color.</p>
+<p>...</p>
+<p>|===========                                                                  |  14%<br>
+| So you're free to use any of these 600+ colors listed by the colors function.<br>
+| However, two additional functions from grDevices, colorRamp and colorRampPalette,<br>
+| give you more options. Both of these take color names as arguments and use them as<br>
+| "palettes", that is, these argument colors are blended in different proportions to<br>
+| form new colors.</p>
+<p>...</p>
+<p>|============                                                                 |  16%<br>
+| The first, colorRamp, takes a palette of colors (the arguments) and returns a<br>
+| function that takes values between 0 and 1 as arguments. The 0 and 1 correspond to<br>
+| the extremes of the color palette. Arguments between 0 and 1 return blends of these<br>
+| extremes.</p>
+<p>...</p>
+<p>|=============                                                                |  17%<br>
+| Let's see what this means. Assign to the variable pal the output of a call to<br>
+| colorRamp with the single argument, c("red","blue").</p>
+<blockquote>
+<p>pal&lt;-colorRamp(c("red","blue"))</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============                                                              |  19%<br>
+| We don't see any output, but R has created the function pal which we can call with a<br>
+| single argument between 0 and 1. Call pal now with the argument 0.</p>
+<blockquote>
+<p>pal(0)<br>
+     [,1] [,2] [,3]<br>
+[1,]  255    0    0</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|================                                                             |  20%<br>
+| We see a 1 by 3 array with 255 as the first entry and 0 in the other 2. This 3 long<br>
+| vector corresponds to red, green, blue (RGB) color encoding commonly used in<br>
+| televisions and monitors. In R, 24 bits are used to represent colors. Think of these<br>
+| 24 bits as 3 sets of 8 bits, each of which represents an intensity for one of the<br>
+| colors red, green, and blue.</p>
+<p>...</p>
+<p>|=================                                                            |  22%<br>
+| The 255 returned from the pal(0) call corresponds to the largest possible number<br>
+| represented with 8 bits, so the vector (255,0,0) contains only red (no green or<br>
+| blue), and moreover, it's the highest possible value of red.</p>
+<p>...</p>
+<p>|==================                                                           |  23%<br>
+| Given that you created pal with the palette containing "red" and "blue", what color<br>
+| do you think will be represented by the vector that pal(1) returns? Recall that pal<br>
+| will only take arguments between 0 and 1, so 1 is the largest argument you can pass<br>
+| it.</p>
+<p>1: blue<br>
+2: red<br>
+3: green<br>
+4: yellow</p>
+<p>Selection: 1</p>
+<p>| Keep up the great work!</p>
+<p>|===================                                                          |  25%<br>
+| Check your answer now by calling pal with the argument 1.</p>
+<blockquote>
+<p>pal(1)<br>
+     [,1] [,2] [,3]<br>
+[1,]    0    0  255</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|====================                                                         |  26%<br>
+| You see the vector (0,0,255) which represents the highest intensity of blue. What<br>
+| vector do you think the call pal(.5) will return?</p>
+<p>1: (0,255,0)<br>
+2: (255,255,255)<br>
+3: (127.5,0,127.5)<br>
+4: (255,0,255)</p>
+<p>Selection: 3</p>
+<p>| You got it!</p>
+<p>|=====================                                                        |  28%<br>
+| The function pal can take more than one argument. It returns one 3-long (or 4-long,<br>
+| but more about this later) vector for each argument. To see this in action, call pal<br>
+| with the argument seq(0,1,len=6).</p>
+<blockquote>
+<p>pal(seq(0,1,len=6))</p>
+
+<pre><code>     [,1] [,2] [,3]  
+[1,]  255    0    0  
+[2,]  204    0   51  
+[3,]  153    0  102  
+[4,]  102    0  153  
+[5,]   51    0  204  
+[6,]    0    0  255</code></pre>
+<p>| Nice work!</p>
+</blockquote>
+<p>|======================                                                       |  29%<br>
+| Six vectors (each of length 3) are returned. The i-th vector is identical to output<br>
+| that would be returned by the call pal(i/5) for i=0,...5. We see that the i-th row<br>
+| (for i=1,...6) differs from the (i-1)-st row in the following way. Its red entry is<br>
+| 51 = 255/5 points lower and its blue entry is 51 points higher.</p>
+<p>...</p>
+<p>|=======================                                                      |  30%<br>
+| So pal creates colors using the palette we specified when we called colorRamp. In<br>
+| this example none of pal's outputs will ever contain green since it wasn't in our<br>
+| initial palette.</p>
+<p>...</p>
+<p>|=========================                                                    |  32%<br>
+| We'll turn now to colorRampPalette, a function similar to colorRamp. It also takes a<br>
+| palette of colors and returns a function. This function, however, takes integer<br>
+| arguments (instead of numbers between 0 and 1) and returns a vector of colors each<br>
+| of which is a blend of colors of the original palette.</p>
+<p>...</p>
+<p>|==========================                                                   |  33%<br>
+| The argument you pass to the returned function specifies the number of colors you<br>
+| want returned. Each element of the returned vector is a 24 bit number, represented<br>
+| as 6 hexadecimal characters, which range from 0 to F. This set of 6 hex characters<br>
+| represents the intensities of red, green, and blue, 2 characters for each color.</p>
+<p>...</p>
+<p>|===========================                                                  |  35%<br>
+| To see this better, assign to the variable p1 the output of a call to<br>
+| colorRampPalette with the single argument, c("red","blue"). We'll compare it to our<br>
+| experiments using colorRamp.</p>
+<blockquote>
+<p>p1&lt;-colorRampPalette(c("red","blue"))</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|============================                                                 |  36%<br>
+| Now call p1 with the argument 2.</p>
+<blockquote>
+<p>p1(2)<br>
+[1] "#FF0000" "#0000FF"</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================                                                |  38%<br>
+| We see a 2-long vector is returned. The first entry FF0000 represents red. The FF is<br>
+| hexadecimal for 255, the same value returned by our call pal(0). The second entry<br>
+| 0000FF represents blue, also with intensity 255.</p>
+<p>...</p>
+<p>|==============================                                               |  39%<br>
+| Now call p1 with the argument 6. Let's see if we get the same result as we did when<br>
+| we called pal with the argument seq(0,1,len=6).</p>
+<blockquote>
+<p>p1(6)<br>
+[1] "#FF0000" "#CC0033" "#990066" "#650099" "#3200CC" "#0000FF"</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============================                                              |  41%<br>
+| Now we get the 6-long vector (FF0000, CC0033, 990066, 650099, 3200CC, 0000FF). We<br>
+| see the two ends (FF0000 and 0000FF) are consistent with the colors red and blue.<br>
+| How about CC0033? Type 0xcc or 0xCC at the command line to see the decimal<br>
+| equivalent of this hex number. You must include the 0 before the x to specify that<br>
+| you're entering a hexadecimal number.</p>
+<blockquote>
+<p>0xCC<br>
+[1] 204</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|================================                                             |  42%<br>
+| So 0xCC equals 204 and we can easily convert hex 33 to decimal, as in<br>
+| 0x33=3*16+3=51. These were exactly the numbers we got in the second row returned<br>
+| from our call to pal(seq(0,1,len=6)). We see that 4 of the 6 numbers agree with our<br>
+| earlier call to pal. Two of the 6 differ slightly.</p>
+<p>...</p>
+<p>|=================================                                            |  43%<br>
+| We can also form palettes using colors other than red, green and blue. Form a<br>
+| palette, p2, by calling colorRampPalette with the colors "red" and "yellow".<br>
+| Remember to concatenate them into a single argument.</p>
+<blockquote>
+<p>p2&lt;-colorRampPalette(c("red","yellow"))</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|===================================                                          |  45%<br>
+| Now call p2 with the argument 2. This will show us the two extremes of the blends of<br>
+| colors we'll get.</p>
+<blockquote>
+<p>p2(2)<br>
+[1] "#FF0000" "#FFFF00"</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|====================================                                         |  46%<br>
+| Not surprisingly the first color we see is FF0000, which we know represents red. The<br>
+| second color returned, FFFF00, must represent yellow, a combination of full<br>
+| intensity red and full intensity green. This makes sense, since yellow falls between<br>
+| red and green on the color wheel as we see here. (We borrowed this image from<br>
+| lucaskrech.com.)</p>
+<p><img src="../images/r0040850.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|=====================================                                        |  48%<br>
+| Let's now call p2 with the argument 10. This will show us how the two extremes, red<br>
+| and yellow, are blended together.</p>
+<blockquote>
+<p>p2(10)<br>
+ [1] "#FF0000" "#FF1C00" "#FF3800" "#FF5500" "#FF7100" "#FF8D00" "#FFAA00" "#FFC600"<br>
+ [9] "#FFE200" "#FFFF00"</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|======================================                                       |  49%<br>
+| So we see the 10-long vector. For each element, the red component is fixed at FF,<br>
+| and the green component grows from 00 (at the first element) to FF (at the last).</p>
+<p>...</p>
+<p>|=======================================                                      |  51%<br>
+| This is all fine and dandy but you're probably wondering when you can see how all<br>
+| these colors show up in a display. We copied some code from the R documentation<br>
+| pages (color.scale if you're interested) and created a function for you, showMe.<br>
+| This takes as an argument, a color vector, which as you know, is precisely what<br>
+| calls to p1 and p2 return to you. Call showMe now with p1(20).</p>
+<blockquote>
+<p>showMe(p1(20))</p>
+</blockquote>
+<p><img src="../images/r0040860.png" alt="image" title="image"></p>
+<p>| That's the answer I was looking for.</p>
+<p>|========================================                                     |  52%<br>
+| We see the interpolated palette here. Low values in the lower left corner are red<br>
+| and as you move to the upper right, the colors move toward blue. Now call showMe<br>
+| with p2(20) as its argument.</p>
+<blockquote>
+<p>showMe(p2(20))</p>
+</blockquote>
+<p><img src="../images/r0040870.png" alt="image" title="image"></p>
+<p>| You're the best!</p>
+<p>|=========================================                                    |  54%<br>
+| Here we see a similar display, the colors moving from red to yellow, the base colors<br>
+| of our p2 palette. For fun, see what p2(2) looks like using showMe.</p>
+<blockquote>
+<p>showMe(p2(2))</p>
+</blockquote>
+<p><img src="../images/r0040880.png" alt="image" title="image"></p>
+<p>| You are really on a roll!</p>
+<p>|==========================================                                   |  55%<br>
+| A much more basic pattern, simple but elegant.</p>
+<p>...</p>
+<p>|============================================                                 |  57%<br>
+| We mentioned before that colorRamp (and colorRampPalette) could return a 3 or 4 long<br>
+| vector of colors. We saw 3-long vectors returned indicating red, green, and blue<br>
+| intensities. What would the 4th entry be?</p>
+<p>...</p>
+<p>|=============================================                                |  58%<br>
+| We'll answer this indirectly. First, look at the function p1 that colorRampPalette<br>
+| returned to you. Just type p1 at the command prompt.</p>
+<blockquote>
+<p>p1<br>
+function (n)<br>
+{<br>
+    x &lt;- ramp(seq.int(0, 1, length.out = n))<br>
+    if (ncol(x) == 4L)<br>
+        rgb(x[, 1L], x[, 2L], x[, 3L], x[, 4L], maxColorValue = 255)<br>
+    else rgb(x[, 1L], x[, 2L], x[, 3L], maxColorValue = 255)<br>
+}</p>
+<p>&lt;bytecode: 0x00000174e0c71940&gt;</p>
+<p>&lt;environment: 0x00000174dbdd5a00&gt;</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|==============================================                               |  59%<br>
+| We see that p1 is a short function with one argument, n. The argument n is used as<br>
+| the length in a call to the function seq.int, itself an argument to the function<br>
+| ramp. We can infer that ramp is just going to divide the interval from 0 to 1 into n<br>
+| pieces.</p>
+<p>...</p>
+<p>|===============================================                              |  61%<br>
+| The heart of p1 is really the call to the function rgb with either 4 or 5 arguments.<br>
+| Use the ?fun construct to look at the R documentation for rgb now.</p>
+<blockquote>
+<p>?rgb</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|================================================                             |  62%<br>
+| We see that rgb is a color specification function that can be used to produce any<br>
+| color with red, green, blue proportions. We see the maxColorValue is 1 by default,<br>
+| so if we called rgb with values for red, green and blue, we would specify numbers at<br>
+| most 1 (assuming we didn't change the default for maxColorValue). According to the<br>
+| documentation, what is the maximum number of arguments rgb can have?</p>
+<p>1: 6<br>
+2: 4<br>
+3: 5<br>
+4: 3</p>
+<p>Selection: 1</p>
+<p>| All that practice is paying off!</p>
+<p>|=================================================                            |  64%<br>
+| So the fourth argument is alpha which can be a logical, i.e., either TRUE or FALSE,<br>
+| or a numerical value. Create the function p3 now by calling colorRampPalette with<br>
+| the colors blue and green (remember to concatenate them into a single argument) and<br>
+| setting the alpha argument to .5.</p>
+<blockquote>
+<p>p3&lt;-colorRampPalette(c("blue","green"),alpha=0.5)</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|==================================================                           |  65%<br>
+| Now call p3 with the argument 5.</p>
+<blockquote>
+<p>p3(5)<br>
+[1] "#0000FFFF" "#003FBFFF" "#007F7FFF" "#00BF3FFF" "#00FF00FF"</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===================================================                          |  67%<br>
+| We see that in the 5-long vector that the call returned, each element has 32 bits, 4<br>
+| groups of 8 bits each. The last 8 bits represent the value of alpha. Since it was<br>
+| NOT ZERO in the call to colorRampPalette, it gets the maximum FF value. (The same<br>
+| result would happen if alpha had been set to TRUE.) When it was 0 or FALSE (as in<br>
+| previous calls to colorRampPalette) it was given the value 00 and wasn't shown. The<br>
+| leftmost 24 bits of each element are the same RGB encoding we previously saw.</p>
+<p>...</p>
+<p>|====================================================                         |  68%<br>
+| So what is alpha? Alpha represents an opacity level, that is, how transparent should<br>
+| the colors be. We can add color transparency with the alpha parameter to calls to<br>
+| rgb. We haven't seen any examples of this yet, but we will now.</p>
+<p>...</p>
+<p>|======================================================                       |  70%<br>
+| We generated 1000 random normal pairs for you in the variables x and y. We'll plot<br>
+| them in a scatterplot by calling plot with 4 arguments. The variables x and y are<br>
+| the first 2. The third is the print character argument pch. Set this equal to 19<br>
+| (filled circles). The final argument is col which should be set equal to a call to<br>
+| rgb. Give rgb 3 arguments, 0, .5, and .5.</p>
+<blockquote>
+<p>plot(x,y,pch=19,col=rgb(0,0.5,0.5))</p>
+</blockquote>
+<p><img src="../images/r0040890.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================================                      |  71%<br>
+| Well this picture is okay for a scatterplot, a nice mix of blue and green, but it<br>
+| really doesn't tell us too much information in the center portion, since the points<br>
+| are so thick there. We see there are a lot of points, but is one area more filled<br>
+| than another? We can't really discriminate between different point densities. This<br>
+| is where the alpha argument can help us. Recall your plot command (use the up arrow)<br>
+| and add a 4th argument, .3, to the call to rgb. This will be our value for alpha.</p>
+<blockquote>
+<p>plot(x,y,pch=19,col=rgb(0,0.5,0.5,0.3))</p>
+</blockquote>
+<p><img src="../images/r0040900.png" alt="image" title="image"></p>
+<p>| You are amazing!</p>
+<p>|========================================================                     |  72%<br>
+| Clearly this is better. It shows us where, specifically, the densest areas of the<br>
+| scatterplot really are.</p>
+<p>...</p>
+<p>|=========================================================                    |  74%<br>
+| Our last topic for this lesson is the RColorBrewer Package, available on CRAN, that<br>
+| contains interesting and useful color palettes, of which there are 3 types,<br>
+| sequential, divergent, and qualitative. Which one you would choose to use depends on<br>
+| your data.</p>
+<p>...</p>
+<p>|==========================================================                   |  75%<br>
+| Here's a picture of the palettes available from this package. The top section shows<br>
+| the sequential palettes in which the colors are ordered from light to dark. The<br>
+| divergent palettes are at the bottom. Here the neutral color (white) is in the<br>
+| center, and as you move from the middle to the two ends of each palette, the colors<br>
+| increase in intensity. The middle display shows the qualitative palettes which look<br>
+| like collections of random colors. These might be used to distinguish factors in<br>
+| your data.</p>
+<p><img src="../images/r0040910.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|===========================================================                  |  77%<br>
+| These colorBrewer palettes can be used in conjunction with the colorRamp() and<br>
+| colorRampPalette() functions. You would use colors from a colorBrewer palette as<br>
+| your base palette,i.e., as arguments to colorRamp or colorRampPalette which would<br>
+| interpolate them to create new colors.</p>
+<p>...</p>
+<p>|============================================================                 |  78%<br>
+| As an example of this, create a new object, cols by calling the function brewer.pal<br>
+| with 2 arguments, 3 and "BuGn". The string "BuGn" is the second last palette in the<br>
+| sequential display. The 3 tells the function how many different colors we want.</p>
+<blockquote>
+<p>cols&lt;-brewer.pal(3,"BuGn")</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================================================                |  80%<br>
+| Use showMe to look at cols now.</p>
+<blockquote>
+<p>showMe(cols)</p>
+</blockquote>
+<p><img src="../images/r0040920.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|==============================================================               |  81%<br>
+| We see 3 colors, mixes of blue and green. Now create the variable pal by calling<br>
+| colorRampPalette with cols as its argument.</p>
+<blockquote>
+<p>pal&lt;-colorRampPalette(cols)</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|================================================================             |  83%<br>
+| The call showMe(pal(3)) would be identical to the showMe(cols) call. So use showMe<br>
+| to look at pal(20).</p>
+<blockquote>
+<p>showMe(pal(20))</p>
+</blockquote>
+<p><img src="../images/r0040930.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|=================================================================            |  84%<br>
+| Now we can use the colors in pal(20) to display topographic information on<br>
+| Auckland's Maunga Whau Volcano. R provides this information in a matrix called<br>
+| volcano which is included in the package datasets.  Call the R function image with<br>
+| volcano as its first argument and col set equal to pal(20) as its second.</p>
+<blockquote>
+<p>image(volcano,col=pal(20))</p>
+</blockquote>
+<p><img src="../images/r0040940.png" alt="image" title="image"></p>
+<p>| Great job!</p>
+<p>|==================================================================           |  86%<br>
+| We see that the colors here of the sequential palette clue us in on the topography.<br>
+| The darker colors are more concentrated than the lighter ones. Just for fun, recall<br>
+| your last command calling image and instead of pal(20), use p1(20) as the second<br>
+| argument.</p>
+<blockquote>
+<p>image(volcano,col=p1(20))</p>
+</blockquote>
+<p><img src="../images/r0040950.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|===================================================================          |  87%<br>
+| Not as nice a picture since the palette isn't as well suited to this data, but<br>
+| that's okay. It's review time!!!!</p>
+<p>...</p>
+<p>|====================================================================         |  88%<br>
+| True or False? Careful use of colors in plots/maps/etc. can make it easier for the<br>
+| reader to understand what points you're trying to convey.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You got it!</p>
+<p>|=====================================================================        |  90%<br>
+| Which of the following is an R package that provides color palettes for sequential,<br>
+| categorical, and diverging data?</p>
+<p>1: RColorBluer<br>
+2: RColorBrewer<br>
+3: RColorStewer<br>
+4: RColorVintner</p>
+<p>Selection: 2</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|======================================================================       |  91%<br>
+| True or False? The colorRamp and colorRampPalette functions can be used in<br>
+| conjunction with color palettes to connect data to colors.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You are really on a roll!</p>
+<p>|=======================================================================      |  93%<br>
+| True or False?  Transparency can NEVER be used to clarify plots with many points</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| Excellent work!</p>
+<p>|=========================================================================    |  94%<br>
+| True or False?  The call p7 &lt;- colorRamp("red","blue") would work (i.e., not<br>
+| generate an error).</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| Excellent job!</p>
+<p>|==========================================================================   |  96%<br>
+| True or False?  The function colors returns only 10 colors.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| All that practice is paying off!</p>
+<p>|===========================================================================  |  97%<br>
+| Transparency is determined by which parameter of the rgb function?</p>
+<p>1: beta<br>
+2: gamma<br>
+3: it's all Greek to me<br>
+4: delta<br>
+5: alpha</p>
+<p>Selection: 5</p>
+<p>| You got it right!</p>
+<p>|============================================================================ |  99%<br>
+| Congratulations! We hope this lesson didn't make you see red. We're green with envy<br>
+| that you blue through it.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Your dedication is inspiring!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-08 19:05:14.923558 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00424/" class="u-url">Lattice Plotting System</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -5598,1017 +6223,11 @@ rm(list=ls())</p>
 </div>
 </div>
     </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00502/" class="u-url">Air Pollution data</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00502/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-17T18:02:38+05:30" itemprop="datePublished" title="2020-04-17 18:02">2020-04-17 18:02</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00502/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00502_Air_pollution.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00502_Air_pollution.html";
-var idcomments_post_url = "/posts/00502/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Contents</strong> <a name="contents"></a></p>
-<ol>
-<li><a href="00502/#intro">Introduction</a></li>
-<li><a href="00502/#f1">Function 1: Mean, Median, Mode, Standard Deviation</a></li>
-<li><a href="00502/#f2">Function 2: Data Quality</a></li>
-<li><a href="00502/#f3">Function 3: Correlation Test</a></li>
-</ol>
-<hr>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Introduction-">Introduction <a name="intro"></a><a class="anchor-link" href="00502/#Introduction-">¶</a>
-</h3>
-<p><strong>Data</strong><br>
-The zip file containing the data can be downloaded here:</p>
-<p><a href="http://link.datascience.eu.org/p004d1">AirPollution.zip</a> (2.67MB)</p>
-<p>The zip file contains 332 comma-separated-value (CSV) files containing pollution monitoring data for fine particulate matter (PM) air pollution at 332 locations in the United States. Each file contains data from a single monitor and the ID number for each monitor is contained in the file name. For example, data for monitor 200 is contained in the file "200.csv". Each file contains three variables:</p>
-<p>Date: the date of the observation in YYYY-MM-DD format (year-month-day)<br>
-sulfate: the level of sulfate PM in the air on that date (measured in micrograms per cubic meter)<br>
-nitrate: the level of nitrate PM in the air on that date (measured in micrograms per cubic meter)</p>
-<p>This data will be used in the following functions. The goal is load data from these files without dowloading or storing them in the hard disk drive, but be available to the functions to woek on them.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [7]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Create an empty file in memory</span>
-<span class="n">file</span><span class="o">&lt;-</span><span class="nf">tempfile</span><span class="p">()</span>
-<span class="c1"># Download the zip file to this empty file</span>
-<span class="nf">download.file</span><span class="p">(</span><span class="s">"http://link.datascience.eu.org/p004d1"</span><span class="p">,</span><span class="n">file</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">"wb"</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [10]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Check data file format</span>
-<span class="nf">head</span><span class="p">(</span><span class="nf">unzip</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">Name</th>
-<th scope="col">Length</th>
-<th scope="col">Date</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>data/              </td>
-<td>    0              </td>
-<td>2012-09-22 00:27:00</td>
-</tr>
-<tr>
-<td>data/001.csv       </td>
-<td>31271              </td>
-<td>2012-09-22 01:30:00</td>
-</tr>
-<tr>
-<td>data/002.csv       </td>
-<td>81435              </td>
-<td>2012-09-22 01:30:00</td>
-</tr>
-<tr>
-<td>data/003.csv       </td>
-<td>47185              </td>
-<td>2012-09-22 01:30:00</td>
-</tr>
-<tr>
-<td>data/004.csv       </td>
-<td>78887              </td>
-<td>2012-09-22 01:30:00</td>
-</tr>
-<tr>
-<td>data/005.csv       </td>
-<td>63204              </td>
-<td>2012-09-22 01:30:00</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>[<a href="00502/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Function-1:-Mean,-Median,-Mode,-Standard-Deviation-">Function 1: Mean, Median, Mode, Standard Deviation <a name="f1"></a><a class="anchor-link" href="00502/#Function-1:-Mean,-Median,-Mode,-Standard-Deviation-">¶</a>
-</h3>
-<p>The function "PollutantStats" will calculate the mean, median, mode and standard deviation of a pollutant (sulfate or nitrate) across a specified list of monitors.</p>
-<p><strong>Input</strong><br>
-The function "PollutantStats" accepts two arguments:</p>
-<ol>
-<li>"pollutant" - Pollutant name <em>sulfate</em> or <em>nitrate</em> </li>
-<li>"id" - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
-</ol>
-<p><strong>Output</strong><br>
-Mean, median, mode and standard deviation of the pollutant.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [19]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">PollutantStats</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">pollutant</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
-    <span class="c1"># Initialize empty vectors.</span>
-    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">()</span>    <span class="c1"># Pollutant vector</span>
-    <span class="c1"># Loop through each file number.</span>
-    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
-        <span class="c1"># We need to have the file path in "data/001.csv" format to use read.csv() function.</span>
-        <span class="c1"># Use sprintf to combine directory name and file number in required format.</span>
-        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
-        <span class="c1"># Using a comma in df[,pollutant] converts it into a numeric vector.</span>
-        <span class="c1"># Else it remains a dataframe and pollutant_vector becomes a list.</span>
-        <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">df</span><span class="p">[,</span><span class="n">pollutant</span><span class="p">])</span>
-    <span class="p">}</span>
-    <span class="c1"># Calculate mean, median, mode and SD excluding missing values.</span>
-    <span class="n">Mean</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-    <span class="n">Median</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-    <span class="n">Mode</span><span class="o">&lt;-</span><span class="nf">names</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">))[</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">==</span><span class="nf">max</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">))]</span>
-    <span class="n">SD</span><span class="o">&lt;-</span><span class="nf">sd</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
-    <span class="nf">data.frame</span><span class="p">(</span><span class="n">Pollutant</span><span class="o">=</span><span class="n">pollutant</span><span class="p">,</span><span class="n">Mean</span><span class="o">=</span><span class="n">Mean</span><span class="p">,</span><span class="n">Median</span><span class="o">=</span><span class="n">Median</span><span class="p">,</span><span class="n">Mode</span><span class="o">=</span><span class="n">Mode</span><span class="p">,</span><span class="n">Std_dev</span><span class="o">=</span><span class="n">SD</span><span class="p">)</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [21]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">Pollutant</th>
-<th scope="col">Mean</th>
-<th scope="col">Median</th>
-<th scope="col">Mode</th>
-<th scope="col">Std_dev</th>
-</tr></thead>
-<tbody><tr>
-<td>sulfate </td>
-<td>3.765641</td>
-<td>3.765641</td>
-<td>2.84    </td>
-<td>2.874151</td>
-</tr></tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [22]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"nitrate"</span><span class="p">,</span><span class="m">74</span><span class="o">:</span><span class="m">80</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">Pollutant</th>
-<th scope="col">Mean</th>
-<th scope="col">Median</th>
-<th scope="col">Mode</th>
-<th scope="col">Std_dev</th>
-</tr></thead>
-<tbody><tr>
-<td>nitrate </td>
-<td>2.611021</td>
-<td>2.611021</td>
-<td>1.24    </td>
-<td>2.802195</td>
-</tr></tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [24]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">Pollutant</th>
-<th scope="col">Mean</th>
-<th scope="col">Median</th>
-<th scope="col">Mode</th>
-<th scope="col">Std_dev</th>
-</tr></thead>
-<tbody><tr>
-<td>sulfate  </td>
-<td>0.6243649</td>
-<td>0.6243649</td>
-<td>0.349    </td>
-<td>0.3637092</td>
-</tr></tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [25]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"nitrate"</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">Pollutant</th>
-<th scope="col">Mean</th>
-<th scope="col">Median</th>
-<th scope="col">Mode</th>
-<th scope="col">Std_dev</th>
-</tr></thead>
-<tbody><tr>
-<td>nitrate </td>
-<td>1.702932</td>
-<td>1.702932</td>
-<td>1.1     </td>
-<td>2.52504 </td>
-</tr></tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>[<a href="00502/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Function-2:-Data-Quality-">Function 2: Data Quality <a name="f2"></a><a class="anchor-link" href="00502/#Function-2:-Data-Quality-">¶</a>
-</h3>
-<p>The function "DataQuality" will report the quality of data for each monitor ID.</p>
-<p><strong>Input</strong><br>
-The function accepts one argument:</p>
-<ol>
-<li>"id" - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
-</ol>
-<p><strong>Output</strong></p>
-<ol>
-<li>id: Monitor ID</li>
-<li>Obs: Total number of valid and invalid observations for the corresponding monitor ID (including missing values)</li>
-<li>Sulfate, Nitrate: Number of valid data points of each pollutant.</li>
-<li>SulfateQ, NitrateQ: Percentage of valid data points of each pollutant.</li>
-<li>PairWise: Number of valid data points of both pollutants together.</li>
-<li>PairWiseQ: Percentafe of valid data points of both pollutants together</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [86]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">DataQuality</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
-    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="s">"nitrate"</span><span class="p">)</span>
-    <span class="c1"># Create an empty data frame</span>
-    <span class="n">x</span><span class="o">=</span><span class="nf">integer</span><span class="p">()</span>
-    <span class="n">q</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Obs</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Sulfate</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Nitrate</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">PairWise</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
-    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
-        <span class="c1"># Reading each csv file into a dataframe.</span>
-        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
-        <span class="n">obs</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-        <span class="n">sulfate</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])),])</span>
-        <span class="n">nitrate</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),])</span>
-        <span class="n">pairwise</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])</span><span class="o">|</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),])</span>
-        <span class="n">q</span><span class="p">[</span><span class="nf">nrow</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="m">+1</span><span class="p">,]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">obs</span><span class="p">,</span><span class="n">sulfate</span><span class="p">,</span><span class="n">nitrate</span><span class="p">,</span><span class="n">pairwise</span><span class="p">)</span>
-    <span class="p">}</span>
-    <span class="c1"># Add SulfateQ, NitrateQ and PairWiseQ columns.</span>
-    <span class="n">q</span><span class="o">$</span><span class="n">SulfateQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">Sulfate</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-    <span class="n">q</span><span class="o">$</span><span class="n">NitrateQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">Nitrate</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-    <span class="n">q</span><span class="o">$</span><span class="n">PairWiseQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">PairWise</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
-    <span class="n">q</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [87]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">id</th>
-<th scope="col">Obs</th>
-<th scope="col">Sulfate</th>
-<th scope="col">Nitrate</th>
-<th scope="col">PairWise</th>
-<th scope="col">SulfateQ</th>
-<th scope="col">NitrateQ</th>
-<th scope="col">PairWiseQ</th>
-</tr></thead>
-<tbody><tr>
-<td>1   </td>
-<td>1461</td>
-<td>117 </td>
-<td>122 </td>
-<td>117 </td>
-<td>8   </td>
-<td>8.4 </td>
-<td>8   </td>
-</tr></tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [88]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">15</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">id</th>
-<th scope="col">Obs</th>
-<th scope="col">Sulfate</th>
-<th scope="col">Nitrate</th>
-<th scope="col">PairWise</th>
-<th scope="col">SulfateQ</th>
-<th scope="col">NitrateQ</th>
-<th scope="col">PairWiseQ</th>
-</tr></thead>
-<tbody>
-<tr>
-<td> 5  </td>
-<td>2922</td>
-<td>402 </td>
-<td>405 </td>
-<td>402 </td>
-<td>13.8</td>
-<td>13.9</td>
-<td>13.8</td>
-</tr>
-<tr>
-<td>10  </td>
-<td>1096</td>
-<td>148 </td>
-<td>183 </td>
-<td>148 </td>
-<td>13.5</td>
-<td>16.7</td>
-<td>13.5</td>
-</tr>
-<tr>
-<td>15  </td>
-<td> 730</td>
-<td> 83 </td>
-<td> 85 </td>
-<td> 83 </td>
-<td>11.4</td>
-<td>11.6</td>
-<td>11.4</td>
-</tr>
-<tr>
-<td>20  </td>
-<td>1461</td>
-<td>124 </td>
-<td>128 </td>
-<td>124 </td>
-<td> 8.5</td>
-<td> 8.8</td>
-<td> 8.5</td>
-</tr>
-<tr>
-<td>15  </td>
-<td> 730</td>
-<td> 83 </td>
-<td> 85 </td>
-<td> 83 </td>
-<td>11.4</td>
-<td>11.6</td>
-<td>11.4</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [89]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="m">44</span><span class="o">:</span><span class="m">40</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-<div class="output_html rendered_html output_subarea ">
-<table>
-<thead><tr>
-<th scope="col">id</th>
-<th scope="col">Obs</th>
-<th scope="col">Sulfate</th>
-<th scope="col">Nitrate</th>
-<th scope="col">PairWise</th>
-<th scope="col">SulfateQ</th>
-<th scope="col">NitrateQ</th>
-<th scope="col">PairWiseQ</th>
-</tr></thead>
-<tbody>
-<tr>
-<td>44  </td>
-<td>2557</td>
-<td>283 </td>
-<td>287 </td>
-<td>283 </td>
-<td>11.1</td>
-<td>11.2</td>
-<td>11.1</td>
-</tr>
-<tr>
-<td>43  </td>
-<td>1095</td>
-<td> 74 </td>
-<td> 77 </td>
-<td> 74 </td>
-<td> 6.8</td>
-<td> 7.0</td>
-<td> 6.8</td>
-</tr>
-<tr>
-<td>42  </td>
-<td>1095</td>
-<td> 60 </td>
-<td> 68 </td>
-<td> 60 </td>
-<td> 5.5</td>
-<td> 6.2</td>
-<td> 5.5</td>
-</tr>
-<tr>
-<td>41  </td>
-<td>2556</td>
-<td>227 </td>
-<td>243 </td>
-<td>227 </td>
-<td> 8.9</td>
-<td> 9.5</td>
-<td> 8.9</td>
-</tr>
-<tr>
-<td>40  </td>
-<td> 365</td>
-<td> 21 </td>
-<td> 21 </td>
-<td> 21 </td>
-<td> 5.8</td>
-<td> 5.8</td>
-<td> 5.8</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [90]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">dq</span><span class="o">&lt;-</span><span class="nf">DataQuality</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [91]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">dq</span><span class="o">$</span><span class="n">PairWiseQ</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_text output_subarea ">
-<pre>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
-   0.00    9.90   12.30   12.98   15.32   41.10 </pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>[<a href="00502/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Function-3:-Correlation-Test-">Function 3: Correlation Test <a name="f3"></a><a class="anchor-link" href="00502/#Function-3:-Correlation-Test-">¶</a>
-</h3>
-<p>The "Correlation" function will calculate the correlation coefficient and significance(correlation test) between the pollutants Sulfate and Nitrate for a range of minitor ids that meet required pair wise data quality.</p>
-<p><strong>Input</strong></p>
-<ol>
-<li>pwq - Pair wise data quality in percentage. Default value is 0.</li>
-<li>id - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
-</ol>
-<p><strong>Output</strong></p>
-<ol>
-<li>Pearson correlation test summary</li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [128]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="n">Correlation</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">pwq</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
-    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="s">"nitrate"</span><span class="p">)</span>
-    <span class="c1"># Init empty data frame</span>
-    <span class="n">dfc</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">setNames</span><span class="p">(</span><span class="nf">replicate</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="nf">numeric</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">simplify</span> <span class="o">=</span> <span class="bp">F</span><span class="p">),</span> <span class="n">p</span><span class="p">))</span>
-    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
-        <span class="c1"># Reading each csv file into a dataframe.</span>
-        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
-        <span class="c1"># Pairwise complete obserations</span>
-        <span class="n">dfpw</span><span class="o">&lt;-</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])</span><span class="o">|</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),]</span>
-        <span class="c1"># Checking if pairwise data quality of a monitor meets required pwq</span>
-        <span class="nf">if </span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dfpw</span><span class="p">)</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">pwq</span><span class="o">/</span><span class="m">100</span><span class="p">){</span>
-            <span class="n">dfc</span><span class="o">&lt;-</span><span class="nf">rbind</span><span class="p">(</span><span class="n">dfc</span><span class="p">,</span><span class="n">dfpw</span><span class="p">[,</span><span class="n">p</span><span class="p">])</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
-    <span class="c1"># Pearson correlation test</span>
-    <span class="nf">cor.test</span><span class="p">(</span><span class="n">dfc</span><span class="p">[,</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="n">dfc</span><span class="p">[,</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])</span>
-<span class="p">}</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [130]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of monitors with pairwise data quality above the 35%</span>
-<span class="nf">Correlation</span><span class="p">(</span><span class="m">35</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_text output_subarea ">
-<pre>
-	Pearson's product-moment correlation
-
-data:  dfc[, p[1]] and dfc[, p[2]]
-t = -2.0727, df = 148, p-value = 0.03993
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- -0.319614399 -0.007907202
-sample estimates:
-       cor 
--0.1679559 
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [127]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of monitors with pairwise data quality above the mean</span>
-<span class="nf">Correlation</span><span class="p">(</span><span class="m">12.98</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_text output_subarea ">
-<pre>
-	Pearson's product-moment correlation
-
-data:  dfc[, p[1]] and dfc[, p[2]]
-t = 16.813, df = 73847, p-value &lt; 2.2e-16
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- 0.05456375 0.06893346
-sample estimates:
-      cor 
-0.0617518 
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [129]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of all monitors</span>
-<span class="nf">Correlation</span><span class="p">()</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-
-
-<div class="output_text output_subarea ">
-<pre>
-	Pearson's product-moment correlation
-
-data:  dfc[, p[1]] and dfc[, p[2]]
-t = 20.916, df = 111800, p-value &lt; 2.2e-16
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- 0.05659269 0.06827041
-sample estimates:
-       cor 
-0.06243369 
-</pre>
-</div>
-
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [126]:</div>
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Maximum pairwise data quality is 41.1%.</span>
-<span class="c1"># Passing a value above that should give an eror.</span>
-<span class="nf">Correlation</span><span class="p">(</span><span class="m">42</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-
-<div class="output_area">
-
-    <div class="prompt"></div>
-
-
-<div class="output_subarea output_text output_error">
-<pre>
-Error in cor.test.default(dfc[, p[1]], y = dfc[, p[2]]): not enough finite observations
-Traceback:
-
-1. Correlation(42)
-2. cor.test(dfc[, p[1]], y = dfc[, p[2]])   # at line 16 of file &lt;text&gt;
-3. cor.test.default(dfc[, p[1]], y = dfc[, p[2]])
-4. stop("not enough finite observations")</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>[<a href="00502/#contents">^top</a>]</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-17 22:16:01.288450 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
     </article>
 </div>
 
         <ul class="pager postindexpager clearfix">
-<li class="next"><a href="index-2.html" rel="next">Older posts</a></li>
+<li class="next"><a href="index-3.html" rel="next">Older posts</a></li>
         </ul>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
         MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});

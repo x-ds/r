@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Data Science with R">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Science with R (old posts, page 3) | Data Science with R</title>
+<link href="../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/index-3.html">
+<link rel="icon" href="../files/favicon.ico" sizes="16x16">
+<link rel="prev" href="." type="text/html">
+<link rel="next" href="index-2.html" type="text/html">
+<!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]-->
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+
+    
+
+
+    
+<div class="postindex">
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00502/" class="u-url">Air Pollution data</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00502/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-17T18:02:38+05:30" itemprop="datePublished" title="2020-04-17 18:02">2020-04-17 18:02</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00502/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00502_Air_pollution.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00502_Air_pollution.html";
+var idcomments_post_url = "/posts/00502/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Contents</strong> <a name="contents"></a></p>
+<ol>
+<li><a href="00502/#intro">Introduction</a></li>
+<li><a href="00502/#f1">Function 1: Mean, Median, Mode, Standard Deviation</a></li>
+<li><a href="00502/#f2">Function 2: Data Quality</a></li>
+<li><a href="00502/#f3">Function 3: Correlation Test</a></li>
+</ol>
+<hr>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Introduction-">Introduction <a name="intro"></a><a class="anchor-link" href="00502/#Introduction-">¶</a>
+</h3>
+<p><strong>Data</strong><br>
+The zip file containing the data can be downloaded here:</p>
+<p><a href="http://link.datascience.eu.org/p004d1">AirPollution.zip</a> (2.67MB)</p>
+<p>The zip file contains 332 comma-separated-value (CSV) files containing pollution monitoring data for fine particulate matter (PM) air pollution at 332 locations in the United States. Each file contains data from a single monitor and the ID number for each monitor is contained in the file name. For example, data for monitor 200 is contained in the file "200.csv". Each file contains three variables:</p>
+<p>Date: the date of the observation in YYYY-MM-DD format (year-month-day)<br>
+sulfate: the level of sulfate PM in the air on that date (measured in micrograms per cubic meter)<br>
+nitrate: the level of nitrate PM in the air on that date (measured in micrograms per cubic meter)</p>
+<p>This data will be used in the following functions. The goal is load data from these files without dowloading or storing them in the hard disk drive, but be available to the functions to woek on them.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [7]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Create an empty file in memory</span>
+<span class="n">file</span><span class="o">&lt;-</span><span class="nf">tempfile</span><span class="p">()</span>
+<span class="c1"># Download the zip file to this empty file</span>
+<span class="nf">download.file</span><span class="p">(</span><span class="s">"http://link.datascience.eu.org/p004d1"</span><span class="p">,</span><span class="n">file</span><span class="p">,</span><span class="n">mode</span><span class="o">=</span><span class="s">"wb"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [10]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Check data file format</span>
+<span class="nf">head</span><span class="p">(</span><span class="nf">unzip</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="n">list</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Name</th>
+<th scope="col">Length</th>
+<th scope="col">Date</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>data/              </td>
+<td>    0              </td>
+<td>2012-09-22 00:27:00</td>
+</tr>
+<tr>
+<td>data/001.csv       </td>
+<td>31271              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/002.csv       </td>
+<td>81435              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/003.csv       </td>
+<td>47185              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/004.csv       </td>
+<td>78887              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+<tr>
+<td>data/005.csv       </td>
+<td>63204              </td>
+<td>2012-09-22 01:30:00</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>[<a href="00502/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Function-1:-Mean,-Median,-Mode,-Standard-Deviation-">Function 1: Mean, Median, Mode, Standard Deviation <a name="f1"></a><a class="anchor-link" href="00502/#Function-1:-Mean,-Median,-Mode,-Standard-Deviation-">¶</a>
+</h3>
+<p>The function "PollutantStats" will calculate the mean, median, mode and standard deviation of a pollutant (sulfate or nitrate) across a specified list of monitors.</p>
+<p><strong>Input</strong><br>
+The function "PollutantStats" accepts two arguments:</p>
+<ol>
+<li>"pollutant" - Pollutant name <em>sulfate</em> or <em>nitrate</em> </li>
+<li>"id" - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
+</ol>
+<p><strong>Output</strong><br>
+Mean, median, mode and standard deviation of the pollutant.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [19]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="n">PollutantStats</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">pollutant</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
+    <span class="c1"># Initialize empty vectors.</span>
+    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">()</span>    <span class="c1"># Pollutant vector</span>
+    <span class="c1"># Loop through each file number.</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
+        <span class="c1"># We need to have the file path in "data/001.csv" format to use read.csv() function.</span>
+        <span class="c1"># Use sprintf to combine directory name and file number in required format.</span>
+        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
+        <span class="c1"># Using a comma in df[,pollutant] converts it into a numeric vector.</span>
+        <span class="c1"># Else it remains a dataframe and pollutant_vector becomes a list.</span>
+        <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">df</span><span class="p">[,</span><span class="n">pollutant</span><span class="p">])</span>
+    <span class="p">}</span>
+    <span class="c1"># Calculate mean, median, mode and SD excluding missing values.</span>
+    <span class="n">Mean</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="n">Median</span><span class="o">&lt;-</span><span class="nf">mean</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="n">Mode</span><span class="o">&lt;-</span><span class="nf">names</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">))[</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">==</span><span class="nf">max</span><span class="p">(</span><span class="nf">table</span><span class="p">(</span><span class="n">p</span><span class="p">))]</span>
+    <span class="n">SD</span><span class="o">&lt;-</span><span class="nf">sd</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="n">na.rm</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+    <span class="nf">data.frame</span><span class="p">(</span><span class="n">Pollutant</span><span class="o">=</span><span class="n">pollutant</span><span class="p">,</span><span class="n">Mean</span><span class="o">=</span><span class="n">Mean</span><span class="p">,</span><span class="n">Median</span><span class="o">=</span><span class="n">Median</span><span class="p">,</span><span class="n">Mode</span><span class="o">=</span><span class="n">Mode</span><span class="p">,</span><span class="n">Std_dev</span><span class="o">=</span><span class="n">SD</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">12</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Pollutant</th>
+<th scope="col">Mean</th>
+<th scope="col">Median</th>
+<th scope="col">Mode</th>
+<th scope="col">Std_dev</th>
+</tr></thead>
+<tbody><tr>
+<td>sulfate </td>
+<td>3.765641</td>
+<td>3.765641</td>
+<td>2.84    </td>
+<td>2.874151</td>
+</tr></tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [22]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"nitrate"</span><span class="p">,</span><span class="m">74</span><span class="o">:</span><span class="m">80</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Pollutant</th>
+<th scope="col">Mean</th>
+<th scope="col">Median</th>
+<th scope="col">Mode</th>
+<th scope="col">Std_dev</th>
+</tr></thead>
+<tbody><tr>
+<td>nitrate </td>
+<td>2.611021</td>
+<td>2.611021</td>
+<td>1.24    </td>
+<td>2.802195</td>
+</tr></tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [24]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="m">10</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Pollutant</th>
+<th scope="col">Mean</th>
+<th scope="col">Median</th>
+<th scope="col">Mode</th>
+<th scope="col">Std_dev</th>
+</tr></thead>
+<tbody><tr>
+<td>sulfate  </td>
+<td>0.6243649</td>
+<td>0.6243649</td>
+<td>0.349    </td>
+<td>0.3637092</td>
+</tr></tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [25]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">PollutantStats</span><span class="p">(</span><span class="s">"nitrate"</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">Pollutant</th>
+<th scope="col">Mean</th>
+<th scope="col">Median</th>
+<th scope="col">Mode</th>
+<th scope="col">Std_dev</th>
+</tr></thead>
+<tbody><tr>
+<td>nitrate </td>
+<td>1.702932</td>
+<td>1.702932</td>
+<td>1.1     </td>
+<td>2.52504 </td>
+</tr></tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>[<a href="00502/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Function-2:-Data-Quality-">Function 2: Data Quality <a name="f2"></a><a class="anchor-link" href="00502/#Function-2:-Data-Quality-">¶</a>
+</h3>
+<p>The function "DataQuality" will report the quality of data for each monitor ID.</p>
+<p><strong>Input</strong><br>
+The function accepts one argument:</p>
+<ol>
+<li>"id" - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
+</ol>
+<p><strong>Output</strong></p>
+<ol>
+<li>id: Monitor ID</li>
+<li>Obs: Total number of valid and invalid observations for the corresponding monitor ID (including missing values)</li>
+<li>Sulfate, Nitrate: Number of valid data points of each pollutant.</li>
+<li>SulfateQ, NitrateQ: Percentage of valid data points of each pollutant.</li>
+<li>PairWise: Number of valid data points of both pollutants together.</li>
+<li>PairWiseQ: Percentafe of valid data points of both pollutants together</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [86]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="n">DataQuality</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
+    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="s">"nitrate"</span><span class="p">)</span>
+    <span class="c1"># Create an empty data frame</span>
+    <span class="n">x</span><span class="o">=</span><span class="nf">integer</span><span class="p">()</span>
+    <span class="n">q</span><span class="o">&lt;-</span><span class="nf">data.frame</span><span class="p">(</span><span class="n">id</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Obs</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Sulfate</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">Nitrate</span><span class="o">=</span><span class="n">x</span><span class="p">,</span><span class="n">PairWise</span><span class="o">=</span><span class="n">x</span><span class="p">)</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
+        <span class="c1"># Reading each csv file into a dataframe.</span>
+        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
+        <span class="n">obs</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+        <span class="n">sulfate</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])),])</span>
+        <span class="n">nitrate</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),])</span>
+        <span class="n">pairwise</span><span class="o">&lt;-</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])</span><span class="o">|</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),])</span>
+        <span class="n">q</span><span class="p">[</span><span class="nf">nrow</span><span class="p">(</span><span class="n">q</span><span class="p">)</span><span class="m">+1</span><span class="p">,]</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">obs</span><span class="p">,</span><span class="n">sulfate</span><span class="p">,</span><span class="n">nitrate</span><span class="p">,</span><span class="n">pairwise</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="c1"># Add SulfateQ, NitrateQ and PairWiseQ columns.</span>
+    <span class="n">q</span><span class="o">$</span><span class="n">SulfateQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">Sulfate</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">$</span><span class="n">NitrateQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">Nitrate</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">q</span><span class="o">$</span><span class="n">PairWiseQ</span><span class="o">&lt;-</span><span class="nf">round</span><span class="p">(</span><span class="n">q</span><span class="o">$</span><span class="n">PairWise</span><span class="o">/</span><span class="n">q</span><span class="o">$</span><span class="n">Obs</span><span class="o">*</span><span class="m">100</span><span class="p">,</span><span class="m">1</span><span class="p">)</span>
+    <span class="n">q</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [87]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="m">1</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">id</th>
+<th scope="col">Obs</th>
+<th scope="col">Sulfate</th>
+<th scope="col">Nitrate</th>
+<th scope="col">PairWise</th>
+<th scope="col">SulfateQ</th>
+<th scope="col">NitrateQ</th>
+<th scope="col">PairWiseQ</th>
+</tr></thead>
+<tbody><tr>
+<td>1   </td>
+<td>1461</td>
+<td>117 </td>
+<td>122 </td>
+<td>117 </td>
+<td>8   </td>
+<td>8.4 </td>
+<td>8   </td>
+</tr></tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [88]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">15</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">15</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">id</th>
+<th scope="col">Obs</th>
+<th scope="col">Sulfate</th>
+<th scope="col">Nitrate</th>
+<th scope="col">PairWise</th>
+<th scope="col">SulfateQ</th>
+<th scope="col">NitrateQ</th>
+<th scope="col">PairWiseQ</th>
+</tr></thead>
+<tbody>
+<tr>
+<td> 5  </td>
+<td>2922</td>
+<td>402 </td>
+<td>405 </td>
+<td>402 </td>
+<td>13.8</td>
+<td>13.9</td>
+<td>13.8</td>
+</tr>
+<tr>
+<td>10  </td>
+<td>1096</td>
+<td>148 </td>
+<td>183 </td>
+<td>148 </td>
+<td>13.5</td>
+<td>16.7</td>
+<td>13.5</td>
+</tr>
+<tr>
+<td>15  </td>
+<td> 730</td>
+<td> 83 </td>
+<td> 85 </td>
+<td> 83 </td>
+<td>11.4</td>
+<td>11.6</td>
+<td>11.4</td>
+</tr>
+<tr>
+<td>20  </td>
+<td>1461</td>
+<td>124 </td>
+<td>128 </td>
+<td>124 </td>
+<td> 8.5</td>
+<td> 8.8</td>
+<td> 8.5</td>
+</tr>
+<tr>
+<td>15  </td>
+<td> 730</td>
+<td> 83 </td>
+<td> 85 </td>
+<td> 83 </td>
+<td>11.4</td>
+<td>11.6</td>
+<td>11.4</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [89]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">DataQuality</span><span class="p">(</span><span class="m">44</span><span class="o">:</span><span class="m">40</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+<div class="output_html rendered_html output_subarea ">
+<table>
+<thead><tr>
+<th scope="col">id</th>
+<th scope="col">Obs</th>
+<th scope="col">Sulfate</th>
+<th scope="col">Nitrate</th>
+<th scope="col">PairWise</th>
+<th scope="col">SulfateQ</th>
+<th scope="col">NitrateQ</th>
+<th scope="col">PairWiseQ</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>44  </td>
+<td>2557</td>
+<td>283 </td>
+<td>287 </td>
+<td>283 </td>
+<td>11.1</td>
+<td>11.2</td>
+<td>11.1</td>
+</tr>
+<tr>
+<td>43  </td>
+<td>1095</td>
+<td> 74 </td>
+<td> 77 </td>
+<td> 74 </td>
+<td> 6.8</td>
+<td> 7.0</td>
+<td> 6.8</td>
+</tr>
+<tr>
+<td>42  </td>
+<td>1095</td>
+<td> 60 </td>
+<td> 68 </td>
+<td> 60 </td>
+<td> 5.5</td>
+<td> 6.2</td>
+<td> 5.5</td>
+</tr>
+<tr>
+<td>41  </td>
+<td>2556</td>
+<td>227 </td>
+<td>243 </td>
+<td>227 </td>
+<td> 8.9</td>
+<td> 9.5</td>
+<td> 8.9</td>
+</tr>
+<tr>
+<td>40  </td>
+<td> 365</td>
+<td> 21 </td>
+<td> 21 </td>
+<td> 21 </td>
+<td> 5.8</td>
+<td> 5.8</td>
+<td> 5.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [90]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="n">dq</span><span class="o">&lt;-</span><span class="nf">DataQuality</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [91]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">dq</span><span class="o">$</span><span class="n">PairWiseQ</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   0.00    9.90   12.30   12.98   15.32   41.10 </pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>[<a href="00502/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Function-3:-Correlation-Test-">Function 3: Correlation Test <a name="f3"></a><a class="anchor-link" href="00502/#Function-3:-Correlation-Test-">¶</a>
+</h3>
+<p>The "Correlation" function will calculate the correlation coefficient and significance(correlation test) between the pollutants Sulfate and Nitrate for a range of minitor ids that meet required pair wise data quality.</p>
+<p><strong>Input</strong></p>
+<ol>
+<li>pwq - Pair wise data quality in percentage. Default value is 0.</li>
+<li>id - An <strong>optional</strong> Monitor id vector. Default value is 1:332.</li>
+</ol>
+<p><strong>Output</strong></p>
+<ol>
+<li>Pearson correlation test summary</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [128]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="n">Correlation</span><span class="o">&lt;-</span><span class="nf">function</span><span class="p">(</span><span class="n">pwq</span><span class="o">=</span><span class="m">0</span><span class="p">,</span><span class="n">id</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="m">332</span><span class="p">){</span>
+    <span class="n">p</span><span class="o">&lt;-</span><span class="nf">c</span><span class="p">(</span><span class="s">"sulfate"</span><span class="p">,</span><span class="s">"nitrate"</span><span class="p">)</span>
+    <span class="c1"># Init empty data frame</span>
+    <span class="n">dfc</span><span class="o">&lt;-</span><span class="nf">as.data.frame</span><span class="p">(</span><span class="nf">setNames</span><span class="p">(</span><span class="nf">replicate</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="nf">numeric</span><span class="p">(</span><span class="m">0</span><span class="p">),</span> <span class="n">simplify</span> <span class="o">=</span> <span class="bp">F</span><span class="p">),</span> <span class="n">p</span><span class="p">))</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">id</span><span class="p">){</span>
+        <span class="c1"># Reading each csv file into a dataframe.</span>
+        <span class="n">df</span><span class="o">&lt;-</span><span class="nf">read.csv</span><span class="p">(</span><span class="nf">unz</span><span class="p">(</span><span class="n">file</span><span class="p">,</span><span class="nf">sprintf</span><span class="p">(</span><span class="s">"data/%03d.csv"</span><span class="p">,</span><span class="n">i</span><span class="p">)))</span>
+        <span class="c1"># Pairwise complete obserations</span>
+        <span class="n">dfpw</span><span class="o">&lt;-</span><span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">(</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]])</span><span class="o">|</span><span class="nf">is.na</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])),]</span>
+        <span class="c1"># Checking if pairwise data quality of a monitor meets required pwq</span>
+        <span class="nf">if </span><span class="p">(</span><span class="nf">nrow</span><span class="p">(</span><span class="n">dfpw</span><span class="p">)</span><span class="o">/</span><span class="nf">nrow</span><span class="p">(</span><span class="n">df</span><span class="p">)</span><span class="o">&gt;=</span><span class="n">pwq</span><span class="o">/</span><span class="m">100</span><span class="p">){</span>
+            <span class="n">dfc</span><span class="o">&lt;-</span><span class="nf">rbind</span><span class="p">(</span><span class="n">dfc</span><span class="p">,</span><span class="n">dfpw</span><span class="p">[,</span><span class="n">p</span><span class="p">])</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="c1"># Pearson correlation test</span>
+    <span class="nf">cor.test</span><span class="p">(</span><span class="n">dfc</span><span class="p">[,</span><span class="n">p</span><span class="p">[</span><span class="m">1</span><span class="p">]],</span><span class="n">y</span><span class="o">=</span><span class="n">dfc</span><span class="p">[,</span><span class="n">p</span><span class="p">[</span><span class="m">2</span><span class="p">]])</span>
+<span class="p">}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [130]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of monitors with pairwise data quality above the 35%</span>
+<span class="nf">Correlation</span><span class="p">(</span><span class="m">35</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>
+	Pearson's product-moment correlation
+
+data:  dfc[, p[1]] and dfc[, p[2]]
+t = -2.0727, df = 148, p-value = 0.03993
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ -0.319614399 -0.007907202
+sample estimates:
+       cor 
+-0.1679559 
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [127]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of monitors with pairwise data quality above the mean</span>
+<span class="nf">Correlation</span><span class="p">(</span><span class="m">12.98</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>
+	Pearson's product-moment correlation
+
+data:  dfc[, p[1]] and dfc[, p[2]]
+t = 16.813, df = 73847, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.05456375 0.06893346
+sample estimates:
+      cor 
+0.0617518 
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [129]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Correlation test of all monitors</span>
+<span class="nf">Correlation</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+
+
+<div class="output_text output_subarea ">
+<pre>
+	Pearson's product-moment correlation
+
+data:  dfc[, p[1]] and dfc[, p[2]]
+t = 20.916, df = 111800, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.05659269 0.06827041
+sample estimates:
+       cor 
+0.06243369 
+</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [126]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Maximum pairwise data quality is 41.1%.</span>
+<span class="c1"># Passing a value above that should give an eror.</span>
+<span class="nf">Correlation</span><span class="p">(</span><span class="m">42</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_text output_error">
+<pre>
+Error in cor.test.default(dfc[, p[1]], y = dfc[, p[2]]): not enough finite observations
+Traceback:
+
+1. Correlation(42)
+2. cor.test(dfc[, p[1]], y = dfc[, p[2]])   # at line 16 of file &lt;text&gt;
+3. cor.test.default(dfc[, p[1]], y = dfc[, p[2]])
+4. stop("not enough finite observations")</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>[<a href="00502/#contents">^top</a>]</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-17 22:16:01.288450 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article>
+</div>
+
+        <ul class="pager postindexpager clearfix">
+<li class="previous"><a href="." rel="prev">Newer posts</a></li>
+            <li class="next"><a href="index-2.html" rel="next">Older posts</a></li>
+        </ul>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

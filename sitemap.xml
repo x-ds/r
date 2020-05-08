@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/archive.html</loc>
-  <lastmod>2020-05-08T06:52:00Z</lastmod>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/categories/</loc>
@@ -55,7 +55,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/</loc>
-  <lastmod>2020-05-08T06:53:00Z</lastmod>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/00100/</loc>
@@ -170,6 +170,10 @@
   <lastmod>2020-05-08T06:53:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/posts/00425/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
@@ -183,11 +187,15 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/index-2.html</loc>
-  <lastmod>2020-05-08T06:52:00Z</lastmod>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/posts/index-3.html</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/</loc>
-  <lastmod>2020-05-04T14:57:00Z</lastmod>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/all/</loc>
@@ -210,6 +218,10 @@
   <lastmod>2020-04-20T17:28:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/tags/brewerpal/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/tags/chaining/</loc>
   <lastmod>2020-04-23T15:47:00Z</lastmod>
  </url>
@@ -220,6 +232,22 @@
  <url>
   <loc>https://r.datascience.eu.org/tags/colnames/</loc>
   <lastmod>2020-04-14T04:49:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/colorbrewer/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/colorramp/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/colorramppalette/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/colors/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/correlation/</loc>
@@ -322,6 +350,10 @@
   <lastmod>2020-04-20T17:28:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/tags/image/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/tags/installation/</loc>
   <lastmod>2020-04-13T17:47:00Z</lastmod>
  </url>
@@ -414,6 +446,10 @@
   <lastmod>2020-05-04T14:57:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/tags/palettes/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/tags/par/</loc>
   <lastmod>2020-05-04T14:57:00Z</lastmod>
  </url>
@@ -460,6 +496,10 @@
  <url>
   <loc>https://r.datascience.eu.org/tags/rep/</loc>
   <lastmod>2020-04-13T18:06:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/rgb/</loc>
+  <lastmod>2020-05-08T13:38:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/rnorm/</loc>

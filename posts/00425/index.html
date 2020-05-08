@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Working with Colors | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/00425/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00424/" title="Lattice Plotting System" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Working with Colors">
+<meta property="og:url" content="https://r.datascience.eu.org/posts/00425/">
+<meta property="og:description" content='R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+R is free software and comes with ABSOLUTELY NO WARR'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-08T19:00:30+05:30">
+<meta property="article:tag" content="brewer.pal()">
+<meta property="article:tag" content="colorBrewer">
+<meta property="article:tag" content="colorRamp()">
+<meta property="article:tag" content="colorRampPalette()">
+<meta property="article:tag" content="colors()">
+<meta property="article:tag" content="image()">
+<meta property="article:tag" content="palettes">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="rgb()">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Working with Colors</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-08T19:00:30+05:30" itemprop="datePublished" title="2020-05-08 19:00">2020-05-08 19:00</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00425/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00425_Working with Colors.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00425_Working with Colors.html";
+var idcomments_post_url = "/posts/00425/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>setwd("C:/Users/kk/Downloads/edu/DataScienceJHU/DataScienceWithR/04_Exploratory_Data_Analysis/workspace")<br>
+library(ggplot2)<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Principles of Analytic Graphs   2: Exploratory Graphs             
+ 3: Graphics Devices in R           4: Plotting Systems               
+ 5: Base Plotting System            6: Lattice Plotting System        
+ 7: Working with Colors             8: GGPlot2 Part1                  
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras                 
+11: Hierarchical Clustering        12: K Means Clustering             
+13: Dimension Reduction            14: Clustering Example             
+15: CaseStudy</code></pre>
+<p>Selection: 7</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>| Package ‘RColorBrewer’ loaded correctly!</p>
+<p>| Package ‘datasets’ loaded correctly!</p>
+<p>|                                                                             |   0%</p>
+<p>| Working_with_Colors. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson<br>
+| corresponds to 04_ExploratoryAnalysis/Colors.)</p>
+<p>...</p>
+<p>|=                                                                            |   1%<br>
+| This lesson is about using colors in R. It really supplements the lessons on<br>
+| plotting with the base and lattice packages which contain functions that are able to<br>
+| take the argument col. We'll discuss ways to set this argument more colorfully.</p>
+<p>...</p>
+<p>|==                                                                           |   3%<br>
+| Of course, color choice is secondary to your data and how you analyze it, but<br>
+| effectively using colors can enhance your plots and presentations, emphasizing the<br>
+| important points you're trying to convey.</p>
+<p>...</p>
+<p>|===                                                                          |   4%<br>
+| The motivation for this lesson is that the default color schemes for most plots in R<br>
+| are not optimal. Fortunately there have been recent developments to improve the<br>
+| handling and specification of colors in plots and graphs. We'll cover some functions<br>
+| in R as well as in external packages that are very handy. If you know how to use<br>
+| some of these then you'll have more options when you create your displays.</p>
+<p>...</p>
+<p>|====                                                                         |   6%<br>
+| We'll begin with a motivating example - a typical R plot using 3 default colors.</p>
+<p><img src="../../images/r0040830.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|======                                                                       |   7%<br>
+| According to the plot, what is color 2?</p>
+<p>1: Blue<br>
+2: Empty black circles<br>
+3: Red<br>
+4: Green</p>
+<p>Selection: 3</p>
+<p>| Nice work!</p>
+<p>|=======                                                                      |   9%<br>
+| So these are the first 3 default values. If you were plotting and just specified<br>
+| col=c(1:3) as one of your arguments, these are colors you'd get. Maybe you like<br>
+| them, but they might not be the best choice for your application.</p>
+<p>...</p>
+<p>|========                                                                     |  10%<br>
+| To show you some options, here's a display of two color palettes that come with the<br>
+| grDevices package available to you. The left shows you some colors from the function<br>
+| heat.colors. Here low values are represented in red and as the values increase the<br>
+| colors move through yellow towards white. This is consistent with the physical<br>
+| properties of fire. The right display is from the function topo.colors which uses<br>
+| topographical colors ranging from blue (low values) towards brown (higher values).</p>
+<p><img src="../../images/r0040840.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|=========                                                                    |  12%<br>
+| So we'll first discuss some functions that the grDevices package offers. The<br>
+| function colors() lists the names of 657 predefined colors you can use in any<br>
+| plotting function.  These names are returned as strings. Run the R command sample<br>
+| with colors() as its first argument and 10 as its second to give you an idea of the<br>
+| choices you have.</p>
+<blockquote>
+<p>sample(colors(),10)<br>
+ [1] "gray1"         "darkorchid2"   "blue3"         "darkorchid3"   "gray10"<br>
+ [6] "firebrick1"    "magenta3"      "gray75"        "lemonchiffon4" "rosybrown3"</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|==========                                                                   |  13%<br>
+| We see a lot of variety in the colors, some of which are names followed by numbers<br>
+| indicating that there are multiple forms of that particular color.</p>
+<p>...</p>
+<p>|===========                                                                  |  14%<br>
+| So you're free to use any of these 600+ colors listed by the colors function.<br>
+| However, two additional functions from grDevices, colorRamp and colorRampPalette,<br>
+| give you more options. Both of these take color names as arguments and use them as<br>
+| "palettes", that is, these argument colors are blended in different proportions to<br>
+| form new colors.</p>
+<p>...</p>
+<p>|============                                                                 |  16%<br>
+| The first, colorRamp, takes a palette of colors (the arguments) and returns a<br>
+| function that takes values between 0 and 1 as arguments. The 0 and 1 correspond to<br>
+| the extremes of the color palette. Arguments between 0 and 1 return blends of these<br>
+| extremes.</p>
+<p>...</p>
+<p>|=============                                                                |  17%<br>
+| Let's see what this means. Assign to the variable pal the output of a call to<br>
+| colorRamp with the single argument, c("red","blue").</p>
+<blockquote>
+<p>pal&lt;-colorRamp(c("red","blue"))</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============                                                              |  19%<br>
+| We don't see any output, but R has created the function pal which we can call with a<br>
+| single argument between 0 and 1. Call pal now with the argument 0.</p>
+<blockquote>
+<p>pal(0)<br>
+     [,1] [,2] [,3]<br>
+[1,]  255    0    0</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|================                                                             |  20%<br>
+| We see a 1 by 3 array with 255 as the first entry and 0 in the other 2. This 3 long<br>
+| vector corresponds to red, green, blue (RGB) color encoding commonly used in<br>
+| televisions and monitors. In R, 24 bits are used to represent colors. Think of these<br>
+| 24 bits as 3 sets of 8 bits, each of which represents an intensity for one of the<br>
+| colors red, green, and blue.</p>
+<p>...</p>
+<p>|=================                                                            |  22%<br>
+| The 255 returned from the pal(0) call corresponds to the largest possible number<br>
+| represented with 8 bits, so the vector (255,0,0) contains only red (no green or<br>
+| blue), and moreover, it's the highest possible value of red.</p>
+<p>...</p>
+<p>|==================                                                           |  23%<br>
+| Given that you created pal with the palette containing "red" and "blue", what color<br>
+| do you think will be represented by the vector that pal(1) returns? Recall that pal<br>
+| will only take arguments between 0 and 1, so 1 is the largest argument you can pass<br>
+| it.</p>
+<p>1: blue<br>
+2: red<br>
+3: green<br>
+4: yellow</p>
+<p>Selection: 1</p>
+<p>| Keep up the great work!</p>
+<p>|===================                                                          |  25%<br>
+| Check your answer now by calling pal with the argument 1.</p>
+<blockquote>
+<p>pal(1)<br>
+     [,1] [,2] [,3]<br>
+[1,]    0    0  255</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|====================                                                         |  26%<br>
+| You see the vector (0,0,255) which represents the highest intensity of blue. What<br>
+| vector do you think the call pal(.5) will return?</p>
+<p>1: (0,255,0)<br>
+2: (255,255,255)<br>
+3: (127.5,0,127.5)<br>
+4: (255,0,255)</p>
+<p>Selection: 3</p>
+<p>| You got it!</p>
+<p>|=====================                                                        |  28%<br>
+| The function pal can take more than one argument. It returns one 3-long (or 4-long,<br>
+| but more about this later) vector for each argument. To see this in action, call pal<br>
+| with the argument seq(0,1,len=6).</p>
+<blockquote>
+<p>pal(seq(0,1,len=6))</p>
+
+<pre><code>     [,1] [,2] [,3]  
+[1,]  255    0    0  
+[2,]  204    0   51  
+[3,]  153    0  102  
+[4,]  102    0  153  
+[5,]   51    0  204  
+[6,]    0    0  255</code></pre>
+<p>| Nice work!</p>
+</blockquote>
+<p>|======================                                                       |  29%<br>
+| Six vectors (each of length 3) are returned. The i-th vector is identical to output<br>
+| that would be returned by the call pal(i/5) for i=0,...5. We see that the i-th row<br>
+| (for i=1,...6) differs from the (i-1)-st row in the following way. Its red entry is<br>
+| 51 = 255/5 points lower and its blue entry is 51 points higher.</p>
+<p>...</p>
+<p>|=======================                                                      |  30%<br>
+| So pal creates colors using the palette we specified when we called colorRamp. In<br>
+| this example none of pal's outputs will ever contain green since it wasn't in our<br>
+| initial palette.</p>
+<p>...</p>
+<p>|=========================                                                    |  32%<br>
+| We'll turn now to colorRampPalette, a function similar to colorRamp. It also takes a<br>
+| palette of colors and returns a function. This function, however, takes integer<br>
+| arguments (instead of numbers between 0 and 1) and returns a vector of colors each<br>
+| of which is a blend of colors of the original palette.</p>
+<p>...</p>
+<p>|==========================                                                   |  33%<br>
+| The argument you pass to the returned function specifies the number of colors you<br>
+| want returned. Each element of the returned vector is a 24 bit number, represented<br>
+| as 6 hexadecimal characters, which range from 0 to F. This set of 6 hex characters<br>
+| represents the intensities of red, green, and blue, 2 characters for each color.</p>
+<p>...</p>
+<p>|===========================                                                  |  35%<br>
+| To see this better, assign to the variable p1 the output of a call to<br>
+| colorRampPalette with the single argument, c("red","blue"). We'll compare it to our<br>
+| experiments using colorRamp.</p>
+<blockquote>
+<p>p1&lt;-colorRampPalette(c("red","blue"))</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|============================                                                 |  36%<br>
+| Now call p1 with the argument 2.</p>
+<blockquote>
+<p>p1(2)<br>
+[1] "#FF0000" "#0000FF"</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================                                                |  38%<br>
+| We see a 2-long vector is returned. The first entry FF0000 represents red. The FF is<br>
+| hexadecimal for 255, the same value returned by our call pal(0). The second entry<br>
+| 0000FF represents blue, also with intensity 255.</p>
+<p>...</p>
+<p>|==============================                                               |  39%<br>
+| Now call p1 with the argument 6. Let's see if we get the same result as we did when<br>
+| we called pal with the argument seq(0,1,len=6).</p>
+<blockquote>
+<p>p1(6)<br>
+[1] "#FF0000" "#CC0033" "#990066" "#650099" "#3200CC" "#0000FF"</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============================                                              |  41%<br>
+| Now we get the 6-long vector (FF0000, CC0033, 990066, 650099, 3200CC, 0000FF). We<br>
+| see the two ends (FF0000 and 0000FF) are consistent with the colors red and blue.<br>
+| How about CC0033? Type 0xcc or 0xCC at the command line to see the decimal<br>
+| equivalent of this hex number. You must include the 0 before the x to specify that<br>
+| you're entering a hexadecimal number.</p>
+<blockquote>
+<p>0xCC<br>
+[1] 204</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|================================                                             |  42%<br>
+| So 0xCC equals 204 and we can easily convert hex 33 to decimal, as in<br>
+| 0x33=3*16+3=51. These were exactly the numbers we got in the second row returned<br>
+| from our call to pal(seq(0,1,len=6)). We see that 4 of the 6 numbers agree with our<br>
+| earlier call to pal. Two of the 6 differ slightly.</p>
+<p>...</p>
+<p>|=================================                                            |  43%<br>
+| We can also form palettes using colors other than red, green and blue. Form a<br>
+| palette, p2, by calling colorRampPalette with the colors "red" and "yellow".<br>
+| Remember to concatenate them into a single argument.</p>
+<blockquote>
+<p>p2&lt;-colorRampPalette(c("red","yellow"))</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|===================================                                          |  45%<br>
+| Now call p2 with the argument 2. This will show us the two extremes of the blends of<br>
+| colors we'll get.</p>
+<blockquote>
+<p>p2(2)<br>
+[1] "#FF0000" "#FFFF00"</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|====================================                                         |  46%<br>
+| Not surprisingly the first color we see is FF0000, which we know represents red. The<br>
+| second color returned, FFFF00, must represent yellow, a combination of full<br>
+| intensity red and full intensity green. This makes sense, since yellow falls between<br>
+| red and green on the color wheel as we see here. (We borrowed this image from<br>
+| lucaskrech.com.)</p>
+<p><img src="../../images/r0040850.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|=====================================                                        |  48%<br>
+| Let's now call p2 with the argument 10. This will show us how the two extremes, red<br>
+| and yellow, are blended together.</p>
+<blockquote>
+<p>p2(10)<br>
+ [1] "#FF0000" "#FF1C00" "#FF3800" "#FF5500" "#FF7100" "#FF8D00" "#FFAA00" "#FFC600"<br>
+ [9] "#FFE200" "#FFFF00"</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|======================================                                       |  49%<br>
+| So we see the 10-long vector. For each element, the red component is fixed at FF,<br>
+| and the green component grows from 00 (at the first element) to FF (at the last).</p>
+<p>...</p>
+<p>|=======================================                                      |  51%<br>
+| This is all fine and dandy but you're probably wondering when you can see how all<br>
+| these colors show up in a display. We copied some code from the R documentation<br>
+| pages (color.scale if you're interested) and created a function for you, showMe.<br>
+| This takes as an argument, a color vector, which as you know, is precisely what<br>
+| calls to p1 and p2 return to you. Call showMe now with p1(20).</p>
+<blockquote>
+<p>showMe(p1(20))</p>
+</blockquote>
+<p><img src="../../images/r0040860.png" alt="image" title="image"></p>
+<p>| That's the answer I was looking for.</p>
+<p>|========================================                                     |  52%<br>
+| We see the interpolated palette here. Low values in the lower left corner are red<br>
+| and as you move to the upper right, the colors move toward blue. Now call showMe<br>
+| with p2(20) as its argument.</p>
+<blockquote>
+<p>showMe(p2(20))</p>
+</blockquote>
+<p><img src="../../images/r0040870.png" alt="image" title="image"></p>
+<p>| You're the best!</p>
+<p>|=========================================                                    |  54%<br>
+| Here we see a similar display, the colors moving from red to yellow, the base colors<br>
+| of our p2 palette. For fun, see what p2(2) looks like using showMe.</p>
+<blockquote>
+<p>showMe(p2(2))</p>
+</blockquote>
+<p><img src="../../images/r0040880.png" alt="image" title="image"></p>
+<p>| You are really on a roll!</p>
+<p>|==========================================                                   |  55%<br>
+| A much more basic pattern, simple but elegant.</p>
+<p>...</p>
+<p>|============================================                                 |  57%<br>
+| We mentioned before that colorRamp (and colorRampPalette) could return a 3 or 4 long<br>
+| vector of colors. We saw 3-long vectors returned indicating red, green, and blue<br>
+| intensities. What would the 4th entry be?</p>
+<p>...</p>
+<p>|=============================================                                |  58%<br>
+| We'll answer this indirectly. First, look at the function p1 that colorRampPalette<br>
+| returned to you. Just type p1 at the command prompt.</p>
+<blockquote>
+<p>p1<br>
+function (n)<br>
+{<br>
+    x &lt;- ramp(seq.int(0, 1, length.out = n))<br>
+    if (ncol(x) == 4L)<br>
+        rgb(x[, 1L], x[, 2L], x[, 3L], x[, 4L], maxColorValue = 255)<br>
+    else rgb(x[, 1L], x[, 2L], x[, 3L], maxColorValue = 255)<br>
+}</p>
+<p>&lt;bytecode: 0x00000174e0c71940&gt;</p>
+<p>&lt;environment: 0x00000174dbdd5a00&gt;</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|==============================================                               |  59%<br>
+| We see that p1 is a short function with one argument, n. The argument n is used as<br>
+| the length in a call to the function seq.int, itself an argument to the function<br>
+| ramp. We can infer that ramp is just going to divide the interval from 0 to 1 into n<br>
+| pieces.</p>
+<p>...</p>
+<p>|===============================================                              |  61%<br>
+| The heart of p1 is really the call to the function rgb with either 4 or 5 arguments.<br>
+| Use the ?fun construct to look at the R documentation for rgb now.</p>
+<blockquote>
+<p>?rgb</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|================================================                             |  62%<br>
+| We see that rgb is a color specification function that can be used to produce any<br>
+| color with red, green, blue proportions. We see the maxColorValue is 1 by default,<br>
+| so if we called rgb with values for red, green and blue, we would specify numbers at<br>
+| most 1 (assuming we didn't change the default for maxColorValue). According to the<br>
+| documentation, what is the maximum number of arguments rgb can have?</p>
+<p>1: 6<br>
+2: 4<br>
+3: 5<br>
+4: 3</p>
+<p>Selection: 1</p>
+<p>| All that practice is paying off!</p>
+<p>|=================================================                            |  64%<br>
+| So the fourth argument is alpha which can be a logical, i.e., either TRUE or FALSE,<br>
+| or a numerical value. Create the function p3 now by calling colorRampPalette with<br>
+| the colors blue and green (remember to concatenate them into a single argument) and<br>
+| setting the alpha argument to .5.</p>
+<blockquote>
+<p>p3&lt;-colorRampPalette(c("blue","green"),alpha=0.5)</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|==================================================                           |  65%<br>
+| Now call p3 with the argument 5.</p>
+<blockquote>
+<p>p3(5)<br>
+[1] "#0000FFFF" "#003FBFFF" "#007F7FFF" "#00BF3FFF" "#00FF00FF"</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|===================================================                          |  67%<br>
+| We see that in the 5-long vector that the call returned, each element has 32 bits, 4<br>
+| groups of 8 bits each. The last 8 bits represent the value of alpha. Since it was<br>
+| NOT ZERO in the call to colorRampPalette, it gets the maximum FF value. (The same<br>
+| result would happen if alpha had been set to TRUE.) When it was 0 or FALSE (as in<br>
+| previous calls to colorRampPalette) it was given the value 00 and wasn't shown. The<br>
+| leftmost 24 bits of each element are the same RGB encoding we previously saw.</p>
+<p>...</p>
+<p>|====================================================                         |  68%<br>
+| So what is alpha? Alpha represents an opacity level, that is, how transparent should<br>
+| the colors be. We can add color transparency with the alpha parameter to calls to<br>
+| rgb. We haven't seen any examples of this yet, but we will now.</p>
+<p>...</p>
+<p>|======================================================                       |  70%<br>
+| We generated 1000 random normal pairs for you in the variables x and y. We'll plot<br>
+| them in a scatterplot by calling plot with 4 arguments. The variables x and y are<br>
+| the first 2. The third is the print character argument pch. Set this equal to 19<br>
+| (filled circles). The final argument is col which should be set equal to a call to<br>
+| rgb. Give rgb 3 arguments, 0, .5, and .5.</p>
+<blockquote>
+<p>plot(x,y,pch=19,col=rgb(0,0.5,0.5))</p>
+</blockquote>
+<p><img src="../../images/r0040890.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|=======================================================                      |  71%<br>
+| Well this picture is okay for a scatterplot, a nice mix of blue and green, but it<br>
+| really doesn't tell us too much information in the center portion, since the points<br>
+| are so thick there. We see there are a lot of points, but is one area more filled<br>
+| than another? We can't really discriminate between different point densities. This<br>
+| is where the alpha argument can help us. Recall your plot command (use the up arrow)<br>
+| and add a 4th argument, .3, to the call to rgb. This will be our value for alpha.</p>
+<blockquote>
+<p>plot(x,y,pch=19,col=rgb(0,0.5,0.5,0.3))</p>
+</blockquote>
+<p><img src="../../images/r0040900.png" alt="image" title="image"></p>
+<p>| You are amazing!</p>
+<p>|========================================================                     |  72%<br>
+| Clearly this is better. It shows us where, specifically, the densest areas of the<br>
+| scatterplot really are.</p>
+<p>...</p>
+<p>|=========================================================                    |  74%<br>
+| Our last topic for this lesson is the RColorBrewer Package, available on CRAN, that<br>
+| contains interesting and useful color palettes, of which there are 3 types,<br>
+| sequential, divergent, and qualitative. Which one you would choose to use depends on<br>
+| your data.</p>
+<p>...</p>
+<p>|==========================================================                   |  75%<br>
+| Here's a picture of the palettes available from this package. The top section shows<br>
+| the sequential palettes in which the colors are ordered from light to dark. The<br>
+| divergent palettes are at the bottom. Here the neutral color (white) is in the<br>
+| center, and as you move from the middle to the two ends of each palette, the colors<br>
+| increase in intensity. The middle display shows the qualitative palettes which look<br>
+| like collections of random colors. These might be used to distinguish factors in<br>
+| your data.</p>
+<p><img src="../../images/r0040910.png" alt="image" title="image"></p>
+<p>...</p>
+<p>|===========================================================                  |  77%<br>
+| These colorBrewer palettes can be used in conjunction with the colorRamp() and<br>
+| colorRampPalette() functions. You would use colors from a colorBrewer palette as<br>
+| your base palette,i.e., as arguments to colorRamp or colorRampPalette which would<br>
+| interpolate them to create new colors.</p>
+<p>...</p>
+<p>|============================================================                 |  78%<br>
+| As an example of this, create a new object, cols by calling the function brewer.pal<br>
+| with 2 arguments, 3 and "BuGn". The string "BuGn" is the second last palette in the<br>
+| sequential display. The 3 tells the function how many different colors we want.</p>
+<blockquote>
+<p>cols&lt;-brewer.pal(3,"BuGn")</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=============================================================                |  80%<br>
+| Use showMe to look at cols now.</p>
+<blockquote>
+<p>showMe(cols)</p>
+</blockquote>
+<p><img src="../../images/r0040920.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|==============================================================               |  81%<br>
+| We see 3 colors, mixes of blue and green. Now create the variable pal by calling<br>
+| colorRampPalette with cols as its argument.</p>
+<blockquote>
+<p>pal&lt;-colorRampPalette(cols)</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|================================================================             |  83%<br>
+| The call showMe(pal(3)) would be identical to the showMe(cols) call. So use showMe<br>
+| to look at pal(20).</p>
+<blockquote>
+<p>showMe(pal(20))</p>
+</blockquote>
+<p><img src="../../images/r0040930.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|=================================================================            |  84%<br>
+| Now we can use the colors in pal(20) to display topographic information on<br>
+| Auckland's Maunga Whau Volcano. R provides this information in a matrix called<br>
+| volcano which is included in the package datasets.  Call the R function image with<br>
+| volcano as its first argument and col set equal to pal(20) as its second.</p>
+<blockquote>
+<p>image(volcano,col=pal(20))</p>
+</blockquote>
+<p><img src="../../images/r0040940.png" alt="image" title="image"></p>
+<p>| Great job!</p>
+<p>|==================================================================           |  86%<br>
+| We see that the colors here of the sequential palette clue us in on the topography.<br>
+| The darker colors are more concentrated than the lighter ones. Just for fun, recall<br>
+| your last command calling image and instead of pal(20), use p1(20) as the second<br>
+| argument.</p>
+<blockquote>
+<p>image(volcano,col=p1(20))</p>
+</blockquote>
+<p><img src="../../images/r0040950.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|===================================================================          |  87%<br>
+| Not as nice a picture since the palette isn't as well suited to this data, but<br>
+| that's okay. It's review time!!!!</p>
+<p>...</p>
+<p>|====================================================================         |  88%<br>
+| True or False? Careful use of colors in plots/maps/etc. can make it easier for the<br>
+| reader to understand what points you're trying to convey.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You got it!</p>
+<p>|=====================================================================        |  90%<br>
+| Which of the following is an R package that provides color palettes for sequential,<br>
+| categorical, and diverging data?</p>
+<p>1: RColorBluer<br>
+2: RColorBrewer<br>
+3: RColorStewer<br>
+4: RColorVintner</p>
+<p>Selection: 2</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|======================================================================       |  91%<br>
+| True or False? The colorRamp and colorRampPalette functions can be used in<br>
+| conjunction with color palettes to connect data to colors.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You are really on a roll!</p>
+<p>|=======================================================================      |  93%<br>
+| True or False?  Transparency can NEVER be used to clarify plots with many points</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| Excellent work!</p>
+<p>|=========================================================================    |  94%<br>
+| True or False?  The call p7 &lt;- colorRamp("red","blue") would work (i.e., not<br>
+| generate an error).</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| Excellent job!</p>
+<p>|==========================================================================   |  96%<br>
+| True or False?  The function colors returns only 10 colors.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| All that practice is paying off!</p>
+<p>|===========================================================================  |  97%<br>
+| Transparency is determined by which parameter of the rgb function?</p>
+<p>1: beta<br>
+2: gamma<br>
+3: it's all Greek to me<br>
+4: delta<br>
+5: alpha</p>
+<p>Selection: 5</p>
+<p>| You got it right!</p>
+<p>|============================================================================ |  99%<br>
+| Congratulations! We hope this lesson didn't make you see red. We're green with envy<br>
+| that you blue through it.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Your dedication is inspiring!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-08 19:05:14.923558 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/brewerpal/" rel="tag">brewer.pal()</a></li>
+            <li><a class="tag p-category" href="../../tags/colorbrewer/" rel="tag">colorBrewer</a></li>
+            <li><a class="tag p-category" href="../../tags/colorramp/" rel="tag">colorRamp()</a></li>
+            <li><a class="tag p-category" href="../../tags/colorramppalette/" rel="tag">colorRampPalette()</a></li>
+            <li><a class="tag p-category" href="../../tags/colors/" rel="tag">colors()</a></li>
+            <li><a class="tag p-category" href="../../tags/image/" rel="tag">image()</a></li>
+            <li><a class="tag p-category" href="../../tags/palettes/" rel="tag">palettes</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/rgb/" rel="tag">rgb()</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00424/" rel="prev" title="Lattice Plotting System">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00425_Working with Colors.html";
+var idcomments_post_url = "https://r.datascience.eu.org/posts/00425/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>
