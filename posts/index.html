@@ -73,7 +73,446 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00425/" class="u-url">Working with Colors</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00426/" class="u-url">GGPlot2 Part1</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00426/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-08T20:00:59+05:30" itemprop="datePublished" title="2020-05-08 20:00">2020-05-08 20:00</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00426/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00426_GGPlot2 Part1.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00426_GGPlot2 Part1.html";
+var idcomments_post_url = "/posts/00426/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+library(ggplot2)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 8</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘ggplot2’ loaded correctly!</p>
+<p>|                                                                             |   0%</p>
+<p>| GGPlot2_Part1. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson<br>
+| corresponds to 04_ExploratoryAnalysis/ggplot2.)</p>
+<p>...</p>
+<p>|==                                                                           |   2%<br>
+| In another lesson, we gave you an overview of the three plotting systems in R. In<br>
+| this lesson we'll focus on the third and newest plotting system in R, ggplot2.  As<br>
+| we did with the other two systems, we'll focus on creating graphics on the screen<br>
+| device rather than another graphics device.</p>
+<p>...</p>
+<p>|====                                                                         |   5%<br>
+| The ggplot2 package is an add-on package available from CRAN via install.packages().<br>
+| (Don't worry, we've installed it for you already.) It is an implementation of The<br>
+| Grammar of Graphics, an abstract concept (as well as book) authored and invented by<br>
+| Leland Wilkinson and implemented by Hadley Wickham while he was a graduate student<br>
+| at Iowa State. The web site <a href="http://ggplot2.org">http://ggplot2.org</a> provides complete documentation.</p>
+<p>...</p>
+<p>|======                                                                       |   7%<br>
+| A grammar of graphics represents an abstraction of graphics, that is, a theory of<br>
+| graphics which conceptualizes basic pieces from which you can build new graphics and<br>
+| graphical objects. The goal of the grammar is to “Shorten the distance from mind to<br>
+| page”. From Hadley Wickham's book we learn that</p>
+<p>...</p>
+<p>|========                                                                     |  10%<br>
+| The ggplot2 package "is composed of a set of independent components that can be<br>
+| composed in many different ways. ... you can create new graphics that are precisely<br>
+| tailored for your problem." These components include aesthetics which are attributes<br>
+| such as colour, shape, and size, and geometric objects or geoms such as points,<br>
+| lines, and bars.</p>
+<p>...</p>
+<p>|=========                                                                    |  12%<br>
+| Before we delve into details, let's review the other 2 plotting systems.</p>
+<p>...</p>
+<p>|===========                                                                  |  15%<br>
+| Recall what you know about R's base plotting system. Which of the following does NOT<br>
+| apply to it?</p>
+<p>1: It is convenient and mirrors how we think of building plots and analyzing data<br>
+2: Can easily go back once the plot has started (e.g., to adjust margins or correct a typo)<br>
+3: Use annotation functions to add/modify (text, lines, points, axis)<br>
+4: Start with plot (or similar) function</p>
+<p>Selection: 2</p>
+<p>| That's correct!</p>
+<p>|=============                                                                |  17%<br>
+| Recall what you know about R's lattice plotting system. Which of the following does<br>
+| NOT apply to it?</p>
+<p>1: Margins and spacing are set automatically because entire plot is specified at once<br>
+2: Most useful for conditioning types of plots and putting many panels on one plot<br>
+3: Can always add to the plot once it is created<br>
+4: Plots are created with a single function call (xyplot, bwplot, etc.)</p>
+<p>Selection: 3</p>
+<p>| Excellent job!</p>
+<p>|===============                                                              |  20%<br>
+| If we told you that ggplot2 combines the best of base and lattice, that would mean<br>
+| it ...?</p>
+<p>1: Automatically deals with spacings, text, titles but also allows you to annotate<br>
+2: Its default mode makes many choices for you (but you can customize!)<br>
+3: All of the others<br>
+4: Like lattice it allows for multipanels but more easily and intuitively</p>
+<p>Selection: 3</p>
+<p>| You are quite good my friend!</p>
+<p>|=================                                                            |  22%<br>
+| Yes, ggplot2 combines the best of base and lattice. It allows for multipanel<br>
+| (conditioning) plots (as lattice does) but also post facto annotation (as base<br>
+| does), so you can add titles and labels. It uses the low-level grid package (which<br>
+| comes with R) to draw the graphics. As part of its grammar philosophy, ggplot2 plots<br>
+| are composed of aesthetics (attributes such as size, shape, color) and geoms<br>
+| (points, lines, and bars), the geometric objects you see on the plot.</p>
+<p>...</p>
+<p>|===================                                                          |  24%<br>
+| The ggplot2 package has 2 workhorse functions. The more basic workhorse function is<br>
+| qplot, (think quick plot), which works like the plot function in the base graphics<br>
+| system. It can produce many types of plots (scatter, histograms, box and whisker)<br>
+| while hiding tedious details from the user. Similar to lattice functions, it looks<br>
+| for data in a data frame or parent environment.</p>
+<p>...</p>
+<p>|=====================                                                        |  27%<br>
+| The more advanced workhorse function in the package is ggplot, which is more<br>
+| flexible and can be customized for doing things qplot cannot do. In this lesson<br>
+| we'll focus on qplot.</p>
+<p>...</p>
+<p>|=======================                                                      |  29%<br>
+| We'll start by showing how easy and versatile qplot is. First, let's look at some<br>
+| data which comes with the ggplot2 package. The mpg data frame contains fuel economy<br>
+| data for 38 models of cars manufactured in 1999 and 2008. Run the R command str with<br>
+| the argument mpg. This will give you an idea of what mpg contains.</p>
+<blockquote>
+<p>str(mpg)</p>
+
+<pre><code>tibble [234 x 11] (S3: tbl_df/tbl/data.frame)  
+ $ manufacturer: chr [1:234] "audi" "audi" "audi" "audi" ...  
+ $ model       : chr [1:234] "a4" "a4" "a4" "a4" ...  
+ $ displ       : num [1:234] 1.8 1.8 2 2 2.8 2.8 3.1 1.8 1.8 2 ...  
+ $ year        : int [1:234] 1999 1999 2008 2008 1999 1999 2008 1999 1999 2008 ...  
+ $ cyl         : int [1:234] 4 4 4 4 6 6 6 4 4 4 ...  
+ $ trans       : chr [1:234] "auto(l5)" "manual(m5)" "manual(m6)" "auto(av)" ...  
+ $ drv         : chr [1:234] "f" "f" "f" "f" ...  
+ $ cty         : int [1:234] 18 21 20 21 16 18 18 18 16 20 ...  
+ $ hwy         : int [1:234] 29 29 31 30 26 26 27 26 25 28 ...  
+ $ fl          : chr [1:234] "p" "p" "p" "p" ...  
+ $ class       : chr [1:234] "compact" "compact" "compact" "compact" ...</code></pre>
+<p>| You are really on a roll!</p>
+</blockquote>
+<p>|========================                                                     |  32%<br>
+| We see that there are 234 points in the dataset concerning 11 different<br>
+| characteristics of the cars. Suppose we want to see if there's a correlation between<br>
+| engine displacement (displ) and highway miles per gallon (hwy). As we did with the<br>
+| plot function of the base system we could simply call qplot with 3 arguments, the<br>
+| first two are the variables we want to examine and the third argument data is set<br>
+| equal to the name of the dataset which contains them (in this case, mpg). Try this<br>
+| now.</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg)</p>
+</blockquote>
+<p><img src="../images/r0040960.png" alt="image" title="image"></p>
+<p>| You are amazing!</p>
+<p>|==========================                                                   |  34%<br>
+| A nice scatterplot done simply, right? All the labels are provided. The first<br>
+| argument is shown along the x-axis and the second along the y-axis. The negative<br>
+| trend (increasing displacement and lower gas mileage) is pretty clear. Now suppose<br>
+| we want to do the same plot but this time use different colors to distinguish<br>
+| between the 3 factors (subsets) of different types of drive (drv) in the data<br>
+| (front-wheel, rear-wheel, and 4-wheel). Again, qplot makes this very easy. We'll<br>
+| just add what ggplot2 calls an aesthetic, a fourth argument, color, and set it equal<br>
+| to drv. Try this now. (Use the up arrow key to save some typing.)</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg,color=drv)</p>
+</blockquote>
+<p><img src="../images/r0040970.png" alt="image" title="image"></p>
+<p>| All that hard work is paying off!</p>
+<p>|============================                                                 |  37%<br>
+| Pretty cool, right? See the legend to the right which qplot helpfully supplied? The<br>
+| colors were automatically assigned by qplot so the legend decodes the colors for<br>
+| you. Notice that qplot automatically used dots or points to indicate the data. These<br>
+| points are geoms (geometric objects). We could have used a different aesthetic, for<br>
+| instance shape instead of color, to distinguish between the drive types.</p>
+<p>...</p>
+<p>|==============================                                               |  39%<br>
+| Now let's add a second geom to the default points. How about some smoothing function<br>
+| to produce trend lines, one for each color? Just add a fifth argument, geom, and<br>
+| using the R function c(), set it equal to the concatenation of the two strings<br>
+| "point" and "smooth". The first refers to the data points and second to the trend<br>
+| lines we want plotted. Try this now.</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg,color=drv,geom=c("point","smooth"))<br><code>geom_smooth()</code> using method = 'loess' and formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0040980.png" alt="image" title="image"></p>
+<p>| That's correct!</p>
+<p>|================================                                             |  41%<br>
+| Notice the gray areas surrounding each trend lines. These indicate the 95%<br>
+| confidence intervals for the lines.</p>
+<p>...</p>
+<p>|==================================                                           |  44%<br>
+| Before we leave qplot's scatterplotting ability, call qplot again, this time with 3<br>
+| arguments. The first is y set equal to hwy, the second is data set equal to mpg, and<br>
+| the third is color set equal to drv. Try this now.</p>
+<blockquote>
+<p>qplot(y=hwy,data=mpg,color=drv)</p>
+</blockquote>
+<p><img src="../images/r0040990.png" alt="image" title="image"></p>
+<p>| Great job!</p>
+<p>|====================================                                         |  46%<br>
+| What's this plot showing? We see the x-axis ranges from 0 to 250 and we remember<br>
+| that we had 234 data points in our set, so we can infer that each point in the plot<br>
+| represents one of the hwy values (indicated by the y-axis). We've created the vector<br>
+| myhigh for you which contains the hwy data from the mpg dataset. Look at myhigh now.</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>qplot(y=hwy,data=mpg)</p>
+</blockquote>
+<p><img src="../images/r0041000.png" alt="image" title="image"></p>
+<blockquote>
+<p>nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| What's this plot showing? We see the x-axis ranges from 0 to 250 and we remember<br>
+| that we had 234 data points in our set, so we can infer that each point in the plot<br>
+| represents one of the hwy values (indicated by the y-axis). We've created the vector<br>
+| myhigh for you which contains the hwy data from the mpg dataset. Look at myhigh now.</p>
+<blockquote>
+<p>myhigh</p>
+
+<pre><code>  [1] 29 29 31 30 26 26 27 26 25 28 27 25 25 25 25 24 25 23 20 15 20 17 17 26 23 26 25  
+ [28] 24 19 14 15 17 27 30 26 29 26 24 24 22 22 24 24 17 22 21 23 23 19 18 17 17 19 19  
+ [55] 12 17 15 17 17 12 17 16 18 15 16 12 17 17 16 12 15 16 17 15 17 17 18 17 19 17 19  
+ [82] 19 17 17 17 16 16 17 15 17 26 25 26 24 21 22 23 22 20 33 32 32 29 32 34 36 36 29  
+[109] 26 27 30 31 26 26 28 26 29 28 27 24 24 24 22 19 20 17 12 19 18 14 15 18 18 15 17  
+[136] 16 18 17 19 19 17 29 27 31 32 27 26 26 25 25 17 17 20 18 26 26 27 28 25 25 24 27  
+[163] 25 26 23 26 26 26 26 25 27 25 27 20 20 19 17 20 17 29 27 31 31 26 26 28 27 29 31  
+[190] 31 26 26 27 30 33 35 37 35 15 18 20 20 22 17 19 18 20 29 26 29 29 24 44 29 26 29  
+[217] 29 29 29 23 24 44 41 29 26 28 29 29 29 28 29 26 26 26</code></pre>
+<p>| You got it!</p>
+</blockquote>
+<p>|======================================                                       |  49%<br>
+| Comparing the values of myhigh with the plot, we see the first entries in the vector<br>
+| (29, 29, 31, 30,...) correspond to the leftmost points in the the plot (in order),<br>
+| and the last entries in myhigh (28, 29, 26, 26, 26) correspond to the rightmost<br>
+| plotted points. So, specifying the y parameter only, without an x argument, plots<br>
+| the values of the y argument in the order in which they occur in the data.</p>
+<p>...</p>
+<p>|=======================================                                      |  51%<br>
+| The all-purpose qplot can also create box and whisker plots.  Call qplot now with 4<br>
+| arguments. First specify the variable by which you'll split the data, in this case<br>
+| drv, then specify the variable which you want to examine, in this case hwy. The<br>
+| third argument is data (set equal to mpg), and the fourth, the geom, set equal to<br>
+| the string "boxplot"</p>
+<blockquote>
+<p>qplot(drv,hwy,data=mpg,geom="boxplot")</p>
+</blockquote>
+<p><img src="../images/r0041010.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|=========================================                                    |  54%<br>
+| We see 3 boxes, one for each drive. Now to impress you, call qplot with 5 arguments.<br>
+| The first 4 are just as you used previously, (drv, hwy, data set equal to mpg, and<br>
+| geom set equal to the string "boxplot"). Now add a fifth argument, color, equal to<br>
+| manufacturer.</p>
+<blockquote>
+<p>qplot(drv,hwy,data=mpg,geom="boxplot",color=manufacturer)</p>
+</blockquote>
+<p><img src="../images/r0041020.png" alt="image" title="image"></p>
+<p>| You are amazing!</p>
+<p>|===========================================                                  |  56%<br>
+| It's a little squished but we just wanted to illustrate qplot's capabilities. Notice<br>
+| that there are still 3 regions of the plot (determined by the factor drv). Each is<br>
+| subdivided into several boxes depicting different manufacturers.</p>
+<p>...</p>
+<p>|=============================================                                |  59%<br>
+| Now, on to histograms. These display frequency counts for a single variable. Let's<br>
+| start with an easy one. Call qplot with 3 arguments. First specify the variable for<br>
+| which you want the frequency count, in this case hwy, then specify the data (set<br>
+| equal to mpg), and finally, the aesthetic, fill, set equal to drv. Instead of a plain<br>
+| old histogram, this will again use colors to distinguish the 3 different drive<br>
+| factors.</p>
+<blockquote>
+<p>qplot(hwy,data=mpg,fill=drv)<br><code>stat_bin()</code> using <code>bins = 30</code>. Pick better value with <code>binwidth</code>.</p>
+</blockquote>
+<p><img src="../images/r0041030.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================                              |  61%<br>
+| See how qplot consistently uses the colors. Red (if 4-wheel drv is in the bin) is at<br>
+| the bottom of the bin, then green on top of it (if present), followed by blue (rear<br>
+| wheel drv). The color lets us see right away that 4-wheel drive vehicles in this<br>
+| dataset don't have gas mileages exceeding 30 miles per gallon.</p>
+<p>...</p>
+<p>|=================================================                            |  63%<br>
+| It's cool that qplot can do this so easily, but some people may find this multi-color<br>
+| histogram hard to interpret. Instead of using colors to distinguish between the drive<br>
+| factors let's use facets or panels. (That's what lattice called them.) This just<br>
+| means we'll split the data into 3 subsets (according to drive) and make 3 smaller<br>
+| individual plots of each subset in one plot (and with one call to qplot).</p>
+<p>...</p>
+<p>|===================================================                          |  66%<br>
+| Remember that with base plot we had to do each subplot individually. The lattice<br>
+| system made plotting conditioning plots easier. Let's see how easy it is with qplot.</p>
+<p>...</p>
+<p>|=====================================================                        |  68%<br>
+| We'll do two plots, a scatterplot and then a histogram, each with 3 facets. For the<br>
+| scatterplot, call qplot with 4 arguments. The first two are displ and hwy and the<br>
+| third is the argument data set equal to mpg. The fourth is the argument facets which<br>
+| will be set equal to the expression . ~ drv which is ggplot2's shorthand for number<br>
+| of rows (to the left of the ~) and number of columns (to the right of the ~). Here<br>
+| the . indicates a single row and drv implies 3, since there are 3 distinct drive<br>
+| factors. Try this now.</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg,facets=.~drv)</p>
+</blockquote>
+<p><img src="../images/r0041040.png" alt="image" title="image"></p>
+<p>| Nice work!</p>
+<p>|======================================================                       |  71%<br>
+| The result is a 1 by 3 array of plots. Note how each is labeled at the top with the<br>
+| factor label (4,f, or r). This shows us more detailed information than the histogram.<br>
+| We see the relationship between displacement and highway mileage for each of the 3<br>
+| drive factors.</p>
+<p>...</p>
+<p>|========================================================                     |  73%<br>
+| Now we'll do a histogram, again calling qplot with 4 arguments. This time, since we<br>
+| need only one variable for a histogram, the first is hwy and the second is the<br>
+| argument data set equal to mpg. The third is the argument facets which we'll set<br>
+| equal to the expression drv ~ . . This will give us a different arrangement of the<br>
+| facets. The fourth argument is binwidth. Set this equal to 2. Try this now.</p>
+<blockquote>
+<p>qplot(hwy,data=mpg,facets=drv~.,binwidth=2)</p>
+</blockquote>
+<p><img src="../images/r0041050.png" alt="image" title="image"></p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==========================================================                   |  76%<br>
+| The facets argument, drv ~ ., resulted in what arrangement of facets?</p>
+<p>1: 2 by 2<br>
+2: 1 by 3<br>
+3: 3 by 1<br>
+4: huh?</p>
+<p>Selection: 3</p>
+<p>| Nice work!</p>
+<p>|============================================================                 |  78%<br>
+| Pretty good, right? Not too difficult either. Let's review what we learned!</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| Which of the following is a basic workhorse function of ggplot2?</p>
+<p>1: gplot<br>
+2: scatterplot<br>
+3: qplot<br>
+4: xyplot<br>
+5: hist</p>
+<p>Selection: 3</p>
+<p>| All that practice is paying off!</p>
+<p>|================================================================             |  83%<br>
+| Which types of plot does qplot plot?</p>
+<p>1: scatterplots<br>
+2: all of the others<br>
+3: histograms<br>
+4: box and whisker plots</p>
+<p>Selection: 2</p>
+<p>| Great job!</p>
+<p>|==================================================================           |  85%<br>
+| What does the gg in ggplot2 stand for?</p>
+<p>1: goto graphics<br>
+2: grammar of graphics<br>
+3: good grief<br>
+4: good graphics</p>
+<p>Selection: 2</p>
+<p>| Your dedication is inspiring!</p>
+<p>|====================================================================         |  88%<br>
+| True or False? The geom argument takes a string for a value.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| Nice work!</p>
+<p>|=====================================================================        |  90%<br>
+| True or False? The data argument takes a string for a value.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You're the best!</p>
+<p>|=======================================================================      |  93%<br>
+| True or False? The binwidth argument takes a string for a value.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| Great job!</p>
+<p>|=========================================================================    |  95%<br>
+| True or False? The user must specify x- and y-axis labels when using qplot.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| All that practice is paying off!</p>
+<p>|===========================================================================  |  98%<br>
+| Congrats! You've finished plot 1 of ggplot2. In the next lesson the plot thickens.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's a job well done!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-08 20:04:09.107833 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00425/" class="u-url">Working with Colors</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -5395,828 +5834,6 @@ rm(list=ls())</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-23 21:01:55.271179 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00416/" class="u-url">Manipulating Data with dplyr</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00416/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-23T20:25:23+05:30" itemprop="datePublished" title="2020-04-23 20:25">2020-04-23 20:25</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00416/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00416_Manipulating Data with dplyr.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00416_Manipulating Data with dplyr.html";
-var idcomments_post_url = "/posts/00416/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<blockquote>
-<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/03_Getting_and_Cleaning_Data/Week03/workspace")<br>
-library(swirl)</p>
-</blockquote>
-<p>| Hi! Type swirl() when you are ready to begin.</p>
-<blockquote>
-<p>install_course("Getting and Cleaning Data")<br>
-  |================================================================================| 100%</p>
-</blockquote>
-<p>| Course installed successfully!</p>
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
-| did then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth Allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Getting and Cleaning Data<br>
-2: R Programming<br>
-3: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Manipulating Data with dplyr<br>
-2: Grouping and Chaining with dplyr<br>
-3: Tidying Data with tidyr<br>
-4: Dates and Times with lubridate</p>
-<p>Selection: 1</p>
-<p>| Attempting to load lesson dependencies...</p>
-<p>| This lesson requires the ‘dplyr’ package. Would you like me to install it for you now?</p>
-<p>1: Yes<br>
-2: No</p>
-<p>Selection: 1</p>
-<p>| Trying to install package ‘dplyr’ now...<br>
-also installing the dependencies ‘utf8’, ‘lifecycle’, ‘pillar’, ‘vctrs’, ‘purrr’, ‘pkgconfig’, ‘tibble’, ‘tidyselect’, ‘BH’, ‘plogr’</p>
-<p>There is a binary version available but the source version is later:<br>
-       binary source needs_compilation<br>
-tibble  3.0.0  3.0.1              TRUE</p>
-<p>Binaries will be installed<br>
-package ‘utf8’ successfully unpacked and MD5 sums checked<br>
-package ‘lifecycle’ successfully unpacked and MD5 sums checked<br>
-package ‘pillar’ successfully unpacked and MD5 sums checked<br>
-package ‘vctrs’ successfully unpacked and MD5 sums checked<br>
-package ‘purrr’ successfully unpacked and MD5 sums checked<br>
-package ‘pkgconfig’ successfully unpacked and MD5 sums checked<br>
-package ‘tibble’ successfully unpacked and MD5 sums checked<br>
-package ‘tidyselect’ successfully unpacked and MD5 sums checked<br>
-package ‘BH’ successfully unpacked and MD5 sums checked<br>
-package ‘plogr’ successfully unpacked and MD5 sums checked<br>
-package ‘dplyr’ successfully unpacked and MD5 sums checked</p>
-<p>| Package ‘dplyr’ loaded correctly!</p>
-<p>|                                                                                |   0%</p>
-<p>| In this lesson, you'll learn how to manipulate data using dplyr. dplyr is a fast and<br>
-| powerful R package written by Hadley Wickham and Romain Francois that provides a<br>
-| consistent and concise grammar for manipulating tabular data.</p>
-<p>...</p>
-<p>|=                                                                               |   2%<br>
-| One unique aspect of dplyr is that the same set of tools allow you to work with tabular<br>
-| data from a variety of sources, including data frames, data tables, databases and<br>
-| multidimensional arrays. In this lesson, we'll focus on data frames, but everything you<br>
-| learn will apply equally to other formats.</p>
-<p>...</p>
-<p>|===                                                                             |   3%<br>
-| As you may know, "CRAN is a network of ftp and web servers around the world that store<br>
-| identical, up-to-date, versions of code and documentation for R"<br>
-| (<a href="http://cran.rstudio.com/">http://cran.rstudio.com/</a>). RStudio maintains one of these so-called 'CRAN mirrors' and<br>
-| they generously make their download logs publicly available<br>
-| (<a href="http://cran-logs.rstudio.com/">http://cran-logs.rstudio.com/</a>). We'll be working with the log from July 8, 2014, which<br>
-| contains information on roughly 225,000 package downloads.</p>
-<p>...</p>
-<p>|====                                                                            |   5%<br>
-| I've created a variable called path2csv, which contains the full file path to the<br>
-| dataset. Call read.csv() with two arguments, path2csv and stringsAsFactors = FALSE, and<br>
-| save the result in a new variable called mydf. Check ?read.csv if you need help.</p>
-<blockquote>
-<p>mydf&lt;-read.csv(path2csv,stringsAsFactors = FALSE)</p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|=====                                                                           |   7%<br>
-| Use dim() to look at the dimensions of mydf.</p>
-<blockquote>
-<p>dim(mydf)<br>
-[1] 225468     11</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|=======                                                                         |   8%<br>
-| Now use head() to preview the data.</p>
-<blockquote>
-<p>head(mydf)<br>
-  X       date     time   size r_version r_arch      r_os      package version country<br>
-1 1 2014-07-08 00:54:41  80589     3.1.0 x86_64   mingw32    htmltools   0.2.4      US<br>
-2 2 2014-07-08 00:59:53 321767     3.1.0 x86_64   mingw32      tseries 0.10-32      US<br>
-3 3 2014-07-08 00:47:13 748063     3.1.0 x86_64 linux-gnu        party  1.0-15      US<br>
-4 4 2014-07-08 00:48:05 606104     3.1.0 x86_64 linux-gnu        Hmisc  3.14-4      US<br>
-5 5 2014-07-08 00:46:50  79825     3.0.2 x86_64 linux-gnu       digest   0.6.4      CA<br>
-6 6 2014-07-08 00:48:04  77681     3.1.0 x86_64 linux-gnu randomForest   4.6-7      US<br>
-  ip_id<br>
-1     1<br>
-2     2<br>
-3     3<br>
-4     3<br>
-5     4<br>
-6     3</p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|========                                                                        |  10%<br>
-| The dplyr package was automatically installed (if necessary) and loaded at the<br>
-| beginning of this lesson. Normally, this is something you would have to do on your own.<br>
-| Just to build the habit, type library(dplyr) now to load the package again.</p>
-<blockquote>
-<p>library(dplyr)</p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|=========                                                                       |  12%<br>
-| It's important that you have dplyr version 0.4.0 or later. To confirm this, type<br>
-| packageVersion("dplyr").</p>
-<blockquote>
-<p>packageVersion("dplyr")<br>
-[1] ‘0.8.5’</p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|===========                                                                     |  13%<br>
-| If your dplyr version is not at least 0.4.0, then you should hit the Esc key now,<br>
-| reinstall dplyr, then resume this lesson where you left off.</p>
-<p>...</p>
-<p>|============                                                                    |  15%<br>
-| The first step of working with data in dplyr is to load the data into what the package<br>
-| authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new<br>
-| tbl_df called cran:<br>
-|<br>
-| cran &lt;- tbl_df(mydf).</p>
-<blockquote>
-<p>cran &lt;- tbl_df(mydf)</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|=============                                                                   |  17%<br>
-| To avoid confusion and keep things running smoothly, let's remove the original data<br>
-| frame from your workspace with rm("mydf").</p>
-<blockquote>
-<p>rm("mydf")</p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|===============                                                                 |  18%<br>
-| From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the<br>
-| printing." Let's see what is meant by this. Type cran to print our tbl_df to the<br>
-| console.</p>
-<blockquote>
-<p>cran<br>
-# A tibble: 225,468 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|================                                                                |  20%<br>
-| This output is much more informative and compact than what we would get if we printed<br>
-| the original data frame (mydf) to the console.</p>
-<p>...</p>
-<p>|=================                                                               |  22%<br>
-| First, we are shown the class and dimensions of the dataset. Just below that, we get a<br>
-| preview of the data. Instead of attempting to print the entire dataset, dplyr just<br>
-| shows us the first 10 rows of data and only as many columns as fit neatly in our<br>
-| console. At the bottom, we see the names and classes for any variables that didn't fit<br>
-| on our screen.</p>
-<p>...</p>
-<p>|===================                                                             |  23%<br>
-| According to the "Introduction to dplyr" vignette written by the package authors, "The<br>
-| dplyr philosophy is to have small functions that each do one thing well." Specifically,<br>
-| dplyr supplies five 'verbs' that cover most fundamental data manipulation tasks:<br>
-| select(), filter(), arrange(), mutate(), and summarize().</p>
-<p>...</p>
-<p>|====================                                                            |  25%<br>
-| Use ?select to pull up the documentation for the first of these core functions.</p>
-<blockquote>
-<p>?select</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|=====================                                                           |  27%<br>
-| Help files for the other functions are accessible in the same way.</p>
-<p>...</p>
-<p>|=======================                                                         |  28%<br>
-| As may often be the case, particularly with larger datasets, we are only interested in<br>
-| some of the variables. Use select(cran, ip_id, package, country) to select only the<br>
-| ip_id, package, and country variables from the cran dataset.</p>
-<blockquote>
-<p>select(cran, ip_id, package, country)<br>
-# A tibble: 225,468 x 3<br>
-   ip_id package      country<br><int><chr><chr><br>
- 1     1 htmltools    US<br>
- 2     2 tseries      US<br>
- 3     3 party        US<br>
- 4     3 Hmisc        US<br>
- 5     4 digest       CA<br>
- 6     3 randomForest US<br>
- 7     3 plyr         US<br>
- 8     5 whisker      US<br>
- 9     6 Rcpp         CN<br>
-10     7 hflights     US<br>
-# ... with 225,458 more rows</chr></chr></int></p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|========================                                                        |  30%<br>
-| The first thing to notice is that we don't have to type cran$ip_id, cran$package, and<br>
-| cran$country, as we normally would when referring to columns of a data frame. The<br>
-| select() function knows we are referring to columns of the cran dataset.</p>
-<p>...</p>
-<p>|=========================                                                       |  32%<br>
-| Also, note that the columns are returned to us in the order we specified, even though<br>
-| ip_id is the rightmost column in the original dataset.</p>
-<p>...</p>
-<p>|===========================                                                     |  33%<br>
-| Recall that in R, the <code>:</code> operator provides a compact notation for creating a sequence<br>
-| of numbers. For example, try 5:20.</p>
-<blockquote>
-<p>5:20<br>
- [1]  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</p>
-</blockquote>
-<p>| All that practice is paying off!</p>
-<p>|============================                                                    |  35%<br>
-| Normally, this notation is reserved for numbers, but select() allows you to specify a<br>
-| sequence of columns this way, which can save a bunch of typing. Use select(cran,<br>
-| r_arch:country) to select all columns starting from r_arch and ending with country.</p>
-<blockquote>
-<p>select(cran,r_arch:country)<br>
-# A tibble: 225,468 x 5<br>
-   r_arch r_os      package      version country<br><chr><chr><chr><chr><chr><br>
- 1 x86_64 mingw32   htmltools    0.2.4   US<br>
- 2 x86_64 mingw32   tseries      0.10-32 US<br>
- 3 x86_64 linux-gnu party        1.0-15  US<br>
- 4 x86_64 linux-gnu Hmisc        3.14-4  US<br>
- 5 x86_64 linux-gnu digest       0.6.4   CA<br>
- 6 x86_64 linux-gnu randomForest 4.6-7   US<br>
- 7 x86_64 linux-gnu plyr         1.8.1   US<br>
- 8 x86_64 linux-gnu whisker      0.3-2   US<br>
- 9 NA     NA        Rcpp         0.10.4  CN<br>
-10 x86_64 linux-gnu hflights     0.1     US<br>
-# ... with 225,458 more rows</chr></chr></chr></chr></chr></p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|=============================                                                   |  37%<br>
-| We can also select the same columns in reverse order. Give it a try.</p>
-<blockquote>
-<p>select(cran,country:r_arch)<br>
-# A tibble: 225,468 x 5<br>
-   country version package      r_os      r_arch<br><chr><chr><chr><chr><chr><br>
- 1 US      0.2.4   htmltools    mingw32   x86_64<br>
- 2 US      0.10-32 tseries      mingw32   x86_64<br>
- 3 US      1.0-15  party        linux-gnu x86_64<br>
- 4 US      3.14-4  Hmisc        linux-gnu x86_64<br>
- 5 CA      0.6.4   digest       linux-gnu x86_64<br>
- 6 US      4.6-7   randomForest linux-gnu x86_64<br>
- 7 US      1.8.1   plyr         linux-gnu x86_64<br>
- 8 US      0.3-2   whisker      linux-gnu x86_64<br>
- 9 CN      0.10.4  Rcpp         NA        NA<br>
-10 US      0.1     hflights     linux-gnu x86_64<br>
-# ... with 225,458 more rows</chr></chr></chr></chr></chr></p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|===============================                                                 |  38%<br>
-| Print the entire dataset again, just to remind yourself of what it looks like. You can<br>
-| do this at anytime during the lesson.</p>
-<blockquote>
-<p>cran<br>
-# A tibble: 225,468 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Keep working like that and you'll get there!</p>
-<p>|================================                                                |  40%<br>
-| Instead of specifying the columns we want to keep, we can also specify the columns we<br>
-| want to throw away. To see how this works, do select(cran, -time) to omit the time<br>
-| column.</p>
-<blockquote>
-<p>select(cran,-time)<br>
-# A tibble: 225,468 x 10<br>
-       X date          size r_version r_arch r_os      package      version country ip_id<br><int><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07-08   80589 3.1.0     x86_64 mingw32   htmltools    0.2.4   US          1<br>
- 2     2 2014-07-08  321767 3.1.0     x86_64 mingw32   tseries      0.10-32 US          2<br>
- 3     3 2014-07-08  748063 3.1.0     x86_64 linux-gnu party        1.0-15  US          3<br>
- 4     4 2014-07-08  606104 3.1.0     x86_64 linux-gnu Hmisc        3.14-4  US          3<br>
- 5     5 2014-07-08   79825 3.0.2     x86_64 linux-gnu digest       0.6.4   CA          4<br>
- 6     6 2014-07-08   77681 3.1.0     x86_64 linux-gnu randomForest 4.6-7   US          3<br>
- 7     7 2014-07-08  393754 3.1.0     x86_64 linux-gnu plyr         1.8.1   US          3<br>
- 8     8 2014-07-08   28216 3.0.2     x86_64 linux-gnu whisker      0.3-2   US          5<br>
- 9     9 2014-07-08    5928 NA        NA     NA        Rcpp         0.10.4  CN          6<br>
-10    10 2014-07-08 2206029 3.0.2     x86_64 linux-gnu hflights     0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></int></p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|=================================                                               |  42%<br>
-| The negative sign in front of time tells select() that we DON'T want the time column.<br>
-| Now, let's combine strategies to omit all columns from X through size (X:size). To see<br>
-| how this might work, let's look at a numerical example with -5:20.</p>
-<blockquote>
-<p>-5:20<br>
- [1] -5 -4 -3 -2 -1  0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|===================================                                             |  43%<br>
-| Oops! That gaves us a vector of numbers from -5 through 20, which is not what we want.<br>
-| Instead, we want to negate the entire sequence of numbers from 5 through 20, so that we<br>
-| get -5, -6, -7, ... , -18, -19, -20. Try the same thing, except surround 5:20 with<br>
-| parentheses so that R knows we want it to first come up with the sequence of numbers,<br>
-| then apply the negative sign to the whole thing.</p>
-<blockquote>
-<p>-(5:20)<br>
- [1]  -5  -6  -7  -8  -9 -10 -11 -12 -13 -14 -15 -16 -17 -18 -19 -20</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|====================================                                            |  45%<br>
-| Use this knowledge to omit all columns X:size using select().</p>
-<blockquote>
-<p>select(cran,-(X:size))<br>
-# A tibble: 225,468 x 7<br>
-   r_version r_arch r_os      package      version country ip_id<br><chr><chr><chr><chr><chr><chr><int><br>
- 1 3.1.0     x86_64 mingw32   htmltools    0.2.4   US          1<br>
- 2 3.1.0     x86_64 mingw32   tseries      0.10-32 US          2<br>
- 3 3.1.0     x86_64 linux-gnu party        1.0-15  US          3<br>
- 4 3.1.0     x86_64 linux-gnu Hmisc        3.14-4  US          3<br>
- 5 3.0.2     x86_64 linux-gnu digest       0.6.4   CA          4<br>
- 6 3.1.0     x86_64 linux-gnu randomForest 4.6-7   US          3<br>
- 7 3.1.0     x86_64 linux-gnu plyr         1.8.1   US          3<br>
- 8 3.0.2     x86_64 linux-gnu whisker      0.3-2   US          5<br>
- 9 NA        NA     NA        Rcpp         0.10.4  CN          6<br>
-10 3.0.2     x86_64 linux-gnu hflights     0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|=====================================                                           |  47%<br>
-| Now that you know how to select a subset of columns using select(), a natural next<br>
-| question is "How do I select a subset of rows?" That's where the filter() function<br>
-| comes in.</p>
-<p>...</p>
-<p>|=======================================                                         |  48%<br>
-| Use filter(cran, package == "swirl") to select all rows for which the package variable<br>
-| is equal to "swirl". Be sure to use two equals signs side-by-side!</p>
-<blockquote>
-<p>filter(cran,package=="swirl")<br>
-# A tibble: 820 x 11<br>
-       X date      time      size r_version r_arch r_os      package version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1    27 2014-07-~ 00:17:~ 105350 3.0.2     x86_64 mingw32   swirl   2.2.9   US         20<br>
- 2   156 2014-07-~ 00:22:~  41261 3.1.0     x86_64 linux-gnu swirl   2.2.9   US         66<br>
- 3   358 2014-07-~ 00:13:~ 105335 2.15.2    x86_64 mingw32   swirl   2.2.9   CA        115<br>
- 4   593 2014-07-~ 00:59:~ 105465 3.1.0     x86_64 darwin13~ swirl   2.2.9   MX        162<br>
- 5   831 2014-07-~ 00:55:~ 105335 3.0.3     x86_64 mingw32   swirl   2.2.9   US         57<br>
- 6   997 2014-07-~ 00:33:~  41261 3.1.0     x86_64 mingw32   swirl   2.2.9   US         70<br>
- 7  1023 2014-07-~ 00:35:~ 106393 3.1.0     x86_64 mingw32   swirl   2.2.9   BR        248<br>
- 8  1144 2014-07-~ 00:00:~ 106534 3.0.2     x86_64 linux-gnu swirl   2.2.9   US        261<br>
- 9  1402 2014-07-~ 00:41:~  41261 3.1.0     i386   mingw32   swirl   2.2.9   US        234<br>
-10  1424 2014-07-~ 00:44:~ 106393 3.1.0     x86_64 linux-gnu swirl   2.2.9   US        301<br>
-# ... with 810 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Great job!</p>
-<p>|========================================                                        |  50%<br>
-| Again, note that filter() recognizes 'package' as a column of cran, without you having<br>
-| to explicitly specify cran$package.</p>
-<p>...</p>
-<p>|=========================================                                       |  52%<br>
-| The == operator asks whether the thing on the left is equal to the thing on the right.<br>
-| If yes, then it returns TRUE. If no, then FALSE. In this case, package is an entire<br>
-| vector (column) of values, so package == "swirl" returns a vector of TRUEs and FALSEs.<br>
-| filter() then returns only the rows of cran corresponding to the TRUEs.</p>
-<p>...</p>
-<p>|===========================================                                     |  53%<br>
-| You can specify as many conditions as you want, separated by commas. For example<br>
-| filter(cran, r_version == "3.1.1", country == "US") will return all rows of cran<br>
-| corresponding to downloads from users in the US running R version 3.1.1. Try it out.</p>
-<blockquote>
-<p>filter(cran, r_version == "3.1.1", country == "US")<br>
-# A tibble: 1,588 x 11<br>
-       X date     time      size r_version r_arch r_os     package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1  2216 2014-07~ 00:48:~ 3.85e5 3.1.1     x86_64 darwin1~ colorspa~ 1.2-4   US        191<br>
- 2 17332 2014-07~ 03:39:~ 1.97e5 3.1.1     x86_64 darwin1~ httr      0.3     US       1704<br>
- 3 17465 2014-07~ 03:25:~ 2.33e4 3.1.1     x86_64 darwin1~ snow      0.3-13  US         62<br>
- 4 18844 2014-07~ 03:59:~ 1.91e5 3.1.1     x86_64 darwin1~ maxLik    1.2-0   US       1533<br>
- 5 30182 2014-07~ 04:13:~ 7.77e4 3.1.1     i386   mingw32  randomFo~ 4.6-7   US        646<br>
- 6 30193 2014-07~ 04:06:~ 2.35e6 3.1.1     i386   mingw32  ggplot2   1.0.0   US          8<br>
- 7 30195 2014-07~ 04:07:~ 2.99e5 3.1.1     i386   mingw32  fExtremes 3010.81 US       2010<br>
- 8 30217 2014-07~ 04:32:~ 5.68e5 3.1.1     i386   mingw32  rJava     0.9-6   US         98<br>
- 9 30245 2014-07~ 04:10:~ 5.27e5 3.1.1     i386   mingw32  LPCM      0.44-8  US          8<br>
-10 30354 2014-07~ 04:32:~ 1.76e6 3.1.1     i386   mingw32  mgcv      1.8-1   US       2122<br>
-# ... with 1,578 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| That's a job well done!</p>
-<p>|============================================                                    |  55%<br>
-| The conditions passed to filter() can make use of any of the standard comparison<br>
-| operators. Pull up the relevant documentation with ?Comparison (that's an uppercase C).</p>
-<blockquote>
-<p>?Comparison</p>
-</blockquote>
-<p>| You are quite good my friend!</p>
-<p>|=============================================                                   |  57%<br>
-| Edit your previous call to filter() to instead return rows corresponding to users in<br>
-| "IN" (India) running an R version that is less than or equal to "3.0.2". The up arrow<br>
-| on your keyboard may come in handy here. Don't forget your double quotes!</p>
-<blockquote>
-<p>filter(cran, r_version &lt;= "3.0.2", country == "IN")<br>
-# A tibble: 4,139 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1   348 2014-07~ 00:44:~  1.02e7 3.0.0     x86_64 mingw32 BH        1.54.0~ IN        112<br>
- 2  9990 2014-07~ 02:11:~  3.97e5 3.0.2     x86_64 linux-~ equateIRT 1.1     IN       1054<br>
- 3  9991 2014-07~ 02:11:~  1.19e5 3.0.2     x86_64 linux-~ ggdendro  0.1-14  IN       1054<br>
- 4  9992 2014-07~ 02:11:~  8.18e4 3.0.2     x86_64 linux-~ dfcrm     0.2-2   IN       1054<br>
- 5 10022 2014-07~ 02:19:~  1.56e6 2.15.0    x86_64 mingw32 RcppArma~ 0.4.32~ IN       1060<br>
- 6 10023 2014-07~ 02:19:~  1.18e6 2.15.1    i686   linux-~ forecast  5.4     IN       1060<br>
- 7 10189 2014-07~ 02:38:~  9.09e5 3.0.2     x86_64 linux-~ editrules 2.7.2   IN       1054<br>
- 8 10199 2014-07~ 02:38:~  1.78e5 3.0.2     x86_64 linux-~ energy    1.6.1   IN       1054<br>
- 9 10200 2014-07~ 02:38:~  5.18e4 3.0.2     x86_64 linux-~ ENmisc    1.2-7   IN       1054<br>
-10 10201 2014-07~ 02:38:~  6.52e4 3.0.2     x86_64 linux-~ entropy   1.2.0   IN       1054<br>
-# ... with 4,129 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|===============================================                                 |  58%<br>
-| Our last two calls to filter() requested all rows for which some condition AND another<br>
-| condition were TRUE. We can also request rows for which EITHER one condition OR another<br>
-| condition are TRUE. For example, filter(cran, country == "US" | country == "IN") will<br>
-| gives us all rows for which the country variable equals either "US" or "IN". Give it a<br>
-| go.</p>
-<blockquote>
-<p>filter(cran, country == "US | country == "IN")<br>
-Error: unexpected symbol in "filter(cran, country == "US | country == "IN"<br>
-filter(cran, country == "US" | country == "IN")<br>
-# A tibble: 95,283 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 6     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 7     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 8    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
- 9    11 2014-07~ 00:15:~  526858 3.0.2     x86_64 linux-~ LPCM      0.44-8  US          8<br>
-10    12 2014-07~ 00:14:~ 2351969 2.14.1    x86_64 linux-~ ggplot2   1.0.0   US          8<br>
-# ... with 95,273 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|================================================                                |  60%<br>
-| Now, use filter() to fetch all rows for which size is strictly greater than (&gt;) 100500<br>
-| (no quotes, since size is numeric) AND r_os equals "linux-gnu". Hint: You are passing<br>
-| three arguments to filter(): the name of the dataset, the first condition, and the<br>
-| second condition.</p>
-<blockquote>
-<p>filter(cran,size&gt;100500,r_os=="linux-gnu")<br>
-# A tibble: 33,683 x 11<br>
-       X date      time        size r_version r_arch r_os    package version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     3 2014-07-~ 00:47:13  748063 3.1.0     x86_64 linux-~ party   1.0-15  US          3<br>
- 2     4 2014-07-~ 00:48:05  606104 3.1.0     x86_64 linux-~ Hmisc   3.14-4  US          3<br>
- 3     7 2014-07-~ 00:48:35  393754 3.1.0     x86_64 linux-~ plyr    1.8.1   US          3<br>
- 4    10 2014-07-~ 00:15:35 2206029 3.0.2     x86_64 linux-~ hfligh~ 0.1     US          7<br>
- 5    11 2014-07-~ 00:15:25  526858 3.0.2     x86_64 linux-~ LPCM    0.44-8  US          8<br>
- 6    12 2014-07-~ 00:14:45 2351969 2.14.1    x86_64 linux-~ ggplot2 1.0.0   US          8<br>
- 7    14 2014-07-~ 00:15:35 3097729 3.0.2     x86_64 linux-~ Rcpp    0.9.7   VE         10<br>
- 8    15 2014-07-~ 00:14:37  568036 3.1.0     x86_64 linux-~ rJava   0.9-6   US         11<br>
- 9    16 2014-07-~ 00:15:50 1600441 3.1.0     x86_64 linux-~ RSQLite 0.11.4  US          7<br>
-10    18 2014-07-~ 00:26:59  186685 3.1.0     x86_64 linux-~ ipred   0.9-3   DE         13<br>
-# ... with 33,673 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|=================================================                               |  62%<br>
-| Finally, we want to get only the rows for which the r_version is not missing. R<br>
-| represents missing values with NA and these missing values can be detected using the<br>
-| is.na() function.</p>
-<p>...</p>
-<p>|===================================================                             |  63%<br>
-| To see how this works, try is.na(c(3, 5, NA, 10)).</p>
-<blockquote>
-<p>is.na(c(3,5,NA,10))<br>
-[1] FALSE FALSE  TRUE FALSE</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|====================================================                            |  65%<br>
-| Now, put an exclamation point (!) before is.na() to change all of the TRUEs to FALSEs<br>
-| and all of the FALSEs to TRUEs, thus telling us what is NOT NA: !is.na(c(3, 5, NA,<br>
-| 10)).</p>
-<blockquote>
-<p>!is.na(c(3,5,NA,10))<br>
-[1]  TRUE  TRUE FALSE  TRUE</p>
-</blockquote>
-<p>| Keep up the great work!</p>
-<p>|=====================================================                           |  67%<br>
-| Okay, ready to put all of this together? Use filter() to return all rows of cran for<br>
-| which r_version is NOT NA. Hint: You will need to use !is.na() as part of your second<br>
-| argument to filter().</p>
-<blockquote>
-<p>filter(cran,!is.na(r_version))<br>
-# A tibble: 207,205 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-10    11 2014-07~ 00:15:~  526858 3.0.2     x86_64 linux-~ LPCM      0.44-8  US          8<br>
-# ... with 207,195 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| All that practice is paying off!</p>
-<p>|=======================================================                         |  68%<br>
-| We've seen how to select a subset of columns and rows from our dataset using select()<br>
-| and filter(), respectively. Inherent in select() was also the ability to arrange our<br>
-| selected columns in any order we please.</p>
-<p>...</p>
-<p>|========================================================                        |  70%<br>
-| Sometimes we want to order the rows of a dataset according to the values of a<br>
-| particular variable. This is the job of arrange().</p>
-<p>...</p>
-<p>|=========================================================                       |  72%<br>
-| To see how arrange() works, let's first take a subset of cran. select() all columns<br>
-| from size through ip_id and store the result in cran2.</p>
-<blockquote>
-<p>cran2&lt;-select(cran,size:ip_id)</p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|===========================================================                     |  73%<br>
-| Now, to order the ROWS of cran2 so that ip_id is in ascending order (from small to<br>
-| large), type arrange(cran2, ip_id). You may want to make your console wide enough so<br>
-| that you can see ip_id, which is the last column.</p>
-<blockquote>
-<p>arrange(cran2,ip_id)<br>
-# A tibble: 225,468 x 8<br>
-     size r_version r_arch r_os         package     version country ip_id<br><int><chr><chr><chr><chr><chr><chr><int><br>
- 1  80589 3.1.0     x86_64 mingw32      htmltools   0.2.4   US          1<br>
- 2 180562 3.0.2     x86_64 mingw32      yaml        2.1.13  US          1<br>
- 3 190120 3.1.0     i386   mingw32      babel       0.2-6   US          1<br>
- 4 321767 3.1.0     x86_64 mingw32      tseries     0.10-32 US          2<br>
- 5  52281 3.0.3     x86_64 darwin10.8.0 quadprog    1.5-5   US          2<br>
- 6 876702 3.1.0     x86_64 linux-gnu    zoo         1.7-11  US          2<br>
- 7 321764 3.0.2     x86_64 linux-gnu    tseries     0.10-32 US          2<br>
- 8 876702 3.1.0     x86_64 linux-gnu    zoo         1.7-11  US          2<br>
- 9 321768 3.1.0     x86_64 mingw32      tseries     0.10-32 US          2<br>
-10 784093 3.1.0     x86_64 linux-gnu    strucchange 1.5-0   US          2<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></p>
-</blockquote>
-<p>| Perseverance, that's the answer.</p>
-<p>|============================================================                    |  75%<br>
-| To do the same, but in descending order, change the second argument to desc(ip_id),<br>
-| where desc() stands for 'descending'. Go ahead.</p>
-<blockquote>
-<p>arrange(cran2,desc(ip_id))<br>
-# A tibble: 225,468 x 8<br>
-      size r_version r_arch r_os         package      version country ip_id<br><int><chr><chr><chr><chr><chr><chr><int><br>
- 1    5933 NA        NA     NA           CPE          1.4.2   CN      13859<br>
- 2  569241 3.1.0     x86_64 mingw32      multcompView 0.1-5   US      13858<br>
- 3  228444 3.1.0     x86_64 mingw32      tourr        0.5.3   NZ      13857<br>
- 4  308962 3.1.0     x86_64 darwin13.1.0 ctv          0.7-9   CN      13856<br>
- 5  950964 3.0.3     i386   mingw32      knitr        1.6     CA      13855<br>
- 6   80185 3.0.3     i386   mingw32      htmltools    0.2.4   CA      13855<br>
- 7 1431750 3.0.3     i386   mingw32      shiny        0.10.0  CA      13855<br>
- 8 2189695 3.1.0     x86_64 mingw32      RMySQL       0.9-3   US      13854<br>
- 9 4818024 3.1.0     i386   mingw32      igraph       0.7.1   US      13853<br>
-10  197495 3.1.0     x86_64 mingw32      coda         0.16-1  US      13852<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|=============================================================                   |  77%<br>
-| We can also arrange the data according to the values of multiple variables. For<br>
-| example, arrange(cran2, package, ip_id) will first arrange by package names (ascending<br>
-| alphabetically), then by ip_id. This means that if there are multiple rows with the<br>
-| same value for package, they will be sorted by ip_id (ascending numerically). Try<br>
-| arrange(cran2, package, ip_id) now.</p>
-<blockquote>
-<p>arrange(cran2,package,ip_id)<br>
-# A tibble: 225,468 x 8<br>
-    size r_version r_arch r_os         package version country ip_id<br><int><chr><chr><chr><chr><chr><chr><int><br>
- 1 71677 3.0.3     x86_64 darwin10.8.0 A3      0.9.2   CN       1003<br>
- 2 71672 3.1.0     x86_64 linux-gnu    A3      0.9.2   US       1015<br>
- 3 71677 3.1.0     x86_64 mingw32      A3      0.9.2   IN       1054<br>
- 4 70438 3.0.1     x86_64 darwin10.8.0 A3      0.9.2   CN       1513<br>
- 5 71677 NA        NA     NA           A3      0.9.2   BR       1526<br>
- 6 71892 3.0.2     x86_64 linux-gnu    A3      0.9.2   IN       1542<br>
- 7 71677 3.1.0     x86_64 linux-gnu    A3      0.9.2   ZA       2925<br>
- 8 71672 3.1.0     x86_64 mingw32      A3      0.9.2   IL       3889<br>
- 9 71677 3.0.3     x86_64 mingw32      A3      0.9.2   DE       3917<br>
-10 71672 3.1.0     x86_64 mingw32      A3      0.9.2   US       4219<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></p>
-</blockquote>
-<p>| You got it!</p>
-<p>|===============================================================                 |  78%<br>
-| Arrange cran2 by the following three variables, in this order: country (ascending),<br>
-| r_version (descending), and ip_id (ascending).</p>
-<blockquote>
-<p>arrange(cran2,country,desc(r_version),ip_id)<br>
-# A tibble: 225,468 x 8<br>
-      size r_version r_arch r_os      package       version   country ip_id<br><int><chr><chr><chr><chr><chr><chr><int><br>
- 1 1556858 3.1.1     i386   mingw32   RcppArmadillo 0.4.320.0 A1       2843<br>
- 2 1823512 3.1.0     x86_64 linux-gnu mgcv          1.8-1     A1       2843<br>
- 3   15732 3.1.0     i686   linux-gnu grnn          0.1.0     A1       3146<br>
- 4 3014840 3.1.0     x86_64 mingw32   Rcpp          0.11.2    A1       3146<br>
- 5  660087 3.1.0     i386   mingw32   xts           0.9-7     A1       3146<br>
- 6  522261 3.1.0     i386   mingw32   FNN           1.1       A1       3146<br>
- 7  522263 3.1.0     i386   mingw32   FNN           1.1       A1       3146<br>
- 8 1676627 3.1.0     x86_64 linux-gnu rgeos         0.3-5     A1       3146<br>
- 9 2118530 3.1.0     x86_64 linux-gnu spacetime     1.1-0     A1       3146<br>
-10 2217180 3.1.0     x86_64 mingw32   gstat         1.0-19    A1       3146<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></p>
-</blockquote>
-<p>| All that practice is paying off!</p>
-<p>|================================================================                |  80%<br>
-| To illustrate the next major function in dplyr, let's take another subset of our<br>
-| original data. Use select() to grab 3 columns from cran -- ip_id, package, and size (in<br>
-| that order) -- and store the result in a new variable called cran3.</p>
-<blockquote>
-<p>cran3&lt;-select(cran,ip_is,package,size)<br>
-Error: Can't subset columns that don't exist.<br>
-x The column <code>ip_is</code> doesn't exist.<br>
-Run <code>rlang::last_error()</code> to see where the error occurred.<br>
-cran3&lt;-select(cran,ip_id,package,size)</p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|=================================================================               |  82%<br>
-| Take a look at cran3 now.</p>
-<blockquote>
-<p>cran3<br>
-# A tibble: 225,468 x 3<br>
-   ip_id package         size<br><int><chr><int><br>
- 1     1 htmltools      80589<br>
- 2     2 tseries       321767<br>
- 3     3 party         748063<br>
- 4     3 Hmisc         606104<br>
- 5     4 digest         79825<br>
- 6     3 randomForest   77681<br>
- 7     3 plyr          393754<br>
- 8     5 whisker        28216<br>
- 9     6 Rcpp            5928<br>
-10     7 hflights     2206029<br>
-# ... with 225,458 more rows</int></chr></int></p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|===================================================================             |  83%<br>
-| It's common to create a new variable based on the value of one or more variables<br>
-| already in a dataset. The mutate() function does exactly this.</p>
-<p>...</p>
-<p>|====================================================================            |  85%<br>
-| The size variable represents the download size in bytes, which are units of computer<br>
-| memory. These days, megabytes (MB) are a more common unit of measurement. One megabyte<br>
-| is equal to 2^20 bytes. That's 2 to the power of 20, which is approximately one million<br>
-| bytes!</p>
-<p>...</p>
-<p>|=====================================================================           |  87%<br>
-| We want to add a column called size_mb that contains the download size in megabytes.<br>
-| Here's the code to do it:<br>
-|<br>
-| mutate(cran3, size_mb = size / 2^20)</p>
-<blockquote>
-<p>mutate(cran3, size_mb = size / 2^20)<br>
-# A tibble: 225,468 x 4<br>
-   ip_id package         size size_mb<br><int><chr><int><dbl><br>
- 1     1 htmltools      80589 0.0769<br>
- 2     2 tseries       321767 0.307<br>
- 3     3 party         748063 0.713<br>
- 4     3 Hmisc         606104 0.578<br>
- 5     4 digest         79825 0.0761<br>
- 6     3 randomForest   77681 0.0741<br>
- 7     3 plyr          393754 0.376<br>
- 8     5 whisker        28216 0.0269<br>
- 9     6 Rcpp            5928 0.00565<br>
-10     7 hflights     2206029 2.10<br>
-# ... with 225,458 more rows</dbl></int></chr></int></p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|=======================================================================         |  88%<br>
-| An even larger unit of memory is a gigabyte (GB), which equals 2^10 megabytes. We might<br>
-| as well add another column for download size in gigabytes!</p>
-<p>...</p>
-<p>|========================================================================        |  90%<br>
-| One very nice feature of mutate() is that you can use the value computed for your<br>
-| second column (size_mb) to create a third column, all in the same line of code. To see<br>
-| this in action, repeat the exact same command as above, except add a third argument<br>
-| creating a column that is named size_gb and equal to size_mb / 2^10.</p>
-<blockquote>
-<p>mutate(cran3, size_mb = size / 2^20, size_gb = size_mb / 2^10)<br>
-# A tibble: 225,468 x 5<br>
-   ip_id package         size size_mb    size_gb<br><int><chr><int><dbl><dbl><br>
- 1     1 htmltools      80589 0.0769  0.0000751<br>
- 2     2 tseries       321767 0.307   0.000300<br>
- 3     3 party         748063 0.713   0.000697<br>
- 4     3 Hmisc         606104 0.578   0.000564<br>
- 5     4 digest         79825 0.0761  0.0000743<br>
- 6     3 randomForest   77681 0.0741  0.0000723<br>
- 7     3 plyr          393754 0.376   0.000367<br>
- 8     5 whisker        28216 0.0269  0.0000263<br>
- 9     6 Rcpp            5928 0.00565 0.00000552<br>
-10     7 hflights     2206029 2.10    0.00205<br>
-# ... with 225,458 more rows</dbl></dbl></int></chr></int></p>
-</blockquote>
-<p>| That's correct!</p>
-<p>|=========================================================================       |  92%<br>
-| Let's try one more for practice. Pretend we discovered a glitch in the system that<br>
-| provided the original values for the size variable. All of the values in cran3 are 1000<br>
-| bytes less than they should be. Using cran3, create just one new column called<br>
-| correct_size that contains the correct size.</p>
-<blockquote>
-<p><br>
-mutate(cran3, correct_size=size+1000)<br>
-# A tibble: 225,468 x 4<br>
-   ip_id package         size correct_size<br><int><chr><int><dbl><br>
- 1     1 htmltools      80589        81589<br>
- 2     2 tseries       321767       322767<br>
- 3     3 party         748063       749063<br>
- 4     3 Hmisc         606104       607104<br>
- 5     4 digest         79825        80825<br>
- 6     3 randomForest   77681        78681<br>
- 7     3 plyr          393754       394754<br>
- 8     5 whisker        28216        29216<br>
- 9     6 Rcpp            5928         6928<br>
-10     7 hflights     2206029      2207029<br>
-# ... with 225,458 more rows</dbl></int></chr></int></p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|===========================================================================     |  93%<br>
-| The last of the five core dplyr verbs, summarize(), collapses the dataset to a single<br>
-| row. Let's say we're interested in knowing the average download size. summarize(cran,<br>
-| avg_bytes = mean(size)) will yield the mean value of the size variable. Here we've<br>
-| chosen to label the result 'avg_bytes', but we could have named it anything. Give it a<br>
-| try.</p>
-<blockquote>
-<p>summarize(cran,avg_bytes=mean(size))<br>
-# A tibble: 1 x 1<br>
-  avg_bytes<br><dbl><br>
-1   844086.</dbl></p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|============================================================================    |  95%<br>
-| That's not particularly interesting. summarize() is most useful when working with data<br>
-| that has been grouped by the values of a particular variable.</p>
-<p>...</p>
-<p>|=============================================================================   |  97%<br>
-| We'll look at grouped data in the next lesson, but the idea is that summarize() can<br>
-| give you the requested value FOR EACH group in your dataset.</p>
-<p>...</p>
-<p>|=============================================================================== |  98%<br>
-| In this lesson, you learned how to manipulate data using dplyr's five main functions.<br>
-| In the next lesson, we'll look at how to take advantage of some other useful features<br>
-| of dplyr to make your life as a data analyst much easier.</p>
-<p>...</p>
-<p>|================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: No<br>
-2: Yes</p>
-<p>Selection: 2<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| You are really on a roll!</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Getting and Cleaning Data<br>
-2: R Programming<br>
-3: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-<blockquote>
-<p>ls()<br>
-[1] "cran"     "cran2"    "cran3"    "path2csv"<br>
-rm(list=ls())</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-23 20:35:34.926750 IST</em></p>
 
 </div>
 </div>
