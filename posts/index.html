@@ -73,7 +73,525 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00426/" class="u-url">GGPlot2 Part1</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00427/" class="u-url">GGPlot2 Part2</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00427/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-08T21:20:55+05:30" itemprop="datePublished" title="2020-05-08 21:20">2020-05-08 21:20</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00427/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00427_GGPlot2 Part2.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00427_GGPlot2 Part2.html";
+var idcomments_post_url = "/posts/00427/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Principles of Analytic Graphs   2: Exploratory Graphs             
+ 3: Graphics Devices in R           4: Plotting Systems               
+ 5: Base Plotting System            6: Lattice Plotting System        
+ 7: Working with Colors             8: GGPlot2 Part1                  
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras                 
+11: Hierarchical Clustering        12: K Means Clustering             
+13: Dimension Reduction            14: Clustering Example             
+15: CaseStudy</code></pre>
+<p>Selection: 9</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘ggplot2’ loaded correctly!</p>
+<p>|                                                                              |   0%</p>
+<p>| GGPlot2_Part2. (Slides for this and other Data Science courses may be found at github<br>
+| <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them, they<br>
+| must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/ggplot2.)</p>
+<p>...</p>
+<p>|==                                                                            |   2%<br>
+| In a previous lesson we showed you the vast capabilities of qplot, the basic<br>
+| workhorse function of the ggplot2 package. In this lesson we'll focus on some<br>
+| fundamental components of the package. These underlie qplot which uses default values<br>
+| when it calls them. If you understand these building blocks, you will be better able<br>
+| to customize your plots. We'll use the second workhorse function in the package,<br>
+| ggplot, as well as other graphing functions.</p>
+<p>...</p>
+<p>|===                                                                           |   4%<br>
+| Do you remember what the gg of ggplot2 stands for?</p>
+<p>1: grammar of graphics<br>
+2: good grief<br>
+3: great graphics<br>
+4: goto graphics</p>
+<p>Selection: 1</p>
+<p>| That's the answer I was looking for.</p>
+<p>|=====                                                                         |   6%<br>
+| A "grammar" of graphics means that ggplot2 contains building blocks with which you<br>
+| can create your own graphical objects. What are these basic components of ggplot2<br>
+| plots? There are 7 of them.</p>
+<p>...</p>
+<p>|======                                                                        |   8%<br>
+| Obviously, there's a DATA FRAME which contains the data you're trying to plot. Then<br>
+| the AESTHETIC MAPPINGS determine how data are mapped to color, size, etc. The GEOMS<br>
+| (geometric objects) are what you see in the plot (points, lines, shapes) and FACETS<br>
+| are the panels used in conditional plots. You've used these or seen them used in the<br>
+| first ggplot2 (qplot) lesson.</p>
+<p>...</p>
+<p>|========                                                                      |  10%<br>
+| There are 3 more. STATS are statistical transformations such as binning, quantiles,<br>
+| and smoothing which ggplot2 applies to the data. SCALES show what coding an aesthetic<br>
+| map uses (for example, male = red, female = blue). Finally, the plots are depicted on<br>
+| a COORDINATE SYSTEM. When you use qplot these were taken care of for you.</p>
+<p>...</p>
+<p>|==========                                                                    |  12%<br>
+| Do you remember what the "artist's palette" model means in the context of plotting?</p>
+<p>1: we draw pictures<br>
+2: we mix paints<br>
+3: plots are built up in layers<br>
+4: things get messy</p>
+<p>Selection: 3</p>
+<p>| You nailed it! Good job!</p>
+<p>|===========                                                                   |  15%<br>
+| As in the base plotting system (and in contrast to the lattice system), when building<br>
+| plots with ggplot2, the plots are built up in layers, maybe in several steps. You can<br>
+| plot the data, then overlay a summary (for instance, a regression line or smoother)<br>
+| and then add any metadata and annotations you need.</p>
+<p>...</p>
+<p>|=============                                                                 |  17%<br>
+| We'll keep using the mpg data that comes with the ggplot2 package. Recall the<br>
+| versatility of qplot. Just as a refresher, call qplot now with 5 arguments. The first<br>
+| 3 deal with data - displ, hwy, and data=mpg. The fourth is geom set equal to the<br>
+| concatenation of the two strings, "point" and "smooth". The fifth is facets set equal<br>
+| to the formula .~drv. Try this now.</p>
+<blockquote>
+<p>qplot(displ,hwy,data=mpg,geom=c("point","smooth"),facets=.~drv)<br><code>geom_smooth()</code> using method = 'loess' and formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041060.png" alt="image" title="image"></p>
+<p>| You got it!</p>
+<p>|===============                                                               |  19%<br>
+| We see a 3 facet plot, one for each drive type (4, f, and r). Now we'll see how<br>
+| ggplot works. We'll build up a similar plot using the basic components of the<br>
+| package. We'll do this in a series of steps.</p>
+<p>...</p>
+<p>|================                                                              |  21%<br>
+| First we'll create a variable g by assigning to it the output of a call to ggplot<br>
+| with 2 arguments. The first is mpg (our dataset) and the second will tell ggplot what<br>
+| we want to plot, in this case, displ and hwy. These are what we want our aesthetics<br>
+| to represent so we enclose these as two arguments to the function aes. Try this now.</p>
+<blockquote>
+<p>g&lt;-ggplot(mpg,aes(displ,hwy))</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|==================                                                            |  23%<br>
+| Notice that nothing happened? As in the lattice system, ggplot created a graphical<br>
+| object which we assigned to the variable g.</p>
+<p>...</p>
+<p>|====================                                                          |  25%<br>
+| Run the R command summary with g as its argument to see what g contains.</p>
+<blockquote>
+<p>summary(g)</p>
+
+<pre><code>data: manufacturer, model, displ, year, cyl, trans, drv, cty, hwy, fl, class  
+  [234x11]  
+mapping:  x = ~displ, y = ~hwy  
+faceting: &lt;ggproto object: Class FacetNull, Facet, gg&gt;  
+    compute_layout: function  
+    draw_back: function  
+    draw_front: function  
+    draw_labels: function  
+    draw_panels: function  
+    finish_data: function  
+    init_scales: function  
+    map_data: function  
+    params: list  
+    setup_data: function  
+    setup_params: function  
+    shrink: TRUE  
+    train_scales: function  
+    vars: function  
+    super:  &lt;ggproto object: Class FacetNull, Facet, gg&gt;</code></pre>
+<p>| You are quite good my friend!</p>
+</blockquote>
+<p>|=====================                                                         |  27%<br>
+| So g contains the mpg data with all its named components in a 234 by 11 matrix. It<br>
+| also contains a mapping, x (displ) and y (hwy) which you specified, and no faceting.</p>
+<p>...</p>
+<p>|=======================                                                       |  29%<br>
+| Note that if you tried to print g with the expressions g or print(g) you'd get an<br>
+| error! Even though it's a great package, ggplot doesn't know how to display the data<br>
+| yet since you didn't specify how you wanted to see it. Now type g+geom_point() and<br>
+| see what happens.</p>
+<blockquote>
+<p>g+geom_point()</p>
+</blockquote>
+<p><img src="../images/r0041070.png" alt="image" title="image"></p>
+<p>| You are quite good my friend!</p>
+<p>|========================                                                      |  31%<br>
+| By calling the function geom_point you added a layer. By not assigning the expression<br>
+| to a variable you displayed a plot. Notice that you didn't have to pass any arguments<br>
+| to the function geom_point. That's because the object g has all the data stored in<br>
+| it. (Remember you saw that when you ran summary on g before.) Now use the expression<br>
+| you just typed (g + geom_point()) and add to it another layer, a call to<br>
+| geom_smooth(). Notice the red message R gives you.</p>
+<blockquote>
+<p>g+geom_point()+geom_smooth()<br><code>geom_smooth()</code> using method = 'loess' and formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041080.png" alt="image" title="image"></p>
+<p>| You got it!</p>
+<p>|==========================                                                    |  33%<br>
+| The gray shadow around the blue line is the confidence band. See how wide it is at<br>
+| the right? Let's try a different smoothing function. Use the up arrow to recover the<br>
+| expression you just typed, and instead of calling geom_smooth with no arguments, call<br>
+| it with the argument method set equal to the string "lm".</p>
+<blockquote>
+<p>g+geom_point()+geom_smooth(method="lm")<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041090.png" alt="image" title="image"></p>
+<p>| Excellent work!</p>
+<p>|============================                                                  |  35%<br>
+| By changing the smoothing function to "lm" (linear model) ggplot2 generated a<br>
+| regression line through the data. Now recall the expression you just used and add to<br>
+| it another call, this time to the function facet_grid. Use the formula . ~ drv as it<br>
+| argument. Note that this is the same type of formula used in the calls to qplot.</p>
+<blockquote>
+<p>g+geom_point()+geom_smooth(method="lm")+facet_grid(.~drv)<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041100.png" alt="image" title="image"></p>
+<p>| Your dedication is inspiring!</p>
+<p>|=============================                                                 |  38%<br>
+| Notice how each panel is labeled with the appropriate factor. All the data associated<br>
+| with 4-wheel drive cars is in the leftmost panel, front-wheel drive data is shown in<br>
+| the middle panel, and rear-wheel drive data in the rightmost. Notice that this is<br>
+| similar to the plot you created at the start of the lesson using qplot. (We used a<br>
+| different smoothing function than previously.)</p>
+<p>...</p>
+<p>|===============================                                               |  40%<br>
+| So far you've just used the default labels that ggplot provides. You can add your own<br>
+| annotation using functions such as xlab(), ylab(), and ggtitle(). In addition, the<br>
+| function labs() is more general and can be used to label either or both axes as well<br>
+| as provide a title. Now recall the expression you just typed and add a call to the<br>
+| function ggtitle with the argument "Swirl Rules!".</p>
+<blockquote>
+<p>g+geom_point()+geom_smooth(method="lm")+facet_grid(.~drv)+ggtitle("Swirl Rules!")<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041110.png" alt="image" title="image"></p>
+<p>| You are doing so well!</p>
+<p>|================================                                              |  42%<br>
+| Now that you've seen the basics we'll talk about customizing. Each of the “geom”<br>
+| functions (e.g., _point and _smooth) has options to modify it. Also, the function<br>
+| theme() can be used to modify aspects of the entire plot, e.g. the position of the<br>
+| legend. Two standard appearance themes are included in ggplot. These are theme_gray()<br>
+| which is the default theme (gray background with white grid lines) and theme_bw()<br>
+| which is a plainer (black and white) color scheme.</p>
+<p>...</p>
+<p>|==================================                                            |  44%<br>
+| Let's practice modifying aesthetics now. We'll use the graphic object g that we<br>
+| already filled with mpg data and add a call to the function geom_point, but this time<br>
+| we'll give geom_point 3 arguments. Set the argument color equal to "pink", the<br>
+| argument size to 4, and the argument alpha to 1/2. Notice that all the arguments are<br>
+| set equal to constants.</p>
+<blockquote>
+<p>g+geom_point(color="pink",size=4,alpha=0.5)</p>
+</blockquote>
+<p><img src="../images/r0041120.png" alt="image" title="image"></p>
+<p>| You are doing so well!</p>
+<p>|====================================                                          |  46%<br>
+| Notice the different shades of pink? That's the result of the alpha aesthetic which<br>
+| you set to 1/2. This aesthetic tells ggplot how transparent the points should be.<br>
+| Darker circles indicate values hit by multiple data points.</p>
+<p>...</p>
+<p>|=====================================                                         |  48%<br>
+| Now we'll modify the aesthetics so that color indicates which drv type each point<br>
+| represents. Again, use g and add to it a call to the function geom_point with 3<br>
+| arguments. The first is size set equal to 4, the second is alpha equal to 1/2. The<br>
+| third is a call to the function aes with the argument color set equal to drv. Note<br>
+| that you MUST use the function aes since the color of the points is data dependent<br>
+| and not a constant as it was in the previous example.</p>
+<blockquote>
+<p>g+geom_point(size=4,alpha=0.5,aes(color=drv))</p>
+</blockquote>
+<p><img src="../images/r0041130.png" alt="image" title="image"></p>
+<p>| That's a job well done!</p>
+<p>|=======================================                                       |  50%<br>
+| Notice the helpful legend on the right decoding the relationship between color and<br>
+| drv.</p>
+<p>...</p>
+<p>|=========================================                                     |  52%<br>
+| Now we'll practice modifying labels. Again, we'll use g and add to it calls to 3<br>
+| functions. First, add a call to geom_point with an argument making the color<br>
+| dependent on the drv type (as we did in the previous example). Second, add a call to<br>
+| the function labs with the argument title set equal to "Swirl Rules!". Finally, add a<br>
+| call to labs with 2 arguments, one setting x equal to "Displacement" and the other<br>
+| setting y equal to "Hwy Mileage".</p>
+<blockquote>
+<p>g+geom_point(aes(color=drv))+labs(title="Swirl Rules!")+labs(x="Displacement",y="Hwy Mileage")</p>
+</blockquote>
+<p><img src="../images/r0041140.png" alt="image" title="image"></p>
+<p>| You are amazing!</p>
+<p>|==========================================                                    |  54%<br>
+| Note that you could have combined the two calls to the function labs in the previous<br>
+| example. Now we'll practice customizing the geom_smooth calls. Use g and add to it a<br>
+| call to geom_point setting the color to drv type (remember to use the call to the aes<br>
+| function), size set to 2 and alpha to 1/2. Then add a call to geom_smooth with 4<br>
+| arguments. Set size equal to 4, linetype to 3, method to "lm", and se to FALSE.</p>
+<blockquote>
+<p>g+geom_point(aes(color=drv),size=2,alpha=0.5)+geom_smooth(size=4,linetype=3,method="lm",se=FALSE)<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041150.png" alt="image" title="image"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|============================================                                  |  56%<br>
+| What did these arguments do? The method specified a linear regression (note the<br>
+| negative slope indicating that the bigger the displacement the lower the gas<br>
+| mileage), the linetype specified that it should be dashed (not continuous), the size<br>
+| made the dashes big, and the se flag told ggplot to turn off the gray shadows<br>
+| indicating standard errors (confidence intervals).</p>
+<p>...</p>
+<p>|=============================================                                 |  58%<br>
+| Finally, let's do a simple plot using the black and white theme, theme_bw. Specify g<br>
+| and add a call to the function geom_point with the argument setting the color to the<br>
+| drv type. Then add a call to the function theme_bw with the argument base_family set<br>
+| equal to "Times". See if you notice the difference.</p>
+<blockquote>
+<p>g+geom_point(aes(color=drv))+theme_bw(base_family = "Times")<br>
+There were 13 warnings (use warnings() to see them)</p>
+</blockquote>
+<p><img src="../images/r0041160.png" alt="image" title="image"></p>
+<p>| Nice work!</p>
+<p>|===============================================                               |  60%<br>
+| No more gray background! Also, if you have good eyesight, you'll notice that the font<br>
+| in the labels changed.</p>
+<p>...</p>
+<p>|=================================================                             |  62%<br>
+| One final note before we go through a more complicated, layered ggplot example, and<br>
+| this concerns the limits of the axes. We're pointing this out to emphasize a subtle<br>
+| difference between ggplot and the base plotting function plot.</p>
+<p>...</p>
+<p>|==================================================                            |  65%<br>
+| We've created some random x and y data, called myx and myy, components of a dataframe<br>
+| called testdat. These represent 100 random normal points, except halfway through, we<br>
+| made one of the points be an outlier. That is, we set its y-value to be out of range<br>
+| of the other points. Use the base plotting function plot to create a line plot of<br>
+| this data. Call it with 4 arguments - myx, myy, type="l", and ylim=c(-3,3). The<br>
+| type="l" tells plot you want to display the data as a line instead of as a<br>
+| scatterplot.</p>
+<p>warning messages from top-level task callback 'mini'<br>
+There were 40 warnings (use warnings() to see them)</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>g+geom_point(aes(color=drv))+theme_dark()</p>
+</blockquote>
+<p><img src="../images/r0041170.png" alt="image" title="image"></p>
+<blockquote>
+<p>g+geom_point(aes(color=drv))+theme_minimal()</p>
+</blockquote>
+<p><img src="../images/r0041180.png" alt="image" title="image"></p>
+<blockquote>
+<p>g+geom_point(aes(color=drv))+theme_grey()</p>
+</blockquote>
+<p><img src="../images/r0041190.png" alt="image" title="image"></p>
+<blockquote>
+<p>nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| We've created some random x and y data, called myx and myy, components of a dataframe<br>
+| called testdat. These represent 100 random normal points, except halfway through, we<br>
+| made one of the points be an outlier. That is, we set its y-value to be out of range<br>
+| of the other points. Use the base plotting function plot to create a line plot of<br>
+| this data. Call it with 4 arguments - myx, myy, type="l", and ylim=c(-3,3). The<br>
+| type="l" tells plot you want to display the data as a line instead of as a<br>
+| scatterplot.</p>
+<blockquote>
+<p>plot(myx,myy,type="l",ylim=c(-3,3))</p>
+</blockquote>
+<p><img src="../images/r0041200.png" alt="image" title="image"></p>
+<p>| You got it!</p>
+<p>|====================================================                          |  67%<br>
+| Notice how plot plotted the points in the (-3,3) range for y-values. The outlier at<br>
+| (50,100) is NOT shown on the line plot. Now we'll plot the same data with ggplot.<br>
+| Recall that the name of the dataframe is testdat. Create the graphical object g with<br>
+| a call to ggplot with 2 arguments, testdat (the data) and a call to aes with 2<br>
+| arguments, x set equal to myx, and y set equal to myy.</p>
+<blockquote>
+<p>g&lt;-ggplot(data=testdat,aes(x=myx,y=myy))</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|======================================================                        |  69%<br>
+| Now add a call to geom_line with 0 arguments to g.</p>
+<blockquote>
+<p>g+geom_line()</p>
+</blockquote>
+<p><img src="../images/r0041210.png" alt="image" title="image"></p>
+<p>| You got it right!</p>
+<p>|=======================================================                       |  71%<br>
+| Notice how ggplot DID display the outlier point at (50,100). As a result the rest of<br>
+| the data is smashed down so you don't get to see what the bulk of it looks like. The<br>
+| single outlier probably isn't important enough to dominate the graph. How do we get<br>
+| ggplot to behave more like plot in a situation like this?</p>
+<p>...</p>
+<p>|=========================================================                     |  73%<br>
+| Let's take a guess that in addition to adding geom_line() to g we also just have to<br>
+| add ylim(-3,3) to it as we did with the call to plot. Try this now to see what<br>
+| happens.</p>
+<blockquote>
+<p>g+geom_line()+ylim(-3,3)</p>
+</blockquote>
+<p><img src="../images/r0041220.png" alt="image" title="image"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|==========================================================                    |  75%<br>
+| Notice that by doing this, ggplot simply ignored the outlier point at (50,100).<br>
+| There's a break in the line which isn't very noticeable. Now recall that at the<br>
+| beginning of the lesson we mentioned 7 components of a ggplot plot, one of which was<br>
+| a coordinate system. This is a situation where using a coordinate system would be<br>
+| helpful. Instead of adding ylim(-3,3) to the expression g+geom_line(), add a call to<br>
+| the function coord_cartesian with the argument ylim set equal to c(-3,3).</p>
+<blockquote>
+<p>g+geom_line()+coord_cartesian(ylim=c(-3,3))</p>
+</blockquote>
+<p><img src="../images/r0041230.png" alt="image" title="image"></p>
+<p>| You are really on a roll!</p>
+<p>|============================================================                  |  77%<br>
+| See the difference? This looks more like the plot produced by the base plot function.<br>
+| The outlier y value at x=50 is not shown, but the plot indicates that it is larger<br>
+| than 3.</p>
+<p>...</p>
+<p>|==============================================================                |  79%<br>
+| We'll close with a more complicated example to show you the full power of ggplot and<br>
+| the entire ggplot2 package. We'll continue to work with the mpg dataset.</p>
+<p>...</p>
+<p>|===============================================================               |  81%<br>
+| Start by creating the graphical object g by assigning to it a call to ggplot with 2<br>
+| arguments. The first is the dataset and the second is a call to the function aes.<br>
+| This call will have 3 arguments, x set equal to displ, y set equal to hwy, and color<br>
+| set equal to factor(year). This last will allow us to distinguish between the two<br>
+| manufacturing years (1999 and 2008) in our data.</p>
+<blockquote>
+<p>g&lt;-ggplot(data=mpg,aes(x=displ,y=hwy,color=factor(year)))</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|=================================================================             |  83%<br>
+| Uh oh! Nothing happened. Does g exist? Of course, it just isn't visible yet since you<br>
+| didn't add a layer.</p>
+<p>...</p>
+<p>|===================================================================           |  85%<br>
+| If you typed g at the command line, what would happen?</p>
+<p>1: a scatterplot would appear with 2 colors of points<br>
+2: I would have to try this to answer the question<br>
+3: R would return an error in red</p>
+<p>Selection: 3</p>
+<p>| You got it!</p>
+<p>|====================================================================          |  88%<br>
+| We'll build the plot up step by step. First add to g a call to the function<br>
+| geom_point with 0 arguments.</p>
+<blockquote>
+<p>g+geom_point()</p>
+</blockquote>
+<p><img src="../images/r0041240.png" alt="image" title="image"></p>
+<p>| You nailed it! Good job!</p>
+<p>|======================================================================        |  90%<br>
+| A simple, yet comfortingly familiar scatterplot appears. Let's make our display a 2<br>
+| dimensional multi-panel plot. Recall your last command (with the up arrow) and add to<br>
+| it a call the function facet_grid. Give it 2 arguments. The first is the formula<br>
+| drv~cyl, and the second is the argument margins set equal to TRUE. Try this now.</p>
+<blockquote>
+<p>g+geom_point()+facet_grid(drv~cyl,margins=TRUE)</p>
+</blockquote>
+<p><img src="../images/r0041250.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|========================================================================      |  92%<br>
+| A 4 by 5 plot, huh? The margins argument tells ggplot to display the marginal totals<br>
+| over each row and column, so instead of seeing 3 rows (the number of drv factors) and<br>
+| 4 columns (the number of cyl factors) we see a 4 by 5 display. Note that the panel in<br>
+| position (4,5) is a tiny version of the scatterplot of the entire dataset.</p>
+<p>...</p>
+<p>|=========================================================================     |  94%<br>
+| Now add to your last command (or retype it if you like to type) a call to geom_smooth<br>
+| with 4 arguments. These are method set to "lm", se set to FALSE, size set to 2, and<br>
+| color set to "black".</p>
+<blockquote>
+<p>g+geom_point()+facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",se=FALSE,size=2,color="black")<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041260.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|===========================================================================   |  96%<br>
+| Angry Birds? Finally, add to your last command (or retype it if you like to type) a<br>
+| call to the function labs with 3 arguments. These are x set to "Displacement", y set<br>
+| to "Highway Mileage", and title set to "Swirl Rules!".</p>
+<blockquote>
+<p>g+geom_point()+facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",se=FALSE,size=2,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041270.png" alt="image" title="image"></p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|============================================================================  |  98%<br>
+| You could have done these labels with separate calls to labs but we thought you'd be<br>
+| sick of this by now. Anyway, congrats! You've concluded part 2 of ggplot2. We hope<br>
+| you got enough mileage out of the lesson. If you like ggplot2 you can do some extras<br>
+| with the extra lesson.</p>
+<p>...</p>
+<p>|==============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| You got it right!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>g+geom_point()+facet_grid(drv~cyl,margins=TRUE)+geom_smooth(method="lm",se=FALSE,size=2,color="black")+labs(x="Displacement",y="Highway Mileage",title="Swirl Rules!")+theme(plot.title = element_text(hjust = 0.5))<br><code>geom_smooth()</code> using formula 'y ~ x'</p>
+</blockquote>
+<p><img src="../images/r0041280.png" alt="image" title="image"></p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-08 21:23:15.085181 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00426/" class="u-url">GGPlot2 Part1</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -4997,843 +5515,6 @@ rm(list=ls())</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-04-23 21:12:57.937316 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00417/" class="u-url">Grouping and Chaining with dplyr</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00417/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-04-23T20:38:07+05:30" itemprop="datePublished" title="2020-04-23 20:38">2020-04-23 20:38</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00417/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00417_Grouping and Chaining with dplyr.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00417_Grouping and Chaining with dplyr.html";
-var idcomments_post_url = "/posts/00417/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>R version 3.6.3 (2020-02-29) -- "Holding the Windsock"<br>
-Copyright (C) 2020 The R Foundation for Statistical Computing<br>
-Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
-<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
-You are welcome to redistribute it under certain conditions.<br>
-Type 'license()' or 'licence()' for distribution details.</p>
-<p>R is a collaborative project with many contributors.<br>
-Type 'contributors()' for more information and<br>
-'citation()' on how to cite R or R packages in publications.</p>
-<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
-'help.start()' for an HTML browser interface to help.<br>
-Type 'q()' to quit R.</p>
-<p>[Workspace loaded from C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/.RData]</p>
-<blockquote>
-<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/03_Getting_and_Cleaning_Data/Week03/workspace")<br>
-library(swirl)</p>
-</blockquote>
-<p>| Hi! Type swirl() when you are ready to begin.</p>
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you<br>
-| did then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Getting and Cleaning Data<br>
-2: R Programming<br>
-3: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Manipulating Data with dplyr<br>
-2: Grouping and Chaining with dplyr<br>
-3: Tidying Data with tidyr<br>
-4: Dates and Times with lubridate</p>
-<p>Selection: 2</p>
-<p>| Attempting to load lesson dependencies...</p>
-<p>| Package ‘dplyr’ loaded correctly!</p>
-<p>|                                                                                |   0%</p>
-<p>| Warning: This lesson makes use of the View() function. View() may not work properly in<br>
-| every programming environment. We highly recommend the use of RStudio for this lesson.</p>
-<p>...</p>
-<p>|==                                                                              |   2%<br>
-| In the last lesson, you learned about the five main data manipulation 'verbs' in dplyr:<br>
-| select(), filter(), arrange(), mutate(), and summarize(). The last of these,<br>
-| summarize(), is most powerful when applied to grouped data.</p>
-<p>...</p>
-<p>|===                                                                             |   4%<br>
-| The main idea behind grouping data is that you want to break up your dataset into<br>
-| groups of rows based on the values of one or more variables. The group_by() function is<br>
-| reponsible for doing this.</p>
-<p>...</p>
-<p>|=====                                                                           |   6%<br>
-| We'll continue where we left off with RStudio's CRAN download log from July 8, 2014,<br>
-| which contains information on roughly 225,000 R package downloads<br>
-| (<a href="http://cran-logs.rstudio.com/">http://cran-logs.rstudio.com/</a>).</p>
-<p>...</p>
-<p>|======                                                                          |   8%<br>
-| As with the last lesson, the dplyr package was automatically installed (if necessary)<br>
-| and loaded at the beginning of this lesson. Normally, this is something you would have<br>
-| to do on your own. Just to build the habit, type library(dplyr) now to load the package<br>
-| again.</p>
-<blockquote>
-<p>library(dplyr)</p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|========                                                                        |  10%<br>
-| I've made the dataset available to you in a data frame called mydf. Put it in a 'data<br>
-| frame tbl' using the tbl_df() function and store the result in a object called cran. If<br>
-| you're not sure what I'm talking about, you should start with the previous lesson.<br>
-| Otherwise, practice makes perfect!</p>
-<blockquote>
-<p>cran&lt;-as_tibble(mydf)</p>
-</blockquote>
-<p>| Not exactly. Give it another go. Or, type info() for more options.</p>
-<p>| Type cran &lt;- tbl_df(mydf) to store the data in a new tbl_df called cran.</p>
-<blockquote>
-<p>cran&lt;-tbl_df(mydf)</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|=========                                                                       |  12%<br>
-| To avoid confusion and keep things running smoothly, let's remove the original<br>
-| dataframe from your workspace with rm("mydf").</p>
-<blockquote>
-<p>rm("mydf")</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|===========                                                                     |  13%<br>
-| Print cran to the console.</p>
-<blockquote>
-<p>cran<br>
-# A tibble: 225,468 x 11<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| You nailed it! Good job!</p>
-<p>|============                                                                    |  15%<br>
-| Our first goal is to group the data by package name. Bring up the help file for<br>
-| group_by().</p>
-<blockquote>
-<p>group_by(cran,package)<br>
-# A tibble: 225,468 x 11<br>
-# Groups:   package [6,023]<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Keep trying! Or, type info() for more options.</p>
-<p>| Use ?group_by to bring up the documentation.</p>
-<blockquote>
-<p>cran %&gt;% group_by(package)<br>
-# A tibble: 225,468 x 11<br>
-# Groups:   package [6,023]<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| You almost had it, but not quite. Try again. Or, type info() for more options.</p>
-<p>| Use ?group_by to bring up the documentation.</p>
-<blockquote>
-<p>?group_by</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|==============                                                                  |  17%<br>
-| Group cran by the package variable and store the result in a new object called<br>
-| by_package.</p>
-<blockquote>
-<p>by_package&lt;-cran %&gt;% group_by(package)</p>
-</blockquote>
-<p>| That's not the answer I was looking for, but try again. Or, type info() for more<br>
-| options.</p>
-<p>| Store the result of group_by(cran, package) in a new object called by_package.</p>
-<blockquote>
-<p>by_package&lt;-group_by(cran,package)</p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|===============                                                                 |  19%<br>
-| Let's take a look at by_package. Print it to the console.</p>
-<blockquote>
-<p>by_package<br>
-# A tibble: 225,468 x 11<br>
-# Groups:   package [6,023]<br>
-       X date     time       size r_version r_arch r_os    package   version country ip_id<br><int><chr><chr><int><chr><chr><chr><chr><chr><chr><int><br>
- 1     1 2014-07~ 00:54:~   80589 3.1.0     x86_64 mingw32 htmltools 0.2.4   US          1<br>
- 2     2 2014-07~ 00:59:~  321767 3.1.0     x86_64 mingw32 tseries   0.10-32 US          2<br>
- 3     3 2014-07~ 00:47:~  748063 3.1.0     x86_64 linux-~ party     1.0-15  US          3<br>
- 4     4 2014-07~ 00:48:~  606104 3.1.0     x86_64 linux-~ Hmisc     3.14-4  US          3<br>
- 5     5 2014-07~ 00:46:~   79825 3.0.2     x86_64 linux-~ digest    0.6.4   CA          4<br>
- 6     6 2014-07~ 00:48:~   77681 3.1.0     x86_64 linux-~ randomFo~ 4.6-7   US          3<br>
- 7     7 2014-07~ 00:48:~  393754 3.1.0     x86_64 linux-~ plyr      1.8.1   US          3<br>
- 8     8 2014-07~ 00:47:~   28216 3.0.2     x86_64 linux-~ whisker   0.3-2   US          5<br>
- 9     9 2014-07~ 00:54:~    5928 NA        NA     NA      Rcpp      0.10.4  CN          6<br>
-10    10 2014-07~ 00:15:~ 2206029 3.0.2     x86_64 linux-~ hflights  0.1     US          7<br>
-# ... with 225,458 more rows</int></chr></chr></chr></chr></chr></chr></int></chr></chr></int></p>
-</blockquote>
-<p>| Excellent work!</p>
-<p>|=================                                                               |  21%<br>
-| At the top of the output above, you'll see 'Groups: package', which tells us that this<br>
-| tbl has been grouped by the package variable. Everything else looks the same, but now<br>
-| any operation we apply to the grouped data will take place on a per package basis.</p>
-<p>...</p>
-<p>|==================                                                              |  23%<br>
-| Recall that when we applied mean(size) to the original tbl_df via summarize(), it<br>
-| returned a single number -- the mean of all values in the size column. We may care<br>
-| about what that number is, but wouldn't it be so much more interesting to look at the<br>
-| mean download size for each unique package?</p>
-<p>...</p>
-<p>|====================                                                            |  25%<br>
-| That's exactly what you'll get if you use summarize() to apply mean(size) to the<br>
-| grouped data in by_package. Give it a shot.</p>
-<blockquote>
-<p>summarise(by_package,mean(size))<br>
-# A tibble: 6,023 x 2<br>
-   package     <code>mean(size)</code><br><chr><dbl><br>
- 1 A3                62195.<br>
- 2 abc             4826665<br>
- 3 abcdeFBA         455980.<br>
- 4 ABCExtremes       22904.<br>
- 5 ABCoptim          17807.<br>
- 6 ABCp2             30473.<br>
- 7 abctools        2589394<br>
- 8 abd              453631.<br>
- 9 abf2              35693.<br>
-10 abind             32939.<br>
-# ... with 6,013 more rows</dbl></chr></p>
-</blockquote>
-<p>| You got it right!</p>
-<p>|======================                                                          |  27%<br>
-| Instead of returning a single value, summarize() now returns the mean size for EACH<br>
-| package in our dataset.</p>
-<p>...</p>
-<p>|=======================                                                         |  29%<br>
-| Let's take it a step further. I just opened an R script for you that contains a<br>
-| partially constructed call to summarize(). Follow the instructions in the script<br>
-| comments.<br>
-|<br>
-| When you are ready to move on, save the script and type submit(), or type reset() to<br>
-| reset the script to its original state.</p>
-<blockquote>
-<p>play()</p>
-</blockquote>
-<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
-| resume the lesson.</p>
-<blockquote>
-<p>?n<br>
-?n_distinct<br>
-nxt()</p>
-</blockquote>
-<p>| Resuming lesson...</p>
-<p>| Let's take it a step further. I just opened an R script for you that contains a<br>
-| partially constructed call to summarize(). Follow the instructions in the script<br>
-| comments.<br>
-|<br>
-| When you are ready to move on, save the script and type submit(), or type reset() to<br>
-| reset the script to its original state.</p>
-
-<pre><code>{r}
-# Compute four values, in the following order, from
-# the grouped data:
-#
-# 1. count = n()
-# 2. unique = n_distinct(ip_id)
-# 3. countries = n_distinct(country)
-# 4. avg_bytes = mean(size)
-#
-# A few thing to be careful of:
-#
-# 1. Separate arguments by commas
-# 2. Make sure you have a closing parenthesis
-# 3. Check your spelling!
-# 4. Store the result in pack_sum (for 'package summary')
-#
-# You should also take a look at ?n and ?n_distinct, so
-# that you really understand what is going on.
-
-pack_sum &lt;- summarize(by_package,
-                      count = n(),
-                      unique = n_distinct(ip_id),
-                      countries = n_distinct(country),
-                      avg_bytes = mean(size))</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p>| You are doing so well!</p>
-<p>|=========================                                                       |  31%<br>
-| Print the resulting tbl, pack_sum, to the console to examine its contents.</p>
-<blockquote>
-<p>pack_sum<br>
-# A tibble: 6,023 x 5<br>
-   package     count unique countries avg_bytes<br><chr><int><int><int><dbl><br>
- 1 A3             25     24        10    62195.<br>
- 2 abc            29     25        16  4826665<br>
- 3 abcdeFBA       15     15         9   455980.<br>
- 4 ABCExtremes    18     17         9    22904.<br>
- 5 ABCoptim       16     15         9    17807.<br>
- 6 ABCp2          18     17        10    30473.<br>
- 7 abctools       19     19        11  2589394<br>
- 8 abd            17     16        10   453631.<br>
- 9 abf2           13     13         9    35693.<br>
-10 abind         396    365        50    32939.<br>
-# ... with 6,013 more rows</dbl></int></int></int></chr></p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|==========================                                                      |  33%<br>
-| The 'count' column, created with n(), contains the total number of rows (i.e.<br>
-| downloads) for each package. The 'unique' column, created with n_distinct(ip_id), gives<br>
-| the total number of unique downloads for each package, as measured by the number of<br>
-| distinct ip_id's. The 'countries' column, created with n_distinct(country), provides<br>
-| the number of countries in which each package was downloaded. And finally, the<br>
-| 'avg_bytes' column, created with mean(size), contains the mean download size (in bytes)<br>
-| for each package.</p>
-<p>...</p>
-<p>|============================                                                    |  35%<br>
-| It's important that you understand how each column of pack_sum was created and what it<br>
-| means. Now that we've summarized the data by individual packages, let's play around<br>
-| with it some more to see what we can learn.</p>
-<p>...</p>
-<p>|=============================                                                   |  37%<br>
-| Naturally, we'd like to know which packages were most popular on the day these data<br>
-| were collected (July 8, 2014). Let's start by isolating the top 1% of packages, based<br>
-| on the total number of downloads as measured by the 'count' column.</p>
-<p>...</p>
-<p>|===============================                                                 |  38%<br>
-| We need to know the value of 'count' that splits the data into the top 1% and bottom<br>
-| 99% of packages based on total downloads. In statistics, this is called the 0.99, or<br>
-| 99%, sample quantile. Use quantile(pack_sum$count, probs = 0.99) to determine this<br>
-| number.</p>
-<blockquote>
-<p>quantile(pack_sum$count, probs = 0.99)<br>
-   99%<br>
-679.56</p>
-</blockquote>
-<p>| You're the best!</p>
-<p>|================================                                                |  40%<br>
-| Now we can isolate only those packages which had more than 679 total downloads. Use<br>
-| filter() to select all rows from pack_sum for which 'count' is strictly greater (&gt;)<br>
-| than 679. Store the result in a new object called top_counts.</p>
-<blockquote>
-<p>top_counts&lt;-filter(pack_sum,count&gt;679)</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|==================================                                              |  42%<br>
-| Let's take a look at top_counts. Print it to the console.</p>
-<blockquote>
-<p>top_counts<br>
-# A tibble: 61 x 5<br>
-   package    count unique countries avg_bytes<br><chr><int><int><int><dbl><br>
- 1 bitops      1549   1408        76    28715.<br>
- 2 car         1008    837        64  1229122.<br>
- 3 caTools      812    699        64   176589.<br>
- 4 colorspace  1683   1433        80   357411.<br>
- 5 data.table   680    564        59  1252721.<br>
- 6 DBI         2599    492        48   206933.<br>
- 7 devtools     769    560        55   212933.<br>
- 8 dichromat   1486   1257        74   134732.<br>
- 9 digest      2210   1894        83   120549.<br>
-10 doSNOW       740     75        24     8364.<br>
-# ... with 51 more rows</dbl></int></int></int></chr></p>
-</blockquote>
-<p>| You are amazing!</p>
-<p>|===================================                                             |  44%<br>
-| There are only 61 packages in our top 1%, so we'd like to see all of them. Since dplyr<br>
-| only shows us the first 10 rows, we can use the View() function to see more.</p>
-<p>...</p>
-<p>|=====================================                                           |  46%<br>
-| View all 61 rows with View(top_counts). Note that the 'V' in View() is capitalized.</p>
-<blockquote>
-<p>View(top_counts)</p>
-</blockquote>
-<p><img src="../images/r0040180.png" alt="top_counts" title="top_counts"></p>
-<p>| You're the best!</p>
-<p>|======================================                                          |  48%<br>
-| arrange() the rows of top_counts based on the 'count' column and assign the result to a<br>
-| new object called top_counts_sorted. We want the packages with the highest number of<br>
-| downloads at the top, which means we want 'count' to be in descending order. If you<br>
-| need help, check out ?arrange and/or ?desc.</p>
-<blockquote>
-<p>top_counts_sorted&lt;-arrange(top_counts,count)</p>
-</blockquote>
-<p>| Almost! Try again. Or, type info() for more options.</p>
-<p>| arrange(top_counts, desc(count)) will arrange the rows of top_counts based on the<br>
-| values of the 'count' variable, in descending order. Don't forget to assign the result<br>
-| to top_counts_sorted.</p>
-<blockquote>
-<p>top_counts_sorted&lt;-arrange(top_counts,desc(count))</p>
-</blockquote>
-<p>| All that hard work is paying off!</p>
-<p>|========================================                                        |  50%<br>
-| Now use View() again to see all 61 rows of top_counts_sorted.</p>
-<blockquote>
-<p>View(top_counts_sorted)</p>
-</blockquote>
-<p><img src="../images/r0040190.png" alt="top_counts_sorted" title="top_counts_sorted"></p>
-<p>| You are amazing!</p>
-<p>|==========================================                                      |  52%<br>
-| If we use total number of downloads as our metric for popularity, then the above output<br>
-| shows us the most popular packages downloaded from the RStudio CRAN mirror on July 8,<br>
-| 2014. Not surprisingly, ggplot2 leads the pack with 4602 downloads, followed by Rcpp,<br>
-| plyr, rJava, ....</p>
-<p>...</p>
-<p>|===========================================                                     |  54%<br>
-| ...And if you keep on going, you'll see swirl at number 43, with 820 total downloads.<br>
-| Sweet!</p>
-<p>...</p>
-<p>|=============================================                                   |  56%<br>
-| Perhaps we're more interested in the number of <em>unique</em> downloads on this particular<br>
-| day. In other words, if a package is downloaded ten times in one day from the same<br>
-| computer, we may wish to count that as only one download. That's what the 'unique'<br>
-| column will tell us.</p>
-<p>...</p>
-<p>|==============================================                                  |  58%<br>
-| Like we did with 'count', let's find the 0.99, or 99%, quantile for the 'unique'<br>
-| variable with quantile(pack_sum$unique, probs = 0.99).</p>
-<blockquote>
-<p>quantile(pack_sum$unique,probs = 0.99)<br>
-99%<br>
-465</p>
-</blockquote>
-<p>| Nice work!</p>
-<p>|================================================                                |  60%<br>
-| Apply filter() to pack_sum to select all rows corresponding to values of 'unique' that<br>
-| are strictly greater than 465. Assign the result to a object called top_unique.</p>
-<blockquote>
-<p>top_unique&lt;-filter(pack_sum,unique&gt;465)</p>
-</blockquote>
-<p>| Keep up the great work!</p>
-<p>|=================================================                               |  62%<br>
-| Let's View() our top contenders!</p>
-<blockquote>
-<p>View(top_unique)</p>
-</blockquote>
-<p><img src="../images/r0040200.png" alt="top_unique" title="top_unique"></p>
-<p>| That's a job well done!</p>
-<p>|===================================================                             |  63%<br>
-| Now arrange() top_unique by the 'unique' column, in descending order, to see which<br>
-| packages were downloaded from the greatest number of unique IP addresses. Assign the<br>
-| result to top_unique_sorted.</p>
-<blockquote>
-<p>top_unique_sorted&lt;-arrange(top_unique,desc(unique))</p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|====================================================                            |  65%<br>
-| View() the sorted data.</p>
-<blockquote>
-<p>View(top_unique_sorted)</p>
-</blockquote>
-<p><img src="../images/r0040210.png" alt="top_unique_sorted" title="top_unique_sorted"></p>
-<p>| All that practice is paying off!</p>
-<p>|======================================================                          |  67%<br>
-| Now Rcpp is in the lead, followed by stringr, digest, plyr, and ggplot2. swirl moved up<br>
-| a few spaces to number 40, with 698 unique downloads. Nice!</p>
-<p>...</p>
-<p>|=======================================================                         |  69%<br>
-| Our final metric of popularity is the number of distinct countries from which each<br>
-| package was downloaded. We'll approach this one a little differently to introduce you<br>
-| to a method called 'chaining' (or 'piping').</p>
-<p>...</p>
-<p>|=========================================================                       |  71%<br>
-| Chaining allows you to string together multiple function calls in a way that is compact<br>
-| and readable, while still accomplishing the desired result. To make it more concrete,<br>
-| let's compute our last popularity metric from scratch, starting with our original data.</p>
-<p>...</p>
-<p>|==========================================================                      |  73%<br>
-| I've opened up a script that contains code similar to what you've seen so far. Don't<br>
-| change anything. Just study it for a minute, make sure you understand everything that's<br>
-| there, then submit() when you are ready to move on.</p>
-
-<pre><code>{r}
-# Don't change any of the code below. Just type submit()
-# when you think you understand it.
-
-# We've already done this part, but we're repeating it
-# here for clarity.
-
-by_package &lt;- group_by(cran, package)
-pack_sum &lt;- summarize(by_package,
-                      count = n(),
-                      unique = n_distinct(ip_id),
-                      countries = n_distinct(country),
-                      avg_bytes = mean(size))
-
-# Here's the new bit, but using the same approach we've
-# been using this whole time.
-
-top_countries &lt;- filter(pack_sum, countries &gt; 60)
-result1 &lt;- arrange(top_countries, desc(countries), avg_bytes)
-
-# Print the results to the console.
-print(result1)</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 46 x 5<br>
-   package      count unique countries avg_bytes<br><chr><int><int><int><dbl><br>
- 1 Rcpp          3195   2044        84  2512100.<br>
- 2 digest        2210   1894        83   120549.<br>
- 3 stringr       2267   1948        82    65277.<br>
- 4 plyr          2908   1754        81   799123.<br>
- 5 ggplot2       4602   1680        81  2427716.<br>
- 6 colorspace    1683   1433        80   357411.<br>
- 7 RColorBrewer  1890   1584        79    22764.<br>
- 8 scales        1726   1408        77   126819.<br>
- 9 bitops        1549   1408        76    28715.<br>
-10 reshape2      2032   1652        76   330128.<br>
-# ... with 36 more rows</dbl></int></int></int></chr></p>
-<p>| That's a job well done!</p>
-<p>|============================================================                    |  75%<br>
-| It's worth noting that we sorted primarily by country, but used avg_bytes (in ascending<br>
-| order) as a tie breaker. This means that if two packages were downloaded from the same<br>
-| number of countries, the package with a smaller average download size received a higher<br>
-| ranking.</p>
-<p>...</p>
-<p>|==============================================================                  |  77%<br>
-| We'd like to accomplish the same result as the last script, but avoid saving our<br>
-| intermediate results. This requires embedding function calls within one another.</p>
-<p>...</p>
-<p>|===============================================================                 |  79%<br>
-| That's exactly what we've done in this script. The result is equivalent, but the code<br>
-| is much less readable and some of the arguments are far away from the function to which<br>
-| they belong. Again, just try to understand what is going on here, then submit() when<br>
-| you are ready to see a better solution.</p>
-
-<pre><code>{r}
-# Don't change any of the code below. Just type submit()
-# when you think you understand it. If you find it
-# confusing, you're absolutely right!
-
-result2 &lt;-
-  arrange(
-    filter(
-      summarize(
-        group_by(cran,
-                 package
-        ),
-        count = n(),
-        unique = n_distinct(ip_id),
-        countries = n_distinct(country),
-        avg_bytes = mean(size)
-      ),
-      countries &gt; 60
-    ),
-    desc(countries),
-    avg_bytes
-  )
-
-print(result2)</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 46 x 5<br>
-   package      count unique countries avg_bytes<br><chr><int><int><int><dbl><br>
- 1 Rcpp          3195   2044        84  2512100.<br>
- 2 digest        2210   1894        83   120549.<br>
- 3 stringr       2267   1948        82    65277.<br>
- 4 plyr          2908   1754        81   799123.<br>
- 5 ggplot2       4602   1680        81  2427716.<br>
- 6 colorspace    1683   1433        80   357411.<br>
- 7 RColorBrewer  1890   1584        79    22764.<br>
- 8 scales        1726   1408        77   126819.<br>
- 9 bitops        1549   1408        76    28715.<br>
-10 reshape2      2032   1652        76   330128.<br>
-# ... with 36 more rows</dbl></int></int></int></chr></p>
-<p>| That's a job well done!</p>
-<p>|=================================================================               |  81%<br>
-| In this script, we've used a special chaining operator, %&gt;%, which was originally<br>
-| introduced in the magrittr R package and has now become a key component of dplyr. You<br>
-| can pull up the related documentation with ?chain. The benefit of %&gt;% is that it allows<br>
-| us to chain the function calls in a linear fashion. The code to the right of %&gt;%<br>
-| operates on the result from the code to the left of %&gt;%.<br>
-|<br>
-| Once again, just try to understand the code, then type submit() to continue.</p>
-
-<pre><code>{r}
-# Read the code below, but don't change anything. As
-# you read it, you can pronounce the %&gt;% operator as
-# the word 'then'.
-#
-# Type submit() when you think you understand
-# everything here.
-
-result3 &lt;-
-  cran %&gt;%
-  group_by(package) %&gt;%
-  summarize(count = n(),
-            unique = n_distinct(ip_id),
-            countries = n_distinct(country),
-            avg_bytes = mean(size)
-  ) %&gt;%
-  filter(countries &gt; 60) %&gt;%
-  arrange(desc(countries), avg_bytes)
-
-# Print result to console
-print(result3)</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 46 x 5<br>
-   package      count unique countries avg_bytes<br><chr><int><int><int><dbl><br>
- 1 Rcpp          3195   2044        84  2512100.<br>
- 2 digest        2210   1894        83   120549.<br>
- 3 stringr       2267   1948        82    65277.<br>
- 4 plyr          2908   1754        81   799123.<br>
- 5 ggplot2       4602   1680        81  2427716.<br>
- 6 colorspace    1683   1433        80   357411.<br>
- 7 RColorBrewer  1890   1584        79    22764.<br>
- 8 scales        1726   1408        77   126819.<br>
- 9 bitops        1549   1408        76    28715.<br>
-10 reshape2      2032   1652        76   330128.<br>
-# ... with 36 more rows</dbl></int></int></int></chr></p>
-<p>| You nailed it! Good job!</p>
-<p>|==================================================================              |  83%<br>
-| So, the results of the last three scripts are all identical. But, the third script<br>
-| provides a convenient and concise alternative to the more traditional method that we've<br>
-| taken previously, which involves saving results as we go along.</p>
-<p>...</p>
-<p>|====================================================================            |  85%<br>
-| Once again, let's View() the full data, which has been stored in result3.</p>
-<blockquote>
-<p>View(result3)</p>
-</blockquote>
-<p><img src="../images/r0040220.png" alt="result3" title="result3"></p>
-<p>| That's correct!</p>
-<p>|=====================================================================           |  87%<br>
-| It looks like Rcpp is on top with downloads from 84 different countries, followed by<br>
-| digest, stringr, plyr, and ggplot2. swirl jumped up the rankings again, this time to<br>
-| 27th.</p>
-<p>...</p>
-<p>|=======================================================================         |  88%<br>
-| To help drive the point home, let's work through a few more examples of chaining.</p>
-<p>...</p>
-<p>|========================================================================        |  90%<br>
-| Let's build a chain of dplyr commands one step at a time, starting with the script I<br>
-| just opened for you.</p>
-
-<pre><code>{r}
-# select() the following columns from cran. Keep in mind
-# that when you're using the chaining operator, you don't
-# need to specify the name of the data tbl in your call to
-# select().
-#
-# 1. ip_id
-# 2. country
-# 3. package
-# 4. size
-#
-# The call to print() at the end of the chain is optional,
-# but necessary if you want your results printed to the
-# console. Note that since there are no additional arguments
-# to print(), you can leave off the parentheses after
-# the function name. This is a convenient feature of the %&gt;%
-# operator.
-
-cran %&gt;%
-  select(ip_id,country,package,size) %&gt;%
-    print</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 225,468 x 4<br>
-   ip_id country package         size<br><int><chr><chr><int><br>
- 1     1 US      htmltools      80589<br>
- 2     2 US      tseries       321767<br>
- 3     3 US      party         748063<br>
- 4     3 US      Hmisc         606104<br>
- 5     4 CA      digest         79825<br>
- 6     3 US      randomForest   77681<br>
- 7     3 US      plyr          393754<br>
- 8     5 US      whisker        28216<br>
- 9     6 CN      Rcpp            5928<br>
-10     7 US      hflights     2206029<br>
-# ... with 225,458 more rows</int></chr></chr></int></p>
-<p>| All that hard work is paying off!</p>
-<p>|==========================================================================      |  92%<br>
-| Let's add to the chain.</p>
-
-<pre><code>{r}
-# Use mutate() to add a column called size_mb that contains
-# the size of each download in megabytes (i.e. size / 2^20).
-#
-# If you want your results printed to the console, add
-# print to the end of your chain.
-
-cran %&gt;%
-  select(ip_id, country, package, size) %&gt;%
-  mutate(size_mb=size/2^20) %&gt;%
-  print</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 225,468 x 5<br>
-   ip_id country package         size size_mb<br><int><chr><chr><int><dbl><br>
- 1     1 US      htmltools      80589 0.0769<br>
- 2     2 US      tseries       321767 0.307<br>
- 3     3 US      party         748063 0.713<br>
- 4     3 US      Hmisc         606104 0.578<br>
- 5     4 CA      digest         79825 0.0761<br>
- 6     3 US      randomForest   77681 0.0741<br>
- 7     3 US      plyr          393754 0.376<br>
- 8     5 US      whisker        28216 0.0269<br>
- 9     6 CN      Rcpp            5928 0.00565<br>
-10     7 US      hflights     2206029 2.10<br>
-# ... with 225,458 more rows</dbl></int></chr></chr></int></p>
-<p>| All that practice is paying off!</p>
-<p>|===========================================================================     |  94%<br>
-| A little bit more now.</p>
-
-<pre><code>{r}
-# Use filter() to select all rows for which size_mb is
-# less than or equal to (&lt;=) 0.5.
-#
-# If you want your results printed to the console, add
-# print to the end of your chain.
-
-cran %&gt;%
-  select(ip_id, country, package, size) %&gt;%
-  mutate(size_mb = size / 2^20) %&gt;%
-  # Your call to filter() goes here
-  filter(size_mb&lt;=0.5) %&gt;%
-  print</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 142,021 x 5<br>
-   ip_id country package        size size_mb<br><int><chr><chr><int><dbl><br>
- 1     1 US      htmltools     80589 0.0769<br>
- 2     2 US      tseries      321767 0.307<br>
- 3     4 CA      digest        79825 0.0761<br>
- 4     3 US      randomForest  77681 0.0741<br>
- 5     3 US      plyr         393754 0.376<br>
- 6     5 US      whisker       28216 0.0269<br>
- 7     6 CN      Rcpp           5928 0.00565<br>
- 8    13 DE      ipred        186685 0.178<br>
- 9    14 US      mnormt        36204 0.0345<br>
-10    16 US      iterators    289972 0.277<br>
-# ... with 142,011 more rows</dbl></int></chr></chr></int></p>
-<p>| You got it!</p>
-<p>|=============================================================================   |  96%<br>
-| And finish it off.</p>
-
-<pre><code>{r}
-# arrange() the result by size_mb, in descending order.
-#
-# If you want your results printed to the console, add
-# print to the end of your chain.
-
-cran %&gt;%
-  select(ip_id, country, package, size) %&gt;%
-  mutate(size_mb = size / 2^20) %&gt;%
-  filter(size_mb &lt;= 0.5) %&gt;%
-  # Your call to arrange() goes here
-  arrange(desc(size_mb)) %&gt;%
-  print</code></pre>
-<blockquote>
-<p>submit()</p>
-</blockquote>
-<p>| Sourcing your script...</p>
-<p># A tibble: 142,021 x 5<br>
-   ip_id country package                 size size_mb<br><int><chr><chr><int><dbl><br>
- 1 11034 DE      phia                  524232   0.500<br>
- 2  9643 US      tis                   524152   0.500<br>
- 3  1542 IN      RcppSMC               524060   0.500<br>
- 4 12354 US      lessR                 523916   0.500<br>
- 5 12072 US      colorspace            523880   0.500<br>
- 6  2514 KR      depmixS4              523863   0.500<br>
- 7  1111 US      depmixS4              523858   0.500<br>
- 8  8865 CR      depmixS4              523858   0.500<br>
- 9  5908 CN      RcmdrPlugin.KMggplot2 523852   0.500<br>
-10 12354 US      RcmdrPlugin.KMggplot2 523852   0.500<br>
-# ... with 142,011 more rows</dbl></int></chr></chr></int></p>
-<p>| You got it!</p>
-<p>|==============================================================================  |  98%<br>
-| In this lesson, you learned about grouping and chaining using dplyr. You combined some<br>
-| of the things you learned in the previous lesson with these more advanced ideas to<br>
-| produce concise, readable, and highly effective code. Welcome to the wonderful world of<br>
-| dplyr!</p>
-<p>...</p>
-<p>|================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: Yes<br>
-2: No</p>
-<p>Selection: 1<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| Perseverance, that's the answer.</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Getting and Cleaning Data<br>
-2: R Programming<br>
-3: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-<blockquote>
-<p>ls()<br>
- [1] "by_package"        "cran"              "pack_sum"          "result1"<br>
- [5] "result2"           "result3"           "top_countries"     "top_counts"<br>
- [9] "top_counts_sorted" "top_unique"        "top_unique_sorted"<br>
-rm(list=ls())</p>
-</blockquote>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-04-23 21:01:55.271179 IST</em></p>
 
 </div>
 </div>
