@@ -215,16 +215,17 @@ library(swirl)</p>
 | remind yourself what it looks like run the R command head with airquality as an<br>
 | argument to see what the data looks like.</p>
 <blockquote>
-<p>head(airquality)<br>
-  Ozone Solar.R Wind Temp Month Day<br>
-1    41     190  7.4   67     5   1<br>
-2    36     118  8.0   72     5   2<br>
-3    12     149 12.6   74     5   3<br>
-4    18     313 11.5   62     5   4<br>
-5    NA      NA 14.3   56     5   5<br>
-6    28      NA 14.9   66     5   6</p>
-</blockquote>
+<p>head(airquality)</p>
+
+<pre><code>  Ozone Solar.R Wind Temp Month Day  
+1    41     190  7.4   67     5   1  
+2    36     118  8.0   72     5   2  
+3    12     149 12.6   74     5   3  
+4    18     313 11.5   62     5   4  
+5    NA      NA 14.3   56     5   5  
+6    28      NA 14.9   66     5   6</code></pre>
 <p>| You got it right!</p>
+</blockquote>
 <p>|==============                                                               |  18%<br>
 | Now try running xyplot with the formula Ozone~Wind as the first argument and the<br>
 | second argument data set equal to airquality.</p>
@@ -395,12 +396,13 @@ Ozone ~ Wind</p>
 | distinguishes between the first and last 50 elements of the two vectors. Run the R<br>
 | command table with f as it argument.</p>
 <blockquote>
-<p>table(f)<br>
-f<br>
-Group 1 Group 2<br>
-     50      50</p>
-</blockquote>
+<p>table(f)</p>
+
+<pre><code>f  
+Group 1 Group 2   
+     50      50</code></pre>
 <p>| That's a job well done!</p>
+</blockquote>
 <p>|======================================                                       |  49%<br>
 | The first 50 entries of f are "Group 1" and the last 50 are "Group 2". Run xyplot<br>
 | with two arguments. The first is the formula y~x|f, and the second is layout set<br>
@@ -534,48 +536,47 @@ invisible()</code></pre>
 | The data is in the data frame diamonds. Use the R command str to see what it looks<br>
 | like.</p>
 <blockquote>
-<p>str(diamonds)<br>
-tibble [53,940 x 10] (S3: tbl_df/tbl/data.frame)<br>
+<p>str(diamonds)</p>
+
+<pre><code>tibble [53,940 x 10] (S3: tbl_df/tbl/data.frame)  
  $ carat  : num [1:53940] 0.23 0.21 0.23 0.29 0.31 0.24 0.24 0.26 0.22 0.23 ...  
- $ cut    : Ord.factor w/ 5 levels "Fair"&lt;"Good"&lt;..: 5 4 2 4 2 3 3 3 1 3 ...<br>
+ $ cut    : Ord.factor w/ 5 levels "Fair"&lt;"Good"&lt;..: 5 4 2 4 2 3 3 3 1 3 ...  
  $ color  : Ord.factor w/ 7 levels "D"&lt;"E"&lt;"F"&lt;"G"&lt;..: 2 2 2 6 7 7 6 5 2 5 ...  
- $ clarity: Ord.factor w/ 8 levels "I1"&lt;"SI2"&lt;"SI1"&lt;..: 2 3 5 4 2 6 7 3 4 5 ...<br>
+ $ clarity: Ord.factor w/ 8 levels "I1"&lt;"SI2"&lt;"SI1"&lt;..: 2 3 5 4 2 6 7 3 4 5 ...  
  $ depth  : num [1:53940] 61.5 59.8 56.9 62.4 63.3 62.8 62.3 61.9 65.1 59.4 ...  
- $ table  : num [1:53940] 55 61 65 58 58 57 57 55 61 61 ...<br>
+ $ table  : num [1:53940] 55 61 65 58 58 57 57 55 61 61 ...  
  $ price  : int [1:53940] 326 326 327 334 335 336 336 337 337 338 ...  
- $ x      : num [1:53940] 3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...<br>
+ $ x      : num [1:53940] 3.95 3.89 4.05 4.2 4.34 3.94 3.95 4.07 3.87 4 ...  
  $ y      : num [1:53940] 3.98 3.84 4.07 4.23 4.35 3.96 3.98 4.11 3.78 4.05 ...  
- $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</p>
-</blockquote>
+ $ z      : num [1:53940] 2.43 2.31 2.31 2.63 2.75 2.48 2.47 2.53 2.49 2.39 ...</code></pre>
 <p>| Perseverance, that's the answer.</p>
+</blockquote>
 <p>|=======================================================                      |  72%<br>
 | So the data frame contains 10 pieces of information for each of 53940 diamonds. Run<br>
 | the R command table with diamonds$color as an argument.</p>
 <blockquote>
 <p>table(diamonds$color)</p>
-</blockquote>
 
-<pre><code>D     E     F     G     H     I     J   
-</code></pre>
-<p>6775  9797  9542 11292  8304  5422  2808</p>
+<pre><code>    D     E     F     G     H     I     J   
+ 6775  9797  9542 11292  8304  5422  2808</code></pre>
 <p>| You nailed it! Good job!</p>
+</blockquote>
 <p>|========================================================                     |  73%<br>
 | We see 7 colors each represented by a letter. Now run the R command table with two<br>
 | arguments, diamonds$color and diamonds$cut.</p>
 <blockquote>
 <p>table(diamonds$color,diamonds$cut)</p>
-</blockquote>
 
-<pre><code>Fair Good Very Good Premium Ideal  
-</code></pre>
-<p>D  163  662      1513    1603  2834<br>
-  E  224  933      2400    2337  3903<br>
-  F  312  909      2164    2331  3826<br>
-  G  314  871      2299    2924  4884<br>
-  H  303  702      1824    2360  3115<br>
-  I  175  522      1204    1428  2093<br>
-  J  119  307       678     808   896</p>
+<pre><code>    Fair Good Very Good Premium Ideal  
+  D  163  662      1513    1603  2834  
+  E  224  933      2400    2337  3903  
+  F  312  909      2164    2331  3826  
+  G  314  871      2299    2924  4884  
+  H  303  702      1824    2360  3115  
+  I  175  522      1204    1428  2093  
+  J  119  307       678     808   896</code></pre>
 <p>| That's a job well done!</p>
+</blockquote>
 <p>|=========================================================                    |  75%<br>
 | We see a 7 by 5 array with counts indicating how many diamonds in the data frame<br>
 | have a particular color and cut. From the table, which is the most frequent<br>
