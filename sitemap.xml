@@ -19,7 +19,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/archive.html</loc>
-  <lastmod>2020-05-09T15:31:00Z</lastmod>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/categories/</loc>
@@ -55,7 +55,7 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/</loc>
-  <lastmod>2020-05-09T15:31:00Z</lastmod>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/00100/</loc>
@@ -190,6 +190,10 @@
   <lastmod>2020-05-09T15:31:00Z</lastmod>
  </url>
  <url>
+  <loc>https://r.datascience.eu.org/posts/00430/</loc>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
+ </url>
+ <url>
   <loc>https://r.datascience.eu.org/posts/00501/</loc>
   <lastmod>2020-04-14T18:27:00Z</lastmod>
  </url>
@@ -207,11 +211,11 @@
  </url>
  <url>
   <loc>https://r.datascience.eu.org/posts/index-3.html</loc>
-  <lastmod>2020-05-09T15:31:00Z</lastmod>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/</loc>
-  <lastmod>2020-05-09T15:31:00Z</lastmod>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/all/</loc>
@@ -532,6 +536,10 @@
  <url>
   <loc>https://r.datascience.eu.org/tags/r/</loc>
   <lastmod>2020-04-10T05:50:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://r.datascience.eu.org/tags/range/</loc>
+  <lastmod>2020-05-09T16:39:00Z</lastmod>
  </url>
  <url>
   <loc>https://r.datascience.eu.org/tags/rbinom/</loc>

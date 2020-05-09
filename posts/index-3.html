@@ -74,7 +74,682 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00419/" class="u-url">Principles of Analytic Graphs</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00420/" class="u-url">Exploratory Graphs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00420/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-02T19:15:50+05:30" itemprop="datePublished" title="2020-05-02 19:15">2020-05-02 19:15</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00420/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00420_Exploratory Graphs.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00420_Exploratory Graphs.html";
+var idcomments_post_url = "/posts/00420/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 2<br>
+  |                                                                                   |   0%</p>
+<p>| Exploratory_Graphs. (Slides for this and other Data Science courses may be found at github<br>
+| <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them, they must<br>
+| be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/exploratoryGraphs.)</p>
+<p>Error in (function (srcref)  : unimplemented type (29) in 'eval'<br>
+Error: no more error handlers available (recursive errors?); invoking 'abort' restart<br>
+Error in readline("...") :<br>
+  INTEGER() can only be applied to a 'integer', not a 'unknown type #29'<br>
+In addition: Warning message:<br>
+In readline("...") : type 29 is unimplemented in 'type2char'</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Would you like to continue with one of these lessons?</p>
+<p>1: Exploratory Data Analysis Exploratory Graphs<br>
+2: No. Let me start something new.</p>
+<p>Selection: 1</p>
+<p>| Exploratory_Graphs. (Slides for this and other Data Science courses may be found at github<br>
+| <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them, they must<br>
+| be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/exploratoryGraphs.)</p>
+<p>...</p>
+<p>|=                                                                                  |   1%<br>
+| In this lesson, we'll discuss why graphics are an important tool for data scientists and<br>
+| the special role that exploratory graphs play in the field.</p>
+<p>...</p>
+<p>|==                                                                                 |   3%<br>
+| Which of the following would NOT be a good reason to use graphics in data science?</p>
+<p>1: To understand data properties<br>
+2: To find a color that best matches the shirt you're wearing<br>
+3: To find patterns in data<br>
+4: To suggest modeling strategies</p>
+<p>Selection: 2</p>
+<p>| All that practice is paying off!</p>
+<p>|===                                                                                |   4%<br>
+| So graphics give us some visual form of data, and since our brains are very good at seeing<br>
+| patterns, graphs give us a compact way to present data and find or display any pattern<br>
+| that may be present.</p>
+<p>...</p>
+<p>|====                                                                               |   5%<br>
+| Which of the following cliches captures the essence of graphics?</p>
+<p>1: To err is human, to forgive divine<br>
+2: A rose by any other name smells as sweet<br>
+3: A picture is worth a 1000 words<br>
+4: The apple doesn't fall far from the tree</p>
+<p>Selection: 3</p>
+<p>| Excellent work!</p>
+<p>|======                                                                             |   7%<br>
+| Exploratory graphs serve mostly the same functions as graphs. They help us find patterns<br>
+| in data and understand its properties. They suggest modeling strategies and help to debug<br>
+| analyses. We DON'T use exploratory graphs to communicate results.</p>
+<p>...</p>
+<p>|=======                                                                            |   8%<br>
+| Instead, exploratory graphs are the initial step in an investigation, the "quick and<br>
+| dirty" tool used to point the data scientist in a fruitful direction. A scientist might<br>
+| need to make a lot of exploratory graphs in order to develop a personal understanding of<br>
+| the problem being studied. Plot details such as axes, legends, color and size are cleaned<br>
+| up later to convey more information in an aesthetically pleasing way.</p>
+<p>...</p>
+<p>|========                                                                           |   9%<br>
+| To demonstrate these ideas, we've copied some data for you from the U.S. Environmental<br>
+| Protection Agency (EPA) which sets national ambient air quality standards for outdoor air<br>
+| pollution. These Standards say that for fine particle pollution (PM2.5), the "annual mean,<br>
+| averaged over 3 years" cannot exceed 12 micro grams per cubic meter. We stored the data<br>
+| from the U.S. EPA web site in the data frame pollution. Use the R function head to see the<br>
+| first few entries of pollution.</p>
+<blockquote>
+<p>head(pollution)<br>
+       pm25  fips region longitude latitude<br>
+1  9.771185 01003   east -87.74826 30.59278<br>
+2  9.993817 01027   east -85.84286 33.26581<br>
+3 10.688618 01033   east -87.72596 34.73148<br>
+4 11.337424 01049   east -85.79892 34.45913<br>
+5 12.119764 01055   east -86.03212 34.01860<br>
+6 10.827805 01069   east -85.35039 31.18973</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|=========                                                                          |  11%<br>
+| We see right away that there's at least one county exceeding the EPA's standard of 12<br>
+| micrograms per cubic meter. What else do we see?</p>
+<p>...</p>
+<p>|==========                                                                         |  12%<br>
+| We see 5 columns of data. The pollution count is in the first column labeled pm25. We'll<br>
+| work mostly with that. The other 4 columns are a fips code indicating the state (first 2<br>
+| digits) and county (last 3 digits) with that count, the associated region (east or west),<br>
+| and the longitude and latitude of the area. Now run the R command dim with pollution as an<br>
+| argument to see how long the table is.</p>
+<blockquote>
+<p>dim(pollution)<br>
+[1] 576   5</p>
+</blockquote>
+<p>| Great job!</p>
+<p>|===========                                                                        |  13%<br>
+| So there are 576 entries in pollution. We'd like to investigate the question "Are there<br>
+| any counties in the U.S. that exceed that national standard (12 micro grams per cubic<br>
+| meter) for fine particle pollution?" We'll look at several one dimensional summaries of<br>
+| the data to investigate this question.</p>
+<p>...</p>
+<p>|============                                                                       |  15%<br>
+| The first technique uses the R command summary, a 5-number summary which returns 6<br>
+| numbers. Run it now with the pm25 column of pollution as its argument. Recall that the<br>
+| construct for this is pollution$pm25.</p>
+<blockquote>
+<p>summary(pollution$pm25)<br>
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.<br>
+  3.383   8.549  10.047   9.836  11.356  18.441</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=============                                                                      |  16%<br>
+| This shows us basic info about the pm25 data, namely its Minimum (0 percentile) and<br>
+| Maximum (100 percentile) values, and three Quartiles of the data. These last indicate the<br>
+| pollution measures at which 25%, 50%, and 75% of the counties fall below. In addition to<br>
+| these 5 numbers we see the Mean or average measure of particulate pollution across the 576<br>
+| counties.</p>
+<p>...</p>
+<p>|==============                                                                     |  17%<br>
+| Half the measured counties have a pollution level less than or equal to what number of<br>
+| micrograms per cubic meter?</p>
+<p>1: 10.050<br>
+2: 9.836<br>
+3: 8.549<br>
+4: 11.360</p>
+<p>Selection: 1</p>
+<p>| You're the best!</p>
+<p>|===============                                                                    |  19%<br>
+| To save you a lot of typing we've saved off pollution$pm25 for you in the variable ppm.<br>
+| You can use ppm now in place of the longer expression. Try it now as the argument of the R<br>
+| command quantile. See how the results look a lot like the results of the output of the<br>
+| summary command.</p>
+<blockquote>
+<p>quantile(ppm)<br>
+       0%       25%       50%       75%      100%<br>
+ 3.382626  8.548799 10.046697 11.356012 18.440731</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=================                                                                  |  20%<br>
+| See how the results are similar to those returned by summary? Quantile gives the<br>
+| quartiles, right? What is the one value missing from this quantile output that summary<br>
+| gave you?</p>
+<p>1: the maximum value<br>
+2: the median<br>
+3: the minimum value<br>
+4: the mean</p>
+<p>Selection: 4</p>
+<p>| Excellent work!</p>
+<p>|==================                                                                 |  21%<br>
+| Now we'll plot a picture, specifically a boxplot. Run the R command boxplot with ppm as an<br>
+| input. Also specify the color parameter col equal to "blue".</p>
+<blockquote>
+<p>boxplot(ppm,col="blue")</p>
+</blockquote>
+<p><img src="../images/r0040290.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|===================                                                                |  23%<br>
+| The boxplot shows us the same quartile data that summary and quantile did. The lower and<br>
+| upper edges of the blue box respectively show the values of the 25% and 75% quantiles.</p>
+<p>...</p>
+<p>|====================                                                               |  24%<br>
+| What do you think the horizontal line inside the box represents?</p>
+<p>1: the maximum value<br>
+2: the mean<br>
+3: the minimum value<br>
+4: the median</p>
+<p>Selection: 4</p>
+<p>| Nice work!</p>
+<p>|=====================                                                              |  25%<br>
+| The "whiskers" of the box (the vertical lines extending above and below the box) relate to<br>
+| the range parameter of boxplot, which we let default to the value 1.5 used by R. The<br>
+| height of the box is the interquartile range, the difference between the 75th and 25th<br>
+| quantiles. In this case that difference is 2.8. The whiskers are drawn to be a length of<br>
+| range<em>2.8 or 1.5</em>2.8. This shows us roughly how many, if any, data points are outliers,<br>
+| that is, beyond this range of values.</p>
+<p>...</p>
+<p>|======================                                                             |  27%<br>
+| Note that boxplot is part of R's base plotting package. A nice feature that this package<br>
+| provides is its ability to overlay features. That is, you can add to (annotate) an<br>
+| existing plot.</p>
+<p>...</p>
+<p>|=======================                                                            |  28%<br>
+| To see this, run the R command abline with the argument h equal to 12. Recall that 12 is<br>
+| the EPA standard for air quality.</p>
+<blockquote>
+<p>abline(h=12)</p>
+</blockquote>
+<p><img src="../images/r0040300.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|========================                                                           |  29%<br>
+| What do you think this command did?</p>
+<p>1: drew a horizontal line at 12<br>
+2: hid 12 random data points<br>
+3: drew a vertical line at 12<br>
+4: nothing</p>
+<p>Selection: 1</p>
+<p>| Keep up the great work!</p>
+<p>|=========================                                                          |  31%<br>
+| So abline "adds one or more straight lines through the current plot." We see from the plot<br>
+| that the bulk of the measured counties comply with the standard since they fall under the<br>
+| line marking that standard.</p>
+<p>...</p>
+<p>|===========================                                                        |  32%<br>
+| Now use the R command hist (another function from the base package) with the argument ppm.<br>
+| Specify the color parameter col equal to "green". This will plot a histogram of the data.</p>
+<blockquote>
+<p>hist(ppm,col="green")</p>
+</blockquote>
+<p><img src="../images/r0040310.png" alt="graph" title="graph"></p>
+<p>| You nailed it! Good job!</p>
+<p>|============================                                                       |  33%<br>
+| The histogram gives us a little more detailed information about our data, specifically the<br>
+| distribution of the pollution counts, or how many counties fall into each bucket of<br>
+| measurements.</p>
+<p>...</p>
+<p>|=============================                                                      |  35%<br>
+| What are the most frequent pollution counts?</p>
+<p>1: between 9 and 12<br>
+2: between 12 and 14<br>
+3: between 6 and 8<br>
+4: under 5</p>
+<p>Selection: 1</p>
+<p>| You're the best!</p>
+<p>|==============================                                                     |  36%<br>
+| Now run the R command rug with the argument ppm.</p>
+<blockquote>
+<p>rug(ppm)</p>
+</blockquote>
+<p><img src="../images/r0040320.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|===============================                                                    |  37%<br>
+| This one-dimensional plot, with its grayscale representation, gives you a little more<br>
+| detailed information about how many data points are in each bucket and where they lie<br>
+| within the bucket. It shows (through density of tick marks) that the greatest<br>
+| concentration of counties has between 9 and 12 micrograms per cubic meter just as the<br>
+| histogram did.</p>
+<p>...</p>
+<p>|================================                                                   |  39%<br>
+| To illustrate this a little more, we've defined for you two vectors, high and low,<br>
+| containing pollution data of high (greater than 15) and low (less than 5) values<br>
+| respectively. Look at low now and see how it relates to the output of rug.</p>
+<blockquote>
+<p>low<br>
+ [1] 3.494351 4.186090 4.917140 4.504539 4.793644 4.601408 4.195688 4.625279 4.460193<br>
+[10] 4.978397 4.324736 4.175901 3.382626 4.132739 4.955570 4.565808</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=================================                                                  |  40%<br>
+| It confirms that there are two data points between 3 and 4 and many between 4 and 5. Now<br>
+| look at high.</p>
+<blockquote>
+<p>high<br>
+[1] 16.19452 15.80378 18.44073 16.66180 15.01573 17.42905 16.25190 16.18358</p>
+</blockquote>
+<p>| Excellent job!</p>
+<p>|==================================                                                 |  41%<br>
+| Again, we see one data point greater than 18, one between 17 and 18, several between 16<br>
+| and 17 and two between 15 and 16, verifying what rug indicated.</p>
+<p>...</p>
+<p>|===================================                                                |  43%<br>
+| Now rerun hist with 3 arguments, ppm as its first, col equal to "green", and the argument<br>
+| breaks equal to 100.</p>
+<blockquote>
+<p>hist(ppm,col="green",breaks=100)</p>
+</blockquote>
+<p><img src="../images/r0040330.png" alt="graph" title="graph"></p>
+<p>| All that practice is paying off!</p>
+<p>|=====================================                                              |  44%<br>
+| What do you think the breaks argument specifies in this case?</p>
+<p>1: the number of data points to graph<br>
+2: the number of counties exceeding the EPA standard<br>
+3: the number of buckets to split the data into<br>
+4: the number of stars in the sky</p>
+<p>Selection: 3</p>
+<p>| You are amazing!</p>
+<p>|======================================                                             |  45%<br>
+| So this histogram with more buckets is not nearly as smooth as the preceding one. In fact,<br>
+| it's a little too noisy to see the distribution clearly. When you're plotting histograms<br>
+| you might have to experiment with the argument breaks to get a good idea of your data's<br>
+| distribution. For fun now, rerun the R command rug with the argument ppm.</p>
+<blockquote>
+<p>rug(ppm)</p>
+</blockquote>
+<p><img src="../images/r0040340.png" alt="graph" title="graph"></p>
+<p>| That's a job well done!</p>
+<p>|=======================================                                            |  47%<br>
+| See how rug works with the existing plot? It automatically adjusted its pocket size to<br>
+| that of the last plot plotted.</p>
+<p>...</p>
+<p>|========================================                                           |  48%<br>
+| Now rerun hist with ppm as the data and col equal to "green".</p>
+<blockquote>
+<p>hist(ppm,col="green")</p>
+</blockquote>
+<p><img src="../images/r0040310.png" alt="graph" title="graph"></p>
+<p>| Great job!</p>
+<p>|=========================================                                          |  49%<br>
+| Now run the command abline with the argument v equal to 12 and the argument lwd equal to<br>
+| 2.</p>
+<blockquote>
+<p>abline(v=12,lwd=2)</p>
+</blockquote>
+<p><img src="../images/r0040350.png" alt="graph" title="graph"></p>
+<p>| You are doing so well!</p>
+<p>|==========================================                                         |  51%<br>
+| See the vertical line at 12? Not very visible, is it, even though you specified a line<br>
+| width of 2? Run abline with the argument v equal to median(ppm), the argument col equal to<br>
+| "magenta", and the argument lwd equal to 4.</p>
+<blockquote>
+<p>abline(v=median(ppm),col="magenta",lwd=4)</p>
+</blockquote>
+<p><img src="../images/r0040360.png" alt="graph" title="graph"></p>
+<p>| You are quite good my friend!</p>
+<p>|===========================================                                        |  52%<br>
+| Better, right? Thicker and more of a contrast in color. This shows that although the<br>
+| median (50%) is below the standard, there are a fair number of counties in the U.S that<br>
+| have pollution levels higher than the standard.</p>
+<p>...</p>
+<p>|============================================                                       |  53%<br>
+| Now recall that our pollution data had 5 columns of information. So far we've only looked<br>
+| at the pm25 column. We can also look at other information. To remind yourself what's there<br>
+| run the R command names with pollution as the argument.</p>
+<blockquote>
+<p>names(pollution)<br>
+[1] "pm25"      "fips"      "region"    "longitude" "latitude"</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=============================================                                      |  55%<br>
+| Longitude and latitude don't sound interesting, and each fips is unique since it<br>
+| identifies states (first 2 digits) and counties (last 3 digits). Let's look at the region<br>
+| column to see what's there. Run the R command table on this column. Use the construct<br>
+| pollution$region. Store the result in the variable reg.</p>
+<blockquote>
+<p>reg&lt;-table(pollution$region)</p>
+</blockquote>
+<p>| All that practice is paying off!</p>
+<p>|==============================================                                     |  56%<br>
+| Look at reg now.</p>
+<blockquote>
+<p>reg</p>
+</blockquote>
+<p>east west<br>
+ 442  134</p>
+<p>| Nice work!</p>
+<p>|================================================                                   |  57%<br>
+| Lot more counties in the east than west. We'll use the R command barplot (another type of<br>
+| one-dimensional summary) to plot this information. Call barplot with reg as its first<br>
+| argument, the argument col equal to "wheat", and the argument main equal to the string<br>
+| "Number of Counties in Each Region".</p>
+<blockquote>
+<p>barplot(reg,col="wheat",main="Number of Counties in Each Region")</p>
+</blockquote>
+<p><img src="../images/r0040370.png" alt="graph" title="graph"></p>
+<p>| You are quite good my friend!</p>
+<p>|=================================================                                  |  59%<br>
+| What do you think the argument main specifies?</p>
+<p>1: the y axis label<br>
+2: the title of the graph<br>
+3: the x axis label<br>
+4: I can't tell</p>
+<p>Selection: 2</p>
+<p>| You are doing so well!</p>
+<p>|==================================================                                 |  60%<br>
+| So we've seen several examples of one-dimensional graphs that summarize data. Two<br>
+| dimensional graphs include scatterplots, multiple graphs which we'll see more examples of,<br>
+| and overlayed one-dimensional plots which the R packages such as lattice and ggplot2<br>
+| provide.</p>
+<p>...</p>
+<p>|===================================================                                |  61%<br>
+| Some graphs have more than two-dimensions. These include overlayed or multiple<br>
+| two-dimensional plots and spinning plots. Some three-dimensional plots are tricky to<br>
+| understand so have limited applications. We'll see some examples now of more complicated<br>
+| graphs, in particular, we'll show two graphs together.</p>
+<p>...</p>
+<p>|====================================================                               |  63%<br>
+| First we'll show how R, in one line and using base plotting, can display multiple<br>
+| boxplots. We simply specify that we want to see the pollution data as a function of<br>
+| region. We know that our pollution data characterized each of the 576 entries as belonging<br>
+| to one of two regions (east and west).</p>
+<p>...</p>
+<p>|=====================================================                              |  64%<br>
+| We use the R formula y ~ x to show that y (in this case pm25) depends on x (region). Since<br>
+| both come from the same data frame (pollution) we can specify a data argument set equal to<br>
+| pollution. By doing this, we don't have to type pollution$pm25 (or ppm) and  
+| pollution$region. We can just specify the formula pm25~region. Call boxplot now with this<br>
+| formula as its argument, data equal to pollution, and col equal to "red".</p>
+<blockquote>
+<p>boxplot(pm25~region,data=pollution,col="red")</p>
+</blockquote>
+<p><img src="../images/r0040380.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|======================================================                             |  65%<br>
+| Two for the price of one! Similarly we can plot multiple histograms in one plot, though to<br>
+| do this we have to use more than one R command. First we have to set up the plot window<br>
+| with the R command par which specifies how we want to lay out the plots, say one above the<br>
+| other. We also use par to specify margins, a 4-long vector which indicates the number of<br>
+| lines for the bottom, left, top and right. Type the R command<br>
+| par(mfrow=c(2,1),mar=c(4,4,2,1)) now. Don't expect to see any new result.</p>
+<blockquote>
+<p>par(mfrow=c(2,1),mar=c(4,4,2,1))</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|=======================================================                            |  67%<br>
+| So we set up the plot window for two rows and one column with the mfrow argument. The mar<br>
+| argument set up the margins. Before we plot the histograms let's explore the R command<br>
+| subset which, not surprisingly, "returns subsets of vectors, matrices or data frames which<br>
+| meet conditions". We'll use subset to pull off the data we want to plot. Call subset now<br>
+| with pollution as its first argument and a boolean expression testing region for equality<br>
+| with the string "east". Put the result in the variable east.</p>
+<blockquote>
+<p>east&lt;-subset(pollution,region=="east")</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|========================================================                           |  68%<br>
+| Use head to look at the first few entries of east.</p>
+<blockquote>
+<p>head(east)<br>
+       pm25  fips region longitude latitude<br>
+1  9.771185 01003   east -87.74826 30.59278<br>
+2  9.993817 01027   east -85.84286 33.26581<br>
+3 10.688618 01033   east -87.72596 34.73148<br>
+4 11.337424 01049   east -85.79892 34.45913<br>
+5 12.119764 01055   east -86.03212 34.01860<br>
+6 10.827805 01069   east -85.35039 31.18973</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|==========================================================                         |  69%<br>
+| So east holds more information than we need. We just want to plot a histogram with the<br>
+| pm25 portion. Call hist now with the pm25 portion of east as its first argument and col<br>
+| equal to "green" as its second.</p>
+<blockquote>
+<p>hist(east$pm25,col="green")</p>
+</blockquote>
+<p><img src="../images/r0040390.png" alt="graph" title="graph"></p>
+<p>| You got it!</p>
+<p>|===========================================================                        |  71%<br>
+| See? The command par told R we were going to have one column with 2 rows, so it placed<br>
+| this histogram in the top position.</p>
+<p>...</p>
+<p>|============================================================                       |  72%<br>
+| Now, here's a challenge for you. Plot the histogram of the counties from the west using<br>
+| just one R command. Let the appropriate subset command (with the pm25 portion specified)<br>
+| be the first argument and col (equal to "green") the second.  To cut down on your typing,<br>
+| use the up arrow key to get your last command and replace "east" with the subset command.<br>
+| Make sure the boolean argument checks for equality between region and "west".</p>
+<blockquote>
+<p>hist(subset(pollution,region=="west")$pm25,col="green")</p>
+</blockquote>
+<p><img src="../images/r0040400.png" alt="graph" title="graph"></p>
+<p>| You are really on a roll!</p>
+<p>|=============================================================                      |  73%<br>
+| See how R does all the labeling for you? Notice that the titles are different since we<br>
+| used different commands for the two plots. Let's look at some scatter plots now.</p>
+<p>...</p>
+<p>|==============================================================                     |  75%<br>
+| Scatter plots are two-dimensional plots which show the relationship between two variables,<br>
+| usually x and y. Let's look at a scatterplot showing the relationship between latitude and<br>
+| the pm25 data. We'll use plot, a function from R's base plotting package.</p>
+<p>...</p>
+<p>|===============================================================                    |  76%<br>
+| We've seen that we can use a function call as an argument when calling another function.<br>
+| We'll do this again when we call plot with the arguments latitude and pm25 which are both<br>
+| from our data frame pollution. We'll call plot from inside the R command with which<br>
+| evaluates "an R expression in an environment constructed from data". We'll use pollution<br>
+| as the first argument to with and the call to plot as the second. This allows us to avoid<br>
+| typing "pollution$" before the arguments to plot, so it saves us some typing and adds to<br>
+| your base of R knowledge. Try this now.</p>
+<blockquote>
+<p>with(pollution,plot(latitude,pm25))</p>
+</blockquote>
+<p><img src="../images/r0040410.png" alt="graph" title="graph"></p>
+<p>| You nailed it! Good job!</p>
+<p>|================================================================                   |  77%<br>
+| Note that the first argument is plotted along the x-axis and the second along the y. Now<br>
+| use abline to add a horizontal line at 12. Use two additional arguments, lwd equal to 2<br>
+| and lty also equal to 2. See what happens.</p>
+<blockquote>
+<p>abline(h=12,lwd=2,lty=2)</p>
+</blockquote>
+<p><img src="../images/r0040420.png" alt="graph" title="graph"></p>
+<p>| That's correct!</p>
+<p>|=================================================================                  |  79%<br>
+| See how lty=2 made the line dashed? Now let's replot the scatterplot. This time, instead<br>
+| of using with, call plot directly with 3 arguments. The first 2 are pollution$latitude and  
+| ppm. The third argument, col, we'll use to add color and more information to our plot. Set  
+| this argument (col) equal to pollution$region and see what happens.</p>
+<blockquote>
+<p>plot(pollution$latitude,ppm,col=pollution$region)</p>
+</blockquote>
+<p><img src="../images/r0040430.png" alt="graph" title="graph"></p>
+<p>| Perseverance, that's the answer.</p>
+<p>|==================================================================                 |  80%<br>
+| We've got two colors on the map to distinguish between counties in the east and those in<br>
+| the west. Can we figure out which color is east and which west? See that the high (greater<br>
+| than 50) and low (less than 25) latitudes are both red. Latitudes indicate distance from<br>
+| the equator, so which half of the U.S. (east or west) has counties at the extreme north<br>
+| and south?</p>
+<p>1: east<br>
+2: west</p>
+<p>Selection: 2</p>
+<p>| That's a job well done!</p>
+<p>|====================================================================               |  81%<br>
+| As before, use abline to add a horizontal line at 12. Use two additional arguments, lwd<br>
+| equal to 2 and lty also equal to 2.</p>
+<blockquote>
+<p>abline(h=12,lwd=2,lty=2)</p>
+</blockquote>
+<p><img src="../images/r0040440.png" alt="graph" title="graph"></p>
+<p>| You are amazing!</p>
+<p>|=====================================================================              |  83%<br>
+| We see many counties are above the healthy standard set by the EPA, but it's hard to tell<br>
+| overall, which region, east or west, is worse.</p>
+<p>...</p>
+<p>|======================================================================             |  84%<br>
+| Let's plot two scatterplots distinguished by region.</p>
+<p>...</p>
+<p>|=======================================================================            |  85%<br>
+| As we did with multiple histograms, we first have to set up the plot window with the R<br>
+| command par. This time, let's plot the scatterplots side by side (one row and two<br>
+| columns). We also need to use different margins. Type the R command par(mfrow = c(1, 2),<br>
+| mar = c(5, 4, 2, 1)) now. Don't expect to see any new result.</p>
+<blockquote>
+<p>par(mfrow = c(1, 2),mar = c(5, 4, 2, 1))</p>
+</blockquote>
+<p>| You are quite good my friend!</p>
+<p>|========================================================================           |  87%<br>
+| For the first scatterplot, on the left, we'll plot the latitudes and pm25 counts from the<br>
+| west. We already pulled out the information for the counties in the east. Let's now get<br>
+| the information for the counties from the west. Create the variable west by using the<br>
+| subset command with pollution as the first argument and the appropriate boolean as the<br>
+| second.</p>
+<blockquote>
+<p>west&lt;-subset(pollution,region="west")</p>
+</blockquote>
+<p>| Keep trying! Or, type info() for more options.</p>
+<p>| Type west &lt;- subset(pollution,region=="west") at the command prompt.</p>
+<blockquote>
+<p>west&lt;-subset(pollution,region=="west")</p>
+</blockquote>
+<p>| That's the answer I was looking for.</p>
+<p>|=========================================================================          |  88%<br>
+| Now call plot with three arguments. These are west$latitude (x-axis), west$pm25 (y-axis),<br>
+| and the argument main equal to the string "West" (title). Do this now.</p>
+<blockquote>
+<p>plot(west$latitude,west$pm25,main="West")</p>
+</blockquote>
+<p><img src="../images/r0040450.png" alt="graph" title="graph"></p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================================         |  89%<br>
+| For the second scatterplot, on the right, we'll plot the latitudes and pm25 counts from<br>
+| the east.</p>
+<p>...</p>
+<p>|===========================================================================        |  91%<br>
+| As before, use the up arrow key and change the 3 "West" strings to "East".</p>
+<blockquote>
+<p>plot(east$latitude,east$pm25,main="East")</p>
+</blockquote>
+<p><img src="../images/r0040460.png" alt="graph" title="graph"></p>
+<p>| You're the best!</p>
+<p>|============================================================================       |  92%<br>
+| See how R took care of all the details for you? Nice, right? It looks like there are more<br>
+| dirty counties in the east but the extreme dirt (greater than 15) is in the west.</p>
+<p>...</p>
+<p>|=============================================================================      |  93%<br>
+| Let's summarize and review.</p>
+<p>...</p>
+<p>|===============================================================================    |  95%<br>
+| Which of the following characterizes exploratory plots?</p>
+<p>1: quick and dead<br>
+2: slow and clean<br>
+3: quick and dirty<br>
+4: slow and steady</p>
+<p>Selection: 3</p>
+<p>| That's the answer I was looking for.</p>
+<p>|================================================================================   |  96%<br>
+| True or false? Plots let you summarize the data (usually graphically) and highlight any<br>
+| broad features</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|=================================================================================  |  97%<br>
+| Which of the following do plots NOT do?</p>
+<p>1: Explore basic questions and hypotheses (and perhaps rule them out)<br>
+2: Conclude that you are ALWAYS right<br>
+3: Suggest modeling strategies for the "next step"<br>
+4: Summarize the data (usually graphically) and highlight any broad features</p>
+<p>Selection: 2</p>
+<p>| That's a job well done!</p>
+<p>|================================================================================== |  99%<br>
+| Congrats! You've concluded exploring this lesson on graphics. We hope you didn't find it<br>
+| too quick or dirty.</p>
+<p>...</p>
+<p>|===================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 2</p>
+<p>| Excellent job!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-02 19:17:35.849963 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00419/" class="u-url">Principles of Analytic Graphs</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
