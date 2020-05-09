@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hierarchical Clustering | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/00428/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00427/" title="GGPlot2 Part2" type="text/html">
+<link rel="next" href="../00429/" title="K Means Clustering" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Hierarchical Clustering">
+<meta property="og:url" content="https://r.datascience.eu.org/posts/00428/">
+<meta property="og:description" content='R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+R is free software and comes with ABSOLUTELY NO WARR'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-09T20:01:06+05:30">
+<meta property="article:tag" content="dendogram">
+<meta property="article:tag" content="dist()">
+<meta property="article:tag" content="hclust()">
+<meta property="article:tag" content="heatmap()">
+<meta property="article:tag" content="Hierarchical Clustering">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Hierarchical Clustering</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-09T20:01:06+05:30" itemprop="datePublished" title="2020-05-09 20:01">2020-05-09 20:01</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00428/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00428_Hierarchical Clustering.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00428_Hierarchical Clustering.html";
+var idcomments_post_url = "/posts/00428/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>setwd("C:/images")<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Principles of Analytic Graphs   2: Exploratory Graphs             
+ 3: Graphics Devices in R           4: Plotting Systems               
+ 5: Base Plotting System            6: Lattice Plotting System        
+ 7: Working with Colors             8: GGPlot2 Part1                  
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras                 
+11: Hierarchical Clustering        12: K Means Clustering             
+13: Dimension Reduction            14: Clustering Example             
+15: CaseStudy</code></pre>
+<p>Selection: 11</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘ggplot2’ loaded correctly!</p>
+<p>| This lesson requires the ‘fields’ package. Would you like me to install it for you<br>
+| now?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1</p>
+<p>| Trying to install package ‘fields’ now...<br>
+WARNING: Rtools is required to build R packages but is not currently installed. Please download and install the appropriate version of Rtools before proceeding:</p>
+<p><a href="https://cran.rstudio.com/bin/windows/Rtools/">https://cran.rstudio.com/bin/windows/Rtools/</a><br>
+also installing the dependencies ‘dotCall64’, ‘spam’, ‘maps’</p>
+<p>package ‘dotCall64’ successfully unpacked and MD5 sums checked<br>
+package ‘spam’ successfully unpacked and MD5 sums checked<br>
+package ‘maps’ successfully unpacked and MD5 sums checked<br>
+package ‘fields’ successfully unpacked and MD5 sums checked</p>
+<p>| Package ‘fields’ loaded correctly!</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>| Package ‘datasets’ loaded correctly!</p>
+<p>|                                                                             |   0%</p>
+<p>| Hierarchical_Clustering. (Slides for this and other Data Science courses may be<br>
+| found at github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care<br>
+| to use them, they must be downloaded as a zip file and viewed locally. This lesson<br>
+| corresponds to 04_ExploratoryAnalysis/hierarchicalClustering.)</p>
+<p>...</p>
+<p>|=                                                                            |   2%<br>
+| In this lesson we'll learn about hierarchical clustering, a simple way of quickly<br>
+| examining and displaying multi-dimensional data. This technique is usually most<br>
+| useful in the early stages of analysis when you're trying to get an understanding of<br>
+| the data, e.g., finding some pattern or relationship between different factors or<br>
+| variables. As the name suggests hierarchical clustering creates a hierarchy of<br>
+| clusters.</p>
+<p>...</p>
+<p>|==                                                                           |   3%<br>
+| Clustering organizes data points that are close into groups. So obvious questions<br>
+| are "How do we define close?", "How do we group things?", and "How do we interpret<br>
+| the grouping?" Cluster analysis is a very important topic in data analysis.</p>
+<p>...</p>
+<p>|====                                                                         |   5%<br>
+| To give you an idea of what we're talking about, consider these random points we<br>
+| generated. We'll use them to demonstrate hierarchical clustering in this lesson.<br>
+| We'll do this in several steps, but first we have to clarify our terms and concepts.</p>
+<p><img src="../../images/r0041430.png" alt="image" title="image"><br>
+...</p>
+<p>|=====                                                                        |   6%<br>
+| Hierarchical clustering is an agglomerative, or bottom-up, approach. From Wikipedia<br>
+| (<a href="http://en.wikipedia.org/wiki/Hierarchical_clustering">http://en.wikipedia.org/wiki/Hierarchical_clustering</a>), we learn that in this<br>
+| method, "each observation starts in its own cluster, and pairs of clusters are<br>
+| merged as one moves up the hierarchy." This means that we'll find the closest two<br>
+| points and put them together in one cluster, then find the next closest pair in the<br>
+| updated picture, and so forth. We'll repeat this process until we reach a reasonable<br>
+| stopping place.</p>
+<p>...</p>
+<p>|======                                                                       |   8%<br>
+| Note the word "reasonable". There's a lot of flexibility in this field and how you<br>
+| perform your analysis depends on your problem. Again, Wikipedia tells us, "one can<br>
+| decide to stop clustering either when the clusters are too far apart to be merged<br>
+| (distance criterion) or when there is a sufficiently small number of clusters<br>
+| (number criterion)."</p>
+<p>...</p>
+<p>|=======                                                                      |  10%<br>
+| First, how do we define close? This is the most important step and there are several<br>
+| possibilities depending on the questions you're trying to answer and the data you<br>
+| have. Distance or similarity are usually the metrics used.</p>
+<p>...</p>
+<p>|=========                                                                    |  11%<br>
+| In the given plot which pair points would you first cluster? Use distance as the<br>
+| metric.</p>
+<p>1: 5 and 6<br>
+2: 1 and 4<br>
+3: 10 and 12<br>
+4: 7 and 8</p>
+<p>Selection: 1</p>
+<p>| Perseverance, that's the answer.</p>
+<p>|==========                                                                   |  13%<br>
+| It's pretty obvious that out of the 4 choices, the pair 5 and 6 were the closest<br>
+| together. However, there are several ways to measure distance or similarity.<br>
+| Euclidean distance and correlation similarity are continuous measures, while<br>
+| Manhattan distance is a binary measure. In this lesson we'll just briefly discuss<br>
+| the first and last of these. It's important that you use a measure of distance that<br>
+| fits your problem.</p>
+<p>...</p>
+<p>|===========                                                                  |  15%<br>
+| Euclidean distance is what you learned about in high school algebra. Given two<br>
+| points on a plane, (x1,y1) and (x2,y2), the Euclidean distance is the square root of<br>
+| the sums of the squares of the distances between the two x-coordinates (x1-x2) and<br>
+| the two y-coordinates (y1-y2). You probably recognize this as an application of the<br>
+| Pythagorean theorem which yields the length of the hypotenuse of a right triangle.</p>
+<p><img src="../../images/r0041440.png" alt="image" title="image"><br>
+...</p>
+<p>|============                                                                 |  16%<br>
+| It shouldn't be hard to believe that this generalizes to more than two dimensions as<br>
+| shown in the formula at the bottom of the picture shown here.</p>
+<p>...</p>
+<p>|==============                                                               |  18%<br>
+| Euclidean distance is distance "as the crow flies". Many applications, however,<br>
+| can't realistically use crow-flying distance. Cars, for instance, have to follow<br>
+| roads.</p>
+<p>...</p>
+<p>|===============                                                              |  19%<br>
+| In this case, we can use Manhattan or city block distance (also known as a taxicab<br>
+| metric). This picture, copied from <a href="http://en.wikipedia.org/wiki/Taxicab_geometry">http://en.wikipedia.org/wiki/Taxicab_geometry</a>,<br>
+| shows what this means.</p>
+<p><img src="../../images/r0041450.png" alt="image" title="image"><br>
+...</p>
+<p>|================                                                             |  21%<br>
+| You want to travel from the point at the lower left to the one on the top right. The<br>
+| shortest distance is the Euclidean (the green line), but you're limited to the grid,<br>
+| so you have to follow a path similar to those shown in red, blue, or yellow. These<br>
+| all have the same length (12) which is the number of small gray segments covered by<br>
+| their paths.</p>
+<p>...</p>
+<p>|=================                                                            |  23%<br>
+| More formally, Manhattan distance is the sum of the absolute values of the distances<br>
+| between each coordinate, so the distance between the points (x1,y1) and (x2,y2) is<br>
+| |x1-x2|+|y1-y2|. As with Euclidean distance, this too generalizes to more than 2<br>
+| dimensions.</p>
+<p>...</p>
+<p>|===================                                                          |  24%<br>
+| Now we'll go back to our random points. You might have noticed that these points<br>
+| don't really look randomly positioned, and in fact, they're not. They were actually<br>
+| generated as 3 distinct clusters. We've put the coordinates of these points in a<br>
+| data frame for you, called dataFrame.</p>
+<p><img src="../../images/r0041430.png" alt="image" title="image"><br>
+...</p>
+<p>|====================                                                         |  26%<br>
+| We'll use this dataFrame to demonstrate an agglomerative (bottom-up) technique of<br>
+| hierarchical clustering and create a dendrogram. This is an abstract picture (or<br>
+| graph) which shows how the 12 points in our dataset cluster together. Two clusters<br>
+| (initially, these are points) that are close are connected with a line, We'll use<br>
+| Euclidean distance as our metric of closeness.</p>
+<p>...</p>
+<p>|=====================                                                        |  27%<br>
+| Run the R command dist with the argument dataFrame to compute the distances between<br>
+| all pairs of these points. By default dist uses Euclidean distance as its metric,<br>
+| but other metrics such as Manhattan, are available. Just use the default.</p>
+<blockquote>
+<p>dist(dataFrame)</p>
+
+<pre><code>            1          2          3          4          5          6          7  
+2  0.34120511                                                                    
+3  0.57493739 0.24102750                                                         
+4  0.26381786 0.52578819 0.71861759                                              
+5  1.69424700 1.35818182 1.11952883 1.80666768                                   
+6  1.65812902 1.31960442 1.08338841 1.78081321 0.08150268                        
+7  1.49823399 1.16620981 0.92568723 1.60131659 0.21110433 0.21666557             
+8  1.99149025 1.69093111 1.45648906 2.02849490 0.61704200 0.69791931 0.65062566  
+9  2.13629539 1.83167669 1.67835968 2.35675598 1.18349654 1.11500116 1.28582631  
+10 2.06419586 1.76999236 1.63109790 2.29239480 1.23847877 1.16550201 1.32063059  
+11 2.14702468 1.85183204 1.71074417 2.37461984 1.28153948 1.21077373 1.37369662  
+12 2.05664233 1.74662555 1.58658782 2.27232243 1.07700974 1.00777231 1.17740375  
+            8          9         10         11  
+2                                               
+3                                               
+4                                               
+5                                               
+6                                               
+7                                               
+8                                               
+9  1.76460709                                   
+10 1.83517785 0.14090406                        
+11 1.86999431 0.11624471 0.08317570             
+12 1.66223814 0.10848966 0.19128645 0.20802789</code></pre>
+<p>| Great job!</p>
+</blockquote>
+<p>|======================                                                       |  29%<br>
+| You see that the output is a lower triangular matrix with rows numbered from 2 to 12<br>
+| and columns numbered from 1 to 11. Entry (i,j) indicates the distance between points<br>
+| i and j. Clearly you need only a lower triangular matrix since the distance between<br>
+| points i and j equals that between j and i.</p>
+<p>...</p>
+<p>|========================                                                     |  31%<br>
+| From the output of dist, what is the minimum distance between two points?</p>
+<p>1: 0.08317<br>
+2: -0.0700<br>
+3: 0.1085<br>
+4: 0.0815</p>
+<p>Selection: 4</p>
+<p>| Excellent job!</p>
+<p>|=========================                                                    |  32%<br>
+| So 0.0815 (units are unspecified) between points 5 and 6 is the shortest distance.<br>
+| We can put these points in a single cluster and look for another close pair of<br>
+| points.</p>
+<p><img src="../../images/r0041460.png" alt="image" title="image"><br>
+...</p>
+<p>|==========================                                                   |  34%<br>
+| Looking at the picture, what would be another good pair of points to put in another<br>
+| cluster given that 5 and 6 are already clustered?</p>
+<p>1: 7 and the cluster containing 5 ad 6<br>
+2: 10 and 11<br>
+3: 7 and 8<br>
+4: 1 and 4</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|===========================                                                  |  35%<br>
+| So 10 and 11 are another pair of points that would be in a second cluster. We'll<br>
+| start creating our dendrogram now. Here're the original plot and two beginning<br>
+| pieces of the dendrogram.</p>
+<p><img src="../../images/r0041470.png" alt="image" title="image"><br>
+...</p>
+<p>|=============================                                                |  37%<br>
+| We can keep going like this in the obvious way and pair up individual points, but as<br>
+| luck would have it, R provides a simple function which you can call which creates a<br>
+| dendrogram for you. It's called hclust() and takes as an argument the pairwise<br>
+| distance matrix which we looked at before. We've stored this matrix for you in a<br>
+| variable called distxy. Run hclust now with distxy as its argument and put the<br>
+| result in the variable hc.</p>
+<blockquote>
+<p>hc&lt;-hclust(distxy)</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|==============================                                               |  39%<br>
+| You're probably curious and want to see hc.</p>
+<p>...</p>
+<p>|===============================                                              |  40%<br>
+| Call the R function plot with one argument, hc.</p>
+<blockquote>
+<p>plot(hc)</p>
+</blockquote>
+<p><img src="../../images/r0041480.png" alt="image" title="image"></p>
+<p>| That's correct!</p>
+<p>|================================                                             |  42%<br>
+| Nice plot, right? R's plot conveniently labeled everything for you. The points we<br>
+| saw are the leaves at the bottom of the graph, 5 and 6 are connected, as are 10 and<br>
+| 11. Moreover, we see that the original 3 groupings of points are closest together as<br>
+| leaves on the picture. That's reassuring.  Now call plot again, this time with the<br>
+| argument as.dendrogram(hc).</p>
+<blockquote>
+<p>plot(as.dendrogram(hc))</p>
+</blockquote>
+<p><img src="../../images/r0041490.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|==================================                                           |  44%<br>
+| The essentials are the same, but the labels are missing and the leaves (original<br>
+| points) are all printed at the same level. Notice that the vertical heights of the<br>
+| lines and labeling of the scale on the left edge give some indication of distance.<br>
+| Use the R command abline to draw a horizontal blue line at 1.5 on this plot. Recall<br>
+| that this requires 2 arguments, h=1.5 and col="blue".</p>
+<blockquote>
+<p>abline(h=1.5,col="blue")</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|===================================                                          |  45%<br>
+| We see that this blue line intersects 3 vertical lines and this tells us that using<br>
+| the distance 1.5 (unspecified units) gives us 3 clusters (1 through 4), (9 through<br>
+| 12), and (5 through 8). We call this a "cut" of our dendrogram. Now cut the<br>
+| dendrogam by drawing a red horizontal line at .4.</p>
+<blockquote>
+<p>abline(h=0.4,col="red")</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|====================================                                         |  47%<br>
+| How many clusters are there with a cut at this distance?</p>
+<blockquote>
+<p>5<br>
+[1] 5</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|=====================================                                        |  48%<br>
+| We see that by cutting at .4 we have 5 clusters, indicating that this distance is<br>
+| small enough to break up our original grouping of points. If we drew a horizontal<br>
+| line at .05, how many clusters would we get</p>
+<blockquote>
+<p>5<br>
+[1] 5</p>
+</blockquote>
+<p>| That's not exactly what I'm looking for. Try again. Or, type info() for more<br>
+| options.</p>
+<p>| Recall that our shortest distance was around .08, so a distance smaller than that<br>
+| would make all the points their own private clusters.</p>
+<blockquote>
+<p>12<br>
+[1] 12</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|======================================                                       |  50%<br>
+| Try it now (draw a horizontal line at .05) and make the line green.</p>
+<blockquote>
+<p>abline(h=0.05,col="green")</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|========================================                                     |  52%<br>
+| So the number of clusters in your data depends on where you draw the line! (We said<br>
+| there's a lot of flexibility here.) Now that we've seen the practice, let's go back<br>
+| to some "theory". Notice that the two original groupings, 5 through 8, and 9 through<br>
+| 12, are connected with a horizontal line near the top of the display. You're<br>
+| probably wondering how distances between clusters of points are measured.</p>
+<p>...</p>
+<p>|=========================================                                    |  53%<br>
+| There are several ways to do this. We'll just mention two. The first is called<br>
+| complete linkage and it says that if you're trying to measure a distance between two<br>
+| clusters, take the greatest distance between the pairs of points in those two<br>
+| clusters. Obviously such pairs contain one point from each cluster.</p>
+<p>...</p>
+<p>|==========================================                                   |  55%<br>
+| So if we were measuring the distance between the two clusters of points (1 through<br>
+| 4) and (5 through 8), using complete linkage as the metric we would use the distance<br>
+| between points 4 and 8 as the measure since this is the largest distance between the<br>
+| pairs of those groups.</p>
+<p><img src="../../images/r0041500.png" alt="image" title="image"><br>
+...</p>
+<p>|===========================================                                  |  56%<br>
+| The distance between the two clusters of points (9 through 12) and (5 through 8),<br>
+| using complete linkage as the metric, is the distance between points 11 and 8 since<br>
+| this is the largest distance between the pairs of those groups.</p>
+<p>...</p>
+<p>|=============================================                                |  58%<br>
+| As luck would have it, the distance between the two clusters of points (9 through<br>
+| 12) and (1 through 4), using complete linkage as the metric, is the distance between<br>
+| points 11 and 4.</p>
+<p>...</p>
+<p>|==============================================                               |  60%<br>
+| We've created the dataframe dFsm for you containing these 3 points, 4, 8, and 11.<br>
+| Run dist on dFsm to see what the smallest distance between these 3 points is.</p>
+<blockquote>
+<p>dist(dFsm)<br>
+         1        2<br>
+2 2.028495<br>
+3 2.374620 1.869994</p>
+</blockquote>
+<p>| Keep up the great work!</p>
+<p>|===============================================                              |  61%<br>
+| We see that the smallest distance is between points 2 and 3 in this reduced set,<br>
+| (these are actually points 8 and 11 in the original set), indicating that the two<br>
+| clusters these points represent ((5 through 8) and (9 through 12) respectively)<br>
+| would be joined (at a distance of 1.869) before being connected with the third<br>
+| cluster (1 through 4). This is consistent with the dendrogram we plotted.</p>
+<p><img src="../../images/r0041510.png" alt="image" title="image"><br>
+...</p>
+<p>|================================================                             |  63%<br>
+| The second way to measure a distance between two clusters that we'll just mention is<br>
+| called average linkage. First you compute an "average" point in each cluster (think<br>
+| of it as the cluster's center of gravity). You do this by computing the mean<br>
+| (average) x and y coordinates of the points in the cluster.</p>
+<p>...</p>
+<p>|==================================================                           |  65%<br>
+| Then you compute the distances between each cluster average to compute the<br>
+| intercluster distance.</p>
+<p><img src="../../images/r0041520.png" alt="image" title="image"><br>
+...</p>
+<p>|===================================================                          |  66%<br>
+| Now look at the hierarchical cluster we created before, hc.</p>
+<blockquote>
+<p>hc</p>
+</blockquote>
+<p>Call:<br>
+hclust(d = distxy)</p>
+<p>Cluster method   : complete<br>
+Distance         : euclidean<br>
+Number of objects: 12</p>
+<p>| Excellent work!</p>
+<p>|====================================================                         |  68%<br>
+| Which type of linkage did hclust() use to agglomerate clusters?</p>
+<p>1: complete<br>
+2: average</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|=====================================================                        |  69%<br>
+| In our simple set of data, the average and complete linkages aren't that different,<br>
+| but in more complicated datasets the type of linkage you use could affect how your<br>
+| data clusters. It is a good idea to experiment with different methods of linkage to<br>
+| see the varying ways your data groups. This will help you determine the best way to<br>
+| continue with your analysis.</p>
+<p>...</p>
+<p>|=======================================================                      |  71%<br>
+| The last method of visualizing data we'll mention in this lesson concerns heat maps.<br>
+| Wikipedia (<a href="http://en.wikipedia.org/wiki/Heat_map">http://en.wikipedia.org/wiki/Heat_map</a>) tells us a heat map is "a<br>
+| graphical representation of data where the individual values contained in a matrix<br>
+| are represented as colors. ... Heat maps originated in 2D displays of the values in<br>
+| a data matrix. Larger values were represented by small dark gray or black squares<br>
+| (pixels) and smaller values by lighter squares."</p>
+<p>...</p>
+<p>|========================================================                     |  73%<br>
+| You've probably seen many examples of heat maps, for instance weather radar and<br>
+| displays of ocean salinity. From Wikipedia (<a href="http://en.wikipedia.org/wiki/Heat_map">http://en.wikipedia.org/wiki/Heat_map</a>)<br>
+| we learn that heat maps are often used in molecular biology "to represent the level<br>
+| of expression of many genes across a number of comparable samples (e.g. cells in<br>
+| different states, samples from different patients) as they are obtained from DNA<br>
+| microarrays."</p>
+<p>...</p>
+<p>|=========================================================                    |  74%<br>
+| We won't say too much on this topic, but a very nice concise tutorial on creating<br>
+| heatmaps in R exists at<br>
+| <a href="http://sebastianraschka.com/Articles/heatmaps_in_r.html#clustering">http://sebastianraschka.com/Articles/heatmaps_in_r.html#clustering</a>. Here's an image<br>
+| from the tutorial to start you thinking about the topic. It shows a sample heat map<br>
+| with a dendrogram on the left edge mapping the relationship between the rows. The<br>
+| legend at the top shows how colors relate to values.</p>
+<p><img src="../../images/r0041530.png" alt="image" title="image"><br>
+...</p>
+<p>|==========================================================                   |  76%<br>
+| R provides a handy function to produce heat maps. It's called heatmap. We've put the<br>
+| point data we've been using throughout this lesson in a matrix. Call heatmap now<br>
+| with 2 arguments. The first is dataMatrix and the second is col set equal to<br>
+| cm.colors(25). This last is optional, but we like the colors better than the default<br>
+| ones.</p>
+<blockquote>
+<p>heatmap(dataMatrix,col=cm.colors(25))</p>
+</blockquote>
+<p><img src="../../images/r0041540.png" alt="image" title="image"></p>
+<p>| That's a job well done!</p>
+<p>|============================================================                 |  77%<br>
+| We see an interesting display of sorts. This is a very simple heat map - simple<br>
+| because the data isn't very complex. The rows and columns are grouped together as<br>
+| shown by colors. The top rows (labeled 5, 6, and 7) seem to be in the same group<br>
+| (same colors) while 8 is next to them but colored differently. This matches the<br>
+| dendrogram shown on the left edge. Similarly, 9, 12, 11, and 10 are grouped together<br>
+| (row-wise) along with 3 and 2. These are followed by 1 and 4 which are in a separate<br>
+| group. Column data is treated independently of rows but is also grouped.</p>
+<p>...</p>
+<p>|=============================================================                |  79%<br>
+| We've subsetted some vehicle data from mtcars, the Motor Trend Car Road Tests which<br>
+| is part of the package datasets. The data is in the matrix mt and contains 6 factors<br>
+| of 11 cars. Run heatmap now with mt as its only argument.</p>
+<blockquote>
+<p>heatmap(mt)</p>
+</blockquote>
+<p><img src="../../images/r0041550.png" alt="image" title="image"></p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==============================================================               |  81%<br>
+| This looks slightly more interesting than the heatmap for the point data. It shows a<br>
+| little better how the rows and columns are treated (clustered and colored)<br>
+| independently of one another. To understand the disparity in color (between the left<br>
+| 4 columns and the right 2) look at mt now.</p>
+<blockquote>
+<p>mt</p>
+
+<pre><code>                  mpg cyl  disp  hp drat    wt  
+Dodge Challenger 15.5   8 318.0 150 2.76 3.520  
+AMC Javelin      15.2   8 304.0 150 3.15 3.435  
+Camaro Z28       13.3   8 350.0 245 3.73 3.840  
+Pontiac Firebird 19.2   8 400.0 175 3.08 3.845  
+Fiat X1-9        27.3   4  79.0  66 4.08 1.935  
+Porsche 914-2    26.0   4 120.3  91 4.43 2.140  
+Lotus Europa     30.4   4  95.1 113 3.77 1.513  
+Ford Pantera L   15.8   8 351.0 264 4.22 3.170  
+Ferrari Dino     19.7   6 145.0 175 3.62 2.770  
+Maserati Bora    15.0   8 301.0 335 3.54 3.570  
+Volvo 142E       21.4   4 121.0 109 4.11 2.780</code></pre>
+<p>| You're the best!</p>
+</blockquote>
+<p>|===============================================================              |  82%<br>
+| See how four of the columns are all relatively small numbers and only two (disp and<br>
+| hp) are large? That explains the big difference in color columns. Now to understand<br>
+| the grouping of the rows call plot with one argument, the dendrogram object denmt<br>
+| we've created for you.</p>
+<blockquote>
+<p>plot(denmt)</p>
+</blockquote>
+<p><img src="../../images/r0041560.png" alt="image" title="image"></p>
+<p>| Excellent work!</p>
+<p>|=================================================================            |  84%<br>
+| We see that this dendrogram is the one displayed at the side of the heat map. How<br>
+| was this created? Recall that we generalized the distance formula for more than 2<br>
+| dimensions. We've created a distance matrix for you, distmt. Look at it now.</p>
+<blockquote>
+<p>distmt</p>
+
+<pre><code>                 Dodge Challenger AMC Javelin Camaro Z28 Pontiac Firebird Fiat X1-9  
+AMC Javelin              14.00890                                                    
+Camaro Z28              100.27404   105.57041                                        
+Pontiac Firebird         85.80733    99.28330   86.22779                             
+Fiat X1-9               253.64640   240.51305  325.11191        339.12867            
+Porsche 914-2           206.63309   193.29419  276.87318        292.15588  48.29642  
+Lotus Europa            226.48724   212.74240  287.59666        311.37656  49.78046  
+Ford Pantera L          118.69012   123.31494   19.20778        101.66275 336.65679  
+Ferrari Dino            174.86264   161.03078  216.72821        255.01117 127.67016  
+Maserati Bora           185.78176   185.02489  102.48902        188.19917 349.02042  
+Volvo 142E              201.35337   187.68535  266.49555        286.74036  60.40302  
+                 Porsche 914-2 Lotus Europa Ford Pantera L Ferrari Dino Maserati Bora  
+AMC Javelin                                                                            
+Camaro Z28                                                                             
+Pontiac Firebird                                                                       
+Fiat X1-9                                                                              
+Porsche 914-2                                                                          
+Lotus Europa          33.75246                                                         
+Ford Pantera L       288.56998    297.51961                                            
+Ferrari Dino          87.81135     80.33743      224.44761                             
+Maserati Bora        303.85577    303.20992       86.84620    223.52346                
+Volvo 142E            18.60543     27.74042      277.43923     70.27895     289.02233</code></pre>
+<p>| You nailed it! Good job!</p>
+</blockquote>
+<p>|==================================================================           |  85%<br>
+| See how these distances match those in the dendrogram?  So hclust really works!<br>
+| Let's review now.</p>
+<p>...</p>
+<p>|===================================================================          |  87%<br>
+| What is the purpose of hierarchical clustering?</p>
+<p>1: Inspire other researchers<br>
+2: Give an idea of the relationships between variables or observations<br>
+3: None of the others<br>
+4: Present a finished picture</p>
+<p>Selection:<br>
+Enter an item from the menu, or 0 to exit<br>
+Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|====================================================================         |  89%<br>
+| True or False? When you're doing hierarchical clustering there are strict rules that<br>
+| you MUST follow.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| You got it!</p>
+<p>|======================================================================       |  90%<br>
+| True or False? There's only one way to measure distance.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| Excellent work!</p>
+<p>|=======================================================================      |  92%<br>
+| True or False? Complete linkage is a method of computing distances between clusters.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 1</p>
+<p>| That's a job well done!</p>
+<p>|========================================================================     |  94%<br>
+| True or False? Average linkage uses the maximum distance between points of two<br>
+| clusters as the distance between those clusters.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You nailed it! Good job!</p>
+<p>|=========================================================================    |  95%<br>
+| True or False? The number of clusters you derive from your data depends on the<br>
+| distance at which you choose to cut it.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 1</p>
+<p>| Your dedication is inspiring!</p>
+<p>|===========================================================================  |  97%<br>
+| True or False? Once you decide basics, such as defining a distance metric and<br>
+| linkage method, hierarchical clustering is deterministic.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|============================================================================ |  98%<br>
+| Congratulations! We hope this lesson didn't fluster you or get you too heated!</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| That's the answer I was looking for.</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-09 20:05:13.711728 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/dendogram/" rel="tag">dendogram</a></li>
+            <li><a class="tag p-category" href="../../tags/dist/" rel="tag">dist()</a></li>
+            <li><a class="tag p-category" href="../../tags/hclust/" rel="tag">hclust()</a></li>
+            <li><a class="tag p-category" href="../../tags/heatmap/" rel="tag">heatmap()</a></li>
+            <li><a class="tag p-category" href="../../tags/hierarchical-clustering/" rel="tag">Hierarchical Clustering</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00427/" rel="prev" title="GGPlot2 Part2">Previous post</a>
+            </li>
+            <li class="next">
+                <a href="../00429/" rel="next" title="K Means Clustering">Next post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00428_Hierarchical Clustering.html";
+var idcomments_post_url = "https://r.datascience.eu.org/posts/00428/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K Means Clustering | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/00429/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00428/" title="Hierarchical Clustering" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="K Means Clustering">
+<meta property="og:url" content="https://r.datascience.eu.org/posts/00429/">
+<meta property="og:description" content="library(swirl)
+swirl()
+
+| Welcome to swirl! Please sign in. If you've been here before, use the same name as
+| you did then. If you are new, call yourself something unique.
+What shall I call you? Kris">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-09T20:57:54+05:30">
+<meta property="article:tag" content="K Means Clustering">
+<meta property="article:tag" content="kmeans()">
+<meta property="article:tag" content="R">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">K Means Clustering</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-09T20:57:54+05:30" itemprop="datePublished" title="2020-05-09 20:57">2020-05-09 20:57</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00429/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00429_K Means Clustering.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00429_K Means Clustering.html";
+var idcomments_post_url = "/posts/00429/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>library(swirl)<br>
+swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Principles of Analytic Graphs   2: Exploratory Graphs             
+ 3: Graphics Devices in R           4: Plotting Systems               
+ 5: Base Plotting System            6: Lattice Plotting System        
+ 7: Working with Colors             8: GGPlot2 Part1                  
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras                 
+11: Hierarchical Clustering        12: K Means Clustering             
+13: Dimension Reduction            14: Clustering Example             
+15: CaseStudy</code></pre>
+<p>Selection: 12</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘ggplot2’ loaded correctly!</p>
+<p>| Package ‘fields’ loaded correctly!</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>| Package ‘datasets’ loaded correctly!</p>
+<p>|                                                                             |   0%</p>
+<p>| K_Means_Clustering. (Slides for this and other Data Science courses may be found at<br>
+| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson<br>
+| corresponds to 04_ExploratoryAnalysis/kmeansClustering.)</p>
+<p>...</p>
+<p>|==                                                                           |   2%<br>
+| In this lesson we'll learn about k-means clustering, another simple way of examining<br>
+| and organizing multi-dimensional data. As with hierarchical clustering, this<br>
+| technique is most useful in the early stages of analysis when you're trying to get<br>
+| an understanding of the data, e.g., finding some pattern or relationship between<br>
+| different factors or variables.</p>
+<p>...</p>
+<p>|===                                                                          |   4%<br>
+| R documentation tells us that the k-means method "aims to partition the points into<br>
+| k groups such that the sum of squares from points to the assigned cluster centres is<br>
+| minimized."</p>
+<p>...</p>
+<p>|=====                                                                        |   6%<br>
+| Since clustering organizes data points that are close into groups we'll assume we've<br>
+| decided on a measure of distance, e.g., Euclidean.</p>
+<p>...</p>
+<p>|======                                                                       |   8%<br>
+| To illustrate the method, we'll use these random points we generated, familiar to<br>
+| you if you've already gone through the hierarchical clustering lesson. We'll<br>
+| demonstrate k-means clustering in several steps, but first we'll explain the general<br>
+| idea.</p>
+<p><img src="../../images/r0041430.png" alt="image" title="image"><br>
+...</p>
+<p>|========                                                                     |  10%<br>
+| As we said, k-means is a partioning approach which requires that you first guess how<br>
+| many clusters you have (or want). Once you fix this number, you randomly create a<br>
+| "centroid" (a phantom point) for each cluster and assign each point or observation<br>
+| in your dataset to the centroid to which it is closest. Once each point is assigned<br>
+| a centroid, you readjust the centroid's position by making it the average of the<br>
+| points assigned to it.</p>
+<p>...</p>
+<p>|=========                                                                    |  12%<br>
+| Once you have repositioned the centroids, you must recalculate the distance of the<br>
+| observations to the centroids and reassign any, if necessary, to the centroid<br>
+| closest to them. Again, once the reassignments are done, readjust the positions of<br>
+| the centroids based on the new cluster membership. The process stops once you reach<br>
+| an iteration in which no adjustments are made or when you've reached some<br>
+| predetermined maximum number of iterations.</p>
+<p>...</p>
+<p>|===========                                                                  |  14%<br>
+| As described, what does this process require?</p>
+<p>1: All of the others<br>
+2: A number of clusters<br>
+3: A defined distance metric<br>
+4: An initial guess as to cluster centroids</p>
+<p>Selection: 1</p>
+<p>| That's the answer I was looking for.</p>
+<p>|============                                                                 |  16%<br>
+| So k-means clustering requires some distance metric (say Euclidean), a hypothesized<br>
+| fixed number of clusters, and an initial guess as to cluster centroids. As<br>
+| described, what does this process produce?</p>
+<p>1: All of the others<br>
+2: An assignment of each point to a cluster<br>
+3: A final estimate of cluster centroids</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|==============                                                               |  18%<br>
+| When it's finished k-means clustering returns a final position of each cluster's<br>
+| centroid as well as the assignment of each data point or observation to a cluster.</p>
+<p>...</p>
+<p>|===============                                                              |  20%<br>
+| Now we'll step through this process using our random points as our data. The<br>
+| coordinates of these are stored in 2 vectors, x and y. We eyeball the display and<br>
+| guess that there are 3 clusters. We'll pick 3 positions of centroids, one for each<br>
+| cluster.</p>
+<p>...</p>
+<p>|=================                                                            |  22%<br>
+| We've created two 3-long vectors for you, cx and cy. These respectively hold the x-<br>
+| and y- coordinates for 3 proposed centroids. For convenience, we've also stored them<br>
+| in a 2 by 3 matrix cmat. The x coordinates are in the first row and the y<br>
+| coordinates in the second. Look at cmat now.</p>
+<blockquote>
+<p>cmat</p>
+
+<pre><code>     [,1] [,2] [,3]  
+[1,]    1  1.8  2.5  
+[2,]    2  1.0  1.5</code></pre>
+<p>| Excellent work!</p>
+</blockquote>
+<p>|==================                                                           |  24%<br>
+| The coordinates of these points are (1,2), (1.8,1) and (2.5,1.5). We'll add these<br>
+| centroids to the plot of our points. Do this by calling the R command points with 6<br>
+| arguments. The first 2 are cx and cy, and the third is col set equal to the<br>
+| concatenation of 3 colors, "red", "orange", and "purple". The fourth argument is pch<br>
+| set equal to 3 (a plus sign), the fifth is cex set equal to 2 (expansion of<br>
+| character), and the final is lwd (line width) also set equal to 2.</p>
+<blockquote>
+<p>points(cx,cy,col=c("red","orange","purple"),pch=3,cex=2,lwd=2)</p>
+</blockquote>
+<p><img src="../../images/r0041570.png" alt="image" title="image"></p>
+<p>| You nailed it! Good job!</p>
+<p>|====================                                                         |  26%<br>
+| We see the first centroid (1,2) is in red. The second (1.8,1), to the right and<br>
+| below the first, is orange, and the final centroid (2.5,1.5), the furthest to the<br>
+| right, is purple.</p>
+<p>...</p>
+<p>|======================                                                       |  28%<br>
+| Now we have to calculate distances between each point and every centroid. There are<br>
+| 12 data points and 3 centroids. How many distances do we have to calculate?</p>
+<p>1: 15<br>
+2: 108<br>
+3: 36<br>
+4: 9</p>
+<p>Selection: 3</p>
+<p>| You are amazing!</p>
+<p>|=======================                                                      |  30%<br>
+| We've written a function for you called mdist which takes 4 arguments. The vectors<br>
+| of data points (x and y) are the first two and the two vectors of centroid<br>
+| coordinates (cx and cy) are the last two. Call mdist now with these arguments.</p>
+<blockquote>
+<p>mdist(x,y,cx,cy)</p>
+
+<pre><code>         [,1]      [,2]      [,3]     [,4]      [,5]      [,6]      [,7]     [,8]  
+[1,] 1.392885 0.9774614 0.7000680 1.264693 1.1894610 1.2458771 0.8113513 1.026750  
+[2,] 1.108644 0.5544675 0.3768445 1.611202 0.8877373 0.7594611 0.7003994 2.208006  
+[3,] 3.461873 2.3238956 1.7413021 4.150054 0.3297843 0.2600045 0.4887610 1.337896  
+          [,9]     [,10]     [,11]     [,12]  
+[1,] 4.5082665 4.5255617 4.8113368 4.0657750  
+[2,] 1.1825265 1.0540994 1.2278193 1.0090944  
+[3,] 0.3737554 0.4614472 0.5095428 0.2567247</code></pre>
+<p>| Excellent job!</p>
+</blockquote>
+<p>|=========================                                                    |  32%<br>
+| We've stored these distances in the matrix distTmp for you. Now we have to assign a<br>
+| cluster to each point. To do that we'll look at each column and ?</p>
+<p>1: add up the 3 entries.<br>
+2: pick the minimum entry<br>
+3: pick the maximum entry</p>
+<p>Selection: 2</p>
+<p>| Perseverance, that's the answer.</p>
+<p>|==========================                                                   |  34%<br>
+| From the distTmp entries, which cluster would point 6 be assigned to?</p>
+<p>1: none of the above<br>
+2: 3<br>
+3: 2<br>
+4: 1</p>
+<p>Selection: 2</p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|============================                                                 |  36%<br>
+| R has a handy function which.min which you can apply to ALL the columns of distTmp<br>
+| with one call. Simply call the R function apply with 3 arguments. The first is<br>
+| distTmp, the second is 2 meaning the columns of distTmp, and the third is which.min,<br>
+| the function you want to apply to the columns of distTmp. Try this now.</p>
+<blockquote>
+<p>apply(distTmp,2,which.min)<br>
+ [1] 2 2 2 1 3 3 3 1 3 3 3 3</p>
+</blockquote>
+<p>| You are really on a roll!</p>
+<p>|=============================                                                |  38%<br>
+| You can see that you were right and the 6th entry is indeed 3 as you answered<br>
+| before. We see the first 3 entries were assigned to the second (orange) cluster and<br>
+| only 2 points (4 and 8) were assigned to the first (red) cluster.</p>
+<p>...</p>
+<p>|===============================                                              |  40%<br>
+| We've stored the vector of cluster colors ("red","orange","purple") in the array<br>
+| cols1 for you and we've also stored the cluster assignments in the array newClust.<br>
+| Let's color the 12 data points according to their assignments. Again, use the<br>
+| command points with 5 arguments. The first 2 are x and y. The third is pch set to<br>
+| 19, the fourth is cex set to 2, and the last, col is set to cols1[newClust].</p>
+<blockquote>
+<p>points(x,y,pch=19,cex=2,col=cols1[newClust])</p>
+</blockquote>
+<p><img src="../../images/r0041580.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|================================                                             |  42%<br>
+| Now we have to recalculate our centroids so they are the average (center of gravity)<br>
+| of the cluster of points assigned to them. We have to do the x and y coordinates<br>
+| separately. We'll do the x coordinate first. Recall that the vectors x and y hold<br>
+| the respective coordinates of our 12 data points.</p>
+<p>...</p>
+<p>|==================================                                           |  44%<br>
+| We can use the R function tapply which applies "a function over a ragged array".<br>
+| This means that every element of the array is assigned a factor and the function is<br>
+| applied to subsets of the array (identified by the factor vector). This allows us to<br>
+| take advantage of the factor vector newClust we calculated. Call tapply now with 3<br>
+| arguments, x (the data), newClust (the factor array), and mean (the function to<br>
+| apply).</p>
+<blockquote>
+<p>tapply(x,newClust,mean)</p>
+
+<pre><code>       1        2        3   
+1.210767 1.010320 2.498011</code></pre>
+<p>| Perseverance, that's the answer.</p>
+</blockquote>
+<p>|===================================                                          |  46%<br>
+| Repeat the call, except now apply it to the vector y instead of x.</p>
+<blockquote>
+<p>tapply(y,newClust,mean)</p>
+
+<pre><code>       1        2        3   
+1.730555 1.016513 1.354373</code></pre>
+<p>| Your dedication is inspiring!</p>
+</blockquote>
+<p>|=====================================                                        |  48%<br>
+| Now that we have new x and new y coordinates for the 3 centroids we can plot them.<br>
+| We've stored off the coordinates for you in variables newCx and newCy. Use the R<br>
+| command points with these as the first 2 arguments. In addition, use the arguments<br>
+| col set equal to cols1, pch equal to 8, cex equal to 2 and lwd also equal to 2.</p>
+<blockquote>
+<p>points(newCx,newCy,col=cols1,pch=8,cex=2,lwd=2)</p>
+</blockquote>
+<p><img src="../../images/r0041590.png" alt="image" title="image"></p>
+<p>| Keep up the great work!</p>
+<p>|======================================                                       |  50%<br>
+| We see how the centroids have moved closer to their respective clusters. This is<br>
+| especially true of the second (orange) cluster. Now call the distance function mdist<br>
+| with the 4 arguments x, y, newCx, and newCy. This will allow us to reassign the data<br>
+| points to new clusters if necessary.</p>
+<blockquote>
+<p>mdist(x,y,newCx,newCy)</p>
+
+<pre><code>           [,1]        [,2]      [,3]      [,4]      [,5]      [,6]      [,7]     [,8]  
+[1,] 0.98911875 0.539152725 0.2901879 1.0286979 0.7936966 0.8004956 0.4650664 1.028698  
+[2,] 0.09287262 0.002053041 0.0734304 0.2313694 1.9333732 1.8320407 1.4310971 2.926095  
+[3,] 3.28531180 2.197487387 1.6676725 4.0113796 0.4652075 0.3721778 0.6043861 1.643033  
+          [,9]    [,10]     [,11]     [,12]  
+[1,] 3.3053706 3.282778 3.5391512 2.9345445  
+[2,] 3.5224442 3.295301 3.5990955 3.2097944  
+[3,] 0.2586908 0.309730 0.3610747 0.1602755</code></pre>
+<p>| Excellent work!</p>
+</blockquote>
+<p>|========================================                                     |  52%<br>
+| We've stored off this new matrix of distances in the matrix distTmp2 for you. Recall<br>
+| that the first cluster is red, the second orange and the third purple. Look closely<br>
+| at columns 4 and 7 of distTmp2. What will happen to points 4 and 7?</p>
+<p>1: They will both change to cluster 2<br>
+2: Nothing<br>
+3: They're the only points that won't change clusters<br>
+4: They will both change clusters</p>
+<p>Selection: 4</p>
+<p>| You nailed it! Good job!</p>
+<p>|==========================================                                   |  54%<br>
+| Now call apply with 3 arguments, distTmp2, 2, and which.min to find the new cluster<br>
+| assignments for the points.</p>
+<blockquote>
+<p>apply(distTmp2,2,which.min)<br>
+ [1] 2 2 2 2 3 3 1 1 3 3 3 3</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|===========================================                                  |  56%<br>
+| We've stored off the new cluster assignments in a vector of factors called<br>
+| newClust2. Use the R function points to recolor the points with their new<br>
+| assignments. Again, there are 5 arguments, x and y are first, followed by pch set to<br>
+| 19, cex to 2, and col to cols1[newClust2].</p>
+<blockquote>
+<p>points(x,y,pch=19,cex=2,col=cols1[newClust2])</p>
+</blockquote>
+<p><img src="../../images/r0041600.png" alt="image" title="image"></p>
+<p>| Keep working like that and you'll get there!</p>
+<p>|=============================================                                |  58%<br>
+| Notice that points 4 and 7 both changed clusters, 4 moved from 1 to 2 (red to<br>
+| orange), and point 7 switched from 3 to 2 (purple to red).</p>
+<p>...</p>
+<p>|==============================================                               |  60%<br>
+| Now use tapply to find the x coordinate of the new centroid. Recall there are 3<br>
+| arguments, x, newClust2, and mean.</p>
+<blockquote>
+<p>tapply(x,newClust2,mean)</p>
+
+<pre><code>        1         2         3   
+1.8878628 0.8904553 2.6001704</code></pre>
+<p>| You're the best!</p>
+</blockquote>
+<p>|================================================                             |  62%<br>
+| Do the same to find the new y coordinate.</p>
+<blockquote>
+<p>tapply(y,newClust2,mean)</p>
+
+<pre><code>       1        2        3   
+2.157866 1.006871 1.274675</code></pre>
+<p>| Excellent work!</p>
+</blockquote>
+<p>|=================================================                            |  64%<br>
+| We've stored off these coordinates for you in the variables finalCx and finalCy.<br>
+| Plot these new centroids using the points function with 6 arguments. The first 2 are<br>
+| finalCx and finalCy. The argument col should equal cols1, pch should equal 9, cex 2<br>
+| and lwd 2.</p>
+<blockquote>
+<p>points(finalCx,finalCy,col=cols1,pch=9,cex=2,lwd=2)</p>
+</blockquote>
+<p><img src="../../images/r0041610.png" alt="image" title="image"></p>
+<p>| You nailed it! Good job!</p>
+<p>|===================================================                          |  66%<br>
+| It should be obvious that if we continued this process points 5 through 8 would all<br>
+| turn red, while points 1 through 4 stay orange, and points 9 through 12 purple.</p>
+<p>...</p>
+<p>|====================================================                         |  68%<br>
+| Now that you've gone through an example step by step, you'll be relieved to hear<br>
+| that R provides a command to do all this work for you. Unsurprisingly it's called<br>
+| kmeans and, although it has several parameters, we'll just mention four. These are<br>
+| x, (the numeric matrix of data), centers, iter.max, and nstart. The second of these<br>
+| (centers) can be either a number of clusters or a set of initial centroids. The<br>
+| third, iter.max, specifies the maximum number of iterations to go through, and<br>
+| nstart is the number of random starts you want to try if you specify centers as a<br>
+| number.</p>
+<p>...</p>
+<p>|======================================================                       |  70%<br>
+| Call kmeans now with 2 arguments, dataFrame (which holds the x and y coordinates of<br>
+| our 12 points) and centers set equal to 3.</p>
+<blockquote>
+<p>kmeans(dataFrame,centers=3)<br>
+```
+K-means clustering with 3 clusters of sizes 4, 4, 4</p>
+</blockquote>
+<p>Cluster means:</p>
+
+<pre><code>      x         y  
+</code></pre>
+<p>1 0.8904553 1.0068707<br>
+2 2.8534966 0.9831222<br>
+3 1.9906904 2.0078229</p>
+<p>Clustering vector:<br>
+ [1] 1 1 1 1 3 3 3 3 2 2 2 2</p>
+<p>Within cluster sum of squares by cluster:<br>
+[1] 0.34188313 0.03298027 0.34732441<br>
+ (between_SS / total_SS =  93.6 %)</p>
+<p>Available components:</p>
+<p>[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"<br>
+[6] "betweenss"    "size"         "iter"         "ifault"<br>
+```<br>
+| You are really on a roll!</p>
+<p>|=======================================================                      |  72%<br>
+| The program returns the information that the data clustered into 3 clusters each of<br>
+| size 4. It also returns the coordinates of the 3 cluster means, a vector named<br>
+| cluster indicating how the 12 points were partitioned into the clusters, and the sum<br>
+| of squares within each cluster. It also shows all the available components returned<br>
+| by the function. We've stored off this data for you in a kmeans object called kmObj.<br>
+| Look at kmObj$iter to see how many iterations the algorithm went through.</p>
+<blockquote>
+<p>kmObj$iter<br>
+[1] 1</p>
+</blockquote>
+<p>| You got it!</p>
+<p>|=========================================================                    |  74%<br>
+| Two iterations as we did before. We just want to emphasize how you can access the<br>
+| information available to you. Let's plot the data points color coded according to<br>
+| their cluster. This was stored in kmObj$cluster. Run plot with 5 arguments. The  
+| data, x and y, are the first two; the third, col is set equal to kmObj$cluster, and<br>
+| the last two are pch and cex. The first of these should be set to 19 and the last to<br>
+| 2.</p>
+<blockquote>
+<p>plot(x,y,col=kmObj$cluster,pch=19,cex=2)</p>
+</blockquote>
+<p><img src="../../images/r0041620.png" alt="image" title="image"></p>
+<p>| You are doing so well!</p>
+<p>|===========================================================                  |  76%<br>
+| Now add the centroids which are stored in kmObj$centers. Use the points function  
+| with 5 arguments. The first two are kmObj$centers and col=c("black","red","green").<br>
+| The last three, pch, cex, and lwd, should all equal 3.</p>
+<blockquote>
+<p>points(kmObj$centers,col=c("black","red","green"),pch=3,cex=3,lwd=3)</p>
+</blockquote>
+<p><img src="../../images/r0041630.png" alt="image" title="image"></p>
+<p>| Excellent work!</p>
+<p>|============================================================                 |  78%<br>
+| Now for some fun! We want to show you how the output of the kmeans function is<br>
+| affected by its random start (when you just ask for a number of clusters). With<br>
+| random starts you might want to run the function several times to get an idea of the<br>
+| relationships between your observations. We'll call kmeans with the same data points<br>
+| (stored in dataFrame), but ask for 6 clusters instead of 3.</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| We'll plot our data points several times and each time we'll just change the<br>
+| argument col which will show us how the R function kmeans is clustering them. So,<br>
+| call plot now with 5 arguments. The first 2 are x and y. The third is col set equal<br>
+| to the call kmeans(dataFrame,6)$cluster. The last two (pch and cex) are set to 19<br>
+| and 2 respectively.</p>
+<blockquote>
+<p>plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)</p>
+</blockquote>
+<p><img src="../../images/r0041640.png" alt="image" title="image"></p>
+<p>| You nailed it! Good job!</p>
+<p>|===============================================================              |  82%<br>
+| See how the points cluster? Now recall your last command and rerun it.</p>
+<blockquote>
+<p>plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)</p>
+</blockquote>
+<p><img src="../../images/r0041650.png" alt="image" title="image"></p>
+<p>| Nice work!</p>
+<p>|=================================================================            |  84%<br>
+| See how the clustering has changed? As the Teletubbies would say, "Again! Again!"</p>
+<blockquote>
+<p>plot(x,y,col=kmeans(dataFrame,6)$cluster,pch=19,cex=2)</p>
+</blockquote>
+<p><img src="../../images/r0041660.png" alt="image" title="image"></p>
+<p>| That's the answer I was looking for.</p>
+<p>|==================================================================           |  86%<br>
+| So the clustering changes with different starts. Perhaps 6 is too many clusters?<br>
+| Let's review!</p>
+<p>...</p>
+<p>|====================================================================         |  88%<br>
+| True or False? K-means clustering requires you to specify a number of clusters<br>
+| before you begin.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| You nailed it! Good job!</p>
+<p>|=====================================================================        |  90%<br>
+| True or False? K-means clustering requires you to specify a number of iterations<br>
+| before you begin.</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You got it right!</p>
+<p>|=======================================================================      |  92%<br>
+| True or False? Every data set has a single fixed number of clusters.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| Excellent job!</p>
+<p>|========================================================================     |  94%<br>
+| True or False? K-means clustering will always stop in 3 iterations</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================================   |  96%<br>
+| True or False? When starting kmeans with random centroids, you'll always end up with<br>
+| the same final clustering.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 1</p>
+<p>| Great job!</p>
+<p>|===========================================================================  |  98%<br>
+| Congratulations! We hope this means you found this lesson oK.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Excellent work!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-09 20:59:57.636628 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/k-means-clustering/" rel="tag">K Means Clustering</a></li>
+            <li><a class="tag p-category" href="../../tags/kmeans/" rel="tag">kmeans()</a></li>
+            <li><a class="tag p-category" href="../../tags/r/" rel="tag">R</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00428/" rel="prev" title="Hierarchical Clustering">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00429_K Means Clustering.html";
+var idcomments_post_url = "https://r.datascience.eu.org/posts/00429/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

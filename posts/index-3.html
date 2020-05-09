@@ -74,7 +74,1264 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00417/" class="u-url">Grouping and Chaining with dplyr</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00419/" class="u-url">Principles of Analytic Graphs</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00419/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-02T16:38:15+05:30" itemprop="datePublished" title="2020-05-02 16:38">2020-05-02 16:38</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00419/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00419_Principles of Analytic Graphs.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00419_Principles of Analytic Graphs.html";
+var idcomments_post_url = "/posts/00419/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<p>[Workspace loaded from C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/.RData]</p>
+<blockquote>
+<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/04_Exploratory_Data_Analysis/week01/workspace")<br>
+library(swirl)</p>
+</blockquote>
+<p>| Hi! I see that you have some variables saved in your workspace. To keep things running<br>
+| smoothly, I recommend you clean up before starting swirl.</p>
+<p>| Type ls() to see a list of the variables in your workspace. Then, type rm(list=ls()) to<br>
+| clear your workspace.</p>
+<p>| Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
+| then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Getting and Cleaning Data<br>
+3: R Programming<br>
+4: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
+ 3: Graphics Devices in R           4: Plotting Systems<br>
+ 5: Base Plotting System            6: Lattice Plotting System<br>
+ 7: Working with Colors             8: GGPlot2 Part1<br>
+ 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
+11: Hierarchical Clustering        12: K Means Clustering<br>
+13: Dimension Reduction            14: Clustering Example<br>
+15: CaseStudy</p>
+<p>Selection: 1</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| Package ‘jpeg’ loaded correctly!</p>
+<p>|                                                                                   |   0%</p>
+<p>| Principles_of_Analytic_Graphs. (Slides for this and other Data Science courses may be<br>
+| found at github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use<br>
+| them, they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
+| 04_ExploratoryAnalysis/Principles_of_Analytic_Graphics.)</p>
+<p>...</p>
+<p>|==                                                                                 |   3%<br>
+| In this lesson, we'll discuss some basic principles of presenting data effectively. These<br>
+| will illustrate some fundamental concepts of displaying results in order to make them more<br>
+| meaningful and convincing. These principles are cribbed from Edward Tufte's great 2006<br>
+| book, Beautiful Evidence. You can read more about them at the www.edwardtufte.com website.</p>
+<p>...</p>
+<p>|=====                                                                              |   6%<br>
+| As a warm-up, which of the following would NOT be a good use of analytic graphing?</p>
+<p>1: To show causality, mechanism, explanation<br>
+2: To show multivariate data<br>
+3: To decide which horse to bet on at the track<br>
+4: To show comparisons</p>
+<p>Selection: 3</p>
+<p>| Keep up the great work!</p>
+<p>|=======                                                                            |   8%<br>
+| You're ready to start. Graphs give us a visual form of data, and the first principle of<br>
+| analytic graphs is to show some comparison. You'll hear more about this when you study<br>
+| statistical inference (another great course BTW), but evidence for a hypothesis is always<br>
+| relative to another competing or alternative hypothesis.</p>
+<p>...</p>
+<p>|=========                                                                          |  11%<br>
+| When presented with a claim that something is good, you should always ask "Compared to<br>
+| What?" This is why in commercials you often hear the phrase "other leading brands". An<br>
+| implicit comparison, right?</p>
+<p>...</p>
+<p>|============                                                                       |  14%<br>
+| Consider this boxplot which shows the relationship between the use of an air cleaner and<br>
+| the number of symptom-free days of asthmatic children. (The top and bottom lines of the<br>
+| box indicate the 25% and 75% quartiles of the data, and the horizontal line in the box<br>
+| shows the 50%.) Since the box is above 0, the number of symptom-free days for children<br>
+| with asthma is bigger using the air cleaner. This is good, right?</p>
+<p>...</p>
+<p><img src="../images/r0040230.png" alt="graph" title="graph"></p>
+<p>|==============                                                                     |  17%<br>
+| How many days of improvement does the median correspond to?</p>
+<p>1: 4<br>
+2: -2<br>
+3: 1<br>
+4: 12</p>
+<p>Selection: 3</p>
+<p>| That's correct!</p>
+<p>|================                                                                   |  19%<br>
+| While it's somewhat informative, it's also somewhat cryptic, since the y-axis is claiming<br>
+| to show a change in number of symptom-free days. Wouldn't it be better to show a<br>
+| comparison?</p>
+<p>...</p>
+<p>|==================                                                                 |  22%<br>
+| Like this? Here's a graphic which shows two boxplots, the one on the left showing the<br>
+| results for a control group that doesn't use an air cleaner alongside the previously shown<br>
+| boxplot.</p>
+<p>...</p>
+<p>|=====================                                                              |  25%<br>
+| By showing the two boxplots side by side, you can clearly see that using the air cleaner<br>
+| increases the number of symptom-free days for most asthmatic children. The plot on the<br>
+| right (using the air cleaner) is generally higher than the one on the left (the control<br>
+| group).</p>
+<p>...</p>
+<p><img src="../images/r0040240.png" alt="graph" title="graph"></p>
+<p>|=======================                                                            |  28%<br>
+| What does this graph NOT show you?</p>
+<p>1: Half the chidren in the control group had no improvement<br>
+2: Children in the control group had at most 3 symptom-free days<br>
+3: 75% of the children using the air cleaner had at most 3 symptom-free days<br>
+4: Using the air cleaner makes asthmatic children sicker</p>
+<p>Selection: 4</p>
+<p>| You're the best!</p>
+<p>|=========================                                                          |  31%<br>
+| So the first principle was to show a comparison. The second principle is to show causality<br>
+| or a mechanism of how your theory of the data works. This explanation or systematic<br>
+| structure shows your causal framework for thinking about the question you're trying to<br>
+| answer.</p>
+<p>...</p>
+<p>|============================                                                       |  33%<br>
+| Consider this plot which shows the dual boxplot we just showed, but next to it we have a<br>
+| corresponding plot of changes in measures of particulate matter.</p>
+<p>...</p>
+<p><img src="../images/r0040250.png" alt="graph" title="graph"></p>
+<p>|==============================                                                     |  36%<br>
+| This picture tries to explain how the air cleaner increases the number of symptom-free<br>
+| days for asthmatic children. What mechanism does the graph imply?</p>
+<p>1: That the air cleaner increases pollution<br>
+2: That the air cleaner reduces pollution<br>
+3: That the children in the control group are healthier<br>
+4: That the air in the control group is cleaner than the air in the other group</p>
+<p>Selection: 2</p>
+<p>| You are amazing!</p>
+<p>|================================                                                   |  39%<br>
+| By showing the two sets of boxplots side by side you're explaining your theory of why the<br>
+| air cleaner increases the number of symptom-free days. Onward!</p>
+<p>...</p>
+<p>|===================================                                                |  42%<br>
+| So the first principle was to show some comparison, the second was to show a mechanism, so<br>
+| what will the third principle say to show?</p>
+<p>...</p>
+<p>|=====================================                                              |  44%<br>
+| Multivariate data!</p>
+<p>...</p>
+<p>|=======================================                                            |  47%<br>
+| What is multivariate data you might ask? In technical (scientific) literature this term<br>
+| means more than 2 variables. Two-variable plots are what you saw in high school algebra.<br>
+| Remember those x,y plots when you were learning about slopes and intercepts and equations<br>
+| of lines? They're valuable, but usually questions are more complicated and require more<br>
+| variables.</p>
+<p>...</p>
+<p>|==========================================                                         |  50%<br>
+| Sometimes, if you restrict yourself to two variables you'll be misled and draw an<br>
+| incorrect conclusion.</p>
+<p>...</p>
+<p>|============================================                                       |  53%<br>
+| Consider this plot which shows the relationship between air pollution (x-axis) and<br>
+| mortality rates among the elderly (y-axis). The blue regression line shows a surprising<br>
+| result. (You'll learn about regression lines when you take the fabulous Regression Models<br>
+| course.)</p>
+<p>...</p>
+<p><img src="../images/r0040260.png" alt="graph" title="graph"></p>
+<p>|==============================================                                     |  56%<br>
+| What does the blue regression line indicate?</p>
+<p>1: Pollution doesn't really increase, it just gets reported more<br>
+2: As pollution increases fewer people die<br>
+3: As pollution increases the number of deaths doesn't change<br>
+4: As pollution increases more people die</p>
+<p>Selection: 2</p>
+<p>| Excellent job!</p>
+<p>|================================================                                   |  58%<br>
+| Fewer deaths with more pollution? That's a surprise! Something's gotta be wrong, right? In<br>
+| fact, this is an example of Simpson's paradox, or the Yule–Simpson effect. Wikipedia<br>
+| (<a href="http://en.wikipedia.org/wiki/Simpson%27s_paradox">http://en.wikipedia.org/wiki/Simpson%27s_paradox</a>) tells us that this "is a paradox in<br>
+| probability and statistics, in which a trend that appears in different groups of data<br>
+| disappears when these groups are combined."</p>
+<p>...</p>
+<p>|===================================================                                |  61%<br>
+| Suppose we divided this mortality/pollution data into the four seasons. Would we see<br>
+| different trends?</p>
+<p>...</p>
+<p>|=====================================================                              |  64%<br>
+| Yes, we do! Plotting the same data for the 4 seasons individually we see a different<br>
+| result.</p>
+<p>...</p>
+<p><img src="../images/r0040270.png" alt="graph" title="graph"></p>
+<p>|=======================================================                            |  67%<br>
+| What does the new plot indicate?</p>
+<p>1: Pollution doesn't really increase, it just gets reported more<br>
+2: As pollution increases the seasons change<br>
+3: As pollution increases more people die in all seasons<br>
+4: As pollution increases fewer people die in all seasons</p>
+<p>Selection: 3</p>
+<p>| That's correct!</p>
+<p>|==========================================================                         |  69%<br>
+| The fourth principle of analytic graphing involves integrating evidence. This means not<br>
+| limiting yourself to one form of expression. You can use words, numbers, images as well as<br>
+| diagrams. Graphics should make use of many modes of data presentation. Remember, "Don't<br>
+| let the tool drive the analysis!"</p>
+<p>...</p>
+<p>|============================================================                       |  72%<br>
+| To show you what we mean, here's an example of a figure taken from a paper published in<br>
+| the Journal of the AMA. It shows the relationship between pollution and hospitalization of<br>
+| people with heart disease. As you can see, it's a lot different from our previous plots.<br>
+| The solid circles in the center portion indicate point estimates of percentage changes in<br>
+| hospitalization rates for different levels of pollution. The lines through the circles<br>
+| indicate confidence intervals associated with these estimates. (You'll learn more about<br>
+| confidence intervals in another great course, the one on statistical inference.)</p>
+<p><img src="../images/r0040280.png" alt="graph" title="graph"><br>
+...</p>
+<p>|==============================================================                     |  75%<br>
+| Note that on the right side of the figure is another column of numbers, one for each of<br>
+| the point estimates given. This column shows posterior probabilities that relative risk is<br>
+| greater than 0. This, in effect, is a measure of the strength of the evidence showing the<br>
+| correlation between pollution and hospitalization.  The point here is that all of this<br>
+| information is located in one picture so that the reader can see the strength of not only<br>
+| the correlations but the evidence as well.</p>
+<p>...</p>
+<p>|=================================================================                  |  78%<br>
+| The fifth principle of graphing involves describing and documenting the evidence with<br>
+| sources and appropriate labels and scales. Credibility is important so the data graphics<br>
+| should tell a complete story. Also, using R, you want to preserve any code you use to<br>
+| generate your data and graphics so that the research can be replicated if necessary. This<br>
+| allows for easy verification or finding bugs in your analysis.</p>
+<p>...</p>
+<p>|===================================================================                |  81%<br>
+| The sixth and final principle of analytic graphing is maybe the most important. Content is<br>
+| king! If you don't have something interesting to report, your graphs won't save you.<br>
+| Analytical presentations ultimately stand or fall depending on the quality, relevance, and<br>
+| integrity of their content.</p>
+<p>...</p>
+<p>|=====================================================================              |  83%<br>
+| Review time!!!</p>
+<p>...</p>
+<p>|=======================================================================            |  86%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To integrate multiple modes of evidence<br>
+2: Having unreadable labels<br>
+3: To describe and document evidence<br>
+4: Content is king</p>
+<p>Selection: 2</p>
+<p>| You are really on a roll!</p>
+<p>|==========================================================================         |  89%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To prove you're always right<br>
+2: To show two competing hypotheses<br>
+3: To demonstrate a causative mechanism underlying a correlation<br>
+4: Content is king</p>
+<p>Selection: 1</p>
+<p>| You nailed it! Good job!</p>
+<p>|============================================================================       |  92%<br>
+| Which of the following is NOT a good principle of graphing?</p>
+<p>1: To integrate different types of evidence<br>
+2: To show that some fonts are better than others<br>
+3: To show good labels and scales<br>
+4: Content is king</p>
+<p>Selection: 2</p>
+<p>| That's the answer I was looking for.</p>
+<p>|==============================================================================     |  94%<br>
+| True or False? Color is king.</p>
+<p>1: False<br>
+2: True</p>
+<p>Selection: 2</p>
+<p>| Not quite, but you're learning! Try again.</p>
+<p>| Think of the sixth principle</p>
+<p>1: True<br>
+2: False</p>
+<p>Selection: 2</p>
+<p>| You are doing so well!</p>
+<p>|=================================================================================  |  97%<br>
+| Congrats! You've concluded exploring this lesson on principles of graphing. We hope you<br>
+| found it principally principled.</p>
+<p>...</p>
+<p>|===================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 1</p>
+<p>| Nice work!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Getting and Cleaning Data<br>
+3: R Programming<br>
+4: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-02 16:41:08.783416 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00418/" class="u-url">Tidying Data with tidyr</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00418/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-04-23T21:03:03+05:30" itemprop="datePublished" title="2020-04-23 21:03">2020-04-23 21:03</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00418/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00418_Tidying Data with tidyr.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00418_Tidying Data with tidyr.html";
+var idcomments_post_url = "/posts/00418/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you
+| did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Getting and Cleaning Data<br>
+2: R Programming<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 1</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+<p>1: Manipulating Data with dplyr<br>
+2: Grouping and Chaining with dplyr<br>
+3: Tidying Data with tidyr<br>
+4: Dates and Times with lubridate</p>
+<p>Selection: 3</p>
+<p>| Attempting to load lesson dependencies...</p>
+<p>| This lesson requires the ‘readr’ package. Would you like me to install it for you now?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1</p>
+<p>| Trying to install package ‘readr’ now...<br>
+also installing the dependencies ‘hms’, ‘clipr’</p>
+<p>package ‘hms’ successfully unpacked and MD5 sums checked<br>
+package ‘clipr’ successfully unpacked and MD5 sums checked<br>
+package ‘readr’ successfully unpacked and MD5 sums checked</p>
+<p>| Package ‘readr’ loaded correctly!</p>
+<p>| This lesson requires the ‘tidyr’ package. Would you like me to install it for you now?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1</p>
+<p>| Trying to install package ‘tidyr’ now...<br>
+package ‘tidyr’ successfully unpacked and MD5 sums checked</p>
+<p>| Package ‘tidyr’ loaded correctly!</p>
+<p>| Package ‘dplyr’ loaded correctly!</p>
+<p>|                                                                                |   0%</p>
+<p>| In this lesson, you'll learn how to tidy your data with the tidyr package.</p>
+<p>...</p>
+<p>|=                                                                               |   2%<br>
+| Parts of this lesson will require the use of dplyr. If you don't have a basic knowledge<br>
+| of dplyr, you should exit this lesson and begin with the dplyr lessons from earlier in<br>
+| the course.</p>
+<p>...</p>
+<p>|===                                                                             |   4%<br>
+| tidyr was automatically installed (if necessary) and loaded when you started this<br>
+| lesson. Just to build the habit, (re)load the package with library(tidyr).</p>
+<blockquote>
+<p>library(tidyr)</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|====                                                                            |   5%<br>
+| The author of tidyr, Hadley Wickham, discusses his philosophy of tidy data in his 'Tidy<br>
+| Data' paper:<br>
+|<br>
+| <a href="http://vita.had.co.nz/papers/tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf</a><br>
+|<br>
+| This paper should be required reading for anyone who works with data, but it's not<br>
+| required in order to complete this lesson.</p>
+<p>...</p>
+<p>|======                                                                          |   7%<br>
+| Tidy data is formatted in a standard way that facilitates exploration and analysis and<br>
+| works seamlessly with other tidy data tools. Specifically, tidy data satisfies three<br>
+| conditions:<br>
+|<br>
+| 1) Each variable forms a column<br>
+|<br>
+| 2) Each observation forms a row<br>
+|<br>
+| 3) Each type of observational unit forms a table</p>
+<p>...</p>
+<p>|=======                                                                         |   9%<br>
+| Any dataset that doesn't satisfy these conditions is considered 'messy' data.<br>
+| Therefore, all of the following are characteristics of messy data, EXCEPT...</p>
+<p>1: Variables are stored in both rows and columns<br>
+2: Column headers are values, not variable names<br>
+3: Every column contains a different variable<br>
+4: Multiple types of observational units are stored in the same table<br>
+5: Multiple variables are stored in one column<br>
+6: A single observational unit is stored in multiple tables</p>
+<p>Selection: 3</p>
+<p>| Keep up the great work!</p>
+<p>|=========                                                                       |  11%<br>
+| The incorrect answers to the previous question are the most common symptoms of messy<br>
+| data. Let's work through a simple example of each of these five cases, then tidy some<br>
+| real data.</p>
+<p>...</p>
+<p>|==========                                                                      |  13%<br>
+| The first problem is when you have column headers that are values, not variable names.<br>
+| I've created a simple dataset called 'students' that demonstrates this scenario. Type<br>
+| students to take a look.</p>
+<blockquote>
+<p>play()</p>
+</blockquote>
+<p>| Entering play mode. Experiment as you please, then type nxt() when you are ready to<br>
+| resume the lesson.</p>
+<blockquote>
+<p>download.file("<a href="http://vita.had.co.nz/papers/tidy-data.pdf%22,%22tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf","tidy-data.pdf</a>")<br>
+trying URL '<a href="http://vita.had.co.nz/papers/tidy-data.pdf">http://vita.had.co.nz/papers/tidy-data.pdf</a>'<br>
+Content type 'application/pdf' length 360450 bytes (352 KB)<br>
+downloaded 352 KB</p>
+<p>nxt()</p>
+</blockquote>
+<p>| Resuming lesson...</p>
+<p>| The first problem is when you have column headers that are values, not variable names.<br>
+| I've created a simple dataset called 'students' that demonstrates this scenario. Type<br>
+| students to take a look.</p>
+<blockquote>
+<p>students<br>
+  grade male female<br>
+1     A    5      3<br>
+2     B    4      1<br>
+3     C    8      6<br>
+4     D    4      5<br>
+5     E    5      5</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|============                                                                    |  15%<br>
+| The first column represents each of five possible grades that students could receive<br>
+| for a particular class. The second and third columns give the number of male and female<br>
+| students, respectively, that received each grade.</p>
+<p>...</p>
+<p>|=============                                                                   |  16%<br>
+| This dataset actually has three variables: grade, sex, and count. The first variable,<br>
+| grade, is already a column, so that should remain as it is. The second variable, sex,<br>
+| is captured by the second and third column headings. The third variable, count, is the<br>
+| number of students for each combination of grade and sex.</p>
+<p>...</p>
+<p>|===============                                                                 |  18%<br>
+| To tidy the students data, we need to have one column for each of these three<br>
+| variables. We'll use the gather() function from tidyr to accomplish this. Pull up the<br>
+| documentation for this function with ?gather.</p>
+<blockquote>
+<p>?gather</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|================                                                                |  20%<br>
+| Using the help file as a guide, call gather() with the following arguments (in order):<br>
+| students, sex, count, -grade. Note the minus sign before grade, which says we want to<br>
+| gather all columns EXCEPT grade.</p>
+<blockquote>
+<p>gather(students,sex,count,-grade)<br>
+   grade    sex count<br>
+1      A   male     5<br>
+2      B   male     4<br>
+3      C   male     8<br>
+4      D   male     4<br>
+5      E   male     5<br>
+6      A female     3<br>
+7      B female     1<br>
+8      C female     6<br>
+9      D female     5<br>
+10     E female     5</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=================                                                               |  22%<br>
+| Each row of the data now represents exactly one observation, characterized by a unique<br>
+| combination of the grade and sex variables. Each of our variables (grade, sex, and<br>
+| count) occupies exactly one column. That's tidy data!</p>
+<p>...</p>
+<p>|===================                                                             |  24%<br>
+| It's important to understand what each argument to gather() means. The data argument,<br>
+| students, gives the name of the original dataset. The key and value arguments -- sex<br>
+| and count, respectively -- give the column names for our tidy dataset. The final<br>
+| argument, -grade, says that we want to gather all columns EXCEPT the grade column<br>
+| (since grade is already a proper column variable.)</p>
+<p>...</p>
+<p>|====================                                                            |  25%<br>
+| The second messy data case we'll look at is when multiple variables are stored in one<br>
+| column. Type students2 to see an example of this.</p>
+<blockquote>
+<p>students2<br>
+  grade male_1 female_1 male_2 female_2<br>
+1     A      7        0      5        8<br>
+2     B      4        0      5        8<br>
+3     C      7        4      5        6<br>
+4     D      8        2      8        1<br>
+5     E      8        4      1        0</p>
+</blockquote>
+<p>| Excellent work!</p>
+<p>|======================                                                          |  27%<br>
+| This dataset is similar to the first, except now there are two separate classes, 1 and<br>
+| 2, and we have total counts for each sex within each class. students2 suffers from the<br>
+| same messy data problem of having column headers that are values (male_1, female_1,<br>
+| etc.) and not variable names (sex, class, and count).</p>
+<p>...</p>
+<p>|=======================                                                         |  29%<br>
+| However, it also has multiple variables stored in each column (sex and class), which is<br>
+| another common symptom of messy data. Tidying this dataset will be a two step process.</p>
+<p>...</p>
+<p>|=========================                                                       |  31%<br>
+| Let's start by using gather() to stack the columns of students2, like we just did with<br>
+| students. This time, name the 'key' column sex_class and the 'value' column count. Save<br>
+| the result to a new variable called res. Consult ?gather again if you need help.</p>
+<blockquote>
+<p>res&lt;-gather(students2,sex_class,count,-grade)</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|==========================                                                      |  33%<br>
+| Print res to the console to see what we accomplished.</p>
+<blockquote>
+<p>res<br>
+   grade sex_class count<br>
+1      A    male_1     7<br>
+2      B    male_1     4<br>
+3      C    male_1     7<br>
+4      D    male_1     8<br>
+5      E    male_1     8<br>
+6      A  female_1     0<br>
+7      B  female_1     0<br>
+8      C  female_1     4<br>
+9      D  female_1     2<br>
+10     E  female_1     4<br>
+11     A    male_2     5<br>
+12     B    male_2     5<br>
+13     C    male_2     5<br>
+14     D    male_2     8<br>
+15     E    male_2     1<br>
+16     A  female_2     8<br>
+17     B  female_2     8<br>
+18     C  female_2     6<br>
+19     D  female_2     1<br>
+20     E  female_2     0</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|============================                                                    |  35%<br>
+| That got us half way to tidy data, but we still have two different variables, sex and<br>
+| class, stored together in the sex_class column. tidyr offers a convenient separate()<br>
+| function for the purpose of separating one column into multiple columns. Pull up the<br>
+| help file for separate() now.</p>
+<blockquote>
+<p>?separate</p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|=============================                                                   |  36%<br>
+| Call separate() on res to split the sex_class column into sex and class. You only need<br>
+| to specify the first three arguments: data = res, col = sex_class, into = c("sex",<br>
+| "class"). You don't have to provide the argument names as long as they are in the<br>
+| correct order.</p>
+<blockquote>
+<p>separate(data=res,col=sex_class,into=c("sex","class"))<br>
+   grade    sex class count<br>
+1      A   male     1     7<br>
+2      B   male     1     4<br>
+3      C   male     1     7<br>
+4      D   male     1     8<br>
+5      E   male     1     8<br>
+6      A female     1     0<br>
+7      B female     1     0<br>
+8      C female     1     4<br>
+9      D female     1     2<br>
+10     E female     1     4<br>
+11     A   male     2     5<br>
+12     B   male     2     5<br>
+13     C   male     2     5<br>
+14     D   male     2     8<br>
+15     E   male     2     1<br>
+16     A female     2     8<br>
+17     B female     2     8<br>
+18     C female     2     6<br>
+19     D female     2     1<br>
+20     E female     2     0</p>
+</blockquote>
+<p>| You are amazing!</p>
+<p>|===============================                                                 |  38%<br>
+| Conveniently, separate() was able to figure out on its own how to separate the<br>
+| sex_class column. Unless you request otherwise with the 'sep' argument, it splits on<br>
+| non-alphanumeric values. In other words, it assumes that the values are separated by<br>
+| something other than a letter or number (in this case, an underscore.)</p>
+<p>...</p>
+<p>|================================                                                |  40%<br>
+| Tidying students2 required both gather() and separate(), causing us to save an<br>
+| intermediate result (res). However, just like with dplyr, you can use the %&gt;% operator<br>
+| to chain multiple function calls together.</p>
+<p>...</p>
+<p>|=================================                                               |  42%<br>
+| I've opened an R script for you to give this a try. Follow the directions in the<br>
+| script, then save the script and type submit() at the prompt when you are ready. If you<br>
+| get stuck and want to start over, you can type reset() to reset the script to its<br>
+| original state.</p>
+
+<pre><code>{r}
+# Repeat your calls to gather() and separate(), but this time
+# use the %&gt;% operator to chain the commands together without
+# storing an intermediate result.
+#
+# If this is your first time seeing the %&gt;% operator, check
+# out ?chain, which will bring up the relevant documentation.
+# You can also look at the Examples section at the bottom
+# of ?gather and ?separate.
+#
+# The main idea is that the result to the left of %&gt;%
+# takes the place of the first argument of the function to
+# the right. Therefore, you OMIT THE FIRST ARGUMENT to each
+# function.
+#
+students2 %&gt;%
+  gather(sex_class ,count ,-grade ) %&gt;%
+  separate(sex_class , c("sex", "class")) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>grade    sex class count<br>
+1      A   male     1     7<br>
+2      B   male     1     4<br>
+3      C   male     1     7<br>
+4      D   male     1     8<br>
+5      E   male     1     8<br>
+6      A female     1     0<br>
+7      B female     1     0<br>
+8      C female     1     4<br>
+9      D female     1     2<br>
+10     E female     1     4<br>
+11     A   male     2     5<br>
+12     B   male     2     5<br>
+13     C   male     2     5<br>
+14     D   male     2     8<br>
+15     E   male     2     1<br>
+16     A female     2     8<br>
+17     B female     2     8<br>
+18     C female     2     6<br>
+19     D female     2     1<br>
+20     E female     2     0</p>
+<p>| Excellent work!</p>
+<p>|===================================                                             |  44%<br>
+| A third symptom of messy data is when variables are stored in both rows and columns.<br>
+| students3 provides an example of this. Print students3 to the console.</p>
+<blockquote>
+<p>students3<br>
+    name    test class1 class2 class3 class4 class5<br>
+1  Sally midterm      A   <na>      B   <na><na><br>
+2  Sally   final      C   <na>      C   <na><na><br>
+3   Jeff midterm   <na>      D   <na>      A   <na><br>
+4   Jeff   final   <na>      E   <na>      C   <na><br>
+5  Roger midterm   <na>      C   <na><na>      B<br>
+6  Roger   final   <na>      A   <na><na>      A<br>
+7  Karen midterm   <na><na>      C      A   <na><br>
+8  Karen   final   <na><na>      C      A   <na><br>
+9  Brian midterm      B   <na><na><na>      A<br>
+10 Brian   final      B   <na><na><na>      C</na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></na></p>
+</blockquote>
+<p>| You got it right!</p>
+<p>|====================================                                            |  45%<br>
+| In students3, we have midterm and final exam grades for five students, each of whom<br>
+| were enrolled in exactly two of five possible classes.</p>
+<p>...</p>
+<p>|======================================                                          |  47%<br>
+| The first variable, name, is already a column and should remain as it is. The headers<br>
+| of the last five columns, class1 through class5, are all different values of what<br>
+| should be a class variable. The values in the test column, midterm and final, should<br>
+| each be its own variable containing the respective grades for each student.</p>
+<p>...</p>
+<p>|=======================================                                         |  49%<br>
+| This will require multiple steps, which we will build up gradually using %&gt;%. Edit the<br>
+| R script, save it, then type submit() when you are ready. Type reset() to reset the<br>
+| script to its original state.</p>
+
+<pre><code>{r}
+# Call gather() to gather the columns class1
+# through class5 into a new variable called class.
+# The 'key' should be class, and the 'value'
+# should be grade.
+#
+# tidyr makes it easy to reference multiple adjacent
+# columns with class1:class5, just like with sequences
+# of numbers.
+#
+# Since each student is only enrolled in two of
+# the five possible classes, there are lots of missing
+# values (i.e. NAs). Use the argument na.rm = TRUE
+# to omit these values from the final result.
+#
+# Remember that when you're using the %&gt;% operator,
+# the value to the left of it gets inserted as the
+# first argument to the function on the right.
+#
+# Consult ?gather and/or ?chain if you get stuck.
+#
+students3 %&gt;%
+  gather(class ,grade , class1:class5 ,na.rm = TRUE) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+
+<pre><code>name    test  class grade  
+</code></pre>
+<p>1  Sally midterm class1     A<br>
+2  Sally   final class1     C<br>
+9  Brian midterm class1     B<br>
+10 Brian   final class1     B<br>
+13  Jeff midterm class2     D<br>
+14  Jeff   final class2     E<br>
+15 Roger midterm class2     C<br>
+16 Roger   final class2     A<br>
+21 Sally midterm class3     B<br>
+22 Sally   final class3     C<br>
+27 Karen midterm class3     C<br>
+28 Karen   final class3     C<br>
+33  Jeff midterm class4     A<br>
+34  Jeff   final class4     C<br>
+37 Karen midterm class4     A<br>
+38 Karen   final class4     A<br>
+45 Roger midterm class5     B<br>
+46 Roger   final class5     A<br>
+49 Brian midterm class5     A<br>
+50 Brian   final class5     C</p>
+<p>| That's correct!</p>
+<p>|=========================================                                       |  51%<br>
+| The next step will require the use of spread(). Pull up the documentation for spread()<br>
+| now.</p>
+<blockquote>
+<p>?spread</p>
+</blockquote>
+<p>| Keep working like that and you'll get there!</p>
+<p>|==========================================                                      |  53%<br>
+| Edit the R script, then save it and type submit() when you are ready. Type reset() to<br>
+| reset the script to its original state.</p>
+
+<pre><code>{r}
+# This script builds on the previous one by appending
+# a call to spread(), which will allow us to turn the
+# values of the test column, midterm and final, into
+# column headers (i.e. variables).
+#
+# You only need to specify two arguments to spread().
+# Can you figure out what they are? (Hint: You don't
+# have to specify the data argument since we're using
+# the %&gt;% operator.
+#
+students3 %&gt;%
+  gather(class, grade, class1:class5, na.rm = TRUE) %&gt;%
+  spread( test, grade) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+
+<pre><code>name  class final midterm  
+</code></pre>
+<p>1  Brian class1     B       B<br>
+2  Brian class5     C       A<br>
+3   Jeff class2     E       D<br>
+4   Jeff class4     C       A<br>
+5  Karen class3     C       C<br>
+6  Karen class4     A       A<br>
+7  Roger class2     A       C<br>
+8  Roger class5     A       B<br>
+9  Sally class1     C       A<br>
+10 Sally class3     C       B</p>
+<p>| All that practice is paying off!</p>
+<p>|============================================                                    |  55%<br>
+| readr is required for certain data manipulations, such as `parse_number(), which will<br>
+| be used in the next question.  Let's, (re)load the package with library(readr).</p>
+<blockquote>
+<p>library(readr)</p>
+</blockquote>
+<p>| Nice work!</p>
+<p>|=============================================                                   |  56%<br>
+| Lastly, we want the values in the class column to simply be 1, 2, ..., 5 and not<br>
+| class1, class2, ..., class5. We can use the parse_number() function from readr to<br>
+| accomplish this. To see how it works, try parse_number("class5").</p>
+<blockquote>
+<p>parse_number("class5")<br>
+[1] 5</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================                                 |  58%<br>
+| Now, the final step. Edit the R script, then save it and type submit() when you are<br>
+| ready. Type reset() to reset the script to its original state.</p>
+
+<pre><code>{r}
+# We want the values in the class columns to be
+# 1, 2, ..., 5 and not class1, class2, ..., class5.
+#
+# Use the mutate() function from dplyr along with
+# parse_number(). Hint: You can "overwrite" a column
+# with mutate() by assigning a new value to the existing
+# column instead of creating a new column.
+#
+# Check out ?mutate and/or ?parse_number if you need
+# a refresher.
+#
+students3 %&gt;%
+  gather(class, grade, class1:class5, na.rm = TRUE) %&gt;%
+  spread(test, grade) %&gt;%
+  ### Call to mutate() goes here %&gt;%
+  mutate(class=parse_number(class)) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+
+<pre><code>name class final midterm  
+</code></pre>
+<p>1  Brian     1     B       B<br>
+2  Brian     5     C       A<br>
+3   Jeff     2     E       D<br>
+4   Jeff     4     C       A<br>
+5  Karen     3     C       C<br>
+6  Karen     4     A       A<br>
+7  Roger     2     A       C<br>
+8  Roger     5     A       B<br>
+9  Sally     1     C       A<br>
+10 Sally     3     C       B</p>
+<p>| You got it!</p>
+<p>|================================================                                |  60%<br>
+| The fourth messy data problem we'll look at occurs when multiple observational units<br>
+| are stored in the same table. students4 presents an example of this. Take a look at the<br>
+| data now.</p>
+<blockquote>
+<p>students4<br>
+    id  name sex class midterm final<br>
+1  168 Brian   F     1       B     B<br>
+2  168 Brian   F     5       A     C<br>
+3  588 Sally   M     1       A     C<br>
+4  588 Sally   M     3       B     C<br>
+5  710  Jeff   M     2       D     E<br>
+6  710  Jeff   M     4       A     C<br>
+7  731 Roger   F     2       C     A<br>
+8  731 Roger   F     5       B     A<br>
+9  908 Karen   M     3       C     C<br>
+10 908 Karen   M     4       A     A</p>
+</blockquote>
+<p>| You are doing so well!</p>
+<p>|=================================================                               |  62%<br>
+| students4 is almost the same as our tidy version of students3. The only difference is<br>
+| that students4 provides a unique id for each student, as well as his or her sex (M =<br>
+| male; F = female).</p>
+<p>...</p>
+<p>|===================================================                             |  64%<br>
+| At first glance, there doesn't seem to be much of a problem with students4. All columns<br>
+| are variables and all rows are observations. However, notice that each id, name, and<br>
+| sex is repeated twice, which seems quite redundant. This is a hint that our data<br>
+| contains multiple observational units in a single table.</p>
+<p>...</p>
+<p>|====================================================                            |  65%<br>
+| Our solution will be to break students4 into two separate tables -- one containing<br>
+| basic student information (id, name, and sex) and the other containing grades (id,<br>
+| class, midterm, final).<br>
+|<br>
+| Edit the R script, save it, then type submit() when you are ready. Type reset() to<br>
+| reset the script to its original state.</p>
+
+<pre><code>{r}
+# Complete the chained command below so that we are
+# selecting the id, name, and sex column from students4
+# and storing the result in student_info.
+#
+student_info &lt;- students4 %&gt;%
+  select(id ,name ,sex ) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+
+<pre><code>id  name sex  
+</code></pre>
+<p>1  168 Brian   F<br>
+2  168 Brian   F<br>
+3  588 Sally   M<br>
+4  588 Sally   M<br>
+5  710  Jeff   M<br>
+6  710  Jeff   M<br>
+7  731 Roger   F<br>
+8  731 Roger   F<br>
+9  908 Karen   M<br>
+10 908 Karen   M</p>
+<p>| You are amazing!</p>
+<p>|======================================================                          |  67%<br>
+| Notice anything strange about student_info? It contains five duplicate rows! See the<br>
+| script for directions on how to fix this. Save the script and type submit() when you<br>
+| are ready, or type reset() to reset the script to its original state.</p>
+
+<pre><code>{r}
+# Add a call to unique() below, which will remove
+# duplicate rows from student_info.
+#
+# Like with the call to the print() function below,
+# you can omit the parentheses after the function name.
+# This is a nice feature of %&gt;% that applies when
+# there are no additional arguments to specify.
+#
+student_info &lt;- students4 %&gt;%
+  select(id, name, sex) %&gt;%
+  ### Your code here %&gt;%
+  unique() %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p>id  name sex<br>
+1 168 Brian   F<br>
+3 588 Sally   M<br>
+5 710  Jeff   M<br>
+7 731 Roger   F<br>
+9 908 Karen   M</p>
+<p>| Excellent job!</p>
+<p>|=======================================================                         |  69%<br>
+| Now, using the script I just opened for you, create a second table called gradebook<br>
+| using the id, class, midterm, and final columns (in that order).<br>
+|<br>
+| Edit the R script, save it, then type submit() when you are ready. Type reset() to<br>
+| reset the script to its original state.</p>
+
+<pre><code>{r}
+# select() the id, class, midterm, and final columns
+# (in that order) and store the result in gradebook.
+#
+gradebook &lt;- students4 %&gt;%
+  ### Your code here %&gt;%
+  select(id,class,midterm,final) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+
+<pre><code>id class midterm final  
+</code></pre>
+<p>1  168     1       B     B<br>
+2  168     5       A     C<br>
+3  588     1       A     C<br>
+4  588     3       B     C<br>
+5  710     2       D     E<br>
+6  710     4       A     C<br>
+7  731     2       C     A<br>
+8  731     5       B     A<br>
+9  908     3       C     C<br>
+10 908     4       A     A</p>
+<p>| You are quite good my friend!</p>
+<p>|=========================================================                       |  71%<br>
+| It's important to note that we left the id column in both tables. In the world of<br>
+| relational databases, 'id' is called our 'primary key' since it allows us to connect<br>
+| each student listed in student_info with their grades listed in gradebook. Without a<br>
+| unique identifier, we might not know how the tables are related. (In this case, we<br>
+| could have also used the name variable, since each student happens to have a unique<br>
+| name.)</p>
+<p>...</p>
+<p>|==========================================================                      |  73%<br>
+| The fifth and final messy data scenario that we'll address is when a single<br>
+| observational unit is stored in multiple tables. It's the opposite of the fourth<br>
+| problem.</p>
+<p>...</p>
+<p>|============================================================                    |  75%<br>
+| To illustrate this, we've created two datasets, passed and failed. Take a look at<br>
+| passed now.</p>
+<blockquote>
+<p>passed<br>
+   name class final<br>
+1 Brian     1     B<br>
+2 Roger     2     A<br>
+3 Roger     5     A<br>
+4 Karen     4     A</p>
+</blockquote>
+<p>| All that hard work is paying off!</p>
+<p>|=============================================================                   |  76%<br>
+| Now view the contents of failed.</p>
+<blockquote>
+<p>failed<br>
+   name class final<br>
+1 Brian     5     C<br>
+2 Sally     1     C<br>
+3 Sally     3     C<br>
+4  Jeff     2     E<br>
+5  Jeff     4     C<br>
+6 Karen     3     C</p>
+</blockquote>
+<p>| Your dedication is inspiring!</p>
+<p>|===============================================================                 |  78%<br>
+| Teachers decided to only take into consideration final exam grades in determining<br>
+| whether students passed or failed each class. As you may have inferred from the data,<br>
+| students passed a class if they received a final exam grade of A or B and failed<br>
+| otherwise.</p>
+<p>...</p>
+<p>|================================================================                |  80%<br>
+| The name of each dataset actually represents the value of a new variable that we will<br>
+| call 'status'. Before joining the two tables together, we'll add a new column to each<br>
+| containing this information so that it's not lost when we put everything together.</p>
+<p>...</p>
+<p>|=================================================================               |  82%<br>
+| Use dplyr's mutate() to add a new column to the passed table. The column should be<br>
+| called status and the value, "passed" (a character string), should be the same for all<br>
+| students. 'Overwrite' the current version of passed with the new one.</p>
+<blockquote>
+<p>passed&lt;-mutate(passed,status="passed")</p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|===================================================================             |  84%<br>
+| Now, do the same for the failed table, except the status column should have the value<br>
+| "failed" for all students.</p>
+<blockquote>
+<p>failed&lt;-mutate(failed,status="failed")</p>
+</blockquote>
+<p>| Perseverance, that's the answer.</p>
+<p>|====================================================================            |  85%<br>
+| Now, pass as arguments the passed and failed tables (in order) to the dplyr function<br>
+| bind_rows(), which will join them together into a single unit. Check ?bind_rows if you<br>
+| need help.<br>
+|<br>
+| Note: bind_rows() is only available in dplyr 0.4.0 or later. If you have an older<br>
+| version of dplyr, please quit the lesson, update dplyr, then restart the lesson where<br>
+| you left off. If you're not sure what version of dplyr you have, type<br>
+| packageVersion('dplyr').</p>
+<blockquote>
+<p>bind_rows(passed,failed)<br>
+    name class final status<br>
+1  Brian     1     B passed<br>
+2  Roger     2     A passed<br>
+3  Roger     5     A passed<br>
+4  Karen     4     A passed<br>
+5  Brian     5     C failed<br>
+6  Sally     1     C failed<br>
+7  Sally     3     C failed<br>
+8   Jeff     2     E failed<br>
+9   Jeff     4     C failed<br>
+10 Karen     3     C failed</p>
+</blockquote>
+<p>| You nailed it! Good job!</p>
+<p>|======================================================================          |  87%<br>
+| Of course, we could arrange the rows however we wish at this point, but the important<br>
+| thing is that each row is an observation, each column is a variable, and the table<br>
+| contains a single observational unit. Thus, the data are tidy.</p>
+<p>...</p>
+<p>|=======================================================================         |  89%<br>
+| We've covered a lot in this lesson. Let's bring everything together and tidy a real<br>
+| dataset.</p>
+<p>...</p>
+<p>|=========================================================================       |  91%<br>
+| The SAT is a popular college-readiness exam in the United States that consists of three<br>
+| sections: critical reading, mathematics, and writing. Students can earn up to 800<br>
+| points on each section. This dataset presents the total number of students, for each<br>
+| combination of exam section and sex, within each of six score ranges. It comes from the<br>
+| 'Total Group Report 2013', which can be found here:<br>
+|<br>
+| <a href="http://research.collegeboard.org/programs/sat/data/cb-seniors-2013">http://research.collegeboard.org/programs/sat/data/cb-seniors-2013</a></p>
+<p>...</p>
+<p>|==========================================================================      |  93%<br>
+| I've created a variable called 'sat' in your workspace, which contains data on all<br>
+| college-bound seniors who took the SAT exam in 2013. Print the dataset now.</p>
+<blockquote>
+<p>sat<br>
+# A tibble: 6 x 10<br>
+  score_range read_male read_fem read_total math_male math_fem math_total write_male<br><chr><int><int><int><int><int><int><int><br>
+1 700-800         40151    38898      79049     74461    46040     120501      31574<br>
+2 600-690        121950   126084     248034    162564   133954     296518     100963<br>
+3 500-590        227141   259553     486694    233141   257678     490819     202326<br>
+4 400-490        242554   296793     539347    204670   288696     493366     262623<br>
+5 300-390        113568   133473     247041     82468   131025     213493     146106<br>
+6 200-290         30728    29154      59882     18788    26562      45350      32500<br>
+# ... with 2 more variables: write_fem <int>, write_total <int></int></int></int></int></int></int></int></int></int></chr></p>
+</blockquote>
+<p>| That's a job well done!</p>
+<p>|============================================================================    |  95%<br>
+| As we've done before, we'll build up a series of chained commands, using functions from<br>
+| both tidyr and dplyr. Edit the R script, save it, then type submit() when you are<br>
+| ready. Type reset() to reset the script to its original state.</p>
+
+<pre><code>{r}
+# Accomplish the following three goals:
+#
+# 1. select() all columns that do NOT contain the word "total",
+# since if we have the male and female data, we can always
+# recreate the total count in a separate column, if we want it.
+# Hint: Use the contains() function, which you'll
+# find detailed in 'Special functions' section of ?select.
+#
+# 2. gather() all columns EXCEPT score_range, using
+# key = part_sex and value = count.
+#
+# 3. separate() part_sex into two separate variables (columns),
+# called "part" and "sex", respectively. You may need to check
+# the 'Examples' section of ?separate to remember how the 'into'
+# argument should be phrased.
+#
+sat %&gt;%
+  select(-contains("total")) %&gt;%
+  gather(part_sex, count, -score_range) %&gt;%
+  ### &lt;Your call to separate()&gt; %&gt;%
+  separate(part_sex,c("part","sex")) %&gt;%
+  print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p># A tibble: 36 x 4<br>
+   score_range part  sex    count<br><chr><chr><chr><int><br>
+ 1 700-800     read  male   40151<br>
+ 2 600-690     read  male  121950<br>
+ 3 500-590     read  male  227141<br>
+ 4 400-490     read  male  242554<br>
+ 5 300-390     read  male  113568<br>
+ 6 200-290     read  male   30728<br>
+ 7 700-800     read  fem    38898<br>
+ 8 600-690     read  fem   126084<br>
+ 9 500-590     read  fem   259553<br>
+10 400-490     read  fem   296793<br>
+# ... with 26 more rows</int></chr></chr></chr></p>
+<p>| You got it!</p>
+<p>|=============================================================================   |  96%<br>
+| Finish off the job by following the directions in the script. Save the script and type<br>
+| submit() when you are ready, or type reset() to reset the script to its original state.</p>
+
+<pre><code>{r}
+# Append two more function calls to accomplish the following:
+#
+# 1. Use group_by() (from dplyr) to group the data by part and
+# sex, in that order.
+#
+# 2. Use mutate to add two new columns, whose values will be
+# automatically computed group-by-group:
+#
+#   * total = sum(count)
+#   * prop = count / total
+#
+sat %&gt;%
+  select(-contains("total")) %&gt;%
+  gather(part_sex, count, -score_range) %&gt;%
+  separate(part_sex, c("part", "sex")) %&gt;%
+  ### &lt;Your call to group_by()&gt; %&gt;%
+  group_by(part,sex) %&gt;%
+  mutate(total = sum(count),
+         prop = count / total
+  ) %&gt;% print</code></pre>
+<blockquote>
+<p>submit()</p>
+</blockquote>
+<p>| Sourcing your script...</p>
+<p># A tibble: 36 x 6<br>
+# Groups:   part, sex [6]<br>
+   score_range part  sex    count  total   prop<br><chr><chr><chr><int><int><dbl><br>
+ 1 700-800     read  male   40151 776092 0.0517<br>
+ 2 600-690     read  male  121950 776092 0.157<br>
+ 3 500-590     read  male  227141 776092 0.293<br>
+ 4 400-490     read  male  242554 776092 0.313<br>
+ 5 300-390     read  male  113568 776092 0.146<br>
+ 6 200-290     read  male   30728 776092 0.0396<br>
+ 7 700-800     read  fem    38898 883955 0.0440<br>
+ 8 600-690     read  fem   126084 883955 0.143<br>
+ 9 500-590     read  fem   259553 883955 0.294<br>
+10 400-490     read  fem   296793 883955 0.336<br>
+# ... with 26 more rows</dbl></int></int></chr></chr></chr></p>
+<p>| Keep up the great work!</p>
+<p>|=============================================================================== |  98%<br>
+| In this lesson, you learned how to tidy data with tidyr and dplyr. These tools will<br>
+| help you spend less time and energy getting your data ready to analyze and more time<br>
+| actually analyzing it.</p>
+<p>...</p>
+<p>|================================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: Yes<br>
+2: No</p>
+<p>Selection: 1<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Excellent job!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Getting and Cleaning Data<br>
+2: R Programming<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+<blockquote>
+<p>ls()<br>
+ [1] "failed"       "gradebook"    "passed"       "res"          "sat"<br>
+ [6] "student_info" "students"     "students2"    "students3"    "students4"<br>
+rm(list=ls())</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-04-23 21:12:57.937316 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00417/" class="u-url">Grouping and Chaining with dplyr</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
