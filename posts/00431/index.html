@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#
+" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Statistical Inference - Introduction | Data Science with R</title>
+<link href="../../assets/css/all-nocdn.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<meta name="theme-color" content="#5670d4">
+<meta name="generator" content="Nikola (getnikola.com)">
+<link rel="canonical" href="https://r.datascience.eu.org/posts/00431/">
+<link rel="icon" href="../../files/favicon.ico" sizes="16x16">
+<!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Krishnakanth Allika">
+<link rel="prev" href="../00430/" title="K Means Clustering" type="text/html">
+<meta property="og:site_name" content="Data Science with R">
+<meta property="og:title" content="Statistical Inference - Introduction">
+<meta property="og:url" content="https://r.datascience.eu.org/posts/00431/">
+<meta property="og:description" content='R version 4.0.0 (2020-04-24) -- "Arbor Day"
+Copyright (C) 2020 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64 (64-bit)
+R is free software and comes with ABSOLUTELY NO WARR'>
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-05-26T15:42:11+05:30">
+<meta property="article:tag" content="Statistical Inference">
+<meta property="article:tag" content="swirl">
+</head>
+<body>
+<a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+
+<!-- Menubar -->
+
+<nav class="navbar navbar-expand-md static-top mb-4
+navbar-dark bg-dark
+"><div class="container">
+<!-- This keeps the margins nice -->
+        <a class="navbar-brand" href="https://r.datascience.eu.org/">
+
+            <span id="blog-title">Data Science with R</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-navbar" aria-controls="bs-navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="bs-navbar">
+            <ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a href="../../toc/" class="nav-link">Table of Contents</a>
+                </li>
+<li class="nav-item">
+<a href="../../categories/" class="nav-link">Categories</a>
+                </li>
+<li class="nav-item">
+<a href="../../tags/" class="nav-link">Tags</a>
+                </li>
+<li class="nav-item">
+<a href="https://www.datascience.eu.org" class="nav-link">Main site</a>
+
+                
+            </li>
+</ul>
+<!-- DuckDuckGo custom search --><form method="get" id="search" action="https://duckduckgo.com/" class="navbar-form pull-left">
+<input type="hidden" name="sites" value="https://r.datascience.eu.org/"><input type="hidden" name="k8" value="#444444"><input type="hidden" name="k9" value="#D51920"><input type="hidden" name="kt" value="h"><input type="text" name="q" maxlength="255" placeholder="Search…" class="span2" style="margin-top: 4px;"><input type="submit" value="DuckDuckGo Search" style="visibility: hidden;">
+</form>
+<!-- End of custom search -->
+
+
+            <ul class="navbar-nav navbar-right"></ul>
+</div>
+<!-- /.navbar-collapse -->
+    </div>
+<!-- /.container -->
+</nav><!-- End of Menubar --><div class="container" id="content" role="main">
+    <div class="body-content">
+        <!--Body content-->
+        
+        
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title" itemprop="headline name"><a href="." class="u-url">Statistical Inference - Introduction</a></h1>
+
+        <div class="metadata">
+            <p class="byline author vcard p-author h-card"><span class="byline-name fn p-name" itemprop="author">
+                    Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="." rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-26T15:42:11+05:30" itemprop="datePublished" title="2020-05-26 15:42">2020-05-26 15:42</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00431/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00431_Statistical Inference - Introduction.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00431_Statistical Inference - Introduction.html";
+var idcomments_post_url = "/posts/00431/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+            
+
+        </p>
+</div>
+        
+
+    </header><div class="e-content entry-content" itemprop="articleBody text">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Statistical Inference<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 2</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Introduction             2: Probability1             3: Probability2            
+ 4: ConditionalProbability   5: Expectations             6: Variance                
+ 7: CommonDistros            8: Asymptotics              9: T Confidence Intervals  
+10: Hypothesis Testing      11: P Values                12: Power                   
+13: Multiple Testing        14: Resampling</code></pre>
+<p>Selection: 1</p>
+<p>|                                                                             |   0%</p>
+<p>| Introduction to Statistical_Inference. (Slides for this and other Data Science<br>
+| courses may be found at github <a href="https://github.com/DataScienceSpecialization/courses">https://github.com/DataScienceSpecialization/courses</a>.<br>
+| If you care to use them, they must be downloaded as a zip file and viewed locally.<br>
+| This lesson corresponds to Statistical_Inference/Introduction.)</p>
+<p>...</p>
+<p>|========                                                                     |  10%<br>
+| In this lesson, we'll briefly introduce basics of statistical inference, the process<br>
+| of drawing conclusions "about a population using noisy statistical data where<br>
+| uncertainty must be accounted for". In other words, statistical inference lets<br>
+| scientists formulate conclusions from data and quantify the uncertainty arising from<br>
+| using incomplete data.</p>
+<p>...</p>
+<p>|===============                                                              |  20%<br>
+| Which of the following is NOT an example of statistical inference?</p>
+<p>1: Polling before an election to predict its outcome<br>
+2: Recording the results of a statistics exam<br>
+3: Testing the efficacy of a new drug<br>
+4: Constructing a medical image from fMRI data</p>
+<p>Selection: 2</p>
+<p>| All that hard work is paying off!</p>
+<p>|=======================                                                      |  30%<br>
+| So statistical inference involves formulating conclusions using data AND quantifying<br>
+| the uncertainty associated with those conclusions. The uncertainty could arise from<br>
+| incomplete or bad data.</p>
+<p>...</p>
+<p>|===============================                                              |  40%<br>
+| Which of the following would NOT be a source of bad data?</p>
+<p>1: Small sample size<br>
+2: Selection bias<br>
+3: A randomly selected sample of population<br>
+4: A poorly designed study</p>
+<p>Selection: 3</p>
+<p>| Your dedication is inspiring!</p>
+<p>|======================================                                       |  50%<br>
+| So with statistical inference we use data to draw general conclusions about a<br>
+| population. Which of the following would a scientist using statistical inference<br>
+| techniques consider a problem?</p>
+<p>1: Our study has no bias and is well-designed<br>
+2: Our data sample is representative of the population<br>
+3: Contaminated data</p>
+<p>Selection: 3</p>
+<p>| That's a job well done!</p>
+<p>|==============================================                               |  60%<br>
+| Which of the following is NOT an example of statistical inference in action?</p>
+<p>1: Testing the effectiveness of a medical treatment<br>
+2: Estimating the proportion of people who will vote for a candidate<br>
+3: Determining a causative mechanism underlying a disease<br>
+4: Counting sheep</p>
+<p>Selection: 4</p>
+<p>| You got it right!</p>
+<p>|======================================================                       |  70%<br>
+| We want to emphasize a couple of important points here. First, a statistic<br>
+| (singular) is a number computed from a sample of data. We use statistics to infer<br>
+| information about a population. Second, a random variable is an outcome from an<br>
+| experiment. Deterministic processes, such as computing means or variances, applied<br>
+| to random variables, produce additional random variables which have their own<br>
+| distributions. It's important to keep straight which distributions you're talking<br>
+| about.</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| Finally, there are two broad flavors of inference. The first is frequency, which<br>
+| uses "long run proportion of times an event occurs in independent, identically<br>
+| distributed repetitions." The second is Bayesian in which the probability estimate<br>
+| for a hypothesis is updated as additional evidence is acquired. Both flavors require<br>
+| an understanding of probability so that's what the next lessons will cover.</p>
+<p>...</p>
+<p>|=====================================================================        |  90%<br>
+| Congrats! You've concluded this brief introduction to statistical inference.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Great job!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Statistical Inference<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-26 15:45:29.101530 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    <aside class="postpromonav"><nav><ul itemprop="keywords" class="tags">
+<li><a class="tag p-category" href="../../tags/statistical-inference/" rel="tag">Statistical Inference</a></li>
+            <li><a class="tag p-category" href="../../tags/swirl/" rel="tag">swirl</a></li>
+        </ul>
+<ul class="pager hidden-print">
+<li class="previous">
+                <a href="../00430/" rel="prev" title="K Means Clustering">Previous post</a>
+            </li>
+        </ul></nav></aside><section class="comments hidden-print"><h2>Comments</h2>
+        
+        
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00431_Statistical Inference - Introduction.html";
+var idcomments_post_url = "https://r.datascience.eu.org/posts/00431/";
+</script><span id="IDCommentsPostTitle" style="display:none"></span>
+<script src="https://www.intensedebate.com/js/genericCommentWrapperV2.js"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$latex ','$'], ['\\(','\\)']]}});
+        </script></article><!--End of body content--><footer id="footer">
+            Contents © 2020 Krishnakanth Allika 
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+<img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png"></a><br>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
+Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License</a>.
+            
+            
+        </footer>
+</div>
+</div>
+
+
+        <script src="../../assets/js/all-nocdn.js"></script><script>
+    baguetteBox.run('div#content', {
+        ignoreClass: 'islink',
+        captions: function(element) {
+            return element.getElementsByTagName('img')[0].alt;
+    }});
+    </script><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-163231811-1"></script><script>  window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}  gtag('js', new Date());  gtag('config', 'UA-163231811-1'); gtag('set', {'user_id': 'USER_ID'});</script>
+</body>
+</html>

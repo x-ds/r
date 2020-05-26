@@ -73,7 +73,173 @@ navbar-dark bg-dark
 
     
 <div class="postindex">
-    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00430/" class="u-url">K Means Clustering</a></h1>
+    <article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00431/" class="u-url">Statistical Inference - Introduction</a></h1>
+        <div class="metadata">
+            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
+                Krishnakanth Allika
+            </span></p>
+            <p class="dateline">
+            <a href="00431/" rel="bookmark">
+            <time class="published dt-published" datetime="2020-05-26T15:42:11+05:30" itemprop="datePublished" title="2020-05-26 15:42">2020-05-26 15:42</time></a>
+            </p>
+                <p class="commentline">
+        
+<a href="%7Blink%7D" onclick="this.href='/posts/00431/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00431_Statistical Inference - Introduction.html</span>
+<script>
+var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
+var idcomments_post_id = "cache/posts/00431_Statistical Inference - Introduction.html";
+var idcomments_post_url = "/posts/00431/";
+</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
+
+
+        </p>
+</div>
+    </header><div class="e-content entry-content">
+    <div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
+Copyright (C) 2020 The R Foundation for Statistical Computing<br>
+Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
+<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
+You are welcome to redistribute it under certain conditions.<br>
+Type 'license()' or 'licence()' for distribution details.</p>
+<p>Natural language support but running in an English locale</p>
+<p>R is a collaborative project with many contributors.<br>
+Type 'contributors()' for more information and<br>
+'citation()' on how to cite R or R packages in publications.</p>
+<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
+'help.start()' for an HTML browser interface to help.<br>
+Type 'q()' to quit R.</p>
+<blockquote>
+<p>library(swirl)</p>
+</blockquote>
+<p>| Hi! Type swirl() when you are ready to begin.</p>
+<blockquote>
+<p>swirl()</p>
+</blockquote>
+<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as<br>
+| you did then. If you are new, call yourself something unique.</p>
+<p>What shall I call you? Krishnakanth Allika</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Statistical Inference<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 2</p>
+<p>| Please choose a lesson, or type 0 to return to course menu.</p>
+
+<pre><code> 1: Introduction             2: Probability1             3: Probability2            
+ 4: ConditionalProbability   5: Expectations             6: Variance                
+ 7: CommonDistros            8: Asymptotics              9: T Confidence Intervals  
+10: Hypothesis Testing      11: P Values                12: Power                   
+13: Multiple Testing        14: Resampling</code></pre>
+<p>Selection: 1</p>
+<p>|                                                                             |   0%</p>
+<p>| Introduction to Statistical_Inference. (Slides for this and other Data Science<br>
+| courses may be found at github <a href="https://github.com/DataScienceSpecialization/courses">https://github.com/DataScienceSpecialization/courses</a>.<br>
+| If you care to use them, they must be downloaded as a zip file and viewed locally.<br>
+| This lesson corresponds to Statistical_Inference/Introduction.)</p>
+<p>...</p>
+<p>|========                                                                     |  10%<br>
+| In this lesson, we'll briefly introduce basics of statistical inference, the process<br>
+| of drawing conclusions "about a population using noisy statistical data where<br>
+| uncertainty must be accounted for". In other words, statistical inference lets<br>
+| scientists formulate conclusions from data and quantify the uncertainty arising from<br>
+| using incomplete data.</p>
+<p>...</p>
+<p>|===============                                                              |  20%<br>
+| Which of the following is NOT an example of statistical inference?</p>
+<p>1: Polling before an election to predict its outcome<br>
+2: Recording the results of a statistics exam<br>
+3: Testing the efficacy of a new drug<br>
+4: Constructing a medical image from fMRI data</p>
+<p>Selection: 2</p>
+<p>| All that hard work is paying off!</p>
+<p>|=======================                                                      |  30%<br>
+| So statistical inference involves formulating conclusions using data AND quantifying<br>
+| the uncertainty associated with those conclusions. The uncertainty could arise from<br>
+| incomplete or bad data.</p>
+<p>...</p>
+<p>|===============================                                              |  40%<br>
+| Which of the following would NOT be a source of bad data?</p>
+<p>1: Small sample size<br>
+2: Selection bias<br>
+3: A randomly selected sample of population<br>
+4: A poorly designed study</p>
+<p>Selection: 3</p>
+<p>| Your dedication is inspiring!</p>
+<p>|======================================                                       |  50%<br>
+| So with statistical inference we use data to draw general conclusions about a<br>
+| population. Which of the following would a scientist using statistical inference<br>
+| techniques consider a problem?</p>
+<p>1: Our study has no bias and is well-designed<br>
+2: Our data sample is representative of the population<br>
+3: Contaminated data</p>
+<p>Selection: 3</p>
+<p>| That's a job well done!</p>
+<p>|==============================================                               |  60%<br>
+| Which of the following is NOT an example of statistical inference in action?</p>
+<p>1: Testing the effectiveness of a medical treatment<br>
+2: Estimating the proportion of people who will vote for a candidate<br>
+3: Determining a causative mechanism underlying a disease<br>
+4: Counting sheep</p>
+<p>Selection: 4</p>
+<p>| You got it right!</p>
+<p>|======================================================                       |  70%<br>
+| We want to emphasize a couple of important points here. First, a statistic<br>
+| (singular) is a number computed from a sample of data. We use statistics to infer<br>
+| information about a population. Second, a random variable is an outcome from an<br>
+| experiment. Deterministic processes, such as computing means or variances, applied<br>
+| to random variables, produce additional random variables which have their own<br>
+| distributions. It's important to keep straight which distributions you're talking<br>
+| about.</p>
+<p>...</p>
+<p>|==============================================================               |  80%<br>
+| Finally, there are two broad flavors of inference. The first is frequency, which<br>
+| uses "long run proportion of times an event occurs in independent, identically<br>
+| distributed repetitions." The second is Bayesian in which the probability estimate<br>
+| for a hypothesis is updated as additional evidence is acquired. Both flavors require<br>
+| an understanding of probability so that's what the next lessons will cover.</p>
+<p>...</p>
+<p>|=====================================================================        |  90%<br>
+| Congrats! You've concluded this brief introduction to statistical inference.</p>
+<p>...</p>
+<p>|=============================================================================| 100%<br>
+| Would you like to receive credit for completing this course on Coursera.org?</p>
+<p>1: No<br>
+2: Yes</p>
+<p>Selection: 2<br>
+What is your email address? xxxxxx@xxxxxxxxxxxx<br>
+What is your assignment token? xXxXxxXXxXxxXXXx<br>
+Grade submission succeeded!</p>
+<p>| Great job!</p>
+<p>| You've reached the end of this lesson! Returning to the main menu...</p>
+<p>| Please choose a course, or type 0 to exit swirl.</p>
+<p>1: Exploratory Data Analysis<br>
+2: Statistical Inference<br>
+3: Take me to the swirl course repository!</p>
+<p>Selection: 0</p>
+<p>| Leaving swirl now. Type swirl() to resume.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Last updated 2020-05-26 15:45:29.101530 IST</em></p>
+
+</div>
+</div>
+</div>
+</div>
+    </div>
+    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00430/" class="u-url">K Means Clustering</a></h1>
         <div class="metadata">
             <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
                 Krishnakanth Allika
@@ -5023,331 +5189,6 @@ Grade submission succeeded!</p>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>Last updated 2020-05-04 19:59:20.871482 IST</em></p>
-
-</div>
-</div>
-</div>
-</div>
-    </div>
-    </article><article class="h-entry post-text" itemscope="itemscope" itemtype="http://schema.org/Article"><header><h1 class="p-name entry-title"><a href="00421/" class="u-url">Graphics Devices in R</a></h1>
-        <div class="metadata">
-            <p class="byline author vcard"><span class="byline-name fn" itemprop="author">
-                Krishnakanth Allika
-            </span></p>
-            <p class="dateline">
-            <a href="00421/" rel="bookmark">
-            <time class="published dt-published" datetime="2020-05-04T13:21:25+05:30" itemprop="datePublished" title="2020-05-04 13:21">2020-05-04 13:21</time></a>
-            </p>
-                <p class="commentline">
-        
-<a href="%7Blink%7D" onclick="this.href='/posts/00421/'; this.target='_self';"><span class="IDCommentsReplace" style="display:none">cache/posts/00421_Graphics Devices in R.html</span>
-<script>
-var idcomments_acct = '7fae5836cfdd49cac599cac5b95695d1';
-var idcomments_post_id = "cache/posts/00421_Graphics Devices in R.html";
-var idcomments_post_url = "/posts/00421/";
-</script><script src="https://www.intensedebate.com/js/genericLinkWrapperV2.js"></script></a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>R version 4.0.0 (2020-04-24) -- "Arbor Day"<br>
-Copyright (C) 2020 The R Foundation for Statistical Computing<br>
-Platform: x86_64-w64-mingw32/x64 (64-bit)</p>
-<p>R is free software and comes with ABSOLUTELY NO WARRANTY.<br>
-You are welcome to redistribute it under certain conditions.<br>
-Type 'license()' or 'licence()' for distribution details.</p>
-<p>R is a collaborative project with many contributors.<br>
-Type 'contributors()' for more information and<br>
-'citation()' on how to cite R or R packages in publications.</p>
-<p>Type 'demo()' for some demos, 'help()' for on-line help, or<br>
-'help.start()' for an HTML browser interface to help.<br>
-Type 'q()' to quit R.</p>
-<blockquote>
-<p>setwd("C:/Users/kk/PortableApps/Git/home/k-allika/repos/DataScienceWithR/04_Exploratory_Data_Analysis/week01/workspace")<br>
-library(swirl)</p>
-</blockquote>
-<p>| Hi! Type swirl() when you are ready to begin.</p>
-<blockquote>
-<p>swirl()</p>
-</blockquote>
-<p>| Welcome to swirl! Please sign in. If you've been here before, use the same name as you did<br>
-| then. If you are new, call yourself something unique.</p>
-<p>What shall I call you? Krishnakanth Allika</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Exploratory Data Analysis<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 1</p>
-<p>| Please choose a lesson, or type 0 to return to course menu.</p>
-<p>1: Principles of Analytic Graphs   2: Exploratory Graphs<br>
- 3: Graphics Devices in R           4: Plotting Systems<br>
- 5: Base Plotting System            6: Lattice Plotting System<br>
- 7: Working with Colors             8: GGPlot2 Part1<br>
- 9: GGPlot2 Part2                  10: GGPlot2 Extras<br>
-11: Hierarchical Clustering        12: K Means Clustering<br>
-13: Dimension Reduction            14: Clustering Example<br>
-15: CaseStudy</p>
-<p>Selection: 3<br>
-  |                                                                                   |   0%</p>
-<p>| Graphics_Devices_in_R. (Slides for this and other Data Science courses may be found at<br>
-| github <a href="https://github.com/DataScienceSpecialization/courses/">https://github.com/DataScienceSpecialization/courses/</a>. If you care to use them,<br>
-| they must be downloaded as a zip file and viewed locally. This lesson corresponds to<br>
-| 04_ExploratoryAnalysis/Graphics_Devices_in_R.)</p>
-<p>...</p>
-<p>|==                                                                                 |   3%<br>
-| As the title suggests, this will be a short lesson introducing you to graphics devices in<br>
-| R. So, what IS a graphics device?</p>
-<p>...</p>
-<p>|=====                                                                              |   6%<br>
-| Would you believe that it is something where you can make a plot appear, either a screen<br>
-| device, such as a window on your computer, OR a file device?</p>
-<p>...</p>
-<p>|=======                                                                            |   9%<br>
-| There are several different kinds of file devices with particular characteristics and<br>
-| hence uses. These include PDF, PNG, JPEG, SVG, and TIFF. We'll talk more about these<br>
-| later.</p>
-<p>...</p>
-<p>|==========                                                                         |  12%<br>
-| To be clear, when you make a plot in R, it has to be "sent" to a specific graphics device.<br>
-| Usually this is the screen (the default device), especially when you're doing exploratory<br>
-| work. You'll send your plots to files when you're ready to publish a report, make a<br>
-| presentation, or send info to colleagues.</p>
-<p>...</p>
-<p>|============                                                                       |  15%<br>
-| How you access your screen device depends on what computer system you're using. On a Mac<br>
-| the screen device is launched with the call quartz(), on Windows you use the call<br>
-| windows(), and on Unix/Linux x11().  On a given platform (Mac, Windows, Unix/Linux) there<br>
-| is only one screen device, and obviously not all graphics devices are available on all<br>
-| platforms (i.e. you cannot launch windows() on a Mac).</p>
-<p>...</p>
-<p>|===============                                                                    |  18%<br>
-| Run the R command ?Devices to see what graphics devices are available on your system.</p>
-<blockquote>
-<p>?Devices</p>
-</blockquote>
-<p>| That's correct!</p>
-<p>|=================                                                                  |  21%<br>
-| R Documentation shows you what's available.</p>
-<p>...</p>
-<p>|====================                                                               |  24%<br>
-| There are two basic approaches to plotting. The first, plotting to the screen, is the most<br>
-| common. It's simple - you call a plotting function like plot, xyplot, or qplot (which you<br>
-| call depends on the plotting system you favor, but that's another lesson), so that the<br>
-| plot appears on the screen. Then you annotate (add to) the plot if necessary.</p>
-<p>...</p>
-<p>|======================                                                             |  26%<br>
-| As an example, run the R command with with 2 arguments. The first is a dataset, faithful,<br>
-| which comes with R, and the second is a call to the base plotting function plot. Your call<br>
-| to plot should have two arguments, eruptions and waiting. Try this now to see what<br>
-| happens.</p>
-<blockquote>
-<p>with(faithful,plot(eruptions,waiting))</p>
-</blockquote>
-<p><img src="../images/r0040470.png" alt="graph" title="graph"></p>
-<p>| Excellent job!</p>
-<p>|========================                                                           |  29%<br>
-| See how R created a scatterplot on the screen for you? This shows that relationship<br>
-| between eruptions of the geyser Old Faithful and waiting time. Now use the R function<br>
-| title with the argument main set equal to the string "Old Faithful Geyser data". This is<br>
-| an annotation to the plot.</p>
-<blockquote>
-<p>title(main="Old Faithful Geyser data")</p>
-</blockquote>
-<p><img src="../images/r0040480.png" alt="graph" title="graph"></p>
-<p>| You are amazing!</p>
-<p>|===========================                                                        |  32%<br>
-| Simple, right?  Now run the command dev.cur(). This will show you the current plotting<br>
-| device, the screen.</p>
-<blockquote>
-<p>dev.cur()<br>
-RStudioGD<br>
-        2</p>
-</blockquote>
-<p>| That's the answer I was looking for.</p>
-<p>|=============================                                                      |  35%<br>
-| The second way to create a plot is to send it to a file device. Depending on the type of<br>
-| plot you're making, you explicitly launch a graphics device, e.g., a pdf file. Type the<br>
-| command pdf(file="myplot.pdf") to launch the file device. This will create the pdf file<br>
-| myplot.pdf in your working directory.</p>
-<blockquote>
-<p>pdf(file="myplot.pdf")</p>
-</blockquote>
-<p>| Nice work!</p>
-<p>|================================                                                   |  38%<br>
-| You then call the plotting function (if you are using a file device, no plot will appear<br>
-| on the screen). Run the with command again to plot the Old Faithful data. Use the up arrow<br>
-| key to recover the command and save yourself some typing.</p>
-<blockquote>
-<p>with(faithful,plot(eruptions,waiting))</p>
-</blockquote>
-<p>| That's correct!</p>
-<p>|==================================                                                 |  41%<br>
-| Now rerun the title command and annotate the plot. (Up arrow keys are great!)</p>
-<blockquote>
-<p>title(main="Old Faithful Geyser data")</p>
-</blockquote>
-<p>| You are doing so well!</p>
-<p>|=====================================                                              |  44%<br>
-| Finally, when plotting to a file device, you have to close the device with the command<br>
-| dev.off(). This is very important! Don't do it yet, though. After closing, you'll be able<br>
-| to view the pdf file on your computer.</p>
-<p>...</p>
-<p>|=======================================                                            |  47%<br>
-| There are two basic types of file devices, vector and bitmap devices. These use different<br>
-| formats and have different characteristics. Vector formats are good for line drawings and<br>
-| plots with solid colors using a modest number of points, while bitmap formats are good for<br>
-| plots with a large number of points, natural scenes or web-based plots.</p>
-<p>...</p>
-<p>|==========================================                                         |  50%<br>
-| We'll mention 4 specific vector formats. The first is pdf, which we've just used in our<br>
-| example. This is useful for line-type graphics and papers. It resizes well, is usually<br>
-| portable, but it is not efficient if a plot has many objects/points.</p>
-<p>...</p>
-<p>|============================================                                       |  53%<br>
-| The second is svg which is XML-based, scalable vector graphics. This supports animation<br>
-| and interactivity and is potentially useful for web-based plots.</p>
-<p>...</p>
-<p>|==============================================                                     |  56%<br>
-| The last two vector formats are win.metafile, a Windows-only metafile format, and<br>
-| postscript (ps), an older format which also resizes well, is usually portable, and can be<br>
-| used to create encapsulated postscript files. Unfortunately, Windows systems often don’t<br>
-| have a postscript viewer.</p>
-<p>...</p>
-<p>|=================================================                                  |  59%<br>
-| We'll also mention 4 different bitmap formats. The first is png (Portable Network<br>
-| Graphics) which is good for line drawings or images with solid colors. It uses lossless<br>
-| compression (like the old GIF format), and most web browsers can read this format<br>
-| natively. In addition, png is good for plots with many points, but it does not resize<br>
-| well.</p>
-<p>...</p>
-<p>|===================================================                                |  62%<br>
-| In contrast, jpeg files are good for photographs or natural scenes. They use lossy<br>
-| compression, so they're good for plots with many points. Files in jpeg format don't resize<br>
-| well, but they can be read by almost any computer and any web browser. They're not great<br>
-| for line drawings.</p>
-<p>...</p>
-<p>|======================================================                             |  65%<br>
-| The last two bitmap formats are tiff, an older lossless compression meta-format and bmp<br>
-| which is a native Windows bitmapped format.</p>
-<p>...</p>
-<p>|========================================================                           |  68%<br>
-| Although it is possible to open multiple graphics devices (screen, file, or both), when<br>
-| viewing multiple plots at once, plotting can only occur on one graphics device at a time.</p>
-<p>...</p>
-<p>|===========================================================                        |  71%<br>
-| The currently active graphics device can be found by calling dev.cur(). Try it now to see<br>
-| what number is assigned to your pdf device.</p>
-<blockquote>
-<p>dev.cur()<br>
-pdf<br>
-  4</p>
-</blockquote>
-<p>| Your dedication is inspiring!</p>
-<p>|=============================================================                      |  74%<br>
-| Now use dev.off() to close the device.</p>
-<blockquote>
-<p>dev.off()<br>
-RStudioGD<br>
-        2</p>
-</blockquote>
-<p>View <a href="../files/f0040010.pdf" title="myplot.pdf">myplot.pdf</a></p>
-<p>| You are quite good my friend!</p>
-<p>|===============================================================                    |  76%<br>
-| Now rerun dev.cur() to see what integer your plotting window is assigned.</p>
-<blockquote>
-<p>dev.cur()<br>
-RStudioGD<br>
-        2</p>
-</blockquote>
-<p>| You got it!</p>
-<p>|==================================================================                 |  79%<br>
-| The device is back to what it was when you started. As you might have guessed, every open<br>
-| graphics device is assigned an integer greater than or equal to 2. You can change the<br>
-| active graphics device with dev.set(<integer>) where <integer> is the number associated<br>
-| with the graphics device you want to switch to.</integer></integer></p>
-<p>...</p>
-<p>|====================================================================               |  82%<br>
-| You can also copy a plot from one device to another. This can save you some time but<br>
-| beware! Copying a plot is not an exact operation, so the result may not be identical to<br>
-| the original. R provides some functions to help you do this. The function dev.copy copies<br>
-| a plot from one device to another, and dev.copy2pdf specifically copies a plot to a PDF<br>
-| file.</p>
-<p>...</p>
-<p>|=======================================================================            |  85%<br>
-| Just for fun, rerun the with command again, with(faithful, plot(eruptions, waiting)), to<br>
-| plot the Old Faithful data. Use the up arrow key to recover the command if you don't feel<br>
-| like typing.</p>
-<blockquote>
-<p>with(faithful,plot(eruptions,waiting))</p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|=========================================================================          |  88%<br>
-| Now rerun the title command, title(main = "Old Faithful Geyser data"), to annotate the<br>
-| plot. (Up arrow keys are great!)</p>
-<blockquote>
-<p>title(main="Old Faithful Geyser data")</p>
-</blockquote>
-<p>| You are really on a roll!</p>
-<p>|============================================================================       |  91%<br>
-| Now run dev.copy with the 2 arguments. The first is png, and the second is file set equal<br>
-| to "geyserplot.png". This will copy your screen plot to a png file in your working<br>
-| directory which you can view AFTER you close the device.</p>
-<blockquote>
-<p>dev.copy(png,"geyserplot.png")<br>
-png<br>
-  4</p>
-</blockquote>
-<p>| Not quite, but you're learning! Try again. Or, type info() for more options.</p>
-<p>| Type dev.copy(png, file = "geyserplot.png") at the command prompt.</p>
-<blockquote>
-<p>dev.copy(png,file="geyserplot.png")<br>
-png<br>
-  5</p>
-</blockquote>
-<p>| That's correct!</p>
-<p>|==============================================================================     |  94%<br>
-| Don't forget to close the PNG device! Do it NOW!!! Then you'll be able to view the file.</p>
-<blockquote>
-<p>dev.off()<br>
-RStudioGD<br>
-        2</p>
-</blockquote>
-<p><img src="../images/r0040490.png" alt="geyserplot.png" title="geyserplot.png"></p>
-<p>| Keep working like that and you'll get there!</p>
-<p>|=================================================================================  |  97%<br>
-| Congrats! We hope you found this lesson deviced well!</p>
-<p>...</p>
-<p>|===================================================================================| 100%<br>
-| Would you like to receive credit for completing this course on Coursera.org?</p>
-<p>1: Yes<br>
-2: No</p>
-<p>Selection: 1<br>
-What is your email address? xxxxxx@xxxxxxxxxxxx<br>
-What is your assignment token? xXxXxxXXxXxxXXXx<br>
-Grade submission succeeded!</p>
-<p>| All that hard work is paying off!</p>
-<p>| You've reached the end of this lesson! Returning to the main menu...</p>
-<p>| Please choose a course, or type 0 to exit swirl.</p>
-<p>1: Exploratory Data Analysis<br>
-2: Take me to the swirl course repository!</p>
-<p>Selection: 0</p>
-<p>| Leaving swirl now. Type swirl() to resume.</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Last updated 2020-05-04 13:23:19.344014 IST</em></p>
 
 </div>
 </div>
